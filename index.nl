@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KIMANZI — Become an Agent</title>
+  <meta name="theme-color" content="#1C4322">
+  <meta name="referrer" content="no-referrer">
+
+  <style>
+    :root {
+      --ink:#1C4322;
+      --acc:#D66B23;
+      --bg:#F7F8F6;
+      --card:#FFFFFF;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:system-ui, Arial, sans-serif;
+      line-height:1.6;
+    }
+
+    /* BUTTON */
+    button,
+    .cta button,
+    button[type="submit"] {
+      background: var(--acc);
+      color: #fff;
+      padding: 1rem 1.4rem;
+      border: none;
+      border-radius: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(214,107,35,0.25);
+      transition: background .25s ease, transform .15s ease;
+    }
+
+    button:hover { background:#c25f1f; transform:translateY(-2px); }
+    button:active { transform:translateY(0); }
+
+    /* HERO */
+    header {
+      position:relative;
+      color:#fff;
+      text-align:center;
+      padding:7rem 1rem 3rem;
+      background:url('https://files.catbox.moe/3tviml.jpg') center 48%/cover no-repeat;
+    }
+    header::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.40);
+    }
+    header h1, header p { position:relative; z-index:1; }
+
+    /* NAV */
+    nav {
+      background:#fff;
+      border-bottom:1px solid #e2e9e2;
+    }
+    nav ul {
+      display:flex;
+      justify-content:space-between;
+      list-style:none;
+      margin:0;
+      padding:.6rem 1rem;
+      flex-wrap:wrap;
+      gap:.5rem;
+    }
+    nav a {
+      color:var(--ink);
+      text-decoration:none;
+      margin-left:1rem;
+      font-weight:600;
+    }
+
+    /* CTA sticky */
+    .cta {
+      background:#fff;
+      border-bottom:1px solid #e2e9e2;
+      padding:1rem;
+      position:sticky;
+      top:0;
+      z-index:20;
+      text-align:center;
+    }
+
+    /* MAIN */
+    main {
+      max-width:980px;
+      margin:1.5rem auto;
+      padding:0 1rem;
+    }
+
+    section {
+      background:#fff;
+      padding:1.4rem;
+      border-radius:14px;
+      border:1px solid #dfe7df;
+      margin:1.2rem 0;
+    }
+
+    h2 {
+      color:var(--acc);
+      margin:0 0 .8rem 0;
+    }
+
+    /* Founder */
+    .founder {
+      display:flex;
+      gap:1.5rem;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+    .founder img {
+      width:90px;
+      max-width:28%;
+      border-radius:12px;
+      object-fit:cover;
+      opacity:.9;
+    }
+    .founder div { flex:1; min-width:250px; }
+
+    .note {
+      background:#F1F6F2;
+      border:1px solid #E3ECE5;
+      padding:.8rem;
+      border-radius:10px;
+    }
+
+    /* FAQ structure */
+    .faq-item { border:1px solid #dfe7df; border-radius:10px; margin:.7rem 0; overflow:hidden; }
+    .faq-q { background:#F8FBF9; padding:.9rem 1rem; border:0; font-weight:700; cursor:pointer; width:100%; }
+    .faq-a { padding:1rem; display:none; background:#fff; }
+
+    .faq-item.open .faq-a { display:block; }
+
+    /* Hidden role extra */
+    #rolExtra { display:none; }
+
+    input, textarea {
+      width:100%;
+      padding:.6rem;
+      border:1px solid #cfd7cf;
+      border-radius:8px;
+      margin-top:.3rem;
+      font-size:1rem;
+    }
+
+    @media(max-width:640px){
+      .founder img { width:75px; }
+      button, .cta button { width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>KIMANZI — Become an Agent</h1>
+  <p>Calm guidance for travellers who want to arrive without stress.</p>
+</header>
+
+<nav>
+  <ul>
+    <li><strong>KIMANZI</strong></li>
+    <li>
+      <a href="#founder">Founder</a>
+      <a href="#why">Why</a>
+      <a href="#services">Services</a>
+      <a href="#onboarding">Onboarding</a>
+      <a href="#working">Working</a>
+      <a href="#invoices">Invoices</a>
+      <a href="#role">Role</a>
+      <a href="#apply">Apply</a>
+      <a href="#faq">FAQ</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="cta">
+  <button onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">
+    Become an Agent
+  </button>
+</div>
+
+<main>
+
+<section id="founder">
+  <div class="founder">
+    <img src="founder.jpg" alt="Stephen - Founder">
+    <div>
+      <h2>About Stephen</h2>
+      <p>I love to travel. New places, new people, new energy…</p>
+      <p>The first hours after arrival often define the entire trip…</p>
+      <p>That’s why I started KIMANZI: to make the transition gentle.</p>
+    </div>
+  </div>
+</section>
+<section id="why">
+  <h2>Why become an agent at KIMANZI?</h2>
+  <p>KIMANZI works in small, personal settings…</p>
+  <p>You guide travellers during the first moment when everything is new…</p>
+</section>
+
+<section id="services">
+  <h2>Services</h2>
+  <p><strong>SOLO</strong> — One day of arrival guidance.</p>
+  <p><strong>ADVENTURE</strong> — Three days with planning, transport, communication.</p>
+  <p><strong>Shopping Service</strong> — Drinks/snacks ready on arrival.</p>
+</section>
+
+<section id="onboarding">
+  <h2>Onboarding</h2>
+  <p>We start with a short introduction…</p>
+  <p class="note">We use ProtonMail and Signal.</p>
+</section>
+
+<section id="working">
+  <h2>Working with KIMANZI</h2>
+  <p>Assignments always come from KIMANZI…</p>
+  <p>Receipts and invoices follow a simple process…</p>
+</section>
+
+<section id="invoices">
+  <h2>Submitting invoices & receipts</h2>
+  <p>Each invoice must include your name, date, assignment number…</p>
+
+  <button onclick="window.location.href='javascript:window.location.href=atob(`YWdlbnRAa2ltYW56aS5jb20=`)'">
+    Submit invoice
+  </button>
+</section>
+
+<section id="role">
+  <h2>The role of the agent</h2>
+  <p>A KIMANZI agent is the first calm moment after arrival…</p>
+
+  <button id="rolToggle">More about the role</button>
+
+  <div id="rolExtra">
+    <p>You help arrange Uber, provide calm, explain the area…</p>
+    <p>During Adventure: up to two meals per day…</p>
+    <p>Culture sharing is optional and respectful…</p>
+    <p>You maintain boundaries and safety…</p>
+    <p>The core: remove friction and replace it with confidence.</p>
+  </div>
+</section>
+<section id="apply">
+  <h2>Apply</h2>
+  <p>Fill in the form below…</p>
+
+  <form name="agent-apply" method="POST" data-netlify="true" action="/thanks.html">
+    <input type="hidden" name="form-name" value="agent-apply">
+    <input type="text" name="bot-field" style="display:none">
+
+    <label>First name
+      <input name="name" required>
+    </label>
+
+    <label>Region or city
+      <input name="region" required>
+    </label>
+
+    <label>Why do you want to become an agent?
+      <textarea name="motivation" rows="4" required></textarea>
+    </label>
+
+    <button type="submit">Send application</button>
+  </form>
+</section>
+
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-q">What does an agent do?</button>
+    <div class="faq-a">You guide travellers in the first hours…</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q">Am I employed by KIMANZI?</button>
+    <div class="faq-a">No. You work independently…</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q">How does communication work?</button>
+    <div class="faq-a">ProtonMail and Signal only.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q">What if I feel unsafe?</button>
+    <div class="faq-a">You may stop immediately.</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2025 KIMANZI — privacy-first, no trackers, no external scripts
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
+  });
+
+  const rt=document.getElementById('rolToggle');
+  const re=document.getElementById('rolExtra');
+  rt.addEventListener('click',()=>{
+    const open = re.style.display==="block";
+    re.style.display = open?"none":"block";
+    rt.textContent = open?"More about the role":"Less about the role";
+  });
+</script>
+
+</body>
+</html>
