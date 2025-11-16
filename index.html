@@ -231,8 +231,7 @@
   <h2>The Role</h2>
   <p>A KIMANZI agent brings calm, warmth and clarity to a guest’s first hours in Kenya.</p>
 
-  <button type="button" class="rol-toggle" id="rolToggle">More about the role</button>
-
+<button type="button" class="rol-toggle" id="rolToggle">More about the role</button>
   <div class="rol-extra" id="rolExtra" style="display:none;">
     <p>You stay connected on Signal and help arrange safe Uber transport.</p>
     <p>You create a soft landing in the apartment — a drink, something light to eat, and a simple introduction to the area.</p>
@@ -260,6 +259,20 @@
 </footer>
 
 </main>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const roleToggle = document.getElementById('rolToggle');
+    const roleExtra = document.getElementById('rolExtra');
+
+    if (roleToggle && roleExtra) {
+      roleToggle.addEventListener('click', () => {
+        const isOpen = roleExtra.style.display === 'block';
+        roleExtra.style.display = isOpen ? 'none' : 'block';
+        roleToggle.textContent = isOpen ? 'More about the role' : 'Less about the role';
+      });
+    }
+  });
+</script>
 </body>
 </html>
 
