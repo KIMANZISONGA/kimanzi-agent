@@ -311,9 +311,11 @@
   </p>
 
   <!-- Submit Invoice Button (copies email address and shows a message) -->
-  <button onclick="navigator.clipboard.writeText('agent@kimanzi.nl'); alert('Invoice email copied: agent@kimanzi.nl');">
-    Submit invoice
-  </button>
+  <button 
+  onclick="window.location.href='mailto:agent@kimanzi.nl?subject=Invoice%20Submission';"
+  style="background:#D66B23;color:#fff;padding:1rem 1.4rem;border:none;border-radius:16px;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px rgba(214,107,35,0.25);">
+  Submit invoice
+</button>
 
 </section>
 
