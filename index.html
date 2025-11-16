@@ -286,19 +286,20 @@
 
 </main>
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const roleToggle = document.getElementById('rolToggle');
-    const roleExtra = document.getElementById('rolExtra');
+document.addEventListener("DOMContentLoaded", () => {
+  const roleToggle = document.getElementById('rolToggle');
+  const roleExtra = document.getElementById('rolExtra');
 
-    if (roleToggle && roleExtra) {
-      roleToggle.addEventListener('click', () => {
-        const isOpen = roleExtra.style.display === 'block';
-        roleExtra.style.display = isOpen ? 'none' : 'block';
-        roleToggle.textContent = isOpen ? 'More about the role' : 'Less about the role';
-      });
-    }
-  });
+  if (roleToggle && roleExtra) {
+    roleToggle.addEventListener('click', () => {
+      const isOpen = roleExtra.style.display === 'block';
+      roleExtra.style.display = isOpen ? 'none' : 'block';
+      roleToggle.textContent = isOpen ? 'More about the role' : 'Less about the role';
+    });
+  }
+});
 </script>
+
 </body>
 </html>
 
