@@ -308,3 +308,96 @@
   <p>
     These forms are for KIMANZI agents. Each form has its own purpose so we keep communication clear.
   </p>
+  <!-- CONTACT FORM CARD -->
+  <div class="form-card" id="contact-form-card">
+    <h3>Contact form</h3>
+    <p>
+      For general questions, availability or anything you want to share with Stephen or the KIMANZI team.
+    </p>
+
+    <form action="https://formspree.io/f/mgvgyopy" method="POST">
+      <input type="hidden" name="form-type" value="agent-contact">
+
+      <label for="contact-name">Name</label>
+      <input id="contact-name" name="name" type="text" required>
+
+      <label for="contact-email">Email</label>
+      <input id="contact-email" name="email" type="email" required>
+
+      <label for="contact-message">Message</label>
+      <textarea id="contact-message" name="message" required></textarea>
+
+      <p class="form-hint">
+        We read every message personally. You receive a confirmation after review.
+      </p>
+
+      <button type="submit">Send message</button>
+    </form>
+  </div>
+
+  <!-- OPERATIONS FORM CARD -->
+  <div class="form-card">
+    <h3>Operations form</h3>
+    <p>
+      For updates about assignments: questions, issues, feedback or operational notes during or after a case.
+    </p>
+
+    <form action="https://formspree.io/f/mwpgvbwn" method="POST">
+      <input type="hidden" name="form-type" value="agent-operations">
+
+      <label for="ops-name">Name</label>
+      <input id="ops-name" name="name" type="text" required>
+
+      <label for="ops-assignment">Assignment number</label>
+      <input id="ops-assignment" name="assignment-number" type="text" required>
+
+      <label for="ops-message">Operational update</label>
+      <textarea id="ops-message" name="message" required></textarea>
+
+      <p class="form-hint">
+        Use this form if something in an assignment changes, feels unclear or needs attention.
+      </p>
+
+      <button type="submit">Send update</button>
+    </form>
+  </div>
+
+  <!-- INVOICE FORM CARD -->
+  <div class="form-card">
+    <h3>Invoice form</h3>
+    <p>
+      For sending invoices and receipts. Finance processes these within two business days.
+    </p>
+
+    <form action="https://formspree.io/f/mkgdobab" method="POST">
+      <input type="hidden" name="form-type" value="agent-invoices">
+
+      <label for="inv-name">Name</label>
+      <input id="inv-name" name="name" type="text" required>
+
+      <label for="inv-assignment">Assignment number</label>
+      <input id="inv-assignment" name="assignment-number" type="text" required>
+
+      <label for="inv-amount">Invoice amount</label>
+      <input id="inv-amount" name="invoice-amount" type="text" required>
+
+      <label for="inv-notes">Invoice notes</label>
+      <textarea id="inv-notes" name="message" placeholder="Mention invoice number, date and which receipts are attached." required></textarea>
+
+      <p class="form-hint">
+        Attach your invoice and clear photos of receipts in your email program after submitting this form.
+      </p>
+
+      <button type="submit">Send invoice details</button>
+    </form>
+  </div>
+
+</section>
+
+
+<section id="apply">
+  <h2>Join KIMANZI</h2>
+  <p>
+    If this way of working feels right — warm, calm, respectful and
+
+  
