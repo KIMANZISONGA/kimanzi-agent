@@ -1,4 +1,4 @@
-<!-- COMPLETE EXPORT: KIMANZI Agent Site (ready for GitHub) -->
+<!-- COMPLETE EXPORT: KIMANZI Agent Site (with integrated Forms) -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,6 +126,56 @@
     .faq-a { display:none; padding:.4rem 0; }
     .faq-item.open .faq-a { display:block; }
 
+    /* Forms layout */
+    .form-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:1.2rem;
+      margin-top:0.8rem;
+    }
+    .form-card {
+      border:1px solid #dfe7df;
+      border-radius:14px;
+      padding:1rem 1.1rem 1.2rem;
+      background:#fafbfa;
+    }
+    .form-card h3 {
+      margin:0 0 .4rem;
+      font-size:1.15rem;
+      color:var(--ink);
+    }
+    .form-card p {
+      margin:0 0 .7rem;
+      font-size:0.95rem;
+      color:#425142;
+    }
+    .form-card label {
+      display:block;
+      font-size:0.9rem;
+      margin-bottom:0.2rem;
+      font-weight:600;
+    }
+    .form-card input,
+    .form-card textarea {
+      width:100%;
+      padding:0.55rem 0.6rem;
+      margin-bottom:0.7rem;
+      border-radius:10px;
+      border:1px solid #cfd9cf;
+      font-family:inherit;
+      font-size:0.9rem;
+      background:#fff;
+    }
+    .form-card textarea {
+      min-height:110px;
+      resize:vertical;
+    }
+    .form-hint {
+      font-size:0.8rem;
+      color:#6b7a6b;
+      margin-top:-0.4rem;
+      margin-bottom:0.7rem;
+    }
   </style>
 </head>
 
@@ -148,6 +198,7 @@
       <a href="#onboarding">Onboarding</a>
       <a href="#working">Working</a>
       <a href="#role">Role</a>
+      <a href="#forms">Forms</a>
       <a href="#apply">Contact</a>
       <a href="#invoices">Invoices</a>
       <a href="#faq">FAQ</a>
@@ -157,23 +208,20 @@
 
 <div class="cta" style="display:flex;justify-content:center;gap:0.8rem;">
 
-  <!-- FIXED Contact Button -->
+  <!-- Top Contact Button (uses JS to assemble email) -->
   <button 
-    onclick="window.location.href='mailto:agent@kimanzi.nl?subject=I%20would%20like%20to%20join%20as%20a%20KIMANZI%20Agent';"
-    style="background:#D66B23;color:#fff;padding:1rem 1.4rem;border:none;border-radius:16px;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px rgba(214,107,35,0.25);">
+    type="button"
+    onclick="openMail('agent','kimanzi','nl','I would like to join as a KIMANZI Agent');">
     Contact
   </button>
 
   <!-- Signal Chat Button -->
   <button 
+    type="button"
     onclick="window.location.href='https://signal.me/#eu/jPhei3ZTNaLyCCoG10iCMC_kJaZaidg0YUAZWLVzFQpEwDQOSedIC4t7i39jhN7-';"
     style="display:flex;align-items:center;gap:0.5rem;background:#3A76F0;padding:0.9rem 1.3rem;border-radius:16px;font-weight:700;font-size:1rem;box-shadow:0 6px 18px rgba(0,0,0,0.18);color:#fff;">
     <img src="signal.png" alt="Signal" style="height:22px;border-radius:6px;">
     Signal
-  </button>
-
-</div>
-
   </button>
 
 </div>
@@ -221,7 +269,7 @@
 <section id="menu">
   <h2>Meals & Simplicity</h2>
   <img src="menu.jpg" alt="KIMANZI meal options" style="width:100%;border-radius:14px;margin-bottom:1rem;">
-  <p>Meals are轻, simple and respectful. One meal during SOLO, up to two during ADVENTURE — only if the guest wants. Soft drinks or juice only.</p>
+  <p>Meals are light, simple and respectful. One meal during SOLO, up to two during ADVENTURE — only if the guest wants. Soft drinks or juice only.</p>
 </section>
 
 <section id="privacy">
@@ -237,15 +285,14 @@
   <p>We explain how we work, how we communicate and how we keep everyone safe.</p>
   <p class="note">ProtonMail for official messages. Signal for daily coordination. No WhatsApp.</p>
 </section>
+
 <section id="working">
   <h2>Working With KIMANZI</h2>
-
   <p>We move together. You, Stephen and the other agents support each other and share what you notice.</p>
-
   <p>Assignments come through KIMANZI so everything stays clear and the guest relationship stays protected.</p>
-
   <p>If something does not feel safe or comfortable, you step back immediately. Your wellbeing comes first — always.</p>
 </section>
+
 <section id="role">
   <h2>The Role</h2>
 
@@ -276,20 +323,117 @@
   </div>
 </section>
 
+<section id="forms">
+  <h2>Forms</h2>
+  <p>
+    These forms are for KIMANZI agents only. Each form has its own purpose so we can keep communication clear and payments fast.
+  </p>
+
+  <div class="form-grid">
+
+    <!-- Contact Form -->
+    <div class="form-card">
+      <h3>Contact form</h3>
+      <p>
+        For general questions, availability, and anything you want to share with Stephen or the KIMANZI team.
+      </p>
+
+      <form action="https://formspree.io/f/mgvgyopy" method="POST">
+        <input type="hidden" name="form-type" value="agent-contact">
+
+        <label for="contact-name">Name</label>
+        <input id="contact-name" name="name" type="text" required>
+
+        <label for="contact-email">Email</label>
+        <input id="contact-email" name="email" type="email" required>
+
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" required></textarea>
+
+        <p class="form-hint">
+          We read every message personally. You receive a confirmation from us after review.
+        </p>
+
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+
+    <!-- Operations Form -->
+    <div class="form-card">
+      <h3>Operations form</h3>
+      <p>
+        For updates about assignments: questions, issues, feedback, or operational notes during or after a case.
+      </p>
+
+      <form action="https://formspree.io/f/mwpgvbwn" method="POST">
+        <input type="hidden" name="form-type" value="agent-operations">
+
+        <label for="ops-name">Name</label>
+        <input id="ops-name" name="name" type="text" required>
+
+        <label for="ops-assignment">Assignment number</label>
+        <input id="ops-assignment" name="assignment-number" type="text" required>
+
+        <label for="ops-message">Operational update</label>
+        <textarea id="ops-message" name="message" required></textarea>
+
+        <p class="form-hint">
+          Use this form if something in an assignment changes, feels unclear or needs attention.
+        </p>
+
+        <button type="submit">Send update</button>
+      </form>
+    </div>
+
+    <!-- Invoices Form -->
+    <div class="form-card">
+      <h3>Invoice form</h3>
+      <p>
+        For sending invoices and listing attached receipts. Finance handles these within two business days.
+      </p>
+
+      <form action="https://formspree.io/f/mkgdobab" method="POST">
+        <input type="hidden" name="form-type" value="agent-invoices">
+
+        <label for="inv-name">Name</label>
+        <input id="inv-name" name="name" type="text" required>
+
+        <label for="inv-assignment">Assignment number</label>
+        <input id="inv-assignment" name="assignment-number" type="text" required>
+
+        <label for="inv-amount">Invoice amount</label>
+        <input id="inv-amount" name="invoice-amount" type="text" required>
+
+        <label for="inv-notes">Invoice notes</label>
+        <textarea id="inv-notes" name="message" placeholder="Mention invoice number, date and which receipts are attached." required></textarea>
+
+        <p class="form-hint">
+          Attach your invoice and clear photos of receipts directly in your email program after submitting this form.
+        </p>
+
+        <button type="submit">Send invoice details</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
 <section id="apply">
   <h2>Join KIMANZI</h2>
   <p>
     If this way of working feels right — warm, calm, respectful and independent —
-    you can contact us directly. No forms, no pressure. We read every message personally.
+    you can reach out through the contact form or send us a direct message.
   </p>
 
-  <!-- Email Contact Button -->
-  <button onclick="window.location.href='mailto:agent@kimanzi.nl?subject=I%20would%20like%20to%20join%20as%20a%20KIMANZI%20Agent'">
+  <!-- Email Contact Button (assembled via JS) -->
+  <button type="button"
+          onclick="openMail('agent','kimanzi','nl','I would like to join as a KIMANZI Agent');">
     Contact
   </button>
 
   <!-- Signal Chat Button -->
-  <button onclick="window.location.href='https://signal.me/#eu/jPhei3ZTNaLyCCoG10iCMC_kJaZaidg0YUAZWLVzFQpEwDQOSedIC4t7i39jhN7-'" 
+  <button type="button"
+          onclick="window.location.href='https://signal.me/#eu/jPhei3ZTNaLyCCoG10iCMC_kJaZaidg0YUAZWLVzFQpEwDQOSedIC4t7i39jhN7-'" 
           style="margin-top:1rem;display:flex;align-items:center;gap:0.6rem;background:#3A76F0;padding:0.9rem 1.3rem;border-radius:16px;font-weight:700;font-size:1rem;box-shadow:0 6px 18px rgba(0,0,0,0.18);color:#fff;">
     <img src="signal.png" alt="Signal" style="height:26px;border-radius:6px;">
     Chat via Signal
@@ -301,21 +445,39 @@
   <h2>Submitting invoices & receipts</h2>
 
   <p>
-    You send your invoice and any receipts using email.<br>
-    Your invoice must include your name, the assignment date, the assignment number,<br>
-    the service delivered and your payment details. Attach clear photos of receipts if needed.
+    You submit invoices through the Invoice form in the Forms section. Finance then processes your payment.
+    Your invoice must include your name, the assignment date, the assignment number, the service delivered and your payment details.
   </p>
 
   <p>
     Payments are processed within two business days after receiving a complete and correct invoice.
   </p>
 
-  <!-- Submit Invoice Button (copies email address and shows a message) -->
-  <button 
-  onclick="window.location.href='mailto:agent@kimanzi.nl?subject=Invoice%20Submission';"
-  style="background:#D66B23;color:#fff;padding:1rem 1.4rem;border:none;border-radius:16px;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px rgba(214,107,35,0.25);">
-  Submit invoice
-</button>
+</section>
+
+<section id="faq">
+  <h2>FAQ</h2>
+
+  <div class="faq-item">
+    <button class="faq-q" type="button">Do I work for KIMANZI full time?</button>
+    <div class="faq-a">
+      <p>No. You work as an independent agent. Assignments come through KIMANZI and you decide what you accept.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" type="button">Can I say no to an assignment?</button>
+    <div class="faq-a">
+      <p>Yes. You can always say no or step back. Your safety and wellbeing are more important than any booking.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" type="button">Do I share my private life with guests?</button>
+    <div class="faq-a">
+      <p>No. You stay professional and warm, with clear boundaries. You decide what you share. The focus is on the guest feeling safe and calm.</p>
+    </div>
+  </div>
 
 </section>
 
@@ -332,9 +494,9 @@
   </a>
 </footer>
 
-
 </main>
-  <script>
+
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const roleToggle = document.getElementById('rolToggle');
   const roleExtra = document.getElementById('rolExtra');
@@ -346,9 +508,29 @@ document.addEventListener("DOMContentLoaded", () => {
       roleToggle.textContent = isOpen ? 'More about the role' : 'Less about the role';
     });
   }
+
+  // FAQ toggles
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
 });
+
+/**
+ * Assemble email address at click time to avoid exposing it directly
+ */
+function openMail(local, domain, tld, subject) {
+  const address = local + '@' + domain + '.' + tld;
+  let href = 'mailto:' + address;
+  if (subject) {
+    href += '?subject=' + encodeURIComponent(subject);
+  }
+  window.location.href = href;
+}
 </script>
 
 </body>
 </html>
-
