@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KIMANZI — Become an Agent</title>
+  <meta name="theme-color" content="#1C4322">
+  <meta name="referrer" content="no-referrer">
+
+  <style>
+    :root {
+      --ink:#1C4322;
+      --acc:#D66B23;
+      --bg:#F7F8F6;
+      --card:#FFFFFF;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:system-ui, Arial, sans-serif;
+      line-height:1.6;
+    }
+
+    button {
+      background: var(--acc);
+      color: #fff;
+      padding: 1rem 1.4rem;
+      border: none;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(214,107,35,0.25);
+      transition: background 0.25s ease, transform 0.15s ease;
+    }
+    button:hover { background:#c25f1f; transform:translateY(-2px); }
+    button:active { transform:translateY(0px); }
+
+    header {
+      position:relative;
+      color:#fff;
+      text-align:center;
+      padding:7rem 1rem 3rem;
+      background:url('header.jpg') center 48%/cover no-repeat;
+    }
+    header::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.4); }
+    header h1, header p { position:relative; z-index:1; }
+    header h1 { margin:0; font-size:clamp(1.8rem,5vw,2.6rem); }
+    header p { margin:.7rem auto 0; max-width:560px; font-size:1.05rem; }
+
+    nav {
+      background:#fff;
+      border-bottom:1px solid #e2e9e2;
+    }
+    nav ul {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      list-style:none;
+      margin:0;
+      padding:.6rem 1rem;
+      gap:.8rem;
+      flex-wrap:wrap;
+    }
+    nav a {
+      color:var(--ink);
+      text-decoration:none;
+      margin-left:1rem;
+      font-weight:600;
+      font-size:.95rem;
+    }
+
+    .cta {
+      background:#fff;
+      border-bottom:1px solid #e2e9e2;
+      padding:1rem;
+      position:sticky;
+      top:0;
+      z-index:20;
+      text-align:center;
+      display:flex;
+      justify-content:center;
+      gap:0.8rem;
+    }
+
+    main { max-width:980px; margin:1.5rem auto; padding:0 1rem; }
+
+    section {
+      background:var(--card);
+      padding:1.4rem;
+      border-radius:14px;
+      border:1px solid #dfe7df;
+      margin:1.2rem 0;
+    }
+
+    h2 { font-size:1.6rem; color:var(--acc); margin:0 0 .8rem; }
+
+    .founder {
+      display:flex;
+      gap:1.5rem;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+    .founder img {
+      width:120px;
+      border-radius:12px;
+      opacity:.9;
+    }
+    .founder div { flex:1; min-width:250px; }
+
+    .note {
+      background:#F1F6F2;
+      border:1px solid #E3ECE5;
+      padding:.8rem 1rem;
+      border-radius:10px;
+    }
+
+    .faq-q {
+      width:100%;
+      text-align:left;
+      padding:.8rem 0;
+      font-weight:600;
+      background:none;
+      border:none;
+      cursor:pointer;
+      color:var(--ink);
+    }
+    .faq-item { border-top:1px solid #e2e9e2; padding:.6rem 0; }
+    .faq-a { display:none; padding:.4rem 0; }
+    .faq-item.open .faq-a { display:block; }
+
+    .form-card {
+      border:1px solid #dfe7df;
+      border-radius:14px;
+      padding:1rem 1.1rem 1.2rem;
+      background:#fafbfa;
+      margin-bottom:1.4rem;
+    }
+    .form-card h3 {
+      margin:0 0 .4rem;
+      font-size:1.15rem;
+      color:var(--ink);
+    }
+    .form-card p {
+      margin:0 0 .7rem;
+      font-size:0.95rem;
+      color:#425142;
+    }
+    .form-card label {
+      display:block;
+      font-size:0.9rem;
+      margin-bottom:0.2rem;
+      font-weight:600;
+    }
+    .form-card input,
+    .form-card textarea {
+      width:100%;
+      padding:0.55rem 0.6rem;
+      margin-bottom:0.7rem;
+      border-radius:10px;
+      border:1px solid #cfd9cf;
+      font-family:inherit;
+      font-size:0.9rem;
+      background:#fff;
+    }
+    .form-card textarea {
+      min-height:110px;
+      resize:vertical;
+    }
+    .form-hint {
+      font-size:0.8rem;
+      color:#6b7a6b;
+      margin-top:-0.4rem;
+      margin-bottom:0.7rem;
+    }
+
+    footer {
+      text-align:center;
+      padding:2rem 1rem 3rem;
+      font-size:0.85rem;
+      color:#5a6a5a;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>KIMANZI — Become an Agent</h1>
+  <p>A gentle, grounded partner for travellers arriving in Kenya.</p>
+</header>
+
+<nav>
+  <ul>
+    <li><strong>KIMANZI</strong></li>
+    <li>
+      <a href="#why">Why</a>
+      <a href="#founder">Founder</a>
+      <a href="#partner">Partner</a>
+      <a href="#services">Services</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#onboarding">Onboarding</a>
+      <a href="#working">Working</a>
+      <a href="#events">Events</a>
+      <a href="#role">Role</a>
+      <a href="#forms">Forms</a>
+      <a href="#apply">Become agent</a>
+      <a href="#invoices">Invoices</a>
+      <a href="#faq">FAQ</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="cta">
+  <button type="button"
+          onclick="document.getElementById('contact-form-card').scrollIntoView({ behavior: 'smooth' });">
+    Contact
+  </button>
+
+  <button type="button"
+          onclick="window.location.href='https://signal.me/#eu/jPhei3ZTNaLyCCoG10iCMC_kJaZaidg0YUAZWLVzFQpEwDQOSedIC4t7i39jhN7-';"
+          style="display:flex;align-items:center;gap:0.5rem;background:#3A76F0;padding:0.9rem 1.3rem;border-radius:16px;font-weight:700;font-size:1rem;box-shadow:0 6px 18px rgba(0,0,0,0.18);color:#fff;">
+    <img src="signal.png" alt="Signal" style="height:22px;border-radius:6px;">
+    Signal
+  </button>
+</div>
+
+<main>
+
+  <section id="why">
+    <h2>Why KIMANZI Works With Women</h2>
+    <p>Guests choose KIMANZI because they want peace, clarity and a warm human presence. Women in Kenya bring this naturally: calm, awareness, kindness and strength.</p>
+    <p>At KIMANZI, you are not taking a job. You are joining a partnership built on trust and female intuition.</p>
+  </section>
+
+  <section id="founder">
+    <div class="founder">
+      <img src="founder.jpg" alt="Stephen — Founder">
+      <div>
+        <h2>From Stephen</h2>
+        <p>Travelling showed me that the first hours in a new place can feel heavy: confusion, hunger, noise, fatigue. Too much at once.</p>
+        <p>In Kenya, I met women who bring calm and clarity effortlessly. Women who protect, support and guide without forcing anything.</p>
+        <p>That is the heart of KIMANZI: a soft landing created together with women whose intuition is a strength.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="partner">
+    <h2>Being a Partner</h2>
+    <p>A KIMANZI agent is not a worker. She is a partner, a woman who notices details, reads situations and shares what matters.</p>
+    <p>She helps us see opportunities: events, safe places, ideas and anything that can strengthen how we support guests.</p>
+    <p>We grow together: you, Stephen and the other women in the KIMANZI circle. No pressure. No competition. Women supporting women.</p>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <p><strong>SOLO — A Soft Landing</strong><br>
+      This service is for the guest’s first hours in Kenya. You meet her or him with calm energy, help them move from the airport to their accommodation and create a gentle welcome.
+    </p>
+    <p><strong>ADVENTURE — Three Days of Steady Support</strong><br>
+      You guide softly, help with transport, planning, meals if needed and protect the guest from overwhelm.
+    </p>
+    <p><strong>Shopping Service</strong><br>
+      Before the guest arrives, you prepare gentle essentials: water, juice, fruit, snacks.
+    </p>
+  </section>
+
+  <section id="menu">
+    <h2>Meals &amp; Simplicity</h2>
+    <img src="menu.jpg" alt="KIMANZI meal options" style="width:100%;border-radius:14px;margin-bottom:1rem;">
+    <p>Meals are light and respectful. One meal during SOLO, up to two during ADVENTURE, only if the guest wants. Soft drinks only.</p>
+  </section>
+
+  <section id="privacy">
+    <h2>Privacy &amp; Safety</h2>
+    <p>No big tech tools. No tracking, no external fonts, no Google, no Meta.</p>
+    <p>ProtonMail for official messages. Signal for daily coordination. All guest data deleted after the assignment.</p>
+  </section>
+
+  <section id="onboarding">
+    <h2>Onboarding</h2>
+    <img src="onboarding.jpg" alt="KIMANZI onboarding" style="width:100%;border-radius:14px;margin-bottom:0.5rem;">
+    <p style="font-size:0.9rem;color:#5a6a5a;">A warm welcome by a woman who is fully present. That is the heart of every KIMANZI onboarding.</p>
+    <p>We explain how we work, how we protect you as an independent woman and how we keep everyone safe.</p>
+    <p class="note">ProtonMail for official messages. Signal for daily coordination.</p>
+  </section>
+
+  <section id="working">
+    <h2>Working With KIMANZI</h2>
+    <p>You, Stephen and the other women in KIMANZI support each other and share what you notice.</p>
+    <p>Assignments come through KIMANZI so everything stays clear and protected. You never have to negotiate alone with guests.</p>
+    <p>If something does not feel safe, you step back immediately. KIMANZI stands behind that decision.</p>
+  </section>
+
+  <section id="events">
+    <h2>Events in Kenya</h2>
+    <p>
+      Kenya is full of concerts, art nights, food festivals, beach gatherings and community events.
+      You see them long before we ever read about them online. When you share events with us,
+      we can offer better, calmer and safer options to KIMANZI guests.
+    </p>
+
+    <div class="form-card">
+      <h3>Share an event</h3>
+      <p>
+        Use this form to suggest events that fit KIMANZI: relaxed, safe, respectful and human.
+        We are interested in music, culture, food, local experiences and anything you feel is special.
+      </p>
+
+      <form action="https://formspree.io/f/xgvgabrq" method="POST">
+        <input type="hidden" name="form-type" value="agent-event">
+
+        <label for="event-name">Event name</label>
+        <input id="event-name" name="event-name" type="text" required>
+
+        <label for="event-description">Short description</label>
+        <textarea id="event-description" name="event-description" required></textarea>
+
+        <label for="event-location">Location (city, area, venue)</label>
+        <input id="event-location" name="event-location" type="text" required>
+
+        <label for="event-dates">Date or period</label>
+        <input id="event-dates" name="event-dates" type="text" required>
+
+        <label for="event-link">Website or link (optional)</label>
+        <input id="event-link" name="event-link" type="url" placeholder="https://">
+
+        <p class="form-hint">
+          You receive a short confirmation when we have reviewed your suggestion.
+        </p>
+
+        <button type="submit">Send event</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="role">
+    <h2>The Role</h2>
+
+    <p>A KIMANZI agent is a woman who brings calm, warmth and clarity to a guest’s first hours in Kenya.</p>
+
+    <button type="button" id="rolToggle" style="margin-top:0.6rem;">More about the role</button>
+
+    <div id="rolExtra" style="display:none; margin-top:1rem;">
+      <p>She stays connected via Signal: calm, simple, private.</p>
+      <p>She helps arrange safe Uber transport, creates a soft landing and supports with meals, planning and clarity.</p>
+      <p>She protects guests from overwhelm and supports them gently, never pushy.</p>
+      <p>Her wellbeing is always first. She steps back immediately if something feels unsafe, and KIMANZI supports that choice.</p>
+      <p>Everything the guest shares stays private. The client relationship always stays with KIMANZI.</p>
+    </div>
+  </section>
+
+  <section id="forms">
+    <h2>Agent forms</h2>
+    <p>
+      These forms are for KIMANZI agents. Each form has its own purpose so communication stays clear.
+    </p>
+
+    <div class="form-card" id="contact-form-card">
+      <h3>Contact form</h3>
+      <p>
+        For general questions, availability or anything you want to share with Stephen or the KIMANZI team.
+      </p>
+
+      <form action="https://formspree.io/f/xzznewdb" method="POST">
+        <input type="hidden" name="form-type" value="agent-contact">
+
+        <label for="contact-name">Name</label>
+        <input id="contact-name" name="name" type="text" required>
+
+        <label for="contact-email">Email</label>
+        <input id="contact-email" name="email" type="email" required>
+
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" required></textarea>
+
+        <p class="form-hint">
+          We read every message personally. You receive a confirmation after review.
+        </p>
+
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+
+    <div class="form-card">
+      <h3>Operations form</h3>
+      <p>
+        For updates about assignments: questions, issues, feedback or operational notes during or after a case.
+      </p>
+
+      <form action="https://formspree.io/f/mwpgvbwn" method="POST">
+        <input type="hidden" name="form-type" value="agent-operations">
+
+        <label for="ops-name">Name</label>
+        <input id="ops-name" name="name" type="text" required>
+
+        <label for="ops-assignment">Assignment number</label>
+        <input id="ops-assignment" name="assignment-number" type="text" required>
+
+        <label for="ops-message">Operational update</label>
+        <textarea id="ops-message" name="message" required></textarea>
+
+        <p class="form-hint">
+          Use this form if something in an assignment changes, feels unclear or needs attention.
+        </p>
+
+        <button type="submit">Send update</button>
+      </form>
+    </div>
+
+    <div class="form-card" id="invoices">
+      <h3>Invoice form</h3>
+      <p>
+        For sending invoices and receipts. Finance processes these within two business days.
+      </p>
+
+      <form action="https://formspree.io/f/xzznewvb" method="POST">
+        <input type="hidden" name="form-type" value="agent-invoices">
+
+        <label for="inv-name">Name</label>
+        <input id="inv-name" name="name" type="text" required>
+
+        <label for="inv-assignment">Assignment number</label>
+        <input id="inv-assignment" name="assignment-number" type="text" required>
+
+        <label for="inv-amount">Invoice amount</label>
+        <input id="inv-amount" name="invoice-amount" type="text" required>
+
+        <label for="inv-notes">Invoice notes</label>
+        <textarea id="inv-notes" name="message" placeholder="Mention invoice number, date and which receipts are attached." required></textarea>
+
+        <p class="form-hint">
+          Attach your invoice and clear photos of receipts when you send your email with the PDF invoice.
+        </p>
+
+        <button type="submit">Send invoice details</button>
+      </form>
+    </div>
+
+  </section>
+
+  <section id="apply">
+    <h2>Become a KIMANZI agent</h2>
+    <p>
+      KIMANZI is for women who combine calm energy with awareness and respect. You enjoy taking care of details,
+      you know your city and you feel responsible when someone trusts you with their first hours in Kenya.
+    </p>
+    <p>
+      This is not a call center job and not nightlife hosting. It is hospitality, safety and soft guidance.
+      You work as an independent professional and KIMANZI stands behind you when you protect your own safety and boundaries.
+    </p>
+    <p>
+      If this feels like you, start with a simple intake. We read everything quietly and respond in ProtonMail or Signal.
+    </p>
+
+    <div class="form-card">
+      <h3>Agent intake form</h3>
+
+      <form action="https://formspree.io/f/xzznewdb" method="POST">
+        <input type="hidden" name="form-type" value="agent-intake">
+
+        <label for="intake-name">Name</label>
+        <input id="intake-name" name="name" type="text" required>
+
+        <label for="intake-city">City or area in Kenya</label>
+        <input id="intake-city" name="city" type="text" required>
+
+        <label for="intake-age">Age (optional)</label>
+        <input id="intake-age" name="age" type="text" placeholder="Optional">
+
+        <label for="intake-experience">Experience with hospitality or care</label>
+        <textarea id="intake-experience" name="experience" required></textarea>
+
+        <label for="intake-why">Why does KIMANZI feel right for you</label>
+        <textarea id="intake-why" name="why" required></textarea>
+
+        <label for="intake-availability">Availability (days, evenings, weekends)</label>
+        <input id="intake-availability" name="availability" type="text" required>
+
+        <label for="intake-phone">Phone number for Signal</label>
+        <input id="intake-phone" name="phone" type="text" required>
+
+        <label for="intake-email">Email</label>
+        <input id="intake-email" name="email" type="email" required>
+
+        <p class="form-hint">
+          We keep this information private and use it only for KIMANZI intake. You can stop at any time by telling us.
+        </p>
+
+        <button type="submit">Send intake</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">Is this a full time role for women</button>
+      <div class="faq-a">
+        <p>No. KIMANZI works with independent women. Assignments come when guests book.
+          Some months are quiet, some months are busy.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">Can I step back if it does not feel right</button>
+      <div class="faq-a">
+        <p>Yes. Your safety and comfort are first. If something does not feel right,
+          you step back and inform us via Signal or the operations form. We support that decision.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">Do I need social media</button>
+      <div class="faq-a">
+        <p>No. KIMANZI does not use social media for agents or guests.
+          We work with ProtonMail and Signal only.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">How do payments work</button>
+      <div class="faq-a">
+        <p>You send an invoice using the invoice form above. Finance pays within two business days
+          after receiving a correct invoice and receipts.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  KIMANZI — Privacy first. No cookies, no tracking, no social.
+</footer>
+
+<script>
+  (function() {
+    var toggle = document.getElementById('rolToggle');
+    var extra = document.getElementById('rolExtra');
+    if (toggle && extra) {
+      toggle.addEventListener('click', function () {
+        var isHidden = extra.style.display === 'none' || extra.style.display === '';
+        extra.style.display = isHidden ? 'block' : 'none';
+      });
+    }
+  })();
+
+  (function() {
+    var items = document.querySelectorAll('.faq-item');
+    items.forEach(function(item) {
+      var btn = item.querySelector('.faq-q');
+      btn.addEventListener('click', function() {
+        item.classList.toggle('open');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
