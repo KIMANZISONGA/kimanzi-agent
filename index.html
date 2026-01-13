@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#07090d" />
+
+  <title>UrbanChill Nairobi — Freelance Hospitality Professionals</title>
+  <meta name="description" content="Werk als freelance hospitality professional in Nairobi. Heldere fees, uitbetaling de volgende dag, bonus na 10 succesvolle opdrachten. Privacy first: geen cookies, geen tracking." />
+
+  <style>
+    :root{
+      --bg0:#05060a;
+      --bg1:#07090d;
+      --bg2:#0b0f16;
+
+      --ink:#f6f7fb;
+      --muted:#b7bdc9;
+
+      --gold:#e6a24f;
+      --gold2:#d78c33;
+
+      --radius:18px;
+      --radius2:24px;
+
+      --shadow: 0 24px 80px rgba(0,0,0,.68);
+      --shadow2: 0 16px 44px rgba(0,0,0,.48);
+
+      --maxw:1100px;
+
+      --font-title: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:var(--font-body);
+      line-height:1.6;
+      background:
+        radial-gradient(1200px 700px at 50% -20%, rgba(230,162,79,.22), transparent 60%),
+        radial-gradient(900px 540px at 15% 10%, rgba(232,110,46,.20), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(58,118,240,.12), transparent 62%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, var(--bg2));
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x:hidden;
+    }
+
+    a{ color:var(--gold); text-decoration:none; }
+    a:hover{ color:#ffd08f; }
+
+    /* ====== Gloss overlay & bubbles ====== */
+    .bgfx{
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+
+    .bgfx::after{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      opacity:.095;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.16) 0 1px, transparent 2px),
+        radial-gradient(circle at 80% 60%, rgba(255,255,255,.12) 0 1px, transparent 2px),
+        radial-gradient(circle at 45% 85%, rgba(255,255,255,.10) 0 1px, transparent 2px);
+      background-size: 140px 140px;
+      mix-blend-mode: overlay;
+      filter: blur(.2px);
+    }
+
+    .orb{
+      position:absolute;
+      border-radius:999px;
+      opacity:.98;
+      transform: translate3d(0,0,0);
+      mix-blend-mode: screen;
+    }
+
+    .orb::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      background:
+        radial-gradient(45% 45% at 30% 24%, rgba(255,255,255,.52), transparent 60%),
+        radial-gradient(46% 46% at 40% 34%, rgba(255,255,255,.22), transparent 62%),
+        radial-gradient(60% 60% at 72% 74%, rgba(0,0,0,.58), transparent 65%),
+        radial-gradient(80% 70% at 50% 55%, rgba(255,255,255,.12), transparent 60%),
+        linear-gradient(145deg, rgba(255,255,255,.10), rgba(0,0,0,.24));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.24),
+        inset 0 -18px 42px rgba(0,0,0,.48),
+        0 26px 100px rgba(0,0,0,.68);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+    }
+
+    .orb::after{
+      content:"";
+      position:absolute;
+      inset: 9%;
+      border-radius:inherit;
+      background: radial-gradient(55% 55% at 28% 20%, rgba(255,255,255,.34), transparent 58%);
+      opacity:.92;
+      transform: rotate(-10deg);
+      filter: blur(.2px);
+    }
+
+    .o1{ width:520px; height:520px; left:-140px; top:-140px; background: radial-gradient(circle at 40% 40%, rgba(230,162,79,.38), transparent 60%); }
+    .o2{ width:420px; height:420px; right:-160px; top:60px; background: radial-gradient(circle at 40% 40%, rgba(232,110,46,.36), transparent 60%); }
+    .o3{ width:540px; height:540px; right:-220px; bottom:-240px; background: radial-gradient(circle at 40% 40%, rgba(58,118,240,.26), transparent 62%); }
+    .o4{ width:360px; height:360px; left:120px; bottom:-170px; background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.14), transparent 60%); }
+
+    /* ====== Layout ====== */
+    .wrap{ position:relative; z-index:1; }
+
+    .hero{
+      position:relative;
+      padding: 88px 18px 58px;
+      border-radius: 0 0 var(--radius2) var(--radius2);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      background:
+        radial-gradient(1200px 700px at 50% -20%, rgba(230,162,79,.20), transparent 62%),
+        radial-gradient(900px 540px at 10% 10%, rgba(232,110,46,.18), transparent 60%),
+        radial-gradient(900px 620px at 85% 30%, rgba(58,118,240,.12), transparent 62%),
+        linear-gradient(180deg, rgba(0,0,0,.34), rgba(0,0,0,.82));
+      isolation:isolate;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.14), transparent 24%),
+        radial-gradient(1200px 560px at 50% 0%, rgba(255,255,255,.11), transparent 60%);
+      opacity:.56;
+      mix-blend-mode: overlay;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .inner{
+      position:relative;
+      z-index:1;
+      max-width: 980px;
+      margin: 0 auto;
+      text-align:center;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.075);
+      box-shadow: var(--shadow2);
+      text-transform: uppercase;
+      font-weight: 950;
+      letter-spacing: .18em;
+      color:#ffd08f;
+      font-family: var(--font-title);
+    }
+
+    h1,h2,h3{ font-family: var(--font-title); margin: 0 0 14px; }
+    h1{
+      margin-top: 18px;
+      font-size: clamp(2.2rem, 4.6vw, 3.3rem);
+      font-weight: 950;
+      line-height: 1.06;
+      letter-spacing: .2px;
+      text-shadow: 0 22px 78px rgba(0,0,0,.80);
+    }
+
+    h2{
+      font-size: clamp(1.6rem, 2.6vw, 2.05rem);
+      margin: 0 0 14px;
+    }
+
+    .sub{
+      max-width: 900px;
+      margin: 0 auto 18px;
+      color: rgba(183,189,201,.97);
+      font-size: 1.08rem;
+    }
+
+    .cta-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 950;
+      cursor:pointer;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow2);
+      transition: transform .15s ease, filter .2s ease, border-color .2s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-2px); filter: brightness(1.04); border-color: rgba(230,162,79,.26); }
+    .btn:active{ transform: translateY(0); }
+
+    .btn-brand{
+      background: linear-gradient(180deg, var(--gold), var(--gold2));
+      color:#1b1307;
+      border-color: rgba(255,255,255,.10);
+    }
+    .btn-glass{
+      background: rgba(255,255,255,.075);
+      color: var(--ink);
+    }
+    .btn-signal{
+      background: linear-gradient(180deg, #3A76F0, #2e63d6);
+      color:#fff;
+    }
+    .btn-signal img{ height:22px; border-radius: 7px; display:block; }
+
+    .fees{
+      max-width: 940px;
+      margin: 18px auto 0;
+      text-align:left;
+      background: rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px;
+      padding: 16px 16px;
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
+    }
+    .fees .small{ display:block; margin-top: 6px; color: rgba(183,189,201,.95); font-size: .95rem; }
+
+    nav{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(5,6,10,.56);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.11);
+    }
+    .navinner{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .brandmark{ font-family: var(--font-title); font-weight: 950; letter-spacing: .5px; opacity:.96; }
+    .navlinks{ display:flex; flex-wrap:wrap; gap: 10px 14px; justify-content:flex-end; }
+    .navlinks a{ color: rgba(246,247,251,.87); font-weight: 750; font-size: .95rem; opacity:.93; }
+    .navlinks a:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+
+    .container{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 32px 18px 46px;
+      position:relative;
+      z-index:1;
+    }
+
+    section{ padding: 74px 20px; }
+
+    .grid{ display:grid; gap: 22px; }
+    @media(min-width: 880px){
+      .grid-2{ grid-template-columns: 1fr 1fr; }
+      .grid-3{ grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card{
+      background: rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.20), transparent 28%),
+        radial-gradient(900px 280px at 20% 0%, rgba(230,162,79,.12), transparent 60%),
+        radial-gradient(900px 280px at 80% 0%, rgba(232,110,46,.10), transparent 60%);
+      opacity:.60;
+      mix-blend-mode: overlay;
+    }
+    .card > *{ position:relative; z-index:1; }
+    .card h3{ margin: 0 0 10px; font-weight: 950; }
+    .card p, .card li{ color: rgba(183,189,201,.95); }
+
+    .block{
+      background: rgba(255,255,255,.070);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(14px);
+      position:relative;
+      overflow:hidden;
+    }
+    .block::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.18), transparent 30%),
+        radial-gradient(820px 260px at 50% 0%, rgba(255,255,255,.12), transparent 60%);
+      opacity:.60;
+      mix-blend-mode: overlay;
+    }
+    .block > *{ position:relative; z-index:1; }
+
+    ul{ margin: 10px 0 0; padding-left: 18px; }
+
+    /* founder */
+    .founder{
+      display:grid;
+      gap: 18px;
+      align-items:start;
+    }
+    @media(min-width: 880px){
+      .founder{ grid-template-columns: 180px 1fr; gap: 22px; }
+    }
+    .founder img{
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow2);
+      background: rgba(0,0,0,.20);
+    }
+    .founder p{ margin: 0 0 10px; color: rgba(183,189,201,.95); }
+
+    .form-card{
+      margin-top: 16px;
+      background: rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(14px);
+    }
+    .form-card h3{ margin:0 0 6px; font-weight: 950; }
+    .form-card p{ margin:0 0 12px; color: rgba(183,189,201,.95); }
+
+    label{
+      display:block;
+      font-weight: 900;
+      margin: 10px 0 6px;
+      color: rgba(246,247,251,.93);
+      font-size:.92rem;
+    }
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(0,0,0,.22);
+      color: var(--ink);
+      outline:none;
+      font-family: inherit;
+      font-size: .98rem;
+      margin-bottom: 12px;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+
+    input:focus, textarea:focus{
+      border-color: rgba(230,162,79,.56);
+      box-shadow: 0 0 0 4px rgba(230,162,79,.16);
+      background: rgba(0,0,0,.26);
+    }
+
+    .form-hint{
+      font-size: .9rem;
+      color: rgba(183,189,201,.92);
+      margin-top: -6px;
+      margin-bottom: 12px;
+    }
+
+    button{
+      background: linear-gradient(180deg, var(--gold), var(--gold2));
+      color:#1b1307;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 14px;
+      font-weight: 950;
+      font-size: 1rem;
+      cursor:pointer;
+      box-shadow: var(--shadow2);
+      transition: transform .15s ease, filter .2s ease;
+    }
+    button:hover{ transform: translateY(-2px); filter: brightness(1.04); }
+    button:active{ transform: translateY(0); }
+
+    .faq-item{ border-top: 1px solid rgba(255,255,255,.11); padding: .7rem 0; }
+    .faq-q{
+      width:100%;
+      text-align:left;
+      padding:.7rem 0;
+      font-weight: 950;
+      background:none;
+      border:none;
+      cursor:pointer;
+      color: var(--ink);
+      font-size: 1rem;
+    }
+    .faq-a{ display:none; padding:.2rem 0 .5rem; color: rgba(183,189,201,.95); }
+
+    footer{
+      padding: 46px 18px 56px;
+      text-align:center;
+      font-size: .92rem;
+      color: rgba(183,189,201,.92);
+      border-top: 1px solid rgba(255,255,255,.09);
+      background: rgba(0,0,0,.10);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bgfx" aria-hidden="true">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="orb o4"></div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="inner">
+        <div class="kicker">UrbanChill Nairobi</div>
+
+        <h1>Work as a freelance hospitality professional in Nairobi</h1>
+
+        <p class="sub">
+          UrbanChill is the network behind the labels. KIMANZI is one of the labels.
+          You work independently, choose assignments, and set your own working times.
+          We operate one hundred percent in Nairobi, Kenya.
+        </p>
+
+        <div class="fees">
+          <strong>Freelancer fee per assignment</strong><br>
+          SOLO: <strong>€ 40</strong> (≈ <strong>$ 47</strong> / ≈ <strong>KES 6,000</strong>)<br>
+          ADVENTURE: <strong>€ 135</strong> (≈ <strong>$ 158</strong> / ≈ <strong>KES 20,300</strong>)<br>
+          Extension SOLO to ADVENTURE: <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>)<br>
+          <span class="small">USD and KES are indicative and can change with the daily exchange rate. UrbanChill pays out in EURO.</span>
+          <span class="small">Payout is transferred the day after the assignment is completed and confirmed.</span>
+          <span class="small">Bonus: after 10 successful assignments with a high guest rating, you receive an extra bonus.</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-brand" href="#apply">Start intake</a>
+          <a class="btn btn-glass" href="#forms">Contact</a>
+          <a class="btn btn-signal" href="https://signal.me/#eu/jPhei3ZTNaLyCCoG10iCMC_kJaZaidg0YUAZWLVzFQpEwDQOSedIC4t7i39jhN7-" rel="noopener">
+            <img src="signal.png" alt="Signal">
+            Signal
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <nav>
+      <div class="navinner">
+        <div class="brandmark">UrbanChill</div>
+        <div class="navlinks">
+          <a href="#why">Why</a>
+          <a href="#founder">Founder</a>
+          <a href="#how">How it works</a>
+          <a href="#services">Services</a>
+          <a href="#events">Events</a>
+          <a href="#forms">Forms</a>
+          <a href="#apply">Intake</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+
+      <section id="why">
+        <h2>Why UrbanChill</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Freedom</h3>
+            <p>You decide which assignments you accept. You set your own working times.</p>
+          </div>
+          <div class="card">
+            <h3>Discretion and safety</h3>
+            <p>No socials. No exposure. Calm communication. Clear boundaries.</p>
+          </div>
+          <div class="card">
+            <h3>Strong side income</h3>
+            <p>Clear fees per assignment. More assignments when our volume grows.</p>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="block">
+          <h3>UrbanChill and KIMANZI</h3>
+          <p>
+            UrbanChill is the network. KIMANZI is a label.
+            The label remains the face to the guest. You deliver the assignment as an independent professional.
+          </p>
+        </div>
+      </section>
+
+      <section id="founder">
+        <h2>From Stephen</h2>
+
+        <div class="block">
+          <div class="founder">
+            <img src="founder.jpg" alt="Stephen Founder">
+
+            <div>
+              <p>
+                Travelling taught me that the first hours in a new place can feel heavy.
+                Confusion, hunger, noise, fatigue, too much at once.
+              </p>
+              <p>
+                In Kenya I met women who bring calm and clarity naturally.
+                Women who protect, support and guide without forcing anything.
+              </p>
+              <p>
+                That is the heart of what we do.
+                A soft landing, delivered by skilled freelancers, supported by a network that keeps the scope clear and the people safe.
+              </p>
+              <p>
+                UrbanChill is the structure behind the labels.
+                KIMANZI is one of the labels.
+                Nairobi only.
+                No noise.
+                Just good work, done well.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how">
+        <h2>How it works</h2>
+
+        <div class="grid grid-2">
+          <div class="block">
+            <h3>1. Intake</h3>
+            <p>You introduce yourself. We align on expectations, safety, and boundaries.</p>
+
+            <h3>2. Assignment offers</h3>
+            <p>You receive suggestions. You decide what fits. No pressure.</p>
+
+            <h3>3. Delivery</h3>
+            <p>You deliver calm hospitality within the agreed scope in Nairobi.</p>
+
+            <h3>4. Transport</h3>
+            <p>
+              Pick up can be via Uber. UrbanChill can also arrange a known taxi so you are not always dependent on Uber.
+              We do this in mutual agreement.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Your terms</h3>
+            <ul>
+              <li>No employment contract</li>
+              <li>You choose assignments</li>
+              <li>Clear scope per assignment</li>
+              <li>Extension fee when SOLO becomes ADVENTURE</li>
+              <li>Bonus after 10 successful assignments</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <h2>Services</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>SOLO</h3>
+            <p>A smooth landing in Nairobi. Calm arrival, transport, clarity. The guest chooses what they need.</p>
+          </div>
+          <div class="card">
+            <h3>ADVENTURE</h3>
+            <p>Steady support across multiple days. Planning and coordination. Calm, respectful, professional.</p>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="block">
+          <h3>Meals</h3>
+          <p>
+            Meals are optional. The guest is free to choose or skip.
+            You are not expected to push meals or sell anything.
+          </p>
+        </div>
+      </section>
+
+      <section id="events">
+        <h2>Events in Nairobi</h2>
+
+        <div class="block">
+          <p>
+            Nairobi has concerts, art nights, food festivals, and local experiences.
+            Share events that fit calm and respectful hospitality.
+          </p>
+
+          <div class="form-card">
+            <h3>Share an event</h3>
+            <p>Suggest events that fit: relaxed, safe, respectful, human.</p>
+
+            <form action="https://formspree.io/f/xgvgabrq" method="POST">
+              <input type="hidden" name="form-type" value="agent-event">
+
+              <label for="event-name">Event name</label>
+              <input id="event-name" name="event-name" type="text" required>
+
+              <label for="event-description">Short description</label>
+              <textarea id="event-description" name="event-description" required></textarea>
+
+              <label for="event-location">Location (area, venue)</label>
+              <input id="event-location" name="event-location" type="text" required>
+
+              <label for="event-dates">Date or period</label>
+              <input id="event-dates" name="event-dates" type="text" required>
+
+              <label for="event-link">Website or link (optional)</label>
+              <input id="event-link" name="event-link" type="url" placeholder="https://">
+
+              <p class="form-hint">You receive a short confirmation after review.</p>
+
+              <button type="submit">Send event</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="forms">
+        <h2>Forms</h2>
+
+        <div class="block">
+          <p>These forms keep communication clear. No noise. No confusion.</p>
+
+          <div class="form-card" id="contact-form-card">
+            <h3>Contact form</h3>
+            <p>For general questions, availability, or anything you want to share.</p>
+
+            <form action="https://formspree.io/f/xzznewdb" method="POST">
+              <input type="hidden" name="form-type" value="agent-contact">
+
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" required>
+
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" required>
+
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" required></textarea>
+
+              <p class="form-hint">We read every message personally. You receive a confirmation after review.</p>
+
+              <button type="submit">Send message</button>
+            </form>
+          </div>
+
+          <div class="form-card">
+            <h3>Operations form</h3>
+            <p>For updates during or after an assignment: questions, issues, feedback or operational notes.</p>
+
+            <form action="https://formspree.io/f/mwpgvbwn" method="POST">
+              <input type="hidden" name="form-type" value="agent-operations">
+
+              <label for="ops-name">Name</label>
+              <input id="ops-name" name="name" type="text" required>
+
+              <label for="ops-assignment">Assignment number</label>
+              <input id="ops-assignment" name="assignment-number" type="text" required>
+
+              <label for="ops-message">Operational update</label>
+              <textarea id="ops-message" name="message" required></textarea>
+
+              <p class="form-hint">Use this form if something changes, feels unclear, or needs attention.</p>
+
+              <button type="submit">Send update</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="apply">
+        <h2>Intake</h2>
+
+        <div class="block">
+          <p>
+            This is not nightlife hosting. Not a call center job.
+            It is calm hospitality, safety, and clear boundaries in Nairobi.
+          </p>
+
+          <div class="form-card">
+            <h3>Freelancer intake form</h3>
+
+            <form action="https://formspree.io/f/xzznewdb" method="POST">
+              <input type="hidden" name="form-type" value="agent-intake">
+
+              <label for="intake-name">Name</label>
+              <input id="intake-name" name="name" type="text" required>
+
+              <label for="intake-area">Area in Nairobi</label>
+              <input id="intake-area" name="city" type="text" required>
+
+              <label for="intake-age">Age (optional)</label>
+              <input id="intake-age" name="age" type="text" placeholder="Optional">
+
+              <label for="intake-experience">Experience with hospitality or care</label>
+              <textarea id="intake-experience" name="experience" required></textarea>
+
+              <label for="intake-why">Why does this feel right for you</label>
+              <textarea id="intake-why" name="why" required></textarea>
+
+              <label for="intake-availability">Availability (days, evenings, weekends)</label>
+              <input id="intake-availability" name="availability" type="text" required>
+
+              <label for="intake-phone">Phone number for Signal</label>
+              <input id="intake-phone" name="phone" type="text" required>
+
+              <label for="intake-email">Email</label>
+              <input id="intake-email" name="email" type="email" required>
+
+              <p class="form-hint">Privacy first. Minimal data. No tracking.</p>
+
+              <button type="submit">Send intake</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <h2>FAQ</h2>
+
+        <div class="block">
+          <div class="faq-item">
+            <button class="faq-q" type="button">When do I get paid</button>
+            <div class="faq-a">
+              <p>Your freelancer fee is transferred the day after the assignment is completed and confirmed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Do I have to pay for meals myself</button>
+            <div class="faq-a">
+              <p>No. This is agreed in advance and paid out per day. You are not expected to front these expenses.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Does the guest have to take a meal</button>
+            <div class="faq-a">
+              <p>No. Meals are optional. The guest is free to choose or skip.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Do I have to pay for pick up</button>
+            <div class="faq-a">
+              <p>No. Pick up is fronted by us so you are not burdened with unnecessary costs.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Do I get an extension fee if SOLO becomes ADVENTURE</button>
+            <div class="faq-a">
+              <p>
+                Yes. You receive an additional <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>).
+                You are not expected to sell. Extensions often happen when the guest feels well supported.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Is punctuality required</button>
+            <div class="faq-a">
+              <p>
+                Yes. Being on time is mandatory. If you do not show up, the assignment and future assignments stop immediately and our working relationship ends.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Do I need social media</button>
+            <div class="faq-a">
+              <p>No. We do not use social media. Communication stays calm and private.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      UrbanChill. Privacy first. No cookies. No tracking.
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      var items = document.querySelectorAll('.faq-item');
+      items.forEach(function(item) {
+        var btn = item.querySelector('.faq-q');
+        var ans = item.querySelector('.faq-a');
+        if (!btn || !ans) return;
+
+        btn.addEventListener('click', function() {
+          var open = ans.style.display === 'block';
+          ans.style.display = open ? 'none' : 'block';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
