@@ -55,7 +55,7 @@
     a{ color:var(--gold); text-decoration:none; }
     a:hover{ color:#ffd08f; }
 
-    /* ====== Gloss overlay & bubbles ====== */
+    /* ====== Gloss overlay & bubbles (subtle) ====== */
     .bgfx{
       position: fixed;
       inset: 0;
@@ -68,7 +68,7 @@
       content:"";
       position:absolute;
       inset:-40px;
-      opacity:.095;
+      opacity:.09;
       background-image:
         radial-gradient(circle at 20% 30%, rgba(255,255,255,.16) 0 1px, transparent 2px),
         radial-gradient(circle at 80% 60%, rgba(255,255,255,.12) 0 1px, transparent 2px),
@@ -92,8 +92,8 @@
       inset:0;
       border-radius:inherit;
       background:
-        radial-gradient(45% 45% at 30% 24%, rgba(255,255,255,.52), transparent 60%),
-        radial-gradient(46% 46% at 40% 34%, rgba(255,255,255,.22), transparent 62%),
+        radial-gradient(45% 45% at 30% 24%, rgba(255,255,255,.50), transparent 60%),
+        radial-gradient(46% 46% at 40% 34%, rgba(255,255,255,.20), transparent 62%),
         radial-gradient(60% 60% at 72% 74%, rgba(0,0,0,.58), transparent 65%),
         radial-gradient(80% 70% at 50% 55%, rgba(255,255,255,.12), transparent 60%),
         linear-gradient(145deg, rgba(255,255,255,.10), rgba(0,0,0,.24));
@@ -110,23 +110,23 @@
       position:absolute;
       inset: 9%;
       border-radius:inherit;
-      background: radial-gradient(55% 55% at 28% 20%, rgba(255,255,255,.34), transparent 58%);
-      opacity:.92;
+      background: radial-gradient(55% 55% at 28% 20%, rgba(255,255,255,.32), transparent 58%);
+      opacity:.9;
       transform: rotate(-10deg);
       filter: blur(.2px);
     }
 
-    .o1{ width:520px; height:520px; left:-140px; top:-140px; background: radial-gradient(circle at 40% 40%, rgba(230,162,79,.38), transparent 60%); }
-    .o2{ width:420px; height:420px; right:-160px; top:60px; background: radial-gradient(circle at 40% 40%, rgba(232,110,46,.36), transparent 60%); }
-    .o3{ width:540px; height:540px; right:-220px; bottom:-240px; background: radial-gradient(circle at 40% 40%, rgba(58,118,240,.26), transparent 62%); }
-    .o4{ width:360px; height:360px; left:120px; bottom:-170px; background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.14), transparent 60%); }
+    .o1{ width:520px; height:520px; left:-140px; top:-140px; background: radial-gradient(circle at 40% 40%, rgba(230,162,79,.36), transparent 60%); }
+    .o2{ width:420px; height:420px; right:-160px; top:60px; background: radial-gradient(circle at 40% 40%, rgba(232,110,46,.32), transparent 60%); }
+    .o3{ width:540px; height:540px; right:-220px; bottom:-240px; background: radial-gradient(circle at 40% 40%, rgba(58,118,240,.24), transparent 62%); }
+    .o4{ width:360px; height:360px; left:120px; bottom:-170px; background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.13), transparent 60%); }
 
     /* ====== Layout ====== */
     .wrap{ position:relative; z-index:1; }
 
     .hero{
       position:relative;
-      padding: 88px 18px 58px;
+      padding: 86px 18px 56px;
       border-radius: 0 0 var(--radius2) var(--radius2);
       overflow:hidden;
       box-shadow: var(--shadow);
@@ -339,23 +339,24 @@
 
     ul{ margin: 10px 0 0; padding-left: 18px; }
 
-    /* ===== Founder (photo + editorial gloss + subtle label presence) ===== */
+    /* ===== Founder: fixed spacing (no clipping, no cramped layout) ===== */
     .founder-title{
-      font-size: clamp(1.9rem, 3.2vw, 2.5rem);
-      font-weight: 900;
-      margin: 0 0 14px;
-      letter-spacing: .3px;
-      text-shadow: 0 18px 70px rgba(0,0,0,.7);
+      font-size: clamp(2.1rem, 3.6vw, 3rem);
+      font-weight: 950;
+      margin: 0 0 18px;
+      letter-spacing: .2px;
+      text-shadow: 0 18px 70px rgba(0,0,0,.75);
     }
 
     .founder-card{
-      border-radius: 26px;
-      padding: 30px 32px;
+      border-radius: 28px;
+      padding: 26px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 26px 80px rgba(0,0,0,.62);
-      backdrop-filter: blur(16px);
+        radial-gradient(900px 260px at 20% 0%, rgba(255,255,255,.09), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.020));
+      border: 1px solid rgba(255,255,255,.13);
+      box-shadow: 0 26px 86px rgba(0,0,0,.64);
+      backdrop-filter: blur(14px);
       position: relative;
       overflow: hidden;
     }
@@ -364,56 +365,73 @@
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(180deg, rgba(255,255,255,.10), transparent 34%);
-      opacity:.35;
+      background: linear-gradient(180deg, rgba(255,255,255,.12), transparent 34%);
+      opacity:.32;
       pointer-events:none;
+    }
+
+    .founder-card::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.08);
+      pointer-events:none;
+      opacity:.9;
     }
 
     .founder-row{
       position:relative;
       z-index:1;
-      display:flex;
-      gap: 22px;
-      align-items:flex-start;
-      flex-wrap:wrap;
+      display:grid;
+      grid-template-columns: 210px 1fr;
+      gap: 24px;
+      align-items:start;
+    }
+
+    @media (max-width: 720px){
+      .founder-row{
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
     }
 
     .founder-photo{
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
+      width: 210px;
+      height: 210px;
       border-radius: 18px;
-      padding: 6px;
-      background: rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.18);
+      object-fit: cover;
+      display:block;
+
+      padding: 7px;
+      background: rgba(0,0,0,.38);
+      border: 1px solid rgba(255,255,255,.16);
       box-shadow:
-        0 18px 60px rgba(0,0,0,.65),
-        inset 0 1px 0 rgba(255,255,255,.18);
+        0 18px 60px rgba(0,0,0,.68),
+        inset 0 1px 0 rgba(255,255,255,.16);
       position: relative;
-      transition: transform .25s ease, box-shadow .25s ease;
-      flex: 0 0 auto;
     }
 
-    .founder-photo:hover{
-      transform: translateY(-1px);
-      box-shadow:
-        0 22px 74px rgba(0,0,0,.70),
-        inset 0 1px 0 rgba(255,255,255,.24);
+    @media (max-width: 720px){
+      .founder-photo{
+        width: 100%;
+        height: 240px;
+      }
     }
 
     .founder-text{
-      flex: 1 1 360px;
-      padding-top: 2px;
+      padding-top: 4px;
+      padding-right: 6px;
     }
 
     .founder-text p{
       margin: 0 0 14px;
       font-size: 1.03rem;
-      line-height: 1.7;
-      letter-spacing: .05px;
+      line-height: 1.72;
+      letter-spacing: .04px;
       color: rgba(230,232,238,.96);
     }
-    .founder-text p:last-child{ margin-bottom:0; }
+    .founder-text p:last-child{ margin-bottom: 0; }
 
     .form-card{
       margin-top: 16px;
