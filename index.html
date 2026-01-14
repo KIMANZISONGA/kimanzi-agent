@@ -292,7 +292,7 @@
     .fold[open] > summary::after{ transform: rotate(180deg); }
 
     .fold .content{
-      padding: 18px 18px 22px;
+      padding: 22px 18px 22px; /* extra top padding, voorkomt 'plakken' */
       border-top: 1px solid rgba(255,255,255,.08);
     }
 
@@ -324,34 +324,53 @@
 
     ul{ margin: 10px 0 0; padding-left: 18px; }
 
-    /* Founder (no photo frames/borders) */
+    /* ===== FOUNDER (MOBILE FIX) ===== */
     .founder-row{
       display:flex;
-      gap: 24px;
+      gap: 22px;
       align-items:flex-start;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
     .founder-media{
-      flex: 0 0 280px;
-      max-width: 280px;
+      flex: 0 0 300px;
+      max-width: 300px;
     }
-    @media (max-width: 820px){
-      .founder-media{ flex: 1 1 100%; max-width: 520px; }
+
+    /* Force single column much earlier */
+    @media (max-width: 860px){
+      .founder-row{
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 14px;
+      }
+      .founder-media{
+        flex: 0 0 auto;
+        max-width: 100%;
+        width: 100%;
+      }
     }
+
+    /* Photo: no borders, no frames, predictable sizing */
     .founder-media img{
       width: 100%;
-      height: 250px;
-      object-fit: cover;
       display:block;
       border-radius: 18px;
+
+      /* Crucial: stable visual shape on mobile */
+      aspect-ratio: 4 / 3;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+
       border: 0 !important;
       outline: 0 !important;
       box-shadow: none !important;
       background: transparent !important;
     }
+
     .founder-text{
-      flex: 1 1 420px;
-      min-width: 280px;
+      flex: 1 1 auto;
+      min-width: 0; /* prevents overflow clipping in flex layouts */
     }
     .founder-text p{
       margin: 0 0 14px;
@@ -513,7 +532,6 @@
 
     <main class="container">
 
-      <!-- WHY -->
       <details class="fold anchor" id="why" open>
         <summary>Why UrbanChill</summary>
         <div class="content">
@@ -540,7 +558,6 @@
         </div>
       </details>
 
-      <!-- FOUNDER -->
       <details class="fold anchor" id="founder" open>
         <summary>From Stephen</summary>
         <div class="content">
@@ -571,7 +588,6 @@
         </div>
       </details>
 
-      <!-- ONBOARDING (RESTORED) -->
       <details class="fold anchor" id="onboarding" open>
         <summary>Client onboarding (arrival, pick up, first hours)</summary>
         <div class="content">
@@ -607,13 +623,13 @@
           </div>
 
           <div class="note">
-            <strong>Meals and essentials (restored)</strong><br>
+            <strong>Meals and essentials</strong><br>
             Meals are optional. The guest is free to choose or skip. If meals or essentials are agreed, this is arranged in advance.
             You are not expected to front costs. Per-day agreements are paid out clearly.
           </div>
 
           <div class="note">
-            <strong>After completion (restored)</strong><br>
+            <strong>After completion</strong><br>
             After the assignment is completed and confirmed, your fee is transferred the next day.
             Payout is done in EUR. USD and KES references are indicative only.
           </div>
@@ -625,7 +641,6 @@
         </div>
       </details>
 
-      <!-- SERVICES -->
       <details class="fold anchor" id="services" open>
         <summary>Services (SOLO and ADVENTURE)</summary>
         <div class="content">
@@ -654,7 +669,6 @@
         </div>
       </details>
 
-      <!-- EVENTS -->
       <details class="fold anchor" id="events">
         <summary>Events in Nairobi</summary>
         <div class="content">
@@ -693,7 +707,6 @@
         </div>
       </details>
 
-      <!-- FORMS -->
       <details class="fold anchor" id="forms" open>
         <summary>Forms</summary>
         <div class="content">
@@ -726,7 +739,6 @@
         </div>
       </details>
 
-      <!-- APPLY / INTAKE -->
       <details class="fold anchor" id="apply" open>
         <summary>Intake (Freelancer)</summary>
         <div class="content">
@@ -773,7 +785,6 @@
         </div>
       </details>
 
-      <!-- FAQ -->
       <details class="fold anchor" id="faq" open>
         <summary>FAQ</summary>
         <div class="content">
