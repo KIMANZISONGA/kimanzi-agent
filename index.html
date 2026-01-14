@@ -29,6 +29,9 @@
 
       --font-title: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
       --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+      /* Founder photo focus (0% = helemaal boven, 50% = center) */
+      --founder-focus-y: 18%;
     }
 
     *{ box-sizing:border-box; }
@@ -292,7 +295,7 @@
     .fold[open] > summary::after{ transform: rotate(180deg); }
 
     .fold .content{
-      padding: 22px 18px 22px; /* extra top padding, voorkomt 'plakken' */
+      padding: 22px 18px 22px;
       border-top: 1px solid rgba(255,255,255,.08);
     }
 
@@ -324,7 +327,7 @@
 
     ul{ margin: 10px 0 0; padding-left: 18px; }
 
-    /* ===== FOUNDER (MOBILE FIX) ===== */
+    /* ===== FOUNDER: HARD FIX (NO CROP OF HEAD) ===== */
     .founder-row{
       display:flex;
       gap: 22px;
@@ -332,35 +335,31 @@
       flex-wrap: nowrap;
     }
     .founder-media{
-      flex: 0 0 300px;
-      max-width: 300px;
+      flex: 0 0 320px;
+      max-width: 320px;
     }
 
-    /* Force single column much earlier */
-    @media (max-width: 860px){
+    @media (max-width: 900px){
       .founder-row{
         flex-direction: column;
-        flex-wrap: nowrap;
         gap: 14px;
       }
       .founder-media{
-        flex: 0 0 auto;
         max-width: 100%;
         width: 100%;
       }
     }
 
-    /* Photo: no borders, no frames, predictable sizing */
+    /* Desktop shape */
     .founder-media img{
       width: 100%;
       display:block;
       border-radius: 18px;
 
-      /* Crucial: stable visual shape on mobile */
-      aspect-ratio: 4 / 3;
-      height: auto;
+      /* Key: slightly taller frame + focus upward */
+      aspect-ratio: 16 / 12;
       object-fit: cover;
-      object-position: center;
+      object-position: 50% var(--founder-focus-y);
 
       border: 0 !important;
       outline: 0 !important;
@@ -368,9 +367,17 @@
       background: transparent !important;
     }
 
+    /* Mobile: even taller so face never gets chopped */
+    @media (max-width: 900px){
+      .founder-media img{
+        aspect-ratio: 16 / 13; /* taller on mobile */
+        object-position: 50% 12%;
+      }
+    }
+
     .founder-text{
       flex: 1 1 auto;
-      min-width: 0; /* prevents overflow clipping in flex layouts */
+      min-width: 0;
     }
     .founder-text p{
       margin: 0 0 14px;
@@ -467,7 +474,6 @@
       background: rgba(0,0,0,.10);
     }
 
-    /* Anchor spacing for sticky nav */
     .anchor{ scroll-margin-top: 90px; }
   </style>
 </head>
@@ -866,7 +872,6 @@
   </div>
 
   <script>
-    // FAQ toggles
     (function() {
       var items = document.querySelectorAll('.faq-item');
       items.forEach(function(item) {
@@ -880,7 +885,6 @@
       });
     })();
 
-    // Auto-collapse: only one <details.fold> open at a time
     (function() {
       var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
       folds.forEach(function(d) {
