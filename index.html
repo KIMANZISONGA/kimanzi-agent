@@ -6,8 +6,8 @@
   <meta name="referrer" content="no-referrer" />
   <meta name="theme-color" content="#07090d" />
 
-  <title>UrbanChill Nairobi — Freelance Hospitality Professionals</title>
-  <meta name="description" content="Work as a freelance hospitality professional in Nairobi. Clear fees, next-day payout, bonus after 10 completed assignments. Privacy-first: no cookies, no tracking." />
+  <title>KIMANZI (UrbanChill Network) — Hosts & Business Partners — Nairobi</title>
+  <meta name="description" content="KIMANZI is the holding. UrbanChill is the network behind the labels. This page is for Hosts and business partners in Nairobi. Host fees, next-day payout, bonus after 10 successful assignments. Privacy-first: no cookies, no tracking." />
   <meta name="robots" content="index, follow" />
 
   <style>
@@ -102,6 +102,7 @@
 
     .wrap{ position:relative; z-index:1; }
 
+    /* Hero (no image) */
     .hero{
       position:relative;
       padding: 84px 18px 56px;
@@ -159,6 +160,10 @@
       letter-spacing: .2px;
       text-shadow: 0 22px 78px rgba(0,0,0,.80);
     }
+    h2{
+      font-size: clamp(1.6rem, 2.6vw, 2.05rem);
+      margin: 0 0 14px;
+    }
 
     .sub{
       max-width: 940px;
@@ -200,6 +205,11 @@
       background: rgba(255,255,255,.06);
       color: var(--ink);
     }
+    .btn-signal{
+      background: linear-gradient(180deg, #3A76F0, #2e63d6);
+      color:#fff;
+    }
+    .btn-signal img{ height:22px; border-radius: 7px; display:block; }
 
     .fees{
       max-width: 940px;
@@ -214,6 +224,7 @@
     }
     .fees .small{ display:block; margin-top: 6px; color: rgba(183,189,201,.95); font-size: .95rem; }
 
+    /* Nav */
     nav{
       position: sticky;
       top: 0;
@@ -237,6 +248,7 @@
     .navlinks a{ color: rgba(246,247,251,.87); font-weight: 750; font-size: .95rem; opacity:.93; }
     .navlinks a:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
 
+    /* Main */
     .container{
       max-width: var(--maxw);
       margin: 0 auto;
@@ -245,6 +257,7 @@
       z-index:1;
     }
 
+    /* Collapsible sections */
     .fold{
       margin: 18px 0;
       border-radius: 22px;
@@ -314,6 +327,7 @@
 
     ul{ margin: 10px 0 0; padding-left: 18px; }
 
+    /* ===== FOUNDER: HARD FIX (NO CROP OF HEAD) ===== */
     .founder-row{
       display:flex;
       gap: 22px;
@@ -326,31 +340,45 @@
     }
 
     @media (max-width: 900px){
-      .founder-row{ flex-direction: column; gap: 14px; }
-      .founder-media{ max-width: 100%; width: 100%; }
+      .founder-row{
+        flex-direction: column;
+        gap: 14px;
+      }
+      .founder-media{
+        max-width: 100%;
+        width: 100%;
+      }
     }
 
+    /* Desktop shape */
     .founder-media img{
       width: 100%;
       display:block;
       border-radius: 18px;
+
+      /* Key: slightly taller frame + focus upward */
       aspect-ratio: 16 / 12;
       object-fit: cover;
       object-position: 50% var(--founder-focus-y);
+
       border: 0 !important;
       outline: 0 !important;
       box-shadow: none !important;
       background: transparent !important;
     }
 
+    /* Mobile: even taller so face never gets chopped */
     @media (max-width: 900px){
       .founder-media img{
-        aspect-ratio: 16 / 13;
+        aspect-ratio: 16 / 13; /* taller on mobile */
         object-position: 50% 12%;
       }
     }
 
-    .founder-text{ flex: 1 1 auto; min-width: 0; }
+    .founder-text{
+      flex: 1 1 auto;
+      min-width: 0;
+    }
     .founder-text p{
       margin: 0 0 14px;
       font-size: 1.03rem;
@@ -360,6 +388,7 @@
     }
     .founder-text p:last-child{ margin-bottom: 0; }
 
+    /* Forms */
     .form-card{
       margin-top: 14px;
       background: rgba(255,255,255,.06);
@@ -421,6 +450,7 @@
     button:hover{ transform: translateY(-2px); filter: brightness(1.04); }
     button:active{ transform: translateY(0); }
 
+    /* FAQ */
     .faq-item{ border-top: 1px solid rgba(255,255,255,.10); padding: .7rem 0; }
     .faq-q{
       width:100%;
@@ -459,43 +489,51 @@
   <div class="wrap">
     <header class="hero" id="top">
       <div class="inner">
-        <div class="kicker">UrbanChill Nairobi</div>
+        <div class="kicker">KIMANZI — Nairobi</div>
 
-        <h1>Work as a freelance hospitality professional in Nairobi</h1>
+        <h1>Hosts & Business Partners in Nairobi</h1>
 
         <p class="sub">
-          Independent professionals only. You choose assignments and set your own working times.
-          Nairobi only. Calm communication. Privacy-first: no cookies, no tracking.
+          KIMANZI is the holding. UrbanChill is the network behind the labels (UrbanChill is a consumer label).
+          This page is for <strong>Hosts</strong> and business partners in Nairobi.
+          You work independently, choose assignments, and set your own working times.
+          Privacy-first, calm communication.
         </p>
 
         <div class="fees">
-          <strong>Freelancer fee per assignment</strong><br>
+          <strong>Host fee per assignment (paid out in EUR)</strong><br>
           SOLO: <strong>€ 40</strong> (≈ <strong>$ 47</strong> / ≈ <strong>KES 6,000</strong>)<br>
           ADVENTURE: <strong>€ 135</strong> (≈ <strong>$ 158</strong> / ≈ <strong>KES 20,300</strong>)<br>
-          Extension SOLO to ADVENTURE: <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>)<br>
-          <span class="small">USD and KES are indicative and can change with the daily exchange rate. UrbanChill pays out in EURO.</span>
+          Extension SOLO → ADVENTURE: <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>)<br>
+          <span class="small">USD and KES are indicative and can change with the daily exchange rate.</span>
           <span class="small">Payout is transferred the day after the assignment is completed and confirmed.</span>
-          <span class="small">Bonus: after 10 completed assignments that are confirmed as delivered within scope, you receive an extra bonus.</span>
+          <span class="small">Bonus: after 10 successful assignments with a high guest rating, you receive an extra bonus.</span>
+          <span class="small"><strong>Important:</strong> guest-facing pricing is never published on this site.</span>
         </div>
 
         <div class="cta-row">
-          <a class="btn btn-brand" href="#apply">Start intake</a>
+          <a class="btn btn-brand" href="#apply">Start Host intake</a>
           <a class="btn btn-glass" href="#forms">Contact</a>
+          <a class="btn btn-signal" href="https://signal.me/#eu/jPhei3ZTNaLyCCoG10iCMC_kJaZaidg0YUAZWLVzFQpEwDQOSedIC4t7i39jhN7-" rel="noopener">
+            <img src="signal.png" alt="Signal">
+            Signal
+          </a>
         </div>
       </div>
     </header>
 
     <nav>
       <div class="navinner">
-        <div class="brandmark">UrbanChill</div>
+        <div class="brandmark">KIMANZI</div>
         <div class="navlinks">
           <a href="#why">Why</a>
+          <a href="#policy">Policy</a>
           <a href="#founder">Founder</a>
           <a href="#onboarding">Onboarding</a>
-          <a href="#services">Services</a>
+          <a href="#assignments">Assignments</a>
           <a href="#events">Events</a>
           <a href="#forms">Forms</a>
-          <a href="#apply">Intake</a>
+          <a href="#apply">Host intake</a>
           <a href="#faq">FAQ</a>
         </div>
       </div>
@@ -504,7 +542,7 @@
     <main class="container">
 
       <details class="fold anchor" id="why" open>
-        <summary>Why UrbanChill</summary>
+        <summary>Why KIMANZI (UrbanChill Network)</summary>
         <div class="content">
           <div class="grid grid-3">
             <div class="card">
@@ -516,14 +554,36 @@
               <p>No socials. No exposure. Calm communication. Clear boundaries.</p>
             </div>
             <div class="card">
-              <h3>Quality over noise</h3>
-              <p>We grow slowly. We do not chase volume. We work with professionals who fit.</p>
+              <h3>Clear Host fees</h3>
+              <p>Clear Host fees per assignment. More opportunities as volume grows.</p>
             </div>
           </div>
 
           <div class="note">
-            <strong>No ratings</strong><br>
-            We do not run public reviews or rating systems. Quality is managed through scope clarity and completion confirmation.
+            <strong>Structure</strong><br>
+            KIMANZI is the holding. UrbanChill is the network behind the labels (UrbanChill is a consumer label).
+            A label remains the guest-facing brand. You deliver assignments as an independent Host within a clear scope.
+          </div>
+        </div>
+      </details>
+
+      <details class="fold anchor" id="policy" open>
+        <summary>Hard policy (non-negotiable)</summary>
+        <div class="content">
+          <div class="grid grid-2">
+            <div class="card">
+              <h3>No guest pricing here</h3>
+              <p>This site is for Hosts and business partners. Guest-facing pricing is never published on KIMANZI.</p>
+            </div>
+            <div class="card">
+              <h3>Privacy-first by design</h3>
+              <p>No cookies. No tracking. No social embeds. Calm, direct communication.</p>
+            </div>
+          </div>
+
+          <div class="note">
+            <strong>Host title</strong><br>
+            On KIMANZI, we do not use “agents”. We use <strong>Hosts</strong>.
           </div>
         </div>
       </details>
@@ -542,14 +602,15 @@
                 Confusion, hunger, noise, fatigue, too much at once.
               </p>
               <p>
-                In Kenya I met people who bring calm and clarity naturally.
-                People who protect, support and guide without forcing anything.
+                In Kenya I met women who bring calm and clarity naturally.
+                Women who protect, support and guide without forcing anything.
               </p>
               <p>
-                That is the heart of what we do.
-                Calm hospitality, delivered by independent professionals, supported by clear scope and safety-first rules.
+                That is the heart of what we do:
+                a soft landing, delivered by skilled <strong>Hosts</strong>, supported by a network that keeps the scope clear and the people safe.
               </p>
               <p>
+                KIMANZI is the holding. UrbanChill is the network behind the labels (UrbanChill is a consumer label).
                 Nairobi only. No noise. Just good work, done well.
               </p>
             </div>
@@ -558,7 +619,7 @@
       </details>
 
       <details class="fold anchor" id="onboarding" open>
-        <summary>Client onboarding (arrival, pick up, first hours)</summary>
+        <summary>Guest onboarding (arrival, pick up, first hours)</summary>
         <div class="content">
           <div class="grid grid-2">
             <div class="card">
@@ -568,9 +629,9 @@
                 Your role is calm, reliable first contact within the agreed scope.
               </p>
               <ul>
-                <li>Pick up is planned in advance and coordinated via the team</li>
+                <li>Pick up is planned in advance and coordinated via the network and the label</li>
                 <li>Pick up can be done via Uber</li>
-                <li>A trusted local taxi can be arranged when needed</li>
+                <li>We can also arrange a trusted local taxi when needed</li>
                 <li>This is always done in consultation, so nothing is forced</li>
                 <li>Pick up is fronted by us so you are not burdened with unnecessary costs</li>
               </ul>
@@ -585,8 +646,8 @@
               <ul>
                 <li>Safe transfer from arrival point to accommodation</li>
                 <li>Calm check-in support and basic orientation (practical, short, clear)</li>
-                <li>Communication stays private and minimal</li>
-                <li>If something feels unsafe, you step back immediately — we support that</li>
+                <li>Communication stays private and minimal (Signal for coordination)</li>
+                <li>If something feels unsafe, you step back immediately — the network supports that</li>
               </ul>
             </div>
           </div>
@@ -599,25 +660,25 @@
 
           <div class="note">
             <strong>After completion</strong><br>
-            After the assignment is completed and confirmed, your fee is transferred the next day.
+            After the assignment is completed and confirmed, your Host fee is transferred the next day.
             Payout is done in EUR. USD and KES references are indicative only.
           </div>
 
           <div class="note">
             <strong>One hard rule</strong><br>
-            Reliability matters. If you confirm an assignment and do not show up, we stop offering future assignments and the collaboration ends.
+            Being on time is mandatory. If you do not show up for an agreed assignment, the assignment and future assignments stop immediately and the working relationship ends.
           </div>
         </div>
       </details>
 
-      <details class="fold anchor" id="services" open>
-        <summary>Services (SOLO and ADVENTURE)</summary>
+      <details class="fold anchor" id="assignments" open>
+        <summary>Assignment types (SOLO and ADVENTURE)</summary>
         <div class="content">
           <div class="grid grid-2">
             <div class="card">
               <h3>SOLO</h3>
               <p>
-                A smooth landing in Nairobi. Calm arrival, transport, clarity.
+                A smooth landing in Nairobi: calm arrival, transport, clarity.
                 The guest chooses what they need. Nothing is pushed.
               </p>
             </div>
@@ -631,9 +692,9 @@
           </div>
 
           <div class="note">
-            <strong>Extension fee</strong><br>
-            If a guest extends from SOLO to ADVENTURE, you receive an additional <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>).
-            You are not expected to sell. Extensions often happen when the guest feels well supported.
+            <strong>Extension Host fee</strong><br>
+            If an assignment extends from SOLO to ADVENTURE, you receive an additional <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>).
+            You are not expected to sell. Extensions often happen when a guest feels well supported.
           </div>
         </div>
       </details>
@@ -643,16 +704,15 @@
         <div class="content">
           <p style="color: rgba(183,189,201,.95); margin-top:0;">
             Nairobi has concerts, art nights, food festivals, and local experiences.
-            Share events that fit calm and respectful hospitality.
+            Share events that fit calm and respectful hosting.
           </p>
 
           <div class="form-card">
             <h3>Share an event</h3>
             <p>Suggest events that fit: relaxed, safe, respectful, human.</p>
 
-            <!-- Privacy-first: post to your own domain/backend -->
-            <form action="/forms/agent-event" method="POST">
-              <input type="hidden" name="form-type" value="agent-event">
+            <form action="https://formspree.io/f/xgvgabrq" method="POST">
+              <input type="hidden" name="form-type" value="host-event">
 
               <label for="event-name">Event name</label>
               <input id="event-name" name="event-name" type="text" required>
@@ -669,7 +729,7 @@
               <label for="event-link">Website or link (optional)</label>
               <input id="event-link" name="event-link" type="url" placeholder="https://">
 
-              <p class="form-hint">Privacy-first. No cookies. No tracking. No third-party form processor.</p>
+              <p class="form-hint">You receive a short confirmation after review.</p>
 
               <button type="submit">Send event</button>
             </form>
@@ -682,16 +742,15 @@
         <div class="content">
           <p style="color: rgba(183,189,201,.95); margin-top:0;">
             Use Contact for questions, availability, feedback, or anything you want to share.
-            For urgent matters, Signal access is shared after approval.
+            For urgent matters use Signal.
           </p>
 
           <div class="form-card" id="contact-form-card">
             <h3>Contact form</h3>
             <p>For questions, availability, feedback, or anything you want to share.</p>
 
-            <!-- Privacy-first: post to your own domain/backend -->
-            <form action="/forms/agent-contact" method="POST">
-              <input type="hidden" name="form-type" value="agent-contact">
+            <form action="https://formspree.io/f/xzznewdb" method="POST">
+              <input type="hidden" name="form-type" value="host-contact">
 
               <label for="contact-name">Name</label>
               <input id="contact-name" name="name" type="text" required>
@@ -702,7 +761,7 @@
               <label for="contact-message">Message</label>
               <textarea id="contact-message" name="message" required></textarea>
 
-              <p class="form-hint">We read every message personally. Privacy-first: no third-party processors.</p>
+              <p class="form-hint">We read every message personally. You receive a confirmation after review.</p>
 
               <button type="submit">Send message</button>
             </form>
@@ -711,7 +770,7 @@
       </details>
 
       <details class="fold anchor" id="apply" open>
-        <summary>Intake (Freelancer)</summary>
+        <summary>Host intake</summary>
         <div class="content">
           <p style="color: rgba(183,189,201,.95); margin-top:0;">
             This is not nightlife hosting. Not a call center job.
@@ -719,11 +778,10 @@
           </p>
 
           <div class="form-card">
-            <h3>Freelancer intake form</h3>
+            <h3>Host intake form</h3>
 
-            <!-- Privacy-first: post to your own domain/backend -->
-            <form action="/forms/agent-intake" method="POST">
-              <input type="hidden" name="form-type" value="agent-intake">
+            <form action="https://formspree.io/f/xzznewdb" method="POST">
+              <input type="hidden" name="form-type" value="host-intake">
 
               <label for="intake-name">Name</label>
               <input id="intake-name" name="name" type="text" required>
@@ -743,15 +801,15 @@
               <label for="intake-availability">Availability (days, evenings, weekends)</label>
               <input id="intake-availability" name="availability" type="text" required>
 
-              <label for="intake-phone">Phone (Signal access shared after approval)</label>
+              <label for="intake-phone">Phone number for Signal</label>
               <input id="intake-phone" name="phone" type="text" required>
 
               <label for="intake-email">Email</label>
               <input id="intake-email" name="email" type="email" required>
 
-              <p class="form-hint">Privacy first. Minimal data. No cookies. No tracking. Stored on our own infrastructure.</p>
+              <p class="form-hint">Privacy first. Minimal data. No cookies. No tracking.</p>
 
-              <button type="submit">Send intake</button>
+              <button type="submit">Send Host intake</button>
             </form>
           </div>
         </div>
@@ -763,14 +821,61 @@
           <div class="faq-item">
             <button class="faq-q" type="button">When do I get paid</button>
             <div class="faq-a">
-              <p>Your freelancer fee is transferred the day after the assignment is completed and confirmed.</p>
+              <p>Your Host fee is transferred the day after the assignment is completed and confirmed.</p>
             </div>
           </div>
 
           <div class="faq-item">
-            <button class="faq-q" type="button">Bonus after 10 completed assignments</button>
+            <button class="faq-q" type="button">Do I have to pay for pick up</button>
             <div class="faq-a">
-              <p>After 10 completed assignments that are confirmed as delivered within scope, you receive an extra bonus.</p>
+              <p>No. Pick up is fronted by us so you are not burdened with unnecessary costs.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Uber or trusted taxi</button>
+            <div class="faq-a">
+              <p>Pick up can be via Uber. We can also arrange a trusted local taxi when needed. This is always done in consultation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Do I have to pay for meals myself</button>
+            <div class="faq-a">
+              <p>No. This is agreed in advance and paid out per day. You are not expected to front these expenses.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Does the guest have to take a meal</button>
+            <div class="faq-a">
+              <p>No. Meals are optional. The guest is free to choose or skip.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Do I get an extension Host fee if SOLO becomes ADVENTURE</button>
+            <div class="faq-a">
+              <p>
+                Yes. You receive an additional <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>).
+                You are not expected to sell. Extensions often happen when the guest feels well supported.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Bonus after 10 successful assignments</button>
+            <div class="faq-a">
+              <p>After 10 successful assignments with a high guest rating, you receive an extra bonus.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Is punctuality required</button>
+            <div class="faq-a">
+              <p>
+                Yes. Being on time is mandatory. If you do not show up, the assignment and future assignments stop immediately and the working relationship ends.
+              </p>
             </div>
           </div>
 
@@ -786,7 +891,7 @@
     </main>
 
     <footer>
-      UrbanChill — Nairobi only. Privacy first. No cookies. No tracking.
+      KIMANZI (Holding) — UrbanChill (Consumer label) — Nairobi only — Privacy first. No cookies. No tracking.
     </footer>
   </div>
 
