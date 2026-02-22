@@ -4,29 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta name="theme-color" content="#3f2f23">
+<meta name="theme-color" content="#4a3728">
 
 <title>KIMANZI — Hosts & Business Partners — Nairobi</title>
-<meta name="description" content="KIMANZI is the holding. UrbanChill is the network behind the labels. Nairobi-based. Privacy-first. No cookies. No tracking.">
+<meta name="description" content="KIMANZI is the holding. Urbanchill is the consumer label. Nairobi based. Privacy first. No cookies. No tracking.">
 <meta name="robots" content="index, follow">
 
 <style>
 :root{
-  --bg1:#3b2c21;
-  --bg2:#4a3728;
-  --bg3:#6a503a;
+  --bg1:#2f241c;
+  --bg2:#3f2f23;
+  --bg3:#6b4e36;
 
-  --ink:#f6efe6;
-  --muted:#d8c9b8;
+  --ink:#f8f1e7;
+  --muted:#d9c9b6;
 
-  --amber:#d89a4a;
-  --amber-soft:#f0c78d;
+  --gold:#d9a35a;
+  --gold-soft:#f3c98d;
 
   --card:#4a3728;
-  --card-deep:#3f2f23;
+  --card-dark:#3b2c21;
   --border:rgba(255,255,255,.08);
 
-  --shadow:0 20px 60px rgba(0,0,0,.45);
+  --shadow-deep:0 30px 90px rgba(0,0,0,.55);
+  --shadow-soft:0 15px 45px rgba(0,0,0,.35);
+
   --maxw:1100px;
 }
 
@@ -36,68 +38,76 @@ body{
   margin:0;
   font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
   background:
-    radial-gradient(1000px 600px at 50% -10%, rgba(216,154,74,.15), transparent 60%),
+    radial-gradient(1200px 700px at 50% -10%, rgba(217,163,90,.18), transparent 60%),
     linear-gradient(180deg,var(--bg1),var(--bg2) 55%,var(--bg3));
   color:var(--ink);
-  line-height:1.65;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
 }
 
-a{color:var(--amber);text-decoration:none}
-a:hover{color:var(--amber-soft)}
-
 header{
-  padding:100px 20px 80px;
+  padding:130px 20px 100px;
   text-align:center;
   border-bottom:1px solid var(--border);
+  position:relative;
+}
+
+header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 30%);
+  pointer-events:none;
 }
 
 .kicker{
   display:inline-block;
-  padding:10px 20px;
+  padding:12px 24px;
   border-radius:999px;
   border:1px solid var(--border);
-  background:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.05);
   font-weight:900;
-  letter-spacing:.2em;
+  letter-spacing:.25em;
   text-transform:uppercase;
-  color:var(--amber-soft);
-  box-shadow:0 0 30px rgba(216,154,74,.25);
+  color:var(--gold-soft);
+  box-shadow:0 0 40px rgba(217,163,90,.25);
 }
 
 h1{
-  margin:26px 0 16px;
-  font-size:clamp(2.3rem,4vw,3.2rem);
+  margin:30px 0 20px;
+  font-size:clamp(2.5rem,4vw,3.5rem);
   font-weight:900;
+  letter-spacing:.5px;
 }
 
-.sub{
-  max-width:920px;
-  margin:0 auto 28px;
+.hero-text{
+  max-width:950px;
+  margin:0 auto 35px;
   color:var(--muted);
-  font-size:1.05rem;
+  font-size:1.1rem;
 }
 
 .fees{
-  max-width:920px;
+  max-width:950px;
   margin:0 auto;
-  padding:26px;
-  background:linear-gradient(145deg,var(--card),#5a4331);
-  border-radius:20px;
+  padding:30px;
+  background:linear-gradient(160deg,var(--card),#5b4432);
+  border-radius:24px;
   border:1px solid var(--border);
-  box-shadow:var(--shadow);
+  box-shadow:var(--shadow-deep);
 }
 
 .small{
   display:block;
-  font-size:.9rem;
-  margin-top:8px;
+  font-size:.92rem;
+  margin-top:10px;
   color:var(--muted);
 }
 
 .signal-email{
-  margin-top:40px;
+  margin-top:50px;
   display:flex;
-  gap:20px;
+  gap:24px;
   justify-content:center;
   flex-wrap:wrap;
 }
@@ -106,13 +116,20 @@ h1{
 .email-btn{
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  padding:14px 20px;
-  border-radius:14px;
+  gap:12px;
+  padding:16px 24px;
+  border-radius:16px;
   background:var(--card);
   border:1px solid var(--border);
   font-weight:600;
-  box-shadow:var(--shadow);
+  box-shadow:var(--shadow-soft);
+  transition:.3s ease;
+}
+
+.signal-btn:hover,
+.email-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 25px 60px rgba(217,163,90,.25);
 }
 
 .signal-btn img{
@@ -123,72 +140,76 @@ h1{
 nav{
   position:sticky;
   top:0;
-  background:rgba(59,44,33,.95);
+  backdrop-filter:blur(12px);
+  background:rgba(47,36,28,.9);
   border-bottom:1px solid var(--border);
 }
 
 .navinner{
   max-width:var(--maxw);
   margin:auto;
-  padding:16px 20px;
+  padding:18px 20px;
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
 }
 
 .navlinks a{
-  margin:0 14px;
+  margin:0 16px;
   font-weight:600;
   color:var(--muted);
 }
 
-.navlinks a:hover{color:var(--amber)}
+.navlinks a:hover{color:var(--gold)}
 
 main{
   max-width:var(--maxw);
   margin:auto;
-  padding:70px 20px;
+  padding:90px 20px;
 }
 
 details{
-  margin-bottom:36px;
-  padding:30px;
-  background:var(--card-deep);
-  border-radius:22px;
+  margin-bottom:40px;
+  padding:36px;
+  background:linear-gradient(160deg,var(--card-dark),#4e3a2b);
+  border-radius:28px;
   border:1px solid var(--border);
-  box-shadow:var(--shadow);
+  box-shadow:var(--shadow-soft);
 }
 
 summary{
   font-weight:800;
   cursor:pointer;
-  margin-bottom:20px;
-  color:var(--amber-soft);
-  font-size:1.1rem;
+  margin-bottom:24px;
+  color:var(--gold-soft);
+  font-size:1.15rem;
 }
 
 input,textarea{
   width:100%;
-  padding:14px;
-  border-radius:14px;
+  padding:16px;
+  border-radius:16px;
   border:1px solid var(--border);
   background:#2f241c;
   color:var(--ink);
-  margin-bottom:16px;
+  margin-bottom:18px;
+  font-size:1rem;
 }
 
 button{
-  background:linear-gradient(180deg,var(--amber),var(--amber-soft));
+  background:linear-gradient(180deg,var(--gold),var(--gold-soft));
   border:none;
-  padding:16px 24px;
-  border-radius:14px;
+  padding:18px 30px;
+  border-radius:18px;
   font-weight:800;
   cursor:pointer;
   color:#1b130b;
+  font-size:1rem;
+  box-shadow:0 15px 40px rgba(217,163,90,.35);
 }
 
 footer{
-  padding:70px 20px;
+  padding:80px 20px;
   text-align:center;
   background:#2c2119;
   border-top:1px solid var(--border);
@@ -202,19 +223,22 @@ footer{
 <header>
   <div class="kicker">KIMANZI — Nairobi</div>
   <h1>Hosts & Business Partners</h1>
-  <p class="sub">
-    KIMANZI is the holding. UrbanChill is the network behind the labels.
-    Nairobi-based. Structured. Professional. Privacy-first.
-  </p>
+
+  <div class="hero-text">
+    <p><strong>KIMANZI stands for respect, culture and safety.</strong></p>
+    <p>We operate within the values and norms of the local community in Nairobi.</p>
+    <p>The safety and wellbeing of our guests and our Hosts is fundamental. Clear structure. Defined scope. Responsible conduct.</p>
+    <p>We move carefully. We act respectfully. We protect dignity.</p>
+  </div>
 
   <div class="fees">
-    <strong>Host fee per assignment (paid in EUR)</strong><br>
+    <strong>Host fee per assignment paid in EUR</strong><br>
     SOLO: € 40<br>
     ADVENTURE: € 135<br>
-    Extension SOLO → ADVENTURE: € 50
+    Extension SOLO to ADVENTURE: € 50
     <span class="small">Payout is transferred the day after the assignment is completed and confirmed.</span>
-    <span class="small">Bonus: after 10 successful assignments with a high guest rating, you receive an extra bonus.</span>
-    <span class="small"><strong>Important:</strong> guest-facing pricing is never published on this site.</span>
+    <span class="small">Bonus after 10 successful assignments with a high guest rating.</span>
+    <span class="small"><strong>Important:</strong> Guest pricing is never published on this site.</span>
   </div>
 
   <div class="signal-email">
@@ -244,19 +268,9 @@ footer{
 
 <details id="founder">
 <summary>From Stephen</summary>
-<p>
-Travelling taught me that the first hours in a new place can feel heavy.  
-Confusion, fatigue, too much at once.
-</p>
-<p>
-In Kenya I met women who bring calm and clarity naturally.  
-That is the heart of what we do:  
-a soft landing, delivered by skilled Hosts, supported by a structured network.
-</p>
-<p>
-KIMANZI is the holding. UrbanChill is the network behind the labels.  
-Nairobi only. No noise. Just good work, done well.
-</p>
+<p>Travelling taught me that the first hours in a new place can feel heavy.</p>
+<p>In Kenya I met women who bring calm and clarity naturally. That is the heart of what we do.</p>
+<p>KIMANZI is the holding. Urbanchill is the consumer label. Nairobi only. No noise. Just good work done well.</p>
 </details>
 
 <details open id="apply">
@@ -282,7 +296,7 @@ Nairobi only. No noise. Just good work, done well.
 </main>
 
 <footer>
-KIMANZI (Holding) — UrbanChill (Consumer label) — Nairobi only — Privacy first. No cookies. No tracking.
+KIMANZI — Urbanchill — Nairobi — Privacy first. No cookies. No tracking.
 </footer>
 
 <script>
