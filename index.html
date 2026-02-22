@@ -26,7 +26,6 @@
   --card-light:#5a4332;
 
   --border:rgba(255,255,255,.08);
-
   --shadow-soft:0 12px 30px rgba(0,0,0,.25);
 
   --maxw:1100px;
@@ -66,14 +65,12 @@ h1{
   margin:28px 0 20px;
   font-size:clamp(2.3rem,4vw,3.2rem);
   font-weight:800;
-  letter-spacing:.4px;
 }
 
 .hero-text{
   max-width:880px;
   margin:0 auto 36px;
   color:var(--muted);
-  font-size:1.05rem;
 }
 
 .hero-text strong{
@@ -116,17 +113,8 @@ h1{
   border:1px solid var(--border);
   font-weight:600;
   box-shadow:var(--shadow-soft);
-  transition:.25s ease;
-}
-
-.signal-btn:hover,
-.email-btn:hover{
-  transform:translateY(-2px);
-}
-
-.signal-btn img{
-  width:20px;
-  height:20px;
+  text-decoration:none;
+  color:var(--ink);
 }
 
 nav{
@@ -173,31 +161,14 @@ details{
 summary{
   font-weight:700;
   cursor:pointer;
-  margin-bottom:20px;
+  margin-bottom:18px;
   color:var(--amber-soft);
-  font-size:1.05rem;
 }
 
-input,textarea{
-  width:100%;
-  padding:14px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:#3a2b20;
-  color:var(--ink);
-  margin-bottom:16px;
-  font-size:1rem;
-}
-
-button{
-  background:linear-gradient(180deg,var(--amber),var(--amber-soft));
-  border:none;
-  padding:16px 26px;
-  border-radius:16px;
-  font-weight:700;
-  cursor:pointer;
-  color:#1b130b;
-  font-size:1rem;
+ul{
+  margin-top:10px;
+  padding-left:18px;
+  color:var(--muted);
 }
 
 footer{
@@ -230,19 +201,12 @@ footer{
     ADVENTURE: € 135<br>
     Extension SOLO to ADVENTURE: € 50
     <span class="small">Payout is transferred the day after completion and confirmation.</span>
-    <span class="small">Bonus after 10 successful assignments with high guest rating.</span>
     <span class="small">Guest pricing is never published on this site.</span>
   </div>
 
   <div class="signal-email">
-    <a class="signal-btn" href="https://signal.me/#eu/YOUR-SIGNAL-LINK" target="_blank">
-      <img src="signal.png" alt="Signal">
-      Contact via Signal
-    </a>
-
-    <a class="email-btn" href="mailto:info@kimanzi.nl?subject=KIMANZI%20Contact">
-      Contact via Email
-    </a>
+    <a class="signal-btn" href="https://signal.me/#eu/YOUR-SIGNAL-LINK" target="_blank">Contact via Signal</a>
+    <a class="email-btn" href="mailto:info@kimanzi.nl?subject=KIMANZI%20Contact">Contact via Email</a>
   </div>
 </header>
 
@@ -250,7 +214,11 @@ footer{
   <div class="navinner">
     <strong>KIMANZI</strong>
     <div class="navlinks">
-      <a href="#founder">Founder</a>
+      <a href="#onboarding">Onboarding</a>
+      <a href="#hostrole">Host Role</a>
+      <a href="#scope">Defined Scope</a>
+      <a href="#standards">Standards</a>
+      <a href="#events">Events</a>
       <a href="#apply">Host Intake</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -259,14 +227,62 @@ footer{
 
 <main>
 
-<details id="founder">
-<summary>From Stephen</summary>
-<p>Travelling taught me that the first hours in a new place can feel overwhelming.</p>
-<p>In Kenya I met women who bring calm and clarity naturally. That is the heart of what we are building.</p>
-<p>KIMANZI is the holding. Urbanchill is the consumer label. Nairobi only. No noise. Just good work done well.</p>
+<details id="onboarding" open>
+<summary>Guest Onboarding</summary>
+<ul>
+<li>Arrival coordination in advance.</li>
+<li>Safe transfer to accommodation.</li>
+<li>Short practical orientation.</li>
+<li>Clear expectations from the beginning.</li>
+</ul>
 </details>
 
-<details open id="apply">
+<details id="hostrole" open>
+<summary>Role and Responsibilities of the Host</summary>
+<ul>
+<li>Provide calm presence and structured support.</li>
+<li>Maintain punctuality and reliability.</li>
+<li>Respect cultural norms and professional boundaries.</li>
+<li>Communicate clearly and discreetly.</li>
+<li>Operate only within agreed scope.</li>
+</ul>
+</details>
+
+<details id="scope" open>
+<summary>Defined Scope and Boundaries</summary>
+<ul>
+<li>Structured hospitality support within defined limits.</li>
+<li>No activity that compromises dignity, legality or safety.</li>
+<li>If a boundary is crossed, the assignment stops immediately.</li>
+<li>Safety always overrides expectation.</li>
+</ul>
+</details>
+
+<details id="standards" open>
+<summary>Professional Standards</summary>
+<ul>
+<li>Punctuality and reliability are essential.</li>
+<li>Calm communication at all times.</li>
+<li>Respect for culture, venue and community.</li>
+<li>Professional presentation and discretion.</li>
+</ul>
+</details>
+
+<details id="events" open>
+<summary>Events and Nightlife in Nairobi</summary>
+<p>Nairobi has energy. Culture. Music. Movement.</p>
+<ul>
+<li>Curated electronic and Afro house nights in Westlands.</li>
+<li>Live jazz and late lounge evenings.</li>
+<li>The Alchemist music and art gatherings.</li>
+<li>Alliance Française exhibitions and performances.</li>
+<li>Elevated rooftop venues and refined dining spaces.</li>
+</ul>
+<p><strong>We enjoy the night, but we never lose structure.</strong></p>
+<p>If you know locations that reflect taste, safety and vibrant character, share them with us.</p>
+</details>
+
+<details id="apply">
 <summary>Host Intake</summary>
 <form onsubmit="sendIntakeEmail(event)">
 <input type="text" id="name" placeholder="Name" required>
@@ -277,12 +293,10 @@ footer{
 </form>
 </details>
 
-<details open id="faq">
+<details id="faq">
 <summary>FAQ</summary>
 <p><strong>When do I get paid?</strong><br>Payout is transferred the day after confirmation.</p>
 <p><strong>Do I have to pay for pick up?</strong><br>No. Pick up is fronted by us.</p>
-<p><strong>Do I get extension Host fee?</strong><br>Yes. € 50 when SOLO becomes ADVENTURE.</p>
-<p><strong>Bonus after 10 successful assignments?</strong><br>Yes, after high guest rating.</p>
 <p><strong>Do I need social media?</strong><br>No. Communication remains private.</p>
 </details>
 
