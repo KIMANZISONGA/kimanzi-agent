@@ -1,925 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="referrer" content="no-referrer" />
-  <meta name="theme-color" content="#07090d" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#3f2f23">
 
-  <title>KIMANZI (UrbanChill Network) — Hosts & Business Partners — Nairobi</title>
-  <meta name="description" content="KIMANZI is the holding. UrbanChill is the network behind the labels. This page is for Hosts and business partners in Nairobi. Host fees, next-day payout, bonus after 10 successful assignments. Privacy-first: no cookies, no tracking." />
-  <meta name="robots" content="index, follow" />
+<title>KIMANZI — Hosts & Business Partners — Nairobi</title>
+<meta name="description" content="KIMANZI is the holding. UrbanChill is the network behind the labels. Nairobi-based. Privacy-first. No cookies. No tracking.">
+<meta name="robots" content="index, follow">
 
-  <style>
-    :root{
-      --bg0:#05060a;
-      --bg1:#07090d;
-      --bg2:#0b0f16;
+<style>
+:root{
+  --bg1:#3b2c21;
+  --bg2:#4a3728;
+  --bg3:#5b4432;
 
-      --ink:#f6f7fb;
-      --muted:#b7bdc9;
+  --ink:#f5efe7;
+  --muted:#d7c8b8;
 
-      --gold:#e6a24f;
-      --gold2:#d78c33;
+  --amber:#d89a4a;
+  --amber-soft:#e7b877;
 
-      --shadow: 0 24px 80px rgba(0,0,0,.68);
-      --shadow2: 0 16px 44px rgba(0,0,0,.48);
+  --card:#463426;
+  --card-soft:#3f2f23;
+  --border:rgba(255,255,255,.08);
 
-      --maxw:1100px;
+  --maxw:1100px;
+}
 
-      --font-title: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+*{box-sizing:border-box}
 
-      /* Founder photo focus (0% = top, 50% = center) */
-      --founder-focus-y: 18%;
-    }
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2) 60%,var(--bg3));
+  color:var(--ink);
+  line-height:1.65;
+}
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+a{color:var(--amber);text-decoration:none}
+a:hover{color:var(--amber-soft)}
 
-    body{
-      margin:0;
-      color:var(--ink);
-      font-family:var(--font-body);
-      line-height:1.6;
-      background:
-        radial-gradient(1200px 700px at 50% -20%, rgba(230,162,79,.22), transparent 60%),
-        radial-gradient(900px 540px at 15% 10%, rgba(232,110,46,.20), transparent 60%),
-        radial-gradient(900px 600px at 80% 20%, rgba(58,118,240,.12), transparent 62%),
-        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, var(--bg2));
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-      overflow-x:hidden;
-    }
+header{
+  padding:90px 20px 70px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+}
 
-    a{ color:var(--gold); text-decoration:none; }
-    a:hover{ color:#ffd08f; }
+.kicker{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.05);
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--amber-soft);
+}
 
-    /* Background FX */
-    .bgfx{
-      position: fixed;
-      inset: 0;
-      pointer-events:none;
-      z-index:0;
-      overflow:hidden;
-    }
-    .bgfx::after{
-      content:"";
-      position:absolute;
-      inset:-40px;
-      opacity:.085;
-      background-image:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.16) 0 1px, transparent 2px),
-        radial-gradient(circle at 80% 60%, rgba(255,255,255,.12) 0 1px, transparent 2px),
-        radial-gradient(circle at 45% 85%, rgba(255,255,255,.10) 0 1px, transparent 2px);
-      background-size: 140px 140px;
-      mix-blend-mode: overlay;
-      filter: blur(.2px);
-    }
+h1{
+  margin:24px 0 16px;
+  font-size:clamp(2.2rem,4vw,3rem);
+  font-weight:900;
+}
 
-    .orb{ position:absolute; border-radius:999px; opacity:.95; mix-blend-mode: screen; }
-    .orb::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      background:
-        radial-gradient(45% 45% at 30% 24%, rgba(255,255,255,.46), transparent 62%),
-        radial-gradient(60% 60% at 72% 74%, rgba(0,0,0,.58), transparent 68%),
-        linear-gradient(145deg, rgba(255,255,255,.10), rgba(0,0,0,.24));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.20),
-        inset 0 -18px 42px rgba(0,0,0,.48),
-        0 26px 100px rgba(0,0,0,.68);
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(10px);
-    }
-    .o1{ width:520px; height:520px; left:-140px; top:-140px; background: radial-gradient(circle at 40% 40%, rgba(230,162,79,.32), transparent 60%); }
-    .o2{ width:420px; height:420px; right:-160px; top:60px; background: radial-gradient(circle at 40% 40%, rgba(232,110,46,.28), transparent 60%); }
-    .o3{ width:540px; height:540px; right:-220px; bottom:-240px; background: radial-gradient(circle at 40% 40%, rgba(58,118,240,.22), transparent 62%); }
-    .o4{ width:360px; height:360px; left:120px; bottom:-170px; background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.12), transparent 60%); }
+h2{margin-top:0}
 
-    .wrap{ position:relative; z-index:1; }
+.sub{
+  max-width:900px;
+  margin:0 auto 24px;
+  color:var(--muted);
+}
 
-    /* Hero (no image) */
-    .hero{
-      position:relative;
-      padding: 84px 18px 56px;
-      border-radius: 0 0 24px 24px;
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      background:
-        radial-gradient(1200px 700px at 50% -20%, rgba(230,162,79,.18), transparent 62%),
-        radial-gradient(900px 540px at 10% 10%, rgba(232,110,46,.16), transparent 60%),
-        radial-gradient(900px 620px at 85% 30%, rgba(58,118,240,.10), transparent 62%),
-        linear-gradient(180deg, rgba(0,0,0,.34), rgba(0,0,0,.82));
-      isolation:isolate;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(255,255,255,.12), transparent 26%);
-      opacity:.52;
-      mix-blend-mode: overlay;
-      pointer-events:none;
-      z-index:0;
-    }
+.fees{
+  max-width:900px;
+  margin:0 auto;
+  padding:22px;
+  background:var(--card);
+  border-radius:18px;
+  border:1px solid var(--border);
+}
 
-    .inner{
-      position:relative;
-      z-index:1;
-      max-width: 980px;
-      margin: 0 auto;
-      text-align:center;
-    }
+.small{
+  display:block;
+  font-size:.9rem;
+  margin-top:6px;
+  color:var(--muted);
+}
 
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      box-shadow: var(--shadow2);
-      text-transform: uppercase;
-      font-weight: 950;
-      letter-spacing: .18em;
-      color:#ffd08f;
-      font-family: var(--font-title);
-    }
+nav{
+  position:sticky;
+  top:0;
+  background:rgba(59,44,33,.95);
+  border-bottom:1px solid var(--border);
+}
 
-    h1,h2,h3{ font-family: var(--font-title); margin: 0 0 14px; }
-    h1{
-      margin-top: 18px;
-      font-size: clamp(2.2rem, 4.6vw, 3.2rem);
-      font-weight: 950;
-      line-height: 1.06;
-      letter-spacing: .2px;
-      text-shadow: 0 22px 78px rgba(0,0,0,.80);
-    }
-    h2{
-      font-size: clamp(1.6rem, 2.6vw, 2.05rem);
-      margin: 0 0 14px;
-    }
+.navinner{
+  max-width:var(--maxw);
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
 
-    .sub{
-      max-width: 940px;
-      margin: 0 auto 18px;
-      color: rgba(183,189,201,.97);
-      font-size: 1.08rem;
-    }
+.navlinks a{
+  margin:0 12px;
+  font-weight:600;
+  color:var(--muted);
+}
 
-    .cta-row{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
+.navlinks a:hover{color:var(--amber)}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 14px 18px;
-      border-radius: 14px;
-      font-weight: 950;
-      cursor:pointer;
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow2);
-      transition: transform .15s ease, filter .2s ease, border-color .2s ease;
-      user-select:none;
-    }
-    .btn:hover{ transform: translateY(-2px); filter: brightness(1.04); border-color: rgba(230,162,79,.26); }
-    .btn:active{ transform: translateY(0); }
+main{
+  max-width:var(--maxw);
+  margin:auto;
+  padding:60px 20px;
+}
 
-    .btn-brand{
-      background: linear-gradient(180deg, var(--gold), var(--gold2));
-      color:#1b1307;
-      border-color: rgba(255,255,255,.10);
-    }
-    .btn-glass{
-      background: rgba(255,255,255,.06);
-      color: var(--ink);
-    }
-    .btn-signal{
-      background: linear-gradient(180deg, #3A76F0, #2e63d6);
-      color:#fff;
-    }
-    .btn-signal img{ height:22px; border-radius: 7px; display:block; }
+details{
+  margin-bottom:32px;
+  padding:26px;
+  background:var(--card-soft);
+  border-radius:20px;
+  border:1px solid var(--border);
+}
 
-    .fees{
-      max-width: 940px;
-      margin: 18px auto 0;
-      text-align:left;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 18px;
-      padding: 16px 16px;
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(12px);
-    }
-    .fees .small{ display:block; margin-top: 6px; color: rgba(183,189,201,.95); font-size: .95rem; }
+summary{
+  font-weight:800;
+  cursor:pointer;
+  margin-bottom:18px;
+  color:var(--amber-soft);
+}
 
-    /* Nav */
-    nav{
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(5,6,10,.56);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,.11);
-    }
-    .navinner{
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 12px 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap:wrap;
-    }
-    .brandmark{ font-family: var(--font-title); font-weight: 950; letter-spacing: .5px; opacity:.96; }
-    .navlinks{ display:flex; flex-wrap:wrap; gap: 10px 14px; justify-content:flex-end; }
-    .navlinks a{ color: rgba(246,247,251,.87); font-weight: 750; font-size: .95rem; opacity:.93; }
-    .navlinks a:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+.grid{
+  display:grid;
+  gap:24px;
+}
 
-    /* Main */
-    .container{
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 28px 18px 48px;
-      position:relative;
-      z-index:1;
-    }
+@media(min-width:900px){
+  .grid-2{grid-template-columns:1fr 1fr}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+}
 
-    /* Collapsible sections */
-    .fold{
-      margin: 18px 0;
-      border-radius: 22px;
-      overflow: hidden;
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.11);
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(14px);
-    }
-    .fold > summary{
-      list-style: none;
-      cursor: pointer;
-      padding: 18px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-      user-select:none;
-      font-family: var(--font-title);
-      font-weight: 950;
-      font-size: 1.1rem;
-      color: rgba(246,247,251,.96);
-      position: relative;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
-    }
-    .fold > summary::-webkit-details-marker { display:none; }
-    .fold > summary::after{
-      content:"▾";
-      font-weight: 950;
-      opacity:.85;
-      transform: translateY(-1px);
-      transition: transform .2s ease;
-    }
-    .fold[open] > summary::after{ transform: rotate(180deg); }
+.card{
+  padding:20px;
+  background:var(--card);
+  border-radius:16px;
+  border:1px solid var(--border);
+}
 
-    .fold .content{
-      padding: 22px 18px 22px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
+.card h3{
+  margin-top:0;
+  color:var(--amber-soft);
+}
 
-    .grid{ display:grid; gap: 22px; }
-    @media(min-width: 880px){
-      .grid-2{ grid-template-columns: 1fr 1fr; }
-      .grid-3{ grid-template-columns: repeat(3, 1fr); }
-    }
+.note{
+  margin-top:16px;
+  padding:16px;
+  background:#2f241c;
+  border-radius:14px;
+  border:1px solid var(--border);
+}
 
-    .card{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 20px;
-      padding: 18px;
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(12px);
-    }
-    .card h3{ margin: 0 0 10px; font-weight: 950; }
-    .card p, .card li{ color: rgba(183,189,201,.95); }
+.founder{
+  display:grid;
+  gap:24px;
+}
 
-    .note{
-      margin-top: 14px;
-      padding: 14px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      color: rgba(230,232,238,.96);
-    }
+@media(min-width:900px){
+  .founder{grid-template-columns:320px 1fr}
+}
 
-    ul{ margin: 10px 0 0; padding-left: 18px; }
+.founder img{
+  width:100%;
+  border-radius:18px;
+}
 
-    /* ===== FOUNDER: HARD FIX (NO CROP OF HEAD) ===== */
-    .founder-row{
-      display:flex;
-      gap: 22px;
-      align-items:flex-start;
-      flex-wrap: nowrap;
-    }
-    .founder-media{
-      flex: 0 0 320px;
-      max-width: 320px;
-    }
+input,textarea{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#2f241c;
+  color:var(--ink);
+  margin-bottom:14px;
+}
 
-    @media (max-width: 900px){
-      .founder-row{
-        flex-direction: column;
-        gap: 14px;
-      }
-      .founder-media{
-        max-width: 100%;
-        width: 100%;
-      }
-    }
+input:focus,textarea:focus{
+  border-color:var(--amber);
+  outline:none;
+}
 
-    /* Desktop shape */
-    .founder-media img{
-      width: 100%;
-      display:block;
-      border-radius: 18px;
+button{
+  background:linear-gradient(180deg,var(--amber),var(--amber-soft));
+  border:none;
+  padding:14px 20px;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+  color:#1b130b;
+}
 
-      /* Key: slightly taller frame + focus upward */
-      aspect-ratio: 16 / 12;
-      object-fit: cover;
-      object-position: 50% var(--founder-focus-y);
+.signal-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:20px;
+}
 
-      border: 0 !important;
-      outline: 0 !important;
-      box-shadow: none !important;
-      background: transparent !important;
-    }
+.signal-btn img{
+  width:22px;
+  height:22px;
+}
 
-    /* Mobile: even taller so face never gets chopped */
-    @media (max-width: 900px){
-      .founder-media img{
-        aspect-ratio: 16 / 13; /* taller on mobile */
-        object-position: 50% 12%;
-      }
-    }
-
-    .founder-text{
-      flex: 1 1 auto;
-      min-width: 0;
-    }
-    .founder-text p{
-      margin: 0 0 14px;
-      font-size: 1.03rem;
-      line-height: 1.72;
-      letter-spacing: .04px;
-      color: rgba(230,232,238,.96);
-    }
-    .founder-text p:last-child{ margin-bottom: 0; }
-
-    /* Forms */
-    .form-card{
-      margin-top: 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 22px;
-      padding: 18px 18px 20px;
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(14px);
-    }
-    .form-card h3{ margin:0 0 6px; font-weight: 950; }
-    .form-card p{ margin:0 0 12px; color: rgba(183,189,201,.95); }
-
-    label{
-      display:block;
-      font-weight: 900;
-      margin: 10px 0 6px;
-      color: rgba(246,247,251,.93);
-      font-size:.92rem;
-    }
-    input, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.20);
-      color: var(--ink);
-      outline:none;
-      font-family: inherit;
-      font-size: .98rem;
-      margin-bottom: 12px;
-    }
-    textarea{ min-height: 120px; resize: vertical; }
-
-    input:focus, textarea:focus{
-      border-color: rgba(230,162,79,.56);
-      box-shadow: 0 0 0 4px rgba(230,162,79,.14);
-      background: rgba(0,0,0,.24);
-    }
-
-    .form-hint{
-      font-size: .9rem;
-      color: rgba(183,189,201,.92);
-      margin-top: -6px;
-      margin-bottom: 12px;
-    }
-
-    button{
-      background: linear-gradient(180deg, var(--gold), var(--gold2));
-      color:#1b1307;
-      padding: 14px 18px;
-      border: none;
-      border-radius: 14px;
-      font-weight: 950;
-      font-size: 1rem;
-      cursor:pointer;
-      box-shadow: var(--shadow2);
-      transition: transform .15s ease, filter .2s ease;
-    }
-    button:hover{ transform: translateY(-2px); filter: brightness(1.04); }
-    button:active{ transform: translateY(0); }
-
-    /* FAQ */
-    .faq-item{ border-top: 1px solid rgba(255,255,255,.10); padding: .7rem 0; }
-    .faq-q{
-      width:100%;
-      text-align:left;
-      padding:.7rem 0;
-      font-weight: 950;
-      background:none;
-      border:none;
-      cursor:pointer;
-      color: var(--ink);
-      font-size: 1rem;
-    }
-    .faq-a{ display:none; padding:.2rem 0 .5rem; color: rgba(183,189,201,.95); }
-
-    footer{
-      padding: 46px 18px 56px;
-      text-align:center;
-      font-size: .92rem;
-      color: rgba(183,189,201,.92);
-      border-top: 1px solid rgba(255,255,255,.09);
-      background: rgba(0,0,0,.10);
-    }
-
-    .anchor{ scroll-margin-top: 90px; }
-  </style>
+footer{
+  padding:60px 20px;
+  text-align:center;
+  background:#2c2119;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+</style>
 </head>
 
 <body>
-  <div class="bgfx" aria-hidden="true">
-    <div class="orb o1"></div>
-    <div class="orb o2"></div>
-    <div class="orb o3"></div>
-    <div class="orb o4"></div>
+
+<header>
+  <div class="kicker">KIMANZI — Nairobi</div>
+  <h1>Hosts & Business Partners</h1>
+  <p class="sub">
+    KIMANZI is the holding. UrbanChill is the network behind the labels.
+    Nairobi-based. Structured. Professional. Privacy-first.
+  </p>
+
+  <div class="fees">
+    <strong>Host fee per assignment (EUR)</strong><br>
+    SOLO: € 40<br>
+    ADVENTURE: € 135<br>
+    Extension: € 50
+    <span class="small">Payout the day after confirmation. No guest pricing published here.</span>
   </div>
 
-  <div class="wrap">
-    <header class="hero" id="top">
-      <div class="inner">
-        <div class="kicker">KIMANZI — Nairobi</div>
-
-        <h1>Hosts & Business Partners in Nairobi</h1>
-
-        <p class="sub">
-          KIMANZI is the holding. UrbanChill is the network behind the labels (UrbanChill is a consumer label).
-          This page is for <strong>Hosts</strong> and business partners in Nairobi.
-          You work independently, choose assignments, and set your own working times.
-          Privacy-first, calm communication.
-        </p>
-
-        <div class="fees">
-          <strong>Host fee per assignment (paid out in EUR)</strong><br>
-          SOLO: <strong>€ 40</strong> (≈ <strong>$ 47</strong> / ≈ <strong>KES 6,000</strong>)<br>
-          ADVENTURE: <strong>€ 135</strong> (≈ <strong>$ 158</strong> / ≈ <strong>KES 20,300</strong>)<br>
-          Extension SOLO → ADVENTURE: <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>)<br>
-          <span class="small">USD and KES are indicative and can change with the daily exchange rate.</span>
-          <span class="small">Payout is transferred the day after the assignment is completed and confirmed.</span>
-          <span class="small">Bonus: after 10 successful assignments with a high guest rating, you receive an extra bonus.</span>
-          <span class="small"><strong>Important:</strong> guest-facing pricing is never published on this site.</span>
-        </div>
-
-        <div class="cta-row">
-          <a class="btn btn-brand" href="#apply">Start Host intake</a>
-          <a class="btn btn-glass" href="#forms">Contact</a>
-          <a class="btn btn-signal" href="https://signal.me/#eu/jPhei3ZTNaLyCCoG10iCMC_kJaZaidg0YUAZWLVzFQpEwDQOSedIC4t7i39jhN7-" rel="noopener">
-            <img src="signal.png" alt="Signal">
-            Signal
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <nav>
-      <div class="navinner">
-        <div class="brandmark">KIMANZI</div>
-        <div class="navlinks">
-          <a href="#why">Why</a>
-          <a href="#policy">Policy</a>
-          <a href="#founder">Founder</a>
-          <a href="#onboarding">Onboarding</a>
-          <a href="#assignments">Assignments</a>
-          <a href="#events">Events</a>
-          <a href="#forms">Forms</a>
-          <a href="#apply">Host intake</a>
-          <a href="#faq">FAQ</a>
-        </div>
-      </div>
-    </nav>
-
-    <main class="container">
-
-      <details class="fold anchor" id="why" open>
-        <summary>Why KIMANZI (UrbanChill Network)</summary>
-        <div class="content">
-          <div class="grid grid-3">
-            <div class="card">
-              <h3>Freedom</h3>
-              <p>You decide which assignments you accept. You set your own working times.</p>
-            </div>
-            <div class="card">
-              <h3>Discretion and safety</h3>
-              <p>No socials. No exposure. Calm communication. Clear boundaries.</p>
-            </div>
-            <div class="card">
-              <h3>Clear Host fees</h3>
-              <p>Clear Host fees per assignment. More opportunities as volume grows.</p>
-            </div>
-          </div>
-
-          <div class="note">
-            <strong>Structure</strong><br>
-            KIMANZI is the holding. UrbanChill is the network behind the labels (UrbanChill is a consumer label).
-            A label remains the guest-facing brand. You deliver assignments as an independent Host within a clear scope.
-          </div>
-        </div>
-      </details>
-
-      <details class="fold anchor" id="policy" open>
-        <summary>Hard policy (non-negotiable)</summary>
-        <div class="content">
-          <div class="grid grid-2">
-            <div class="card">
-              <h3>No guest pricing here</h3>
-              <p>This site is for Hosts and business partners. Guest-facing pricing is never published on KIMANZI.</p>
-            </div>
-            <div class="card">
-              <h3>Privacy-first by design</h3>
-              <p>No cookies. No tracking. No social embeds. Calm, direct communication.</p>
-            </div>
-          </div>
-
-          <div class="note">
-            <strong>Host title</strong><br>
-            On KIMANZI, we do not use “agents”. We use <strong>Hosts</strong>.
-          </div>
-        </div>
-      </details>
-
-      <details class="fold anchor" id="founder" open>
-        <summary>From Stephen</summary>
-        <div class="content">
-          <div class="founder-row">
-            <div class="founder-media">
-              <img src="founder.jpg" alt="Stephen — Founder">
-            </div>
-
-            <div class="founder-text">
-              <p>
-                Travelling taught me that the first hours in a new place can feel heavy.
-                Confusion, hunger, noise, fatigue, too much at once.
-              </p>
-              <p>
-                In Kenya I met women who bring calm and clarity naturally.
-                Women who protect, support and guide without forcing anything.
-              </p>
-              <p>
-                That is the heart of what we do:
-                a soft landing, delivered by skilled <strong>Hosts</strong>, supported by a network that keeps the scope clear and the people safe.
-              </p>
-              <p>
-                KIMANZI is the holding. UrbanChill is the network behind the labels (UrbanChill is a consumer label).
-                Nairobi only. No noise. Just good work, done well.
-              </p>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <details class="fold anchor" id="onboarding" open>
-        <summary>Guest onboarding (arrival, pick up, first hours)</summary>
-        <div class="content">
-          <div class="grid grid-2">
-            <div class="card">
-              <h3>Arrival and pick up</h3>
-              <p>
-                The guest arrives in Nairobi after a long journey. The first hours matter.
-                Your role is calm, reliable first contact within the agreed scope.
-              </p>
-              <ul>
-                <li>Pick up is planned in advance and coordinated via the network and the label</li>
-                <li>Pick up can be done via Uber</li>
-                <li>We can also arrange a trusted local taxi when needed</li>
-                <li>This is always done in consultation, so nothing is forced</li>
-                <li>Pick up is fronted by us so you are not burdened with unnecessary costs</li>
-              </ul>
-            </div>
-
-            <div class="card">
-              <h3>First contact and settling in</h3>
-              <p>
-                This is not entertainment. It is presence.
-                You help the guest move safely, settle in, and reduce overwhelm.
-              </p>
-              <ul>
-                <li>Safe transfer from arrival point to accommodation</li>
-                <li>Calm check-in support and basic orientation (practical, short, clear)</li>
-                <li>Communication stays private and minimal (Signal for coordination)</li>
-                <li>If something feels unsafe, you step back immediately — the network supports that</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="note">
-            <strong>Meals and essentials</strong><br>
-            Meals are optional. The guest is free to choose or skip. If meals or essentials are agreed, this is arranged in advance.
-            You are not expected to front costs. Per-day agreements are paid out clearly.
-          </div>
-
-          <div class="note">
-            <strong>After completion</strong><br>
-            After the assignment is completed and confirmed, your Host fee is transferred the next day.
-            Payout is done in EUR. USD and KES references are indicative only.
-          </div>
-
-          <div class="note">
-            <strong>One hard rule</strong><br>
-            Being on time is mandatory. If you do not show up for an agreed assignment, the assignment and future assignments stop immediately and the working relationship ends.
-          </div>
-        </div>
-      </details>
-
-      <details class="fold anchor" id="assignments" open>
-        <summary>Assignment types (SOLO and ADVENTURE)</summary>
-        <div class="content">
-          <div class="grid grid-2">
-            <div class="card">
-              <h3>SOLO</h3>
-              <p>
-                A smooth landing in Nairobi: calm arrival, transport, clarity.
-                The guest chooses what they need. Nothing is pushed.
-              </p>
-            </div>
-            <div class="card">
-              <h3>ADVENTURE</h3>
-              <p>
-                Steady support across multiple days. Planning and coordination.
-                Calm, respectful, professional.
-              </p>
-            </div>
-          </div>
-
-          <div class="note">
-            <strong>Extension Host fee</strong><br>
-            If an assignment extends from SOLO to ADVENTURE, you receive an additional <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>).
-            You are not expected to sell. Extensions often happen when a guest feels well supported.
-          </div>
-        </div>
-      </details>
-
-      <details class="fold anchor" id="events">
-        <summary>Events in Nairobi</summary>
-        <div class="content">
-          <p style="color: rgba(183,189,201,.95); margin-top:0;">
-            Nairobi has concerts, art nights, food festivals, and local experiences.
-            Share events that fit calm and respectful hosting.
-          </p>
-
-          <div class="form-card">
-            <h3>Share an event</h3>
-            <p>Suggest events that fit: relaxed, safe, respectful, human.</p>
-
-            <form action="https://formspree.io/f/xgvgabrq" method="POST">
-              <input type="hidden" name="form-type" value="host-event">
-
-              <label for="event-name">Event name</label>
-              <input id="event-name" name="event-name" type="text" required>
-
-              <label for="event-description">Short description</label>
-              <textarea id="event-description" name="event-description" required></textarea>
-
-              <label for="event-location">Location (area, venue)</label>
-              <input id="event-location" name="event-location" type="text" required>
-
-              <label for="event-dates">Date or period</label>
-              <input id="event-dates" name="event-dates" type="text" required>
-
-              <label for="event-link">Website or link (optional)</label>
-              <input id="event-link" name="event-link" type="url" placeholder="https://">
-
-              <p class="form-hint">You receive a short confirmation after review.</p>
-
-              <button type="submit">Send event</button>
-            </form>
-          </div>
-        </div>
-      </details>
-
-      <details class="fold anchor" id="forms" open>
-        <summary>Forms</summary>
-        <div class="content">
-          <p style="color: rgba(183,189,201,.95); margin-top:0;">
-            Use Contact for questions, availability, feedback, or anything you want to share.
-            For urgent matters use Signal.
-          </p>
-
-          <div class="form-card" id="contact-form-card">
-            <h3>Contact form</h3>
-            <p>For questions, availability, feedback, or anything you want to share.</p>
-
-            <form action="https://formspree.io/f/xzznewdb" method="POST">
-              <input type="hidden" name="form-type" value="host-contact">
-
-              <label for="contact-name">Name</label>
-              <input id="contact-name" name="name" type="text" required>
-
-              <label for="contact-email">Email</label>
-              <input id="contact-email" name="email" type="email" required>
-
-              <label for="contact-message">Message</label>
-              <textarea id="contact-message" name="message" required></textarea>
-
-              <p class="form-hint">We read every message personally. You receive a confirmation after review.</p>
-
-              <button type="submit">Send message</button>
-            </form>
-          </div>
-        </div>
-      </details>
-
-      <details class="fold anchor" id="apply" open>
-        <summary>Host intake</summary>
-        <div class="content">
-          <p style="color: rgba(183,189,201,.95); margin-top:0;">
-            This is not nightlife hosting. Not a call center job.
-            It is calm hospitality, safety, and clear boundaries in Nairobi.
-          </p>
-
-          <div class="form-card">
-            <h3>Host intake form</h3>
-
-            <form action="https://formspree.io/f/xzznewdb" method="POST">
-              <input type="hidden" name="form-type" value="host-intake">
-
-              <label for="intake-name">Name</label>
-              <input id="intake-name" name="name" type="text" required>
-
-              <label for="intake-area">Area in Nairobi</label>
-              <input id="intake-area" name="city" type="text" required>
-
-              <label for="intake-age">Age (optional)</label>
-              <input id="intake-age" name="age" type="text" placeholder="Optional">
-
-              <label for="intake-experience">Experience with hospitality or care</label>
-              <textarea id="intake-experience" name="experience" required></textarea>
-
-              <label for="intake-why">Why does this feel right for you</label>
-              <textarea id="intake-why" name="why" required></textarea>
-
-              <label for="intake-availability">Availability (days, evenings, weekends)</label>
-              <input id="intake-availability" name="availability" type="text" required>
-
-              <label for="intake-phone">Phone number for Signal</label>
-              <input id="intake-phone" name="phone" type="text" required>
-
-              <label for="intake-email">Email</label>
-              <input id="intake-email" name="email" type="email" required>
-
-              <p class="form-hint">Privacy first. Minimal data. No cookies. No tracking.</p>
-
-              <button type="submit">Send Host intake</button>
-            </form>
-          </div>
-        </div>
-      </details>
-
-      <details class="fold anchor" id="faq" open>
-        <summary>FAQ</summary>
-        <div class="content">
-          <div class="faq-item">
-            <button class="faq-q" type="button">When do I get paid</button>
-            <div class="faq-a">
-              <p>Your Host fee is transferred the day after the assignment is completed and confirmed.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" type="button">Do I have to pay for pick up</button>
-            <div class="faq-a">
-              <p>No. Pick up is fronted by us so you are not burdened with unnecessary costs.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" type="button">Uber or trusted taxi</button>
-            <div class="faq-a">
-              <p>Pick up can be via Uber. We can also arrange a trusted local taxi when needed. This is always done in consultation.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" type="button">Do I have to pay for meals myself</button>
-            <div class="faq-a">
-              <p>No. This is agreed in advance and paid out per day. You are not expected to front these expenses.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" type="button">Does the guest have to take a meal</button>
-            <div class="faq-a">
-              <p>No. Meals are optional. The guest is free to choose or skip.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" type="button">Do I get an extension Host fee if SOLO becomes ADVENTURE</button>
-            <div class="faq-a">
-              <p>
-                Yes. You receive an additional <strong>€ 50</strong> (≈ <strong>$ 59</strong> / ≈ <strong>KES 7,500</strong>).
-                You are not expected to sell. Extensions often happen when the guest feels well supported.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" type="button">Bonus after 10 successful assignments</button>
-            <div class="faq-a">
-              <p>After 10 successful assignments with a high guest rating, you receive an extra bonus.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" type="button">Is punctuality required</button>
-            <div class="faq-a">
-              <p>
-                Yes. Being on time is mandatory. If you do not show up, the assignment and future assignments stop immediately and the working relationship ends.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" type="button">Do I need social media</button>
-            <div class="faq-a">
-              <p>No. We do not use social media. Communication stays calm and private.</p>
-            </div>
-          </div>
-        </div>
-      </details>
-
-    </main>
-
-    <footer>
-      KIMANZI (Holding) — UrbanChill (Consumer label) — Nairobi only — Privacy first. No cookies. No tracking.
-    </footer>
+  <div class="signal-btn">
+    <img src="signal.png" alt="Signal">
+    <a href="#">Contact via Signal</a>
   </div>
+</header>
 
-  <script>
-    (function() {
-      var items = document.querySelectorAll('.faq-item');
-      items.forEach(function(item) {
-        var btn = item.querySelector('.faq-q');
-        var ans = item.querySelector('.faq-a');
-        if (!btn || !ans) return;
-        btn.addEventListener('click', function() {
-          var open = ans.style.display === 'block';
-          ans.style.display = open ? 'none' : 'block';
-        });
-      });
-    })();
+<nav>
+  <div class="navinner">
+    <strong>KIMANZI</strong>
+    <div class="navlinks">
+      <a href="#why">Why</a>
+      <a href="#founder">Founder</a>
+      <a href="#onboarding">Onboarding</a>
+      <a href="#apply">Host Intake</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
 
-    (function() {
-      var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
-      folds.forEach(function(d) {
-        d.addEventListener('toggle', function() {
-          if (!d.open) return;
-          folds.forEach(function(other) {
-            if (other !== d) other.open = false;
-          });
-        });
-      });
-    })();
-  </script>
+<main>
+
+<details open id="why">
+<summary>Why KIMANZI</summary>
+<div class="grid grid-3">
+<div class="card"><h3>Freedom</h3><p>You choose assignments and working times.</p></div>
+<div class="card"><h3>Discretion</h3><p>No social media. Calm communication.</p></div>
+<div class="card"><h3>Clear structure</h3><p>Holding and network clearly separated.</p></div>
+</div>
+</details>
+
+<details open id="founder">
+<summary>From Stephen</summary>
+<div class="founder">
+<img src="founder.jpg" alt="Founder">
+<div>
+<p>Travelling taught me that the first hours in a new city matter. Nairobi deserves calm arrival and clear structure.</p>
+<p>KIMANZI supports Hosts who deliver that calm presence.</p>
+</div>
+</div>
+</details>
+
+<details open id="onboarding">
+<summary>Guest Onboarding</summary>
+<p>Arrival coordination. Calm presence. Clear scope. Safe support.</p>
+</details>
+
+<details open id="apply">
+<summary>Host Intake</summary>
+<form action="https://formspree.io/f/YOUR-ID" method="POST">
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="experience" placeholder="Experience" required></textarea>
+<button type="submit">Send Intake</button>
+</form>
+</details>
+
+<details open id="faq">
+<summary>FAQ</summary>
+<p><strong>When do I get paid?</strong><br>Payout is transferred the day after confirmation.</p>
+<p><strong>Do I need social media?</strong><br>No. Communication remains private.</p>
+</details>
+
+</main>
+
+<footer>
+KIMANZI (Holding) — UrbanChill (Consumer label) — Nairobi only — Privacy first. No cookies. No tracking.
+</footer>
+
 </body>
 </html>
