@@ -66,8 +66,6 @@ h1{
   font-weight:900;
 }
 
-h2{margin-top:0}
-
 .sub{
   max-width:900px;
   margin:0 auto 24px;
@@ -88,6 +86,31 @@ h2{margin-top:0}
   font-size:.9rem;
   margin-top:6px;
   color:var(--muted);
+}
+
+.signal-email{
+  margin-top:30px;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.signal-btn,
+.email-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 18px;
+  border-radius:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  font-weight:600;
+}
+
+.signal-btn img{
+  width:22px;
+  height:22px;
 }
 
 nav{
@@ -135,50 +158,6 @@ summary{
   color:var(--amber-soft);
 }
 
-.grid{
-  display:grid;
-  gap:24px;
-}
-
-@media(min-width:900px){
-  .grid-2{grid-template-columns:1fr 1fr}
-  .grid-3{grid-template-columns:repeat(3,1fr)}
-}
-
-.card{
-  padding:20px;
-  background:var(--card);
-  border-radius:16px;
-  border:1px solid var(--border);
-}
-
-.card h3{
-  margin-top:0;
-  color:var(--amber-soft);
-}
-
-.note{
-  margin-top:16px;
-  padding:16px;
-  background:#2f241c;
-  border-radius:14px;
-  border:1px solid var(--border);
-}
-
-.founder{
-  display:grid;
-  gap:24px;
-}
-
-@media(min-width:900px){
-  .founder{grid-template-columns:320px 1fr}
-}
-
-.founder img{
-  width:100%;
-  border-radius:18px;
-}
-
 input,textarea{
   width:100%;
   padding:12px;
@@ -189,11 +168,6 @@ input,textarea{
   margin-bottom:14px;
 }
 
-input:focus,textarea:focus{
-  border-color:var(--amber);
-  outline:none;
-}
-
 button{
   background:linear-gradient(180deg,var(--amber),var(--amber-soft));
   border:none;
@@ -202,18 +176,6 @@ button{
   font-weight:800;
   cursor:pointer;
   color:#1b130b;
-}
-
-.signal-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin-top:20px;
-}
-
-.signal-btn img{
-  width:22px;
-  height:22px;
 }
 
 footer{
@@ -232,7 +194,6 @@ footer{
   <div class="kicker">KIMANZI — Nairobi</div>
   <h1>Hosts & Business Partners</h1>
   <p class="sub">
-    KIMANZI is the holding. UrbanChill is the network behind the labels.
     Nairobi-based. Structured. Professional. Privacy-first.
   </p>
 
@@ -244,9 +205,15 @@ footer{
     <span class="small">Payout the day after confirmation. No guest pricing published here.</span>
   </div>
 
-  <div class="signal-btn">
-    <img src="signal.png" alt="Signal">
-    <a href="#">Contact via Signal</a>
+  <div class="signal-email">
+    <a class="signal-btn" href="https://signal.me/#eu/YOUR-SIGNAL-LINK" target="_blank">
+      <img src="signal.png" alt="Signal">
+      Contact via Signal
+    </a>
+
+    <a class="email-btn" href="mailto:info@kimanzi.nl?subject=KIMANZI%20Contact">
+      Contact via Email
+    </a>
   </div>
 </header>
 
@@ -254,9 +221,6 @@ footer{
   <div class="navinner">
     <strong>KIMANZI</strong>
     <div class="navlinks">
-      <a href="#why">Why</a>
-      <a href="#founder">Founder</a>
-      <a href="#onboarding">Onboarding</a>
       <a href="#apply">Host Intake</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -265,37 +229,13 @@ footer{
 
 <main>
 
-<details open id="why">
-<summary>Why KIMANZI</summary>
-<div class="grid grid-3">
-<div class="card"><h3>Freedom</h3><p>You choose assignments and working times.</p></div>
-<div class="card"><h3>Discretion</h3><p>No social media. Calm communication.</p></div>
-<div class="card"><h3>Clear structure</h3><p>Holding and network clearly separated.</p></div>
-</div>
-</details>
-
-<details open id="founder">
-<summary>From Stephen</summary>
-<div class="founder">
-<img src="founder.jpg" alt="Founder">
-<div>
-<p>Travelling taught me that the first hours in a new city matter. Nairobi deserves calm arrival and clear structure.</p>
-<p>KIMANZI supports Hosts who deliver that calm presence.</p>
-</div>
-</div>
-</details>
-
-<details open id="onboarding">
-<summary>Guest Onboarding</summary>
-<p>Arrival coordination. Calm presence. Clear scope. Safe support.</p>
-</details>
-
 <details open id="apply">
 <summary>Host Intake</summary>
-<form action="https://formspree.io/f/YOUR-ID" method="POST">
-<input type="text" name="name" placeholder="Name" required>
-<input type="email" name="email" placeholder="Email" required>
-<textarea name="experience" placeholder="Experience" required></textarea>
+<form onsubmit="sendIntakeEmail(event)">
+<input type="text" id="name" placeholder="Name" required>
+<input type="email" id="email" placeholder="Email" required>
+<textarea id="experience" placeholder="Experience" required></textarea>
+<textarea id="availability" placeholder="Availability" required></textarea>
 <button type="submit">Send Intake</button>
 </form>
 </details>
@@ -311,6 +251,33 @@ footer{
 <footer>
 KIMANZI (Holding) — UrbanChill (Consumer label) — Nairobi only — Privacy first. No cookies. No tracking.
 </footer>
+
+<script>
+function sendIntakeEmail(e){
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const experience = document.getElementById("experience").value;
+  const availability = document.getElementById("availability").value;
+
+  const subject = encodeURIComponent("Host Intake — Nairobi");
+  const body = encodeURIComponent(
+`Host Intake Application
+
+Name: ${name}
+Email: ${email}
+
+Experience:
+${experience}
+
+Availability:
+${availability}`
+  );
+
+  window.location.href = `mailto:intake@kimanz.nl?subject=${subject}&body=${body}`;
+}
+</script>
 
 </body>
 </html>
