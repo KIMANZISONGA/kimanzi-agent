@@ -6,32 +6,54 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#5a4332">
 
-<title>KIMANZI — Hosts & Business Partners — Nairobi</title>
-<meta name="description" content="KIMANZI is the holding. Urbanchill is the consumer label. Nairobi based. Privacy first. No cookies. No tracking.">
+<title>KIMANZI Nairobi — Freelance Host Network | Privacy-First</title>
+<meta name="description" content="KIMANZI collaborates with independent hospitality professionals in Nairobi. Structured host assignments, selection-based onboarding, privacy-first approach.">
 <meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://kimanzi.nl/">
+
+<meta name="geo.region" content="KE-30">
+<meta name="geo.placename" content="Nairobi">
+<meta name="geo.position" content="-1.286389;36.817223">
+<meta name="ICBM" content="-1.286389, 36.817223">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "KIMANZI",
+  "url": "https://kimanzi.nl",
+  "areaServed": { "@type": "City", "name": "Nairobi" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Nairobi",
+    "addressCountry": "KE"
+  },
+  "description": "KIMANZI collaborates with independent hospitality professionals in Nairobi. Structured assignment-based host network. Privacy-first."
+}
+</script>
 
 <style>
 :root{
   --bg-top:#5a4332;
   --bg-mid:#4a3728;
   --bg-bottom:#3a2b20;
-
   --ink:#f7efe6;
   --muted:#dccab7;
-
   --amber:#d9a35a;
   --amber-soft:#e8be84;
-
   --card:#4a3728;
   --card-light:#5a4332;
-
   --border:rgba(255,255,255,.08);
   --shadow-soft:0 12px 30px rgba(0,0,0,.25);
-
   --maxw:1100px;
 }
 
 *{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
@@ -115,6 +137,47 @@ h1{
   box-shadow:var(--shadow-soft);
   text-decoration:none;
   color:var(--ink);
+  transition:all .25s ease;
+}
+
+.signal-btn:hover,
+.email-btn:hover{
+  filter:brightness(1.05);
+}
+
+.apply-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 22px;
+  border-radius:14px;
+  background:rgba(217,163,90,.12);
+  border:1px solid var(--amber);
+  font-weight:700;
+  box-shadow:var(--shadow-soft);
+  text-decoration:none;
+  color:var(--amber-soft);
+  transition:all .25s ease;
+}
+
+.apply-btn:hover{
+  background:rgba(217,163,90,.18);
+  box-shadow:0 0 0 1px rgba(217,163,90,.35), 0 12px 30px rgba(0,0,0,.35);
+  transform:translateY(-1px);
+}
+
+@media (max-width:640px){
+  .signal-email{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .signal-email a{
+    width:100%;
+    justify-content:center;
+  }
+  .apply-btn{
+    order:-1;
+  }
 }
 
 nav{
@@ -171,6 +234,52 @@ ul{
   color:var(--muted);
 }
 
+form{
+  margin-top:14px;
+  display:grid;
+  gap:12px;
+  max-width:780px;
+}
+
+input, textarea, select, button{
+  font:inherit;
+}
+
+input, textarea, select{
+  width:100%;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  color:var(--ink);
+  outline:none;
+}
+
+select option{
+  background:#2c2119;
+  color:var(--ink);
+}
+
+textarea{min-height:110px; resize:vertical}
+
+button{
+  width:max-content;
+  padding:12px 16px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--card-light);
+  color:var(--ink);
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:var(--shadow-soft);
+}
+
+button:hover{filter:brightness(1.05)}
+
+label{
+  color:var(--muted);
+}
+
 footer{
   padding:70px 20px;
   text-align:center;
@@ -185,7 +294,7 @@ footer{
 
 <header>
   <div class="kicker">KIMANZI — Nairobi</div>
-  <h1>Hosts & Business Partners</h1>
+  <h1>Freelance Hosts in Nairobi</h1>
 
   <div class="hero-text">
     <p><strong>KIMANZI stands for respect, culture and safety.</strong></p>
@@ -193,6 +302,7 @@ footer{
     <p>The safety and wellbeing of our guests and our Hosts is fundamental. Clear structure. Defined scope. Responsible conduct.</p>
     <p>We are building carefully. With taste. With intention.</p>
     <p>We move respectfully. We protect dignity.</p>
+    <p><strong>We are carefully expanding our Host network in Nairobi.</strong> Independent professionals can submit interest via the Host Intake.</p>
   </div>
 
   <div class="fees">
@@ -202,11 +312,15 @@ footer{
     Extension SOLO to ADVENTURE: € 50
     <span class="small">Payout is transferred the day after completion and confirmation.</span>
     <span class="small">Guest pricing is never published on this site.</span>
+    <span class="small">Airport pick-up is prepaid by KIMANZI. You will never be expected to front transfer costs.</span>
+    <span class="small">Your safety always comes first. If a situation feels uncomfortable or unsafe, the assignment stops immediately.</span>
+    <span class="small">You are never left on your own. During assignments, you have direct contact with KIMANZI whenever guidance or support is needed.</span>
   </div>
 
   <div class="signal-email">
-    <a class="signal-btn" href="https://signal.me/#eu/YOUR-SIGNAL-LINK" target="_blank">Contact via Signal</a>
+    <a class="signal-btn" href="https://signal.me/#eu/YOUR-SIGNAL-LINK" target="_blank" rel="noopener">Contact via Signal</a>
     <a class="email-btn" href="mailto:info@kimanzi.nl?subject=KIMANZI%20Contact">Contact via Email</a>
+    <a class="apply-btn" href="#apply">Apply as Host</a>
   </div>
 </header>
 
@@ -219,7 +333,8 @@ footer{
       <a href="#scope">Defined Scope</a>
       <a href="#standards">Standards</a>
       <a href="#events">Events</a>
-      <a href="#apply">Host Intake</a>
+      <a href="#nairobi-hosts">Nairobi Hosts</a>
+      <a href="#apply">Apply as Host</a>
       <a href="#faq">FAQ</a>
     </div>
   </div>
@@ -282,15 +397,112 @@ footer{
 <p>If you know locations that reflect taste, safety and vibrant character, share them with us.</p>
 </details>
 
+<details id="nairobi-hosts" open>
+<summary>Freelance Hosts in Nairobi</summary>
+
+<p><strong>KIMANZI operates exclusively within Nairobi.</strong> We collaborate with independent hospitality professionals who live in Nairobi and understand the local culture, venues and pace of the city.</p>
+
+<p>Assignments are structured and defined per engagement. We value calm presence, discretion, punctuality and responsible conduct. We build carefully and select with intention.</p>
+
+<ul>
+<li>Location: Nairobi only</li>
+<li>Type: independent collaboration (not employment)</li>
+<li>Scope: defined per assignment</li>
+<li>Focus: safety, dignity, structure and taste</li>
+</ul>
+
+<p><strong>Profile indication</strong></p>
+
+<ul>
+<li>Generally in an active life phase with flexibility and energy.</li>
+<li>Internationally oriented and culturally aware.</li>
+<li>Well-presented, articulate and physically fit.</li>
+<li>Comfortable in structured, discreet environments.</li>
+<li>Experience is not required.</li>
+<li>If desired, a new Host may request to accompany an experienced Host during initial assignments to gain practical insight.</li>
+</ul>
+
+<p class="small">
+Profile indications reflect the nature of assignments and presentation expectations. Selection is based on professionalism, discretion and suitability for defined engagements.
+Accompanying another Host is optional and not a requirement for collaboration. Assignments remain defined per engagement and independently accepted.
+</p>
+
+<p class="small">Common search terms: freelance host Nairobi, event host Nairobi, hospitality support Nairobi, private host Nairobi.</p>
+</details>
+
+<details id="host-faq">
+<summary>Host FAQ — Nairobi</summary>
+
+<p><strong>Who can submit interest as a Host in Nairobi?</strong><br>
+Independent hospitality professionals based in Nairobi who understand local culture, venues and responsible conduct. We collaborate per defined assignment only.</p>
+
+<p><strong>Is this employment?</strong><br>
+No. KIMANZI does not offer employment positions. Collaboration is structured per assignment and there is no obligation to accept engagements.</p>
+
+<p><strong>Where do assignments take place?</strong><br>
+All assignments take place within Nairobi. We do not operate outside the city.</p>
+
+<p><strong>Do I need social media presence?</strong><br>
+No. We value discretion. Communication and coordination remain private.</p>
+
+<p><strong>How are Hosts compensated?</strong><br>
+Host fees are paid per completed assignment and transferred after confirmation. Guest pricing is never published.</p>
+</details>
+
 <details id="apply">
-<summary>Host Intake</summary>
+<summary>Apply as a Freelance Host in Nairobi</summary>
+
+<p><strong>This is not an employment application.</strong> KIMANZI collaborates with independent hospitality professionals on a per-assignment basis. There is no obligation to accept assignments and no exclusivity applies.</p>
+<p class="small">Initial submissions are sent via email. Selected profiles are contacted via Signal.</p>
+
 <form onsubmit="sendIntakeEmail(event)">
-<input type="text" id="name" placeholder="Name" required>
-<input type="email" id="email" placeholder="Email" required>
-<textarea id="experience" placeholder="Experience" required></textarea>
-<textarea id="availability" placeholder="Availability" required></textarea>
-<button type="submit">Send Intake</button>
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="tel" id="signal" placeholder="Signal Number (required)" required>
+<input type="email" id="email" placeholder="Email (optional)">
+<input type="text" id="area" placeholder="Area in Nairobi" required>
+
+<select id="independent_status" required>
+<option value="">Independent status</option>
+<option>Yes — I operate independently</option>
+<option>In process of formalizing</option>
+<option>Not yet</option>
+</select>
+
+<textarea id="experience" placeholder="Relevant experience (experience not required)"></textarea>
+
+<select id="environment">
+<option value="">Comfortable environments</option>
+<option>Private guests</option>
+<option>Corporate hospitality</option>
+<option>Events</option>
+<option>VIP settings</option>
+<option>Other</option>
+</select>
+
+<select id="availability" required>
+<option value="">Availability preference</option>
+<option>Weekdays</option>
+<option>Weekends</option>
+<option>Flexible</option>
+<option>Occasional only</option>
+</select>
+
+<select id="mentorship">
+<option value="">Optional mentorship (on request)</option>
+<option>Yes, if available</option>
+<option>No, I prefer to start directly</option>
+<option>Unsure</option>
+</select>
+
+<label>
+<input type="checkbox" id="independent_confirm" required>
+I confirm that I operate independently and understand that this is not employment.
+</label>
+
+<button type="submit">Submit Interest — Host Network Nairobi</button>
 </form>
+
+<span class="small">Selection is careful and limited. If your profile matches our current scope, we will contact you.</span>
 </details>
 
 <details id="faq">
@@ -298,6 +510,9 @@ footer{
 <p><strong>When do I get paid?</strong><br>Payout is transferred the day after confirmation.</p>
 <p><strong>Do I have to pay for pick up?</strong><br>No. Pick up is fronted by us.</p>
 <p><strong>Do I need social media?</strong><br>No. Communication remains private.</p>
+<p><strong>Is airport pick-up paid by the Host?</strong><br>
+No. Airport pick-up is prepaid by KIMANZI. You will never be expected to front transfer costs.</p>
+
 </details>
 
 </main>
@@ -308,27 +523,43 @@ KIMANZI — Urbanchill — Nairobi — Privacy first. No cookies. No tracking.
 
 <script>
 function sendIntakeEmail(e){
-  e.preventDefault();
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const experience = document.getElementById("experience").value;
-  const availability = document.getElementById("availability").value;
+e.preventDefault();
 
-  const subject = encodeURIComponent("Host Intake — Nairobi");
-  const body = encodeURIComponent(
-`Host Intake Application
+const name = document.getElementById("name").value;
+const signal = document.getElementById("signal").value;
+const email = document.getElementById("email").value;
+const area = document.getElementById("area").value;
+const independent_status = document.getElementById("independent_status").value;
+const experience = document.getElementById("experience").value;
+const environment = document.getElementById("environment").value;
+const availability = document.getElementById("availability").value;
+const mentorship = document.getElementById("mentorship").value;
+const independent = document.getElementById("independent_confirm").checked ? "Yes" : "No";
 
-Name: ${name}
+const subject = encodeURIComponent("Host Intake — Nairobi (Not Employment)");
+
+const body = encodeURIComponent(
+`KIMANZI — Host Intake (Nairobi)
+
+Full Name: ${name}
+Signal Number: ${signal}
 Email: ${email}
+Area in Nairobi: ${area}
+
+Independent Status: ${independent_status}
+Independent Confirmation: ${independent}
 
 Experience:
 ${experience}
 
-Availability:
-${availability}`
-  );
+Preferred Environment: ${environment}
+Availability: ${availability}
+Mentorship Preference: ${mentorship}
 
-  window.location.href = `mailto:intake@kimanz.nl?subject=${subject}&body=${body}`;
+— End of submission —`
+);
+
+window.location.href = `mailto:intake@kimanzi.nl?subject=${subject}&body=${body}`;
 }
 </script>
 
