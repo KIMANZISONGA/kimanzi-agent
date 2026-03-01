@@ -544,12 +544,14 @@ KIMANZI — Urbanchill — Nairobi — Privacy first. No cookies. No tracking.
 </footer>
 
 <script>
-async function postJson(url, payload){
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
+const payload = {
+  name,
+  email,
+  phone,
+  topic,
+  message,
+  source: "contact-form"
+};
   const text = await res.text();
   let data = null;
   try { data = text ? JSON.parse(text) : null; } catch {}
