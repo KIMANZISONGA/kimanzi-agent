@@ -614,7 +614,7 @@ function setStatus(el, ok, msg){
 
     setStatus(statusEl, true, "Submitting…");
 
-    const r = await postJson("/api/apply", payload);
+    const r = await postJson("https://kimanzi-agent.pages.dev/api/apply", payload);
     if(r.ok){
       setStatus(statusEl, true, "Submission received. We confirm receipt and respond within 1 day.");
       form.reset();
