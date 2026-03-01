@@ -2,7 +2,8 @@ export async function onRequestPost(context) {
   const { request, env } = context;
   const data = await request.json();
 
-  if (!data.name || !data.area || !data.signal) {
+  // Required fields (match frontend exactly)
+  if (!data.name || !data.area || !data.phone || !data.email) {
     return new Response("Invalid input", { status: 400 });
   }
 
@@ -11,24 +12,30 @@ export async function onRequestPost(context) {
 
   await env.DB.prepare(`
     INSERT INTO host_applications
-    (id, name, area, signal, email,
-     independent_status, experience,
-     environment, availability,
-     mentorship, independent_confirm,
-     source, created_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    (
+      id,
+      name,
+      area,
+      phone,
+      email,
+      languages,
+      availability,
+      shadowing,
+      background,
+      source,
+      created_at
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
     id,
     data.name,
     data.area,
-    data.signal,
-    data.email || "",
-    data.independent_status || "",
-    data.experience || "",
-    data.environment || "",
+    data.phone,
+    data.email,
+    data.languages || "",
     data.availability || "",
-    data.mentorship || "",
-    data.independent_confirm ? 1 : 0,
+    data.shadowing || "no",
+    data.background || "",
     data.source || "",
     now
   ).run();
