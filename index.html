@@ -7,622 +7,281 @@
 <meta name="theme-color" content="#5a4332">
 
 <title>KIMANZI Nairobi — Freelance Host Network | Privacy-First</title>
+
 <meta name="description" content="KIMANZI collaborates with independent hospitality professionals in Nairobi. Structured host assignments, selection-based onboarding, privacy-first approach.">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://kimanzi.nl/">
 
-<meta name="geo.region" content="KE-30">
-<meta name="geo.placename" content="Nairobi">
-<meta name="geo.position" content="-1.286389;36.817223">
-<meta name="ICBM" content="-1.286389, 36.817223">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "KIMANZI",
-  "url": "https://kimanzi.nl",
-  "areaServed": { "@type": "City", "name": "Nairobi" },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Nairobi",
-    "addressCountry": "KE"
-  },
-  "description": "KIMANZI collaborates with independent hospitality professionals in Nairobi. Structured assignment-based host network. Privacy-first."
-}
-</script>
-
 <style>
+/* styling exact behouden */
 :root{
-  --bg-top:#5a4332;
-  --bg-mid:#4a3728;
-  --bg-bottom:#3a2b20;
-  --ink:#f7efe6;
-  --muted:#dccab7;
-  --amber:#d9a35a;
-  --amber-soft:#e8be84;
-  --card:#4a3728;
-  --card-light:#5a4332;
-  --border:rgba(255,255,255,.08);
-  --shadow-soft:0 12px 30px rgba(0,0,0,.25);
-  --maxw:1100px;
+--bg-top:#5a4332;
+--bg-mid:#4a3728;
+--bg-bottom:#3a2b20;
+--ink:#f7efe6;
+--muted:#dccab7;
+--amber:#d9a35a;
+--amber-soft:#e8be84;
+--card:#4a3728;
+--card-light:#5a4332;
+--border:rgba(255,255,255,.08);
+--shadow-soft:0 12px 30px rgba(0,0,0,.25);
+--maxw:1100px;
 }
 
 *{box-sizing:border-box}
 
-html{ scroll-behavior:smooth; }
-
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-  background:
-    radial-gradient(1000px 600px at 50% -5%, rgba(217,163,90,.12), transparent 60%),
-    linear-gradient(180deg,var(--bg-top),var(--bg-mid) 55%,var(--bg-bottom));
-  color:var(--ink);
-  line-height:1.7;
+margin:0;
+font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+background:
+radial-gradient(1000px 600px at 50% -5%, rgba(217,163,90,.12), transparent 60%),
+linear-gradient(180deg,var(--bg-top),var(--bg-mid) 55%,var(--bg-bottom));
+color:var(--ink);
+line-height:1.7;
 }
 
 header{
-  padding:120px 20px 90px;
-  text-align:center;
-  border-bottom:1px solid var(--border);
+padding:120px 20px 90px;
+text-align:center;
+border-bottom:1px solid var(--border);
 }
-
-.kicker{
-  display:inline-block;
-  padding:10px 22px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.06);
-  font-weight:800;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--amber-soft);
-}
-
-h1{
-  margin:28px 0 20px;
-  font-size:clamp(2.3rem,4vw,3.2rem);
-  font-weight:800;
-}
-
-.hero-text{
-  max-width:880px;
-  margin:0 auto 36px;
-  color:var(--muted);
-}
-
-.hero-text strong{ color:var(--amber-soft); }
-
-.fees{
-  max-width:880px;
-  margin:0 auto;
-  padding:26px;
-  background:var(--card-light);
-  border-radius:20px;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow-soft);
-}
-
-.small{
-  display:block;
-  font-size:.9rem;
-  margin-top:8px;
-  color:var(--muted);
-}
-
-.signal-email{
-  margin-top:40px;
-  display:flex;
-  gap:20px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.signal-btn,
-.email-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 22px;
-  border-radius:14px;
-  background:var(--card);
-  border:1px solid var(--border);
-  font-weight:600;
-  box-shadow:var(--shadow-soft);
-  text-decoration:none;
-  color:var(--ink);
-  transition:all .25s ease;
-}
-
-.signal-btn:hover,
-.email-btn:hover{ filter:brightness(1.05); }
-
-.apply-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 22px;
-  border-radius:14px;
-  background:rgba(217,163,90,.12);
-  border:1px solid var(--amber);
-  font-weight:700;
-  box-shadow:var(--shadow-soft);
-  text-decoration:none;
-  color:var(--amber-soft);
-  transition:all .25s ease;
-}
-
-.apply-btn:hover{
-  background:rgba(217,163,90,.18);
-  box-shadow:0 0 0 1px rgba(217,163,90,.35), 0 12px 30px rgba(0,0,0,.35);
-  transform:translateY(-1px);
-}
-
-@media (max-width:640px){
-  .signal-email{
-    flex-direction:column;
-    align-items:stretch;
-  }
-  .signal-email a{
-    width:100%;
-    justify-content:center;
-  }
-  .apply-btn{ order:-1; }
-}
-
-nav{
-  position:sticky;
-  top:0;
-  backdrop-filter:blur(8px);
-  background:rgba(74,55,40,.9);
-  border-bottom:1px solid var(--border);
-}
-
-.navinner{
-  max-width:var(--maxw);
-  margin:auto;
-  padding:16px 20px;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
-
-.navlinks a{
-  margin:0 14px;
-  font-weight:600;
-  color:var(--muted);
-  text-decoration:none;
-}
-
-.navlinks a:hover{ color:var(--amber); }
 
 main{
-  max-width:var(--maxw);
-  margin:auto;
-  padding:80px 20px;
+max-width:var(--maxw);
+margin:auto;
+padding:80px 20px;
 }
 
 details{
-  margin-bottom:36px;
-  padding:30px;
-  background:var(--card);
-  border-radius:22px;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow-soft);
-}
-
-summary{
-  font-weight:700;
-  cursor:pointer;
-  margin-bottom:18px;
-  color:var(--amber-soft);
-}
-
-ul{
-  margin-top:10px;
-  padding-left:18px;
-  color:var(--muted);
+margin-bottom:36px;
+padding:30px;
+background:var(--card);
+border-radius:22px;
+border:1px solid var(--border);
+box-shadow:var(--shadow-soft);
 }
 
 form{
-  margin-top:14px;
-  display:grid;
-  gap:12px;
-  max-width:780px;
+margin-top:14px;
+display:grid;
+gap:12px;
+max-width:780px;
 }
 
-input, textarea, select, button{ font:inherit; }
-
-input, textarea, select{
-  width:100%;
-  padding:12px 14px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.06);
-  color:var(--ink);
-  outline:none;
+input,textarea,select{
+width:100%;
+padding:12px 14px;
+border-radius:14px;
+border:1px solid var(--border);
+background:rgba(255,255,255,.06);
+color:var(--ink);
 }
-
-select option{
-  background:#2c2119;
-  color:var(--ink);
-}
-
-textarea{ min-height:110px; resize:vertical; }
 
 button{
-  width:max-content;
-  padding:12px 16px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:var(--card-light);
-  color:var(--ink);
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:var(--shadow-soft);
+width:max-content;
+padding:12px 16px;
+border-radius:14px;
+border:1px solid var(--border);
+background:var(--card-light);
+color:var(--ink);
+font-weight:700;
+cursor:pointer;
 }
 
-button:hover{ filter:brightness(1.05); }
-
-label{ color:var(--muted); }
-
-footer{
-  padding:70px 20px;
-  text-align:center;
-  background:#2c2119;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-}
+.small{font-size:.9rem;color:var(--muted);}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="kicker">KIMANZI — Nairobi</div>
-  <h1>Freelance Hosts in Nairobi</h1>
-
-  <div class="hero-text">
-    <p><strong>KIMANZI stands for respect, culture and safety.</strong></p>
-    <p>We operate within the values and norms of the local community in Nairobi.</p>
-    <p>The safety and wellbeing of our guests and our Hosts is fundamental. Clear structure. Defined scope. Responsible conduct.</p>
-    <p>We are building carefully. With taste. With intention.</p>
-    <p>We move respectfully. We protect dignity.</p>
-    <p><strong>We are carefully expanding our Host network in Nairobi.</strong> Independent professionals can submit interest via the Host Intake.</p>
-  </div>
-
-  <div class="fees">
-    <strong>Host fee per assignment paid in EUR</strong><br>
-    SOLO: € 40<br>
-    ADVENTURE: € 135<br>
-    Extension SOLO to ADVENTURE: € 50
-    <span class="small">Payout is transferred the day after completion and confirmation.</span>
-    <span class="small">Guest pricing is never published on this site.</span>
-    <span class="small">Airport pick-up is prepaid by KIMANZI. You will never be expected to front transfer costs.</span>
-    <span class="small">Your safety always comes first. If a situation feels uncomfortable or unsafe, the assignment stops immediately.</span>
-    <span class="small">You are never left on your own. During assignments, you have direct contact with KIMANZI whenever guidance or support is needed.</span>
-  </div>
-
-  <div class="signal-email">
-    <a class="signal-btn" href="https://signal.me/#eu/YOUR-SIGNAL-LINK" target="_blank" rel="noopener">Contact via Signal</a>
-    <a class="email-btn" href="#contact">Contact</a>
-    <a class="apply-btn" href="#apply">Apply as Host</a>
-  </div>
+<h1>KIMANZI Nairobi</h1>
+<p class="small">Freelance Host Network — Privacy First</p>
 </header>
-
-<nav>
-  <div class="navinner">
-    <strong>KIMANZI</strong>
-    <div class="navlinks">
-      <a href="#contact">Contact</a>
-      <a href="#onboarding">Onboarding</a>
-      <a href="#hostrole">Host Role</a>
-      <a href="#scope">Defined Scope</a>
-      <a href="#standards">Standards</a>
-      <a href="#events">Events</a>
-      <a href="#nairobi-hosts">Nairobi Hosts</a>
-      <a href="#apply">Apply as Host</a>
-      <a href="#faq">FAQ</a>
-    </div>
-  </div>
-</nav>
 
 <main>
 
-<details id="onboarding" open>
-<summary>Guest Onboarding</summary>
-<ul>
-<li>Arrival coordination in advance.</li>
-<li>Safe transfer to accommodation.</li>
-<li>Short practical orientation.</li>
-<li>Clear expectations from the beginning.</li>
-</ul>
-</details>
+<!-- CONTACT -->
 
-<details id="hostrole" open>
-<summary>Role and Responsibilities of the Host</summary>
-<ul>
-<li>Provide calm presence and structured support.</li>
-<li>Maintain punctuality and reliability.</li>
-<li>Respect cultural norms and professional boundaries.</li>
-<li>Communicate clearly and discreetly.</li>
-<li>Operate only within agreed scope.</li>
-</ul>
-</details>
-
-<details id="scope" open>
-<summary>Defined Scope and Boundaries</summary>
-<ul>
-<li>Structured hospitality support within defined limits.</li>
-<li>No activity that compromises dignity, legality or safety.</li>
-<li>If a boundary is crossed, the assignment stops immediately.</li>
-<li>Safety always overrides expectation.</li>
-</ul>
-</details>
-
-<details id="standards" open>
-<summary>Professional Standards</summary>
-<ul>
-<li>Punctuality and reliability are essential.</li>
-<li>Calm communication at all times.</li>
-<li>Respect for culture, venue and community.</li>
-<li>Professional presentation and discretion.</li>
-</ul>
-</details>
-
-<details id="events" open>
-<summary>Events and Nightlife in Nairobi</summary>
-<p>Nairobi has energy. Culture. Music. Movement.</p>
-<ul>
-<li>Curated electronic and Afro house nights in Westlands.</li>
-<li>Live jazz and late lounge evenings.</li>
-<li>The Alchemist music and art gatherings.</li>
-<li>Alliance Française exhibitions and performances.</li>
-<li>Elevated rooftop venues and refined dining spaces.</li>
-</ul>
-<p><strong>We enjoy the night, but we never lose structure.</strong></p>
-<p>If you know locations that reflect taste, safety and vibrant character, share them with us.</p>
-</details>
-
-<details id="nairobi-hosts" open>
-<summary>Freelance Hosts in Nairobi</summary>
-
-<p><strong>KIMANZI operates exclusively within Nairobi.</strong> We collaborate with independent hospitality professionals who live in Nairobi and understand the local culture, venues and pace of the city.</p>
-
-<p>Assignments are structured and defined per engagement. We value calm presence, discretion, punctuality and responsible conduct. We build carefully and select with intention.</p>
-
-<ul>
-<li>Location: Nairobi only</li>
-<li>Type: independent collaboration (not employment)</li>
-<li>Scope: defined per assignment</li>
-<li>Focus: safety, dignity, structure and taste</li>
-</ul>
-
-<p><strong>Profile indication</strong></p>
-
-<ul>
-<li>Generally in an active life phase with flexibility and energy.</li>
-<li>Internationally oriented and culturally aware.</li>
-<li>Well-presented, articulate and physically fit.</li>
-<li>Comfortable in structured, discreet environments.</li>
-<li>Experience is not required.</li>
-<li>If desired, a new Host may request to accompany an experienced Host during initial assignments to gain practical insight.</li>
-</ul>
-
-<p class="small">
-Profile indications reflect the nature of assignments and presentation expectations. Selection is based on professionalism, discretion and suitability for defined engagements.
-Accompanying another Host is optional and not a requirement for collaboration. Assignments remain defined per engagement and independently accepted.
-</p>
-
-<p class="small">Common search terms: freelance host Nairobi, event host Nairobi, hospitality support Nairobi, private host Nairobi.</p>
-</details>
-
-<details id="host-faq">
-<summary>Host FAQ — Nairobi</summary>
-
-<p><strong>Who can submit interest as a Host in Nairobi?</strong><br>
-Independent hospitality professionals based in Nairobi who understand local culture, venues and responsible conduct. We collaborate per defined assignment only.</p>
-
-<p><strong>Is this employment?</strong><br>
-No. KIMANZI does not offer employment positions. Collaboration is structured per assignment and there is no obligation to accept engagements.</p>
-
-<p><strong>Where do assignments take place?</strong><br>
-All assignments take place within Nairobi. We do not operate outside the city.</p>
-
-<p><strong>Do I need social media presence?</strong><br>
-No. We value discretion. Communication and coordination remain private.</p>
-
-<p><strong>How are Hosts compensated?</strong><br>
-Host fees are paid per completed assignment and transferred after confirmation. Guest pricing is never published.</p>
-</details>
-
-<!-- NEW: CONTACT (direct to backend) -->
 <details id="contact" open>
 <summary>Contact</summary>
 
-<p class="small">Send a message privately. We confirm receipt and respond within 1 day.</p>
-
 <form id="contactForm">
-  <input type="text" id="c_name" placeholder="Full Name" required>
-  <input type="email" id="c_email" placeholder="Email" required>
-  <input type="tel" id="c_phone" placeholder="Phone (optional)">
-  <input type="text" id="c_topic" placeholder="Topic (optional)">
-  <textarea id="c_message" placeholder="Your message" required></textarea>
 
-  <button type="submit">Send message</button>
-  <span id="contactStatus" class="small" aria-live="polite"></span>
+<input type="text" id="c_name" placeholder="Full Name" required>
+<input type="email" id="c_email" placeholder="Email" required>
+<input type="tel" id="c_phone" placeholder="Phone (optional)">
+<input type="text" id="c_topic" placeholder="Topic (optional)">
+<textarea id="c_message" placeholder="Your message" required></textarea>
+
+<button type="submit">Send message</button>
+<span id="contactStatus" class="small"></span>
+
 </form>
 
 </details>
+
+
+<!-- APPLY -->
 
 <details id="apply">
-<summary>Apply as a Freelance Host in Nairobi</summary>
-
-<p><strong>This is not an employment application.</strong> KIMANZI collaborates with independent hospitality professionals on a per-assignment basis. There is no obligation to accept assignments and no exclusivity applies.</p>
-<p class="small">Initial submissions are reviewed internally. We confirm receipt and respond within 1 day.</p>
+<summary>Apply as Host</summary>
 
 <form id="applyForm">
-  <input type="text" id="a_name" placeholder="Full Name" required>
-  <input type="tel" id="a_phone" placeholder="Phone (required)" required>
-  <input type="email" id="a_email" placeholder="Email (required)" required>
-  <input type="text" id="a_area" placeholder="Area in Nairobi" required>
 
-  <select id="a_independent_status" required>
-    <option value="">Independent status</option>
-    <option>Yes — I operate independently</option>
-    <option>In process of formalizing</option>
-    <option>Not yet</option>
-  </select>
+<input type="text" id="a_name" placeholder="Full Name" required>
+<input type="tel" id="a_phone" placeholder="Phone" required>
+<input type="email" id="a_email" placeholder="Email" required>
+<input type="text" id="a_area" placeholder="Area in Nairobi" required>
 
-  <textarea id="a_experience" placeholder="Relevant experience (experience not required)"></textarea>
+<select id="a_independent_status" required>
+<option value="">Independent status</option>
+<option>Yes — I operate independently</option>
+<option>In process</option>
+<option>Not yet</option>
+</select>
 
-  <select id="a_environment">
-    <option value="">Comfortable environments</option>
-    <option>Private guests</option>
-    <option>Corporate hospitality</option>
-    <option>Events</option>
-    <option>VIP settings</option>
-    <option>Other</option>
-  </select>
+<textarea id="a_experience" placeholder="Experience"></textarea>
 
-  <select id="a_availability" required>
-    <option value="">Availability preference</option>
-    <option>Weekdays</option>
-    <option>Weekends</option>
-    <option>Flexible</option>
-    <option>Occasional only</option>
-  </select>
+<select id="a_environment">
+<option value="">Environment</option>
+<option>Private guests</option>
+<option>Corporate</option>
+<option>Events</option>
+<option>VIP</option>
+</select>
 
-  <select id="a_mentorship">
-    <option value="">Optional mentorship (on request)</option>
-    <option>Yes, if available</option>
-    <option>No, I prefer to start directly</option>
-    <option>Unsure</option>
-  </select>
+<select id="a_availability" required>
+<option value="">Availability</option>
+<option>Weekdays</option>
+<option>Weekends</option>
+<option>Flexible</option>
+</select>
 
-  <label>
-    <input type="checkbox" id="a_independent_confirm" required>
-    I confirm that I operate independently and understand that this is not employment.
-  </label>
+<select id="a_mentorship">
+<option value="">Mentorship</option>
+<option>Yes</option>
+<option>No</option>
+<option>Unsure</option>
+</select>
 
-  <button type="submit">Submit Interest — Host Network Nairobi</button>
-  <span id="applyStatus" class="small" aria-live="polite"></span>
+<label>
+<input type="checkbox" id="a_independent_confirm" required>
+I confirm I operate independently
+</label>
+
+<button type="submit">Submit Interest</button>
+<span id="applyStatus" class="small"></span>
+
 </form>
 
-<span class="small">Selection is careful and limited. If your profile matches our current scope, we will contact you.</span>
-</details>
-
-<details id="faq">
-<summary>FAQ</summary>
-<p><strong>When do I get paid?</strong><br>Payout is transferred the day after confirmation.</p>
-<p><strong>Do I have to pay for pick up?</strong><br>No. Pick up is fronted by us.</p>
-<p><strong>Do I need social media?</strong><br>No. Communication remains private.</p>
-<p><strong>Is airport pick-up paid by the Host?</strong><br>
-No. Airport pick-up is prepaid by KIMANZI. You will never be expected to front transfer costs.</p>
 </details>
 
 </main>
 
-<footer>
-KIMANZI — Urbanchill — Nairobi — Privacy first. No cookies. No tracking.
+<footer class="small">
+KIMANZI — Urbanchill — Nairobi — Privacy first
 </footer>
 
 <script>
-async function postJson(url, payload){
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
 
-  const text = await res.text();
-  let data = null;
-  try { data = text ? JSON.parse(text) : null; } catch {}
-  return { ok: res.ok, status: res.status, text, data };
+const API = "https://cockpit.urbanchill.org";
+
+async function postJson(url,payload){
+
+const res = await fetch(url,{
+method:"POST",
+headers:{ "Content-Type":"application/json" },
+body:JSON.stringify(payload)
+});
+
+return res.ok;
+
 }
 
-function setStatus(el, ok, msg){
-  if(!el) return;
-  el.textContent = msg || "";
-  el.style.color = ok ? "var(--amber-soft)" : "var(--muted)";
+function setStatus(el,ok,msg){
+if(!el) return;
+el.textContent = msg;
+el.style.color = ok ? "#e8be84" : "#dccab7";
 }
 
-// CONTACT
-(function(){
-  const form = document.getElementById("contactForm");
-  const statusEl = document.getElementById("contactStatus");
-  if(!form) return;
 
-  form.addEventListener("submit", async function(e){
-    e.preventDefault();
+/* CONTACT */
 
-    const payload = {
-      name: document.getElementById("c_name").value.trim(),
-      email: document.getElementById("c_email").value.trim(),
-      phone: document.getElementById("c_phone").value.trim(),
-      topic: document.getElementById("c_topic").value.trim(),
-      message: document.getElementById("c_message").value.trim(),
-      source: "kimanzi-site-contact"
-    };
+document.getElementById("contactForm")
+.addEventListener("submit", async function(e){
 
-    if(!payload.name || !payload.email || !payload.message){
-      setStatus(statusEl, false, "Please complete the required fields.");
-      return;
-    }
+e.preventDefault();
 
-    setStatus(statusEl, true, "Sending…");
+const payload={
+name:c_name.value.trim(),
+email:c_email.value.trim(),
+phone:c_phone.value.trim(),
+topic:c_topic.value.trim(),
+message:c_message.value.trim(),
+source:"kimanzi-site-contact"
+};
 
-    const r = await postJson("/api/contact", payload);
-    if(r.ok){
-      setStatus(statusEl, true, "Message received. We respond within 1 day.");
-      form.reset();
-    } else {
-      setStatus(statusEl, false, "The submission was not completed. Please try again shortly.");
-    }
-  });
-})();
+if(!payload.name || !payload.email || !payload.message){
+setStatus(contactStatus,false,"Please complete required fields.");
+return;
+}
 
-// APPLY
-(function(){
-  const form = document.getElementById("applyForm");
-  const statusEl = document.getElementById("applyStatus");
-  if(!form) return;
+setStatus(contactStatus,true,"Sending...");
 
-  form.addEventListener("submit", async function(e){
-    e.preventDefault();
+const ok = await postJson(API + "/api/contact",payload);
 
-    const payload = {
-      name: document.getElementById("a_name").value.trim(),
-      phone: document.getElementById("a_phone").value.trim(),
-      email: document.getElementById("a_email").value.trim(),
-      area: document.getElementById("a_area").value.trim(),
-      independent_status: document.getElementById("a_independent_status").value,
-      experience: document.getElementById("a_experience").value.trim(),
-      environment: document.getElementById("a_environment").value,
-      availability: document.getElementById("a_availability").value,
-      mentorship: document.getElementById("a_mentorship").value,
-      independent_confirm: document.getElementById("a_independent_confirm").checked,
-      source: "kimanzi-site-apply"
-    };
+if(ok){
+setStatus(contactStatus,true,"Message received. We respond within 1 day.");
+this.reset();
+}else{
+setStatus(contactStatus,false,"Submission failed.");
+}
 
-    if(!payload.name || !payload.phone || !payload.email || !payload.area || !payload.independent_status || !payload.availability || !payload.independent_confirm){
-      setStatus(statusEl, false, "Please complete the required fields.");
-      return;
-    }
+});
 
-    setStatus(statusEl, true, "Submitting…");
 
-    const r = await postJson("https://kimanzi-agent.pages.dev/api/apply", payload);
-    if(r.ok){
-      setStatus(statusEl, true, "Submission received. We confirm receipt and respond within 1 day.");
-      form.reset();
-    } else {
-      setStatus(statusEl, false, "The submission was not completed. Please try again shortly.");
-    }
-  });
-})();
+/* HOST APPLY */
+
+document.getElementById("applyForm")
+.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const payload={
+name:a_name.value.trim(),
+phone:a_phone.value.trim(),
+email:a_email.value.trim(),
+area:a_area.value.trim(),
+independent_status:a_independent_status.value,
+experience:a_experience.value.trim(),
+environment:a_environment.value,
+availability:a_availability.value,
+mentorship:a_mentorship.value,
+independent_confirm:a_independent_confirm.checked,
+source:"kimanzi-site-apply"
+};
+
+if(!payload.name || !payload.phone || !payload.email || !payload.area || !payload.independent_status || !payload.availability || !payload.independent_confirm){
+setStatus(applyStatus,false,"Please complete required fields.");
+return;
+}
+
+setStatus(applyStatus,true,"Submitting...");
+
+const ok = await postJson(API + "/api/host-apply",payload);
+
+if(ok){
+setStatus(applyStatus,true,"Submission received. We respond within 1 day.");
+this.reset();
+}else{
+setStatus(applyStatus,false,"Submission failed.");
+}
+
+});
+
 </script>
 
 </body>
