@@ -4,64 +4,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>KIMANZI Nairobi</title>
+<title>KIMANZI Nairobi — Independent Host Network</title>
 
 <style>
 :root{
-  --bg:#0b0d12;
-  --surface:#12141a;
-  --surface-soft:#161a22;
+  --bg:#0f141b;
+  --surface:#151b23;
+  --surface-soft:#1b222c;
 
-  --text:#f5f5f5;
-  --muted:#9aa3b2;
+  --text:#f2f4f7;
+  --muted:#a7b0bf;
 
-  --gold:#e6c27a;
+  --gold:#d6a85f;
 
-  --border:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,.08);
 }
 
 /* RESET */
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0;}
 
 body{
 font-family:system-ui,-apple-system,Segoe UI;
 background:var(--bg);
 color:var(--text);
-line-height:1.6;
+line-height:1.7;
 }
 
-/* HEADER */
+/* HERO */
 header{
-padding:120px 20px 80px;
+padding:160px 20px 120px;
 text-align:center;
+
+background:
+linear-gradient(rgba(10,12,16,.65), rgba(10,12,16,.9)),
+url("hero.jpg") center top / cover no-repeat;
+
 border-bottom:1px solid var(--border);
 }
 
 .kicker{
 display:inline-block;
-padding:8px 18px;
+padding:10px 22px;
 border-radius:999px;
 border:1px solid var(--border);
-background:rgba(255,255,255,0.04);
-color:var(--gold);
-font-size:12px;
+background:rgba(255,255,255,.04);
 letter-spacing:.2em;
-text-transform:uppercase;
-margin-bottom:20px;
+font-size:.75rem;
+color:var(--gold);
 }
 
 h1{
+margin:30px 0 20px;
 font-size:clamp(2.5rem,4vw,3.2rem);
-margin-bottom:20px;
+font-weight:700;
 }
 
 .hero-text{
-max-width:800px;
-margin:0 auto 30px;
+max-width:820px;
+margin:0 auto 40px;
 color:var(--muted);
 }
 
@@ -69,52 +69,58 @@ color:var(--muted);
 color:var(--gold);
 }
 
-/* FEES */
+/* CARD */
 .fees{
-max-width:800px;
+max-width:820px;
 margin:40px auto;
 padding:30px;
-
 background:var(--surface);
 border-radius:18px;
 border:1px solid var(--border);
-
 text-align:center;
+}
+
+.small{
+display:block;
+margin-top:8px;
+font-size:.9rem;
+color:var(--muted);
 }
 
 /* BUTTONS */
 .signal-email{
-margin-top:30px;
+margin-top:40px;
 display:flex;
-gap:12px;
+gap:14px;
 justify-content:center;
 flex-wrap:wrap;
 }
 
 .signal-btn,
 .email-btn{
-background:var(--surface-soft);
-color:var(--text);
 padding:12px 18px;
 border-radius:10px;
-text-decoration:none;
+background:var(--surface-soft);
 border:1px solid var(--border);
+color:var(--text);
+text-decoration:none;
 }
 
 .apply-btn{
-background:var(--gold);
-color:#000;
 padding:12px 18px;
 border-radius:10px;
-text-decoration:none;
+background:var(--gold);
+color:#000;
 font-weight:600;
+text-decoration:none;
 }
 
 /* NAV */
 nav{
 position:sticky;
 top:0;
-background:var(--bg);
+background:rgba(15,20,27,.9);
+backdrop-filter:blur(6px);
 border-bottom:1px solid var(--border);
 }
 
@@ -131,6 +137,7 @@ flex-wrap:wrap;
 margin:0 12px;
 color:var(--muted);
 text-decoration:none;
+font-size:.95rem;
 }
 
 .navlinks a:hover{
@@ -139,43 +146,51 @@ color:var(--gold);
 
 /* MAIN */
 main{
-max-width:1100px;
+max-width:1000px;
 margin:auto;
 padding:80px 20px;
 }
 
-/* DETAILS */
+/* VISUAL BREAK */
+.visual{
+height:280px;
+border-radius:18px;
+margin:60px 0;
+background:
+linear-gradient(rgba(10,12,16,.4), rgba(10,12,16,.7)),
+url("lounge.jpg") center/cover no-repeat;
+}
+
+/* CONTENT */
 details{
-margin-bottom:24px;
-padding:24px;
+margin-bottom:28px;
+padding:26px;
 background:var(--surface);
-border-radius:16px;
+border-radius:18px;
 border:1px solid var(--border);
 }
 
 summary{
-cursor:pointer;
 font-weight:600;
-margin-bottom:10px;
+cursor:pointer;
+margin-bottom:12px;
 color:var(--gold);
+}
+
+p, ul{
+color:var(--muted);
 }
 
 ul{
 padding-left:18px;
-color:var(--muted);
-}
-
-p{
-color:var(--muted);
-margin-bottom:10px;
 }
 
 /* FORMS */
 form{
-margin-top:20px;
+margin-top:16px;
 display:grid;
 gap:12px;
-max-width:700px;
+max-width:720px;
 }
 
 input, textarea, select{
@@ -203,12 +218,11 @@ cursor:pointer;
 footer{
 padding:60px 20px;
 text-align:center;
-background:#050507;
+background:#0a0d12;
 color:var(--muted);
 border-top:1px solid var(--border);
 }
 </style>
-
 </head>
 
 <body>
@@ -219,21 +233,33 @@ border-top:1px solid var(--border);
 
   <div class="hero-text">
     <p><strong>KIMANZI works with independent Hosts in Nairobi.</strong></p>
-    <p>We build a carefully selected network of professionals who operate independently.</p>
+    <p>We build a carefully selected network of professionals who operate independently and collaborate with KIMANZI on a per-assignment basis.</p>
     <p>Defined scope. Clear structure. Full discretion.</p>
+    <p>Each assignment is accepted individually. There is no obligation and no exclusivity.</p>
+    <p>KIMANZI protects the guest experience. The Host determines the execution within the agreed scope.</p>
+    <p><strong>We are expanding carefully, with taste and intention.</strong></p>
   </div>
 
   <div class="fees">
-    <strong>Service structure per assignment</strong><br><br>
+    <strong>Service structure per assignment</strong><br>
     SOLO: € 40<br>
     ADVENTURE: € 135<br>
-    Extension: € 50
+    Extension SOLO to ADVENTURE: € 50
+
+    <span class="small">Clear. Fixed. No surprises.</span>
+    <span class="small">Each assignment stands on its own.</span>
+    <span class="small">The Host operates independently and invoices KIMANZI after completion.</span>
+    <span class="small">Payment is processed after confirmation.</span>
+    <span class="small">No obligation. No exclusivity.</span>
+    <span class="small">Guest pricing is not published on this site.</span>
+    <span class="small">Airport transfer is arranged and prepaid by KIMANZI.</span>
+    <span class="small">Safety comes first. If unsafe, the assignment ends immediately.</span>
   </div>
 
   <div class="signal-email">
     <a class="signal-btn" href="#">Signal</a>
-    <a class="email-btn" href="#">Contact</a>
-    <a class="apply-btn" href="#">Apply</a>
+    <a class="email-btn" href="#contact">Contact</a>
+    <a class="apply-btn" href="#apply">Apply</a>
   </div>
 </header>
 
@@ -241,47 +267,63 @@ border-top:1px solid var(--border);
   <div class="navinner">
     <strong>KIMANZI</strong>
     <div class="navlinks">
-      <a href="#">Contact</a>
-      <a href="#">Onboarding</a>
-      <a href="#">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#onboarding">Onboarding</a>
+      <a href="#apply">Apply</a>
     </div>
   </div>
 </nav>
 
 <main>
 
+<div class="visual"></div>
+
 <details open>
 <summary>Assignment Coordination</summary>
 <ul>
-<li>Arrival coordination</li>
-<li>Safe transfer</li>
-<li>Clear expectations</li>
+<li>Arrival coordination in advance.</li>
+<li>Safe transfer to accommodation.</li>
+<li>Clear expectations before acceptance.</li>
 </ul>
 </details>
 
 <details open>
-<summary>Host Role</summary>
+<summary>Role of the Host</summary>
 <ul>
-<li>Structured hospitality support</li>
-<li>Independent execution</li>
-<li>Discretion & awareness</li>
+<li>Independent, structured hospitality support.</li>
+<li>Discretion and communication are central.</li>
+<li>Execution within defined boundaries.</li>
 </ul>
 </details>
 
-<details open>
+<details id="contact" open>
 <summary>Contact</summary>
+
 <form>
-<input placeholder="Name">
-<input placeholder="Email">
+<input type="text" placeholder="Full Name">
+<input type="email" placeholder="Email">
 <textarea placeholder="Message"></textarea>
 <button>Send</button>
 </form>
+
+</details>
+
+<details id="apply">
+<summary>Submit Interest</summary>
+
+<form>
+<input type="text" placeholder="Full Name">
+<input type="email" placeholder="Email">
+<input type="text" placeholder="Area in Nairobi">
+<button>Submit</button>
+</form>
+
 </details>
 
 </main>
 
 <footer>
-KIMANZI — Nairobi
+KIMANZI — Urbanchill — Nairobi — Privacy first.
 </footer>
 
 </body>
