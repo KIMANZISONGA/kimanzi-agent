@@ -11,16 +11,21 @@
   --bg:#0f141b;
   --surface:#151b23;
   --surface-soft:#1b222c;
+
   --text:#f2f4f7;
-  --muted:#a7b0bf;
+  --muted:#aeb6c2;
+
   --gold:#d6a85f;
+
   --border:rgba(255,255,255,.08);
+  --maxw:1100px;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
+*{box-sizing:border-box}
 
 body{
-font-family:system-ui,-apple-system,Segoe UI;
+margin:0;
+font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
 background:var(--bg);
 color:var(--text);
 line-height:1.7;
@@ -30,9 +35,11 @@ line-height:1.7;
 header{
 padding:160px 20px 120px;
 text-align:center;
+
 background:
 linear-gradient(rgba(10,12,16,.45), rgba(10,12,16,.75)),
 url("hero.jpg") center top / cover no-repeat;
+
 border-bottom:1px solid var(--border);
 }
 
@@ -41,79 +48,87 @@ display:inline-block;
 padding:10px 22px;
 border-radius:999px;
 border:1px solid var(--border);
-background:rgba(255,255,255,.04);
-letter-spacing:.2em;
-font-size:.75rem;
+background:rgba(255,255,255,.05);
+letter-spacing:.22em;
+text-transform:uppercase;
 color:var(--gold);
 }
 
 h1{
-margin:30px 0 20px;
-font-size:clamp(2.5rem,4vw,3.2rem);
+margin:28px 0 20px;
+font-size:clamp(2.4rem,4vw,3.2rem);
+color:#fff;
 }
 
 .hero-text{
-max-width:820px;
-margin:0 auto 40px;
+max-width:880px;
+margin:0 auto 36px;
 color:var(--muted);
 }
 
-.hero-text strong{ color:var(--gold); }
+.hero-text strong{
+color:var(--gold);
+}
 
+/* FEES */
 .fees{
-max-width:820px;
-margin:40px auto;
+max-width:880px;
+margin:0 auto;
 padding:30px;
-background:var(--surface);
-border-radius:18px;
+background:rgba(20,25,35,.85);
+border-radius:20px;
 border:1px solid var(--border);
+box-shadow:0 12px 30px rgba(0,0,0,.35);
+backdrop-filter:blur(6px);
 text-align:center;
 }
 
 .small{
-display:block;
-margin-top:8px;
 font-size:.9rem;
-color:var(--muted);
+color:#9aa4b2;
+display:block;
+margin-top:6px;
 }
 
+/* BUTTONS */
 .signal-email{
-margin-top:40px;
+margin-top:30px;
 display:flex;
-gap:14px;
+gap:20px;
 justify-content:center;
 flex-wrap:wrap;
 }
 
 .signal-btn,
 .email-btn{
-padding:12px 18px;
-border-radius:10px;
+padding:14px 22px;
+border-radius:12px;
 background:var(--surface-soft);
 border:1px solid var(--border);
-color:var(--text);
+color:#fff;
 text-decoration:none;
 }
 
 .apply-btn{
-padding:12px 18px;
-border-radius:10px;
+padding:14px 22px;
+border-radius:12px;
 background:var(--gold);
 color:#000;
-font-weight:600;
+font-weight:700;
 text-decoration:none;
 }
 
+/* NAV */
 nav{
 position:sticky;
 top:0;
-background:rgba(15,20,27,.9);
-backdrop-filter:blur(6px);
+background:rgba(15,20,27,.85);
+backdrop-filter:blur(8px);
 border-bottom:1px solid var(--border);
 }
 
 .navinner{
-max-width:1100px;
+max-width:var(--maxw);
 margin:auto;
 padding:16px 20px;
 display:flex;
@@ -127,38 +142,48 @@ color:var(--muted);
 text-decoration:none;
 }
 
-.navlinks a:hover{ color:var(--gold); }
+.navlinks a:hover{
+color:var(--gold);
+}
 
+/* MAIN */
 main{
-max-width:1000px;
+max-width:var(--maxw);
 margin:auto;
 padding:80px 20px;
 }
 
+/* CONTENT */
 details{
-margin-bottom:28px;
+margin-bottom:30px;
 padding:26px;
-background:var(--surface);
+background:rgba(20,25,35,.75);
 border-radius:18px;
 border:1px solid var(--border);
+backdrop-filter:blur(6px);
 }
 
 summary{
-font-weight:600;
-cursor:pointer;
+font-weight:700;
 margin-bottom:12px;
 color:var(--gold);
+cursor:default;
 }
 
-p, ul{ color:var(--muted); }
+p, ul{
+color:var(--muted);
+}
 
-ul{ padding-left:18px; }
+ul{
+padding-left:18px;
+}
 
+/* FORMS */
 form{
-margin-top:16px;
+margin-top:14px;
 display:grid;
 gap:12px;
-max-width:720px;
+max-width:700px;
 }
 
 input, textarea, select{
@@ -166,22 +191,25 @@ padding:12px;
 border-radius:10px;
 border:1px solid var(--border);
 background:var(--surface-soft);
-color:var(--text);
+color:#fff;
 }
 
-textarea{ min-height:110px; }
+textarea{
+min-height:110px;
+}
 
 button{
-padding:12px 16px;
+padding:12px;
 border-radius:10px;
 border:none;
 background:var(--surface-soft);
-color:var(--text);
+color:#fff;
 cursor:pointer;
 }
 
+/* FOOTER */
 footer{
-padding:60px 20px;
+padding:60px;
 text-align:center;
 background:#0a0d12;
 color:var(--muted);
@@ -221,6 +249,33 @@ border-top:1px solid var(--border);
 
 <main>
 
+<details open>
+<summary>Assignment Coordination</summary>
+<ul>
+<li>Arrival coordination in advance.</li>
+<li>Safe transfer to accommodation where relevant.</li>
+<li>Clear scope and expectations before acceptance.</li>
+</ul>
+</details>
+
+<details open>
+<summary>Role of the Host</summary>
+<ul>
+<li>Calm presence and structured hospitality support.</li>
+<li>Independent execution within defined scope.</li>
+<li>Discretion and awareness are central.</li>
+</ul>
+</details>
+
+<details open>
+<summary>Professional Framework</summary>
+<ul>
+<li>Punctuality and reliability.</li>
+<li>Clear expectations.</li>
+<li>Professional conduct.</li>
+</ul>
+</details>
+
 <details id="contact" open>
 <summary>Contact</summary>
 
@@ -234,7 +289,7 @@ border-top:1px solid var(--border);
 
 </details>
 
-<details id="apply">
+<details id="apply" open>
 <summary>Submit Interest</summary>
 
 <form id="applyForm">
@@ -265,29 +320,23 @@ async function postJson(url, payload){
   return res.ok;
 }
 
-document.getElementById("contactForm").addEventListener("submit", async e=>{
+contactForm.addEventListener("submit", async e=>{
   e.preventDefault();
-
-  const payload={
+  const ok=await postJson(API_BASE+"/api/contact",{
     name:c_name.value,
     email:c_email.value,
     message:c_message.value
-  };
-
-  const ok=await postJson(API_BASE+"/api/contact",payload);
+  });
   contactStatus.textContent = ok ? "Sent" : "Error";
 });
 
-document.getElementById("applyForm").addEventListener("submit", async e=>{
+applyForm.addEventListener("submit", async e=>{
   e.preventDefault();
-
-  const payload={
+  const ok=await postJson(API_BASE+"/api/host-apply",{
     name:a_name.value,
     email:a_email.value,
     area:a_area.value
-  };
-
-  const ok=await postJson(API_BASE+"/api/host-apply",payload);
+  });
   applyStatus.textContent = ok ? "Submitted" : "Error";
 });
 </script>
