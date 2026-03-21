@@ -706,8 +706,22 @@ function setStatus(el, ok, msg){
     setStatus(statusEl, true, "Submitting…");
 
     try {
-      const r = await postJson(API_BASE + "/api/host-apply", payload);
-
+const r = await postJson(API_BASE + "/api/intake", {
+  name: payload.name,
+  email: payload.email,
+  phone: payload.phone,
+  service: "host_interest",
+  message: payload.experience || "Host submission",
+  arrival_date: "",
+  notes: JSON.stringify({
+    area: payload.area,
+    independent_status: payload.independent_status,
+    environment: payload.environment,
+    availability: payload.availability,
+    mentorship: payload.mentorship
+  }),
+  source: "kimanzi-host"
+});
       if(r.ok){
         setStatus(statusEl, true, "Submission received. We confirm receipt and respond within 1 day.");
         form.reset();
