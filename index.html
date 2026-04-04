@@ -660,7 +660,7 @@ function setStatus(el, ok, msg){
     setStatus(statusEl, true, "Sending…");
 
     try {
-      const r = await postJson(API_BASE + "/api/messages", payload);
+      const r = await postJson(API_BASE + "/api/contact/create", {   name: payload.name,   email: payload.email,   phone: payload.phone,   topic: payload.topic,   notes: payload.message,          // let op: worker verwacht body.notes als message   source: payload.source           // optioneel, maar mag mee (worker gebruikt nu "website" hardcoded) });
 
       if(r.ok){
         setStatus(statusEl, true, "Message received. We respond within 1 day.");
