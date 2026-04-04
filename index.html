@@ -660,7 +660,14 @@ function setStatus(el, ok, msg){
     setStatus(statusEl, true, "Sending…");
 
     try {
-      const r = await postJson(API_BASE + "/api/contact/create", {   name: payload.name,   email: payload.email,   phone: payload.phone,   topic: payload.topic,   notes: payload.message,          // let op: worker verwacht body.notes als message   source: payload.source           // optioneel, maar mag mee (worker gebruikt nu "website" hardcoded) });
+      const r = await postJson(API_BASE + "/api/contact/create", {
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        topic: payload.topic || "website",
+        notes: payload.message,
+        intake_id: null
+      });
 
       if(r.ok){
         setStatus(statusEl, true, "Message received. We respond within 1 day.");
@@ -706,23 +713,24 @@ function setStatus(el, ok, msg){
     setStatus(statusEl, true, "Submitting…");
 
     try {
-const r = await postJson(API_BASE + "/api/intake", {
+const r = await postJson(API_BASE + "/api/intake/create", {
   name: payload.name,
   email: payload.email,
   phone: payload.phone,
-  service: "host_interest",
-  message: payload.experience || "Host submission",
+  service: "SOLO",
   arrival_date: "",
+  verified_identity: "",
   notes: JSON.stringify({
+    kind: "host_application",
     area: payload.area,
     independent_status: payload.independent_status,
+    experience: payload.experience,
     environment: payload.environment,
     availability: payload.availability,
     mentorship: payload.mentorship
-  }),
-  source: "kimanzi-host"
+  })
 });
-      if(r.ok){
+if(r.ok){
         setStatus(statusEl, true, "Submission received. We confirm receipt and respond within 1 day.");
         form.reset();
       } else {
