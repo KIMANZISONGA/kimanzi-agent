@@ -780,6 +780,24 @@ nav.kn-nav{
   border-top:1px solid var(--border-soft);
 }
 
+/* SUCCESS DETAIL (post-submission expanded message) */
+.kn-success-detail{
+  background:var(--surface-soft);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius-md);
+  padding:16px 20px;
+  margin-top:14px;
+  font-size:.94rem;
+  color:var(--text-soft);
+  line-height:1.65;
+}
+.kn-success-detail p{
+  margin:0;
+}
+.kn-success-detail p + p{
+  margin-top:10px;
+}
+
 /* EXPANDABLE (inline collapse) */
 .kn-expandable{
   margin-top:36px;
@@ -965,7 +983,8 @@ nav.kn-nav{
         <h1>Independent hosts and selected partners. <em>One assignment at a time.</em></h1>
 
         <p class="kn-hero-lead"><strong>KIMANZI is for the people on the ground.</strong> We coordinate UrbanChill assignments in Nairobi — airport pickups, first-week orientation, and ongoing local support for professionals relocating to the city.</p>
-        <p class="kn-hero-lead">If you do hospitality, transport, or expat-support work in Nairobi already, KIMANZI is meant to be a useful extra channel — not a primary one. Clear scope, fixed fee, paid quickly. No employment, no exclusivity, no minimum availability.</p>
+        <p class="kn-hero-lead"><strong>For hosts in Nairobi</strong>, this is meant as an additional channel — clear scope, fixed fee, paid quickly. No employment, no exclusivity, no minimum availability.</p>
+        <p class="kn-hero-lead"><strong>For partners</strong> — operators in Kenya or organisations sending people from the Netherlands — we coordinate UrbanChill assignments end-to-end with a single contact and an in-person selection process.</p>
 
         <div class="kn-hero-actions">
           <a href="#apply" class="kn-btn-primary">Submit professional interest</a>
@@ -986,7 +1005,7 @@ nav.kn-nav{
   <!-- THE WORK -->
   <section class="kn-section" id="work">
     <div class="kn-section-head">
-      <span class="kn-section-eyebrow">What you'd be doing</span>
+      <span class="kn-section-eyebrow">What KIMANZI coordinates</span>
       <h2>Practical, time-boxed, in-person work</h2>
       <p class="lead">Most KIMANZI assignments are a single day, or a week of light coordination. The work is concrete: meet someone at JKIA, hand them their keys, take them to the supermarket, walk them through Westlands, drive them to KRA. No mystery, no atmosphere talk.</p>
     </div>
@@ -998,17 +1017,29 @@ nav.kn-nav{
       </div>
       <div class="kn-work-card">
         <h3>Extra days</h3>
-        <p>Booked alongside an Arrival when the guest needs more practical time on the ground: housing visits, paperwork at KRA or immigration, a school visit, a bank appointment. You set the order and pace.</p>
+        <p>Booked alongside an Arrival when the guest needs more practical time on the ground: housing visits, paperwork at KRA or immigration, a school visit, a bank appointment. The host sets the order and pace.</p>
       </div>
       <div class="kn-work-card">
         <h3>Concierge follow-up</h3>
-        <p>For guests on a monthly retainer after their first week. Mostly remote — WhatsApp questions, vendor recommendations, occasional small tasks if you're free and willing. Light, ongoing, optional.</p>
+        <p>For guests on a monthly retainer after their first week. Mostly remote — WhatsApp questions, vendor recommendations, occasional small tasks. Response within a working day, not on-call.</p>
       </div>
       <div class="kn-work-card">
         <h3>Special requests</h3>
-        <p>Occasionally a guest asks for something custom — a multi-day trip out of Nairobi, an introduction to a specific community, deeper logistical support. We scope these per request and ask whether you want it.</p>
+        <p>Occasionally a guest asks for something custom — a multi-day trip out of Nairobi, an introduction to a specific community, deeper logistical support. We scope these per request and discuss with the host before confirming.</p>
       </div>
     </div>
+  </section>
+
+  <!-- WHO YOU'RE MEETING -->
+  <section class="kn-section" id="guests">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">Who you're meeting</span>
+      <h2>What our guests are dealing with</h2>
+    </div>
+
+    <p>The guests UrbanChill sends have flown a long way and usually land tired. Some arrive in the morning, exhausted before the day starts. Many arrive late at night — and in most major cities, including Nairobi, walking out alone after dark is not something a newcomer wants to figure out on their first evening.</p>
+
+    <p>They're not on holiday. Nairobi is a working base for them — one hour offset from Western European business hours, no jet-lag week to lose, real meetings starting soon. Whether you're meeting them at the airport, hosting them in your apartment, or feeding them on their second night, the same context applies: their first days here are not a vacation. They land already needing things to work.</p>
   </section>
 
   <!-- FEES -->
@@ -1050,7 +1081,7 @@ nav.kn-nav{
           </tr>
           <tr>
             <th>Concierge</th>
-            <td class="scope">15% of the guest's monthly retainer (rounded to €23), paid for as long as they stay subscribed. Mostly remote.</td>
+            <td class="scope">€23/month while the guest stays subscribed (about 15% of their retainer). Mostly remote.</td>
             <td class="fee">€23 / mo</td>
             <td class="extras">—</td>
           </tr>
@@ -1249,6 +1280,7 @@ nav.kn-nav{
           <li>Comfortable working with international clients</li>
           <li>Clear about what you do and what you don't</li>
         </ul>
+        <p style="margin-top:14px;">Partner selection happens in person — we visit, we have a conversation, we see how the operation runs.</p>
       </div>
 
       <div class="kn-partner-card">
@@ -1257,7 +1289,7 @@ nav.kn-nav{
         <p>Companies, NGOs, research institutes and relocation specialists in the Netherlands whose staff land in Nairobi for assignments — short or long. KIMANZI is the operational layer behind UrbanChill: a single Dutch contact, fixed prices, an invoice in EUR, and reliable people on the ground.</p>
         <ul>
           <li>One contract, recurring use across multiple staff members</li>
-          <li>Predictable scope and pricing — no exposure to local complications</li>
+          <li>Predictable scope and pricing — KIMANZI handles the on-the-ground coordination so your staff can focus on why they're here</li>
           <li>Discreet handling of arrivals, family logistics, briefings</li>
           <li>Volume-based arrangements for organisations with regular Nairobi rotation</li>
         </ul>
@@ -1281,17 +1313,23 @@ nav.kn-nav{
       </div>
       <div class="kn-founder-text">
         <span class="kn-section-eyebrow">Behind KIMANZI</span>
-        <h2>Why this exists</h2>
+        <h2>Why I started this</h2>
 
-        <p>I built UrbanChill and KIMANZI because the kind of operation I'd want to use myself — for staff, for friends arriving in a new city, for anyone making a serious move to Nairobi — didn't exist in a form I trusted.</p>
+        <p>Travelling showed me that the first hours in a new place can feel heavy: confusion, hunger, noise, fatigue. Too much at once.</p>
 
-        <p>What I mean by that: clear scope, fixed pricing, a real human on the other end of the phone, and hosts who are paid fairly and treated as the professionals they are. Not a platform. Not an aggregator. A small, accountable operation.</p>
+        <p>You walk into your apartment after a long flight. There's coffee, there's water — but no bread, no yoghurt, nothing for a simple breakfast. So instead of resting, you go out again. Past unfamiliar streets, into a supermarket where the brands are different and the queue takes longer than expected.</p>
 
-        <p>For hosts, that means working with someone who pays within two days of receipts arriving, never hides behind a ticketing system, and won't expect you to be on call. For guests, a reliable arrival in Nairobi handled by people who actually know the city. For partners — Kenya-side or Netherlands-side — a single contact who takes responsibility for what they coordinate.</p>
+        <p>Or you've arrived at eleven at night. The last thing you want to think about is whether anything is still open, where a safe route runs at this hour, or what tomorrow morning will need from you before it has even started.</p>
 
-        <p>The model is small on purpose. We grow when the work and the people both fit, not before. I'd rather decline a partnership than dilute the standard we hold ourselves to. And I'd rather have one careful conversation than a rushed signup — so if you're considering applying as a host, partnering with us in Kenya, or setting up an arrangement from the Netherlands, send a message and we'll talk.</p>
+        <p>You wanted to land. You're still landing.</p>
 
-        <p class="signature">— [Your name]<span>Founder, UrbanChill &amp; KIMANZI</span></p>
+        <p>These are small things. Not catastrophes. But it's the small things that decide whether someone starts their first week feeling competent, or starts it tired and behind.</p>
+
+        <p>UrbanChill exists to take those small things off your plate. KIMANZI exists to do that with the right people on the ground — independent professionals in Nairobi who know which shops open early, which neighbourhood grocery stocks the brand you'd want, and how to make the first morning feel like part of arriving rather than another errand to run.</p>
+
+        <p>I'm building this slowly because the people I work with are the operation. I'd rather decline a partnership than dilute the standard. And I'd rather have one careful conversation than a rushed signup — so if you're considering applying as a host, partnering with us in Kenya, or setting up an arrangement from the Netherlands, send a message and we'll talk.</p>
+
+        <p class="signature">— Stephen L.<span>Founder, UrbanChill &amp; KIMANZI</span></p>
       </div>
     </div>
   </section>
@@ -1374,6 +1412,10 @@ nav.kn-nav{
         <button type="submit">Submit professional interest</button>
         <span class="status" id="applyStatus" aria-live="polite"></span>
 
+        <div class="kn-success-detail" id="applySuccessDetail" hidden>
+          <p>Thanks — we've got it. Stephen reads every host application personally, usually the same working day. If your profile fits what we're looking for right now, you'll hear back with a few questions and a proposal for a short call. If we don't have a fit at this moment, you'll still hear back — we don't leave applications hanging.</p>
+        </div>
+
         <p class="privacy-note">We store the information you submit here only to assess fit and contact you. No third-party sharing, no marketing list, no cookies on this site.</p>
       </form>
     </div>
@@ -1419,6 +1461,11 @@ nav.kn-nav{
 
         <button type="submit">Send message</button>
         <span class="status" id="contactStatus" aria-live="polite"></span>
+
+        <div class="kn-success-detail" id="contactSuccessDetail" hidden>
+          <p>Thanks — message received. Stephen reads partner enquiries personally and replies the same working day, usually with a few questions back. For Kenya-based partners, the conversation often moves to a visit on location. For Netherlands-side enquiries, we set up a call.</p>
+          <p>Either way, we don't run on automated workflows — every reply will be a real one.</p>
+        </div>
 
         <p class="privacy-note">Your message reaches KIMANZI directly. No third-party sharing, no marketing list.</p>
       </form>
@@ -1552,7 +1599,7 @@ nav.kn-nav{
   <div class="kn-footer-inner">
     <div>
       <img src="logo.png" alt="KIMANZI" style="height:48px;width:auto;display:block;margin-bottom:14px;" />
-      <p>Coordination layer for UrbanChill in Nairobi. A KIMANZI guest is an UrbanChill client.</p>
+      <p>Coordination layer for UrbanChill in Nairobi.</p>
       <p>Looking to book services as a guest? Visit <a href="https://urbanchill.nl">urbanchill.nl</a>.</p>
     </div>
     <div class="right">
@@ -1637,7 +1684,9 @@ function setStatus(el, ok, msg){
       });
 
       if(r.ok){
-        setStatus(statusEl, true, "Message received. We respond within one working day.");
+        setStatus(statusEl, true, "Message received. Stephen reads partner enquiries personally — full reply soon.");
+        const detail = document.getElementById("contactSuccessDetail");
+        if(detail) detail.hidden = false;
         form.reset();
       } else {
         setStatus(statusEl, false, "The submission was not completed. Please try again shortly.");
@@ -1706,7 +1755,9 @@ function setStatus(el, ok, msg){
       });
 
       if(r.ok){
-        setStatus(statusEl, true, "Submission received. We confirm receipt and respond within one working day.");
+        setStatus(statusEl, true, "Submission received. Stephen reads every application personally — full reply soon.");
+        const detail = document.getElementById("applySuccessDetail");
+        if(detail) detail.hidden = false;
         form.reset();
       } else {
         setStatus(statusEl, false, "The submission was not completed. Please try again shortly.");
