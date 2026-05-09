@@ -780,6 +780,52 @@ nav.kn-nav{
   border-top:1px solid var(--border-soft);
 }
 
+/* EXPANDABLE (inline collapse) */
+.kn-expandable{
+  margin-top:36px;
+}
+.kn-expandable h3{
+  margin:0 0 4px;
+}
+.kn-expandable-toggle{
+  background:none;
+  border:0;
+  padding:6px 0;
+  margin:0;
+  font-family:inherit;
+  font-size:.93rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  letter-spacing:.005em;
+}
+.kn-expandable-toggle:hover{
+  color:var(--accent);
+}
+.kn-expandable-toggle .arrow{
+  display:inline-block;
+  transition:transform .25s ease;
+  font-size:.85rem;
+}
+.kn-expandable.is-open .kn-expandable-toggle .arrow{
+  transform:rotate(180deg);
+}
+.kn-expandable-content{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .35s ease, opacity .25s ease, margin-top .25s ease;
+  margin-top:0;
+}
+.kn-expandable.is-open .kn-expandable-content{
+  max-height:1400px;
+  opacity:1;
+  margin-top:14px;
+}
+
 /* FAQ */
 .kn-faq details{
   background:var(--surface);
@@ -969,7 +1015,7 @@ nav.kn-nav{
   <section class="kn-section" id="fees">
     <div class="kn-section-head">
       <span class="kn-section-eyebrow">What it pays</span>
-      <h2>Clear, fixed, paid in seven days</h2>
+      <h2>Clear, fixed, paid in two days</h2>
       <p class="lead">Fees are set per assignment and paid by KIMANZI on a Dutch invoice. Expenses you advance on the day are reimbursed in full on the same invoice.</p>
     </div>
 
@@ -1004,8 +1050,8 @@ nav.kn-nav{
           </tr>
           <tr>
             <th>Concierge</th>
-            <td class="scope">15% of the guest's monthly retainer, paid for as long as they stay subscribed. Mostly remote.</td>
-            <td class="fee">€22.35 / mo</td>
+            <td class="scope">15% of the guest's monthly retainer (rounded to €23), paid for as long as they stay subscribed. Mostly remote.</td>
+            <td class="fee">€23 / mo</td>
             <td class="extras">—</td>
           </tr>
         </tbody>
@@ -1017,12 +1063,20 @@ nav.kn-nav{
     <h3 style="margin-top:36px;">How payment works</h3>
     <div class="kn-pay-grid">
       <div class="kn-pay-item">
-        <strong>You invoice us</strong>
-        <span>After each completed assignment, with declared expenses on the same invoice.</span>
+        <strong>Pre-funded by the guest</strong>
+        <span>Assignments only enter the pipeline after the guest has paid KIMANZI in full. Your fee is on our account before your day begins — no platform float.</span>
       </div>
       <div class="kn-pay-item">
-        <strong>We pay within 7 days</strong>
-        <span>By SEPA transfer or M-Pesa, your choice.</span>
+        <strong>Send invoice + receipt photos</strong>
+        <span>Right after the assignment: a photo of each receipt, plus your invoice, emailed to <a href="mailto:host@kimanzi.nl">host@kimanzi.nl</a>. No special form, no template. That's the quickest path to payout.</span>
+      </div>
+      <div class="kn-pay-item">
+        <strong>Paid within 2 days</strong>
+        <span>That's admin time, not financial time. Once your receipts arrive and we confirm the work is complete, payout runs through tech-banking — minutes to your account, not legacy banking queues.</span>
+      </div>
+      <div class="kn-pay-item">
+        <strong>M-Pesa is standard</strong>
+        <span>Another payment method (SEPA, bank transfer, anything reasonable) on request. Just say so on your invoice.</span>
       </div>
       <div class="kn-pay-item">
         <strong>No upfront costs to you</strong>
@@ -1030,7 +1084,7 @@ nav.kn-nav{
       </div>
       <div class="kn-pay-item">
         <strong>Concierge runs monthly</strong>
-        <span>The 15% commission is paid each month while the guest's subscription is active.</span>
+        <span>The €23 commission is paid each month while the guest's subscription is active.</span>
       </div>
     </div>
   </section>
@@ -1068,9 +1122,14 @@ nav.kn-nav{
       </div>
     </div>
 
-    <h3 style="margin-top:36px;">What KIMANZI assignments cover — and don't</h3>
-    <p>Practical hospitality: airport handling, transport coordination, accommodation handover, errands, neighborhood orientation, paperwork and SIM logistics, restaurant and venue recommendations, language and cultural questions, occasional driver support.</p>
-    <p>Anything that isn't practical hospitality is outside scope. Assignments framed as nightlife, entertainment or personal companionship are declined at intake. If a guest tries to redirect an assignment that way once it's underway, you stop, you go home, and you are paid in full for the time you committed. KIMANZI handles the conversation with the guest from there.</p>
+    <div class="kn-expandable">
+      <h3>What KIMANZI assignments cover — and don't</h3>
+      <button type="button" class="kn-expandable-toggle">Read more <span class="arrow">↓</span></button>
+      <div class="kn-expandable-content">
+        <p>Practical hospitality: airport handling, transport coordination, accommodation handover, errands, neighborhood orientation, paperwork and SIM logistics, restaurant and venue recommendations, language and cultural questions, occasional driver support.</p>
+        <p>Anything that isn't practical hospitality is outside scope. Assignments framed as nightlife, entertainment or personal companionship are declined at intake. If a guest tries to redirect an assignment that way once it's underway, you stop, you go home, and you are paid in full for the time you committed. KIMANZI handles the conversation with the guest from there.</p>
+      </div>
+    </div>
   </section>
 
   <!-- SEQUENCE -->
@@ -1132,11 +1191,11 @@ nav.kn-nav{
           </li>
           <li>
             <strong>You invoice us</strong>
-            After completion, including declared expenses (fuel, lunch) on the same invoice.
+            Right after completion: a photo of each receipt and your invoice, emailed to <a href="mailto:host@kimanzi.nl">host@kimanzi.nl</a>. No special form needed.
           </li>
           <li>
-            <strong>Paid within 7 days</strong>
-            By SEPA transfer or M-Pesa, your choice. Concierge commissions run monthly for as long as the guest stays subscribed.
+            <strong>Paid within 2 days</strong>
+            Your fee was already on our account before you started — we only put assignments in the pipeline after the guest has paid us. Once admin clears, payout runs via tech-banking: minutes, not days. M-Pesa standard; another method on request. Concierge commissions run monthly for as long as the guest stays subscribed.
           </li>
         </ol>
       </div>
@@ -1161,8 +1220,13 @@ nav.kn-nav{
       <li>You understand that we send work occasionally, not constantly, and that's the model.</li>
     </ul>
 
-    <h3>If you're new to this kind of work</h3>
-    <p>You can request to shadow an experienced host on your first one or two assignments before going solo. The shadow day is paid. We arrange this only when both sides agree it makes sense — it's not a training program, it's a practical handover.</p>
+    <div class="kn-expandable">
+      <h3>If you're new to this kind of work</h3>
+      <button type="button" class="kn-expandable-toggle">Read more <span class="arrow">↓</span></button>
+      <div class="kn-expandable-content">
+        <p>You can request to shadow an experienced host on your first one or two assignments before going solo. The shadow day is paid. We arrange this only when both sides agree it makes sense — it's not a training program, it's a practical handover.</p>
+      </div>
+    </div>
   </section>
 
   <!-- PARTNERS -->
@@ -1219,15 +1283,15 @@ nav.kn-nav{
         <span class="kn-section-eyebrow">Behind KIMANZI</span>
         <h2>Why this exists</h2>
 
-        <p>I built UrbanChill and KIMANZI because the kind of operation I'd want to use myself for staff, for friends arriving in a new city, for anyone making a serious move to Nairobi didn't exist in a form I trusted.</p>
+        <p>I built UrbanChill and KIMANZI because the kind of operation I'd want to use myself — for staff, for friends arriving in a new city, for anyone making a serious move to Nairobi — didn't exist in a form I trusted.</p>
 
         <p>What I mean by that: clear scope, fixed pricing, a real human on the other end of the phone, and hosts who are paid fairly and treated as the professionals they are. Not a platform. Not an aggregator. A small, accountable operation.</p>
 
-        <p>For hosts, that means working with someone who pays in seven days, never hides behind a ticketing system, and won't expect you to be on call. For guests, a reliable arrival in Nairobi handled by people who actually know the city. For partners — Kenya-side or Netherlands-side — a single contact who takes responsibility for what they coordinate.</p>
+        <p>For hosts, that means working with someone who pays within two days of receipts arriving, never hides behind a ticketing system, and won't expect you to be on call. For guests, a reliable arrival in Nairobi handled by people who actually know the city. For partners — Kenya-side or Netherlands-side — a single contact who takes responsibility for what they coordinate.</p>
 
         <p>The model is small on purpose. We grow when the work and the people both fit, not before. I'd rather decline a partnership than dilute the standard we hold ourselves to. And I'd rather have one careful conversation than a rushed signup — so if you're considering applying as a host, partnering with us in Kenya, or setting up an arrangement from the Netherlands, send a message and we'll talk.</p>
 
-        <p class="signature">— Stephen Clark<span>Founder, UrbanChill &amp; KIMANZI</span></p>
+        <p class="signature">— [Your name]<span>Founder, UrbanChill &amp; KIMANZI</span></p>
       </div>
     </div>
   </section>
@@ -1381,8 +1445,10 @@ nav.kn-nav{
       <details>
         <summary>How is payment handled?</summary>
         <div class="answer">
-          <p>You invoice us after each completed assignment, including declared expenses (fuel, lunch). We pay within 7 days of confirmation, by SEPA transfer or M-Pesa — your choice.</p>
-          <p>For Concierge, the 15% commission is paid monthly for as long as the guest's subscription stays active.</p>
+          <p>Right after each completed assignment, send your invoice and a photo of each receipt to <a href="mailto:host@kimanzi.nl">host@kimanzi.nl</a>. No special form, no template — just photo and email. Once everything arrives and we confirm completion, payout goes out within 2 working days.</p>
+          <p>The fast turnaround is structural, not a service promise: assignments only enter the pipeline after the guest has paid KIMANZI in full, so your fee is already on our account before your day begins. There is no platform float and no waiting for the guest to pay through. Once admin clears, payout runs via tech-banking — minutes to your account, not legacy banking queues.</p>
+          <p>M-Pesa is the standard channel. If you'd rather be paid by SEPA, bank transfer, or another method, just say so on the invoice — we accommodate.</p>
+          <p>For Concierge, the €23 commission is paid monthly for as long as the guest's subscription stays active.</p>
         </div>
       </details>
 
@@ -1497,6 +1563,20 @@ nav.kn-nav{
 </footer>
 
 <script>
+// EXPANDABLE TOGGLES
+(function(){
+  document.querySelectorAll(".kn-expandable-toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var wrapper = btn.closest(".kn-expandable");
+      if(!wrapper) return;
+      var isOpen = wrapper.classList.toggle("is-open");
+      btn.innerHTML = isOpen
+        ? 'Show less <span class="arrow">↓</span>'
+        : 'Read more <span class="arrow">↓</span>';
+    });
+  });
+})();
+
 const API_BASE = "https://cockpit.urbanchill.org";
 
 async function postJson(url, payload){
@@ -1570,9 +1650,10 @@ function setStatus(el, ok, msg){
 })();
 
 // APPLY (host application)
-// NOTE: posts to /api/intake/create with kind=host_application in notes.
-// The "service" field is set to "advice" (lead-only, won't trigger any auto-invoice flow)
-// until the cockpit gets a dedicated /api/host_application/create endpoint.
+// Posts to /api/host-applications/create which writes to the host_applications table.
+// Schema columns: name, email, phone, area, experience, environment, availability,
+// mentorship, source, notes, status. Fields not in the schema (independent_status,
+// languages) are folded into the notes field so they survive on the cockpit side.
 (function(){
   const form = document.getElementById("applyForm");
   const statusEl = document.getElementById("applyStatus");
@@ -1591,8 +1672,7 @@ function setStatus(el, ok, msg){
       experience: document.getElementById("a_experience").value.trim(),
       availability: document.getElementById("a_availability").value,
       mentorship: document.getElementById("a_mentorship").value,
-      independent_confirm: document.getElementById("a_independent_confirm").checked,
-      source: "kimanzi-site-apply"
+      independent_confirm: document.getElementById("a_independent_confirm").checked
     };
 
     if(!payload.name || !payload.phone || !payload.email || !payload.area || !payload.independent_status || !payload.independent_confirm){
@@ -1600,25 +1680,29 @@ function setStatus(el, ok, msg){
       return;
     }
 
+    // Compose readable notes that preserve fields not in the schema.
+    const notesLines = [];
+    if(payload.independent_status) notesLines.push("Independent status: " + payload.independent_status);
+    if(payload.languages) notesLines.push("Languages: " + payload.languages);
+    if(payload.experience) notesLines.push("Background: " + payload.experience);
+    notesLines.push("Independent confirmation accepted: yes");
+    const composedNotes = notesLines.join("\n");
+
     setStatus(statusEl, true, "Submitting…");
 
     try {
-      const r = await postJson(API_BASE + "/api/intake/create", {
+      const r = await postJson(API_BASE + "/api/host-applications/create", {
         name: payload.name,
         email: payload.email,
         phone: payload.phone,
-        service: "advice",
-        arrival_date: "",
-        verified_identity: "",
-        notes: JSON.stringify({
-          kind: "host_application",
-          area: payload.area,
-          independent_status: payload.independent_status,
-          languages: payload.languages,
-          experience: payload.experience,
-          availability: payload.availability,
-          mentorship: payload.mentorship
-        })
+        area: payload.area,
+        experience: payload.experience,
+        availability: payload.availability,
+        mentorship: payload.mentorship,
+        environment: "",
+        source: "kimanzi-site-apply",
+        notes: composedNotes,
+        status: "new"
       });
 
       if(r.ok){
