@@ -406,6 +406,18 @@
       </div>
     </div>
 
+    <!-- FEES -->
+    <div class="card" onclick="showFees()">
+      <div class="card-inner">
+        <div class="card-icon orange">💰</div>
+        <div class="card-text">
+          <div class="card-title">My fees & compensation</div>
+          <div class="card-desc">Fee overview per assignment type and how payment works.</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </div>
+
     <!-- ASSIGNMENTS (locked fase 2) -->
     <div class="card locked">
       <div class="card-inner">
@@ -456,6 +468,80 @@
     </div>
 
     <button class="logout-btn" onclick="doLogout()">Sign out</button>
+
+  </div>
+</div>
+
+<!-- ============ FEES SCREEN ============ -->
+<div id="feesScreen" style="display:none; min-height:100vh; background:var(--cream);">
+  <div class="back-bar">
+    <div class="back-bar-inner">
+      <button class="back-btn" onclick="showPortal()">‹</button>
+      <span class="back-title">Fees & Compensation</span>
+    </div>
+  </div>
+
+  <div class="handbook-content safe-bottom">
+
+    <div class="handbook-cover">
+      <h2>Your compensation</h2>
+      <p>Clear, fixed, and paid within two days.<br>KIMANZI by UrbanChill</p>
+    </div>
+
+    <!-- FEE TABLE -->
+    <div style="background:white;border-radius:14px;border:1px solid var(--cream2);overflow:hidden;margin-bottom:1rem;">
+      <div style="padding:.85rem 1.25rem;border-bottom:1px solid var(--cream2);background:var(--green);">
+        <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);font-weight:600;">Fee overview</div>
+      </div>
+
+      ${[
+        ["Arrival",      "Pickup JKIA, transfer, SIM, first errands. 6–10 hrs.", "€60",     "Fuel, lunch"],
+        ["Arrival duo",  "Same as Arrival for two guests. Heavier coordination.", "€90",     "Fuel, lunch"],
+        ["Extra Day",    "Full day: housing, banking, paperwork. Stackable.",      "€60/day", "Fuel, lunch"],
+        ["Concierge",    "Monthly remote support (~15% of guest retainer).",       "€23/mo",  "—"],
+      ].map(([name, scope, fee, extras]) => `
+      <div style="padding:1rem 1.25rem;border-bottom:1px solid var(--cream2);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;">
+          <div style="flex:1;">
+            <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:.2rem;">${name}</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5;">${scope}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:.3rem;">+ ${extras}</div>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:var(--orange);flex-shrink:0;">${fee}</div>
+        </div>
+      </div>`).join("")}
+
+      <div style="padding:.85rem 1.25rem;background:rgba(26,44,30,.03);">
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">
+          <strong style="color:var(--text);">Combination & Advice</strong> assignments are scoped per request. Fee agreed in writing before you accept.
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW PAYMENT WORKS -->
+    <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:.1rem 0 .75rem;">How payment works</div>
+
+    ${[
+      ["💳", "Pre-funded by the guest", "Assignments only enter the pipeline after the guest has paid KIMANZI in full. Your fee is on our account before your day begins."],
+      ["📸", "Send invoice + receipts", "Right after the assignment: photo of each receipt + your invoice to host@kimanzi.nl. No special form needed."],
+      ["⚡", "Paid within 2 days", "Admin time, not financial time. Once receipts arrive and work is confirmed, payout runs via M-PESA — minutes to your account."],
+      ["🧾", "Expenses reimbursed", "Fuel and lunch you advance on the day are reimbursed in full on the same invoice. No pre-approval needed."],
+    ].map(([icon, title, text]) => `
+    <div style="background:white;border-radius:14px;border:1px solid var(--cream2);padding:1.1rem 1.25rem;margin-bottom:.75rem;display:flex;gap:1rem;align-items:flex-start;">
+      <div style="font-size:22px;flex-shrink:0;">${icon}</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:.25rem;">${title}</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.55;">${text}</div>
+      </div>
+    </div>`).join("")}
+
+    <div style="background:var(--green);border-radius:14px;padding:1.25rem;margin-top:.5rem;color:var(--cream);">
+      <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:.5rem;">Questions?</div>
+      <div style="font-size:13px;color:rgba(245,239,226,.7);line-height:1.65;">
+        For any payment or invoice questions: <strong style="color:var(--cream);">host@kimanzi.nl</strong><br>
+        During an active assignment: call Stephen directly (number in your briefing).
+      </div>
+    </div>
 
   </div>
 </div>
@@ -524,6 +610,12 @@
     window.location.href = "handbook.html";
   }
 
+  function showFees() {
+    document.getElementById("portalScreen").style.display = "none";
+    document.getElementById("feesScreen").style.display = "block";
+    window.scrollTo(0, 0);
+  }
+
   function doLogin() {
     const email    = document.getElementById("emailInput").value.trim().toLowerCase();
     const password = document.getElementById("passwordInput").value;
@@ -550,6 +642,7 @@
   function showPortal() {
     document.getElementById("loginScreen").style.display   = "none";
     document.getElementById("handbookScreen").style.display = "none";
+    document.getElementById("feesScreen").style.display    = "none";
     document.getElementById("portalScreen").style.display  = "block";
 
     if (currentHost) {
