@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#faf8f3">
+
+<title>KIMANZI — Independent hosts and selected partners in Nairobi</title>
+<meta name="description" content="KIMANZI is the coordination layer for UrbanChill in Nairobi. We work with independent hosts and selected partners to handle airport pickups, first-week orientation and ongoing support for professionals relocating to Nairobi. Per-assignment collaboration. No employment, no exclusivity.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kimanzi.nl/">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<meta name="geo.region" content="KE-30">
+<meta name="geo.placename" content="Nairobi">
+<meta name="geo.position" content="-1.286389;36.817223">
+<meta name="ICBM" content="-1.286389, 36.817223">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "KIMANZI",
+  "url": "https://kimanzi.nl",
+  "areaServed": { "@type": "City", "name": "Nairobi" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Nairobi",
+    "addressCountry": "KE"
+  },
+  "description": "KIMANZI is the coordination layer for UrbanChill in Nairobi. Independent hosts handle assignments on a per-assignment basis. Selected partners in Kenya and the Netherlands collaborate within defined scope."
+}
+</script>
+
+<style>
+:root{
+  --bg:#faf8f3;
+  --surface:#ffffff;
+  --surface-soft:#f4efe5;
+  --surface-warm:#efe8d8;
+
+  --text:#1f2530;
+  --text-soft:#4a5260;
+  --muted:#7a8090;
+
+  --accent:#b04a2f;
+  --accent-soft:#c25d3f;
+  --accent-deep:#8d3823;
+  --accent-tint:#f3e3d9;
+
+  --border:#e6dfd1;
+  --border-soft:#efe8d8;
+
+  --maxw:1080px;
+  --radius-lg:18px;
+  --radius-md:12px;
+  --radius-sm:8px;
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-feature-settings: "ss01", "cv11";
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+a{
+  color:var(--accent-deep);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+a:hover{
+  color:var(--accent);
+}
+
+/* NAV */
+nav.kn-nav{
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:rgba(250,248,243,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.kn-nav-inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:18px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.kn-brand{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+}
+.kn-brand img{
+  height:38px;
+  width:auto;
+  display:block;
+}
+.kn-nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+.kn-nav-links a{
+  color:var(--text-soft);
+  text-decoration:none;
+  font-weight:500;
+  font-size:.95rem;
+}
+.kn-nav-links a:hover{
+  color:var(--accent);
+}
+.kn-cta{
+  background:var(--accent);
+  color:#fff !important;
+  padding:9px 18px;
+  border-radius:999px;
+  font-weight:600;
+  font-size:.92rem;
+  border:0;
+}
+.kn-cta:hover{
+  background:var(--accent-deep);
+  color:#fff !important;
+}
+
+/* SHELL */
+.kn-main{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 28px;
+}
+
+/* HERO */
+.kn-hero{
+  padding:88px 0 64px;
+  border-bottom:1px solid var(--border-soft);
+}
+.kn-hero-inner{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+.kn-hero-image{
+  position:relative;
+}
+.kn-hero-image img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:var(--radius-lg);
+  box-shadow:0 18px 50px rgba(176,74,47,.10), 0 4px 16px rgba(31,37,48,.06);
+}
+.kn-eyebrow{
+  display:inline-block;
+  font-size:.78rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:22px;
+}
+.kn-hero h1{
+  font-family:"Fraunces", Georgia, serif;
+  font-weight:600;
+  font-size:clamp(2.2rem, 5vw, 3.6rem);
+  line-height:1.08;
+  letter-spacing:-.02em;
+  margin:0 0 28px;
+  color:var(--text);
+  max-width:880px;
+}
+.kn-hero h1 em{
+  font-style:italic;
+  color:var(--accent-deep);
+  font-weight:500;
+}
+.kn-hero-lead{
+  max-width:720px;
+  font-size:1.12rem;
+  color:var(--text-soft);
+  margin:0 0 14px;
+}
+.kn-hero-lead strong{
+  color:var(--text);
+  font-weight:600;
+}
+.kn-hero-actions{
+  margin-top:36px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.kn-btn-primary{
+  background:var(--accent);
+  color:#fff;
+  padding:14px 26px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  border:0;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:.18s;
+}
+.kn-btn-primary:hover{
+  background:var(--accent-deep);
+  color:#fff;
+  transform:translateY(-1px);
+}
+.kn-btn-ghost{
+  background:transparent;
+  color:var(--text);
+  padding:14px 26px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  border:1px solid var(--border);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:.18s;
+}
+.kn-btn-ghost:hover{
+  border-color:var(--accent);
+  color:var(--accent-deep);
+}
+.kn-hero-redirect{
+  margin-top:42px;
+  font-size:.92rem;
+  color:var(--muted);
+  padding-top:22px;
+  border-top:1px solid var(--border-soft);
+  max-width:720px;
+}
+.kn-hero-redirect a{
+  color:var(--accent-deep);
+  font-weight:600;
+}
+
+/* SECTION */
+.kn-section{
+  padding:72px 0;
+  border-bottom:1px solid var(--border-soft);
+}
+.kn-section:last-of-type{
+  border-bottom:0;
+}
+.kn-section-head{
+  margin-bottom:32px;
+}
+.kn-section-eyebrow{
+  font-size:.74rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:12px;
+  display:block;
+}
+.kn-section h2{
+  font-family:"Fraunces", Georgia, serif;
+  font-weight:600;
+  font-size:clamp(1.6rem, 3vw, 2.1rem);
+  line-height:1.18;
+  letter-spacing:-.01em;
+  margin:0 0 14px;
+  color:var(--text);
+}
+.kn-section .lead{
+  font-size:1.05rem;
+  color:var(--text-soft);
+  max-width:700px;
+}
+.kn-section h3{
+  font-family:"Inter", sans-serif;
+  font-weight:600;
+  font-size:1.12rem;
+  letter-spacing:.005em;
+  color:var(--text);
+  margin:28px 0 10px;
+}
+.kn-section p{
+  color:var(--text-soft);
+  margin:0 0 14px;
+  max-width:720px;
+}
+.kn-section ul{
+  color:var(--text-soft);
+  padding-left:20px;
+  max-width:720px;
+}
+.kn-section li{
+  margin-bottom:6px;
+}
+
+/* THE WORK GRID */
+.kn-work-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:18px;
+  margin-top:8px;
+}
+.kn-work-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:26px;
+}
+.kn-work-card h3{
+  margin-top:0;
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+}
+.kn-work-card h3 .tag{
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:700;
+}
+.kn-work-card p{
+  color:var(--text-soft);
+  font-size:.96rem;
+  margin:0;
+}
+
+/* RATE CARD */
+.kn-rate-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:8px;
+  margin-top:8px;
+  overflow:hidden;
+}
+.kn-rate-table{
+  width:100%;
+  border-collapse:collapse;
+}
+.kn-rate-table th,
+.kn-rate-table td{
+  text-align:left;
+  padding:18px 20px;
+  border-bottom:1px solid var(--border-soft);
+  vertical-align:top;
+  font-size:.96rem;
+}
+.kn-rate-table tr:last-child th,
+.kn-rate-table tr:last-child td{
+  border-bottom:0;
+}
+.kn-rate-table thead th{
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:700;
+  border-bottom:1px solid var(--border);
+}
+.kn-rate-table tbody th{
+  font-weight:600;
+  color:var(--text);
+  font-family:"Fraunces", Georgia, serif;
+  font-size:1.05rem;
+  width:24%;
+}
+.kn-rate-table .scope{
+  color:var(--text-soft);
+  width:46%;
+}
+.kn-rate-table .fee{
+  font-weight:700;
+  color:var(--text);
+  white-space:nowrap;
+  width:18%;
+}
+.kn-rate-table .extras{
+  color:var(--muted);
+  width:12%;
+  font-size:.9rem;
+}
+.kn-rate-note{
+  font-size:.92rem;
+  color:var(--muted);
+  margin-top:18px;
+  max-width:720px;
+}
+
+/* PAYMENT BLOCK */
+.kn-pay-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:14px;
+  margin-top:14px;
+  max-width:780px;
+}
+.kn-pay-item{
+  background:var(--surface-soft);
+  border-radius:var(--radius-md);
+  padding:18px 20px;
+  border:1px solid var(--border-soft);
+}
+.kn-pay-item strong{
+  display:block;
+  color:var(--text);
+  margin-bottom:4px;
+  font-size:.95rem;
+}
+.kn-pay-item span{
+  color:var(--text-soft);
+  font-size:.92rem;
+}
+
+/* FRAMEWORK SPLIT */
+.kn-split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:8px;
+}
+.kn-split-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:26px;
+}
+.kn-split-card.you{
+  border-color:var(--accent-tint);
+  background:#fdf6f0;
+}
+.kn-split-card h3{
+  margin-top:0;
+  font-family:"Fraunces", Georgia, serif;
+  font-weight:600;
+  font-size:1.18rem;
+  letter-spacing:-.005em;
+}
+.kn-split-card ul{
+  padding-left:0;
+  margin:0;
+  list-style:none;
+}
+.kn-split-card li{
+  padding:9px 0;
+  border-bottom:1px solid var(--border-soft);
+  color:var(--text-soft);
+  font-size:.96rem;
+  position:relative;
+  padding-left:22px;
+}
+.kn-split-card li:last-child{
+  border-bottom:0;
+}
+.kn-split-card li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:16px;
+  width:10px;
+  height:1px;
+  background:var(--accent);
+}
+
+/* SEQUENCE */
+.kn-sequence{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:8px;
+}
+.kn-sequence-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:30px;
+}
+.kn-sequence-card .flag{
+  font-size:.74rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:8px;
+  display:block;
+}
+.kn-sequence-card h3{
+  font-family:"Fraunces", Georgia, serif;
+  font-weight:600;
+  font-size:1.18rem;
+  margin:0 0 22px;
+  letter-spacing:-.005em;
+}
+.kn-sequence-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  counter-reset:step;
+}
+.kn-sequence-list li{
+  position:relative;
+  padding:0 0 18px 42px;
+  margin:0;
+  font-size:.96rem;
+  color:var(--text-soft);
+  counter-increment:step;
+  border-bottom:0;
+}
+.kn-sequence-list li::before{
+  content:counter(step);
+  position:absolute;
+  left:0;
+  top:-2px;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--accent-tint);
+  color:var(--accent-deep);
+  font-family:"Fraunces", Georgia, serif;
+  font-weight:600;
+  font-size:.92rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+}
+.kn-sequence-list li::after{
+  content:"";
+  position:absolute;
+  left:13px;
+  top:32px;
+  bottom:0;
+  width:1px;
+  background:var(--border);
+}
+.kn-sequence-list li:last-child{
+  padding-bottom:0;
+}
+.kn-sequence-list li:last-child::after{
+  display:none;
+}
+.kn-sequence-list li strong{
+  display:block;
+  color:var(--text);
+  font-weight:600;
+  margin-bottom:3px;
+  font-size:.98rem;
+}
+
+/* SKYLINE divider (full-bleed) */
+.kn-skyline{
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+  margin-top:0;
+  margin-bottom:0;
+  overflow:hidden;
+  position:relative;
+}
+.kn-skyline img{
+  width:100%;
+  height:auto;
+  max-height:480px;
+  object-fit:cover;
+  display:block;
+}
+.kn-skyline::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(250,248,243,0) 0%,
+    rgba(250,248,243,0) 70%,
+    rgba(250,248,243,.85) 100%
+  );
+  pointer-events:none;
+}
+
+/* FOUNDER */
+.kn-founder{
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:54px;
+  align-items:center;
+  margin-top:8px;
+}
+.kn-founder-photo{
+  position:relative;
+}
+.kn-founder-photo img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:var(--radius-lg);
+  box-shadow:0 18px 50px rgba(31,37,48,.10), 0 4px 16px rgba(176,74,47,.06);
+}
+.kn-founder-text h2{
+  margin-top:6px;
+}
+.kn-founder-text .signature{
+  font-family:"Fraunces", Georgia, serif;
+  font-style:italic;
+  font-size:1.05rem;
+  color:var(--text);
+  margin-top:24px;
+}
+.kn-founder-text .signature span{
+  display:block;
+  font-style:normal;
+  font-family:"Inter", sans-serif;
+  font-size:.85rem;
+  color:var(--muted);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin-top:4px;
+}
+
+/* PARTNERS */
+.kn-partner-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:18px;
+  margin-top:8px;
+}
+.kn-partner-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:30px;
+}
+.kn-partner-card .flag{
+  font-size:.74rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:12px;
+  display:block;
+}
+.kn-partner-card h3{
+  font-family:"Fraunces", Georgia, serif;
+  font-weight:600;
+  font-size:1.25rem;
+  margin:0 0 12px;
+  letter-spacing:-.005em;
+}
+.kn-partner-card p{
+  font-size:.96rem;
+  color:var(--text-soft);
+  margin:0 0 12px;
+}
+.kn-partner-card ul{
+  margin:8px 0 0;
+  padding-left:20px;
+  font-size:.94rem;
+}
+
+/* FORMS */
+.kn-form-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:34px;
+  margin-top:14px;
+  max-width:720px;
+}
+.kn-form-card .preface{
+  background:var(--surface-soft);
+  border-radius:var(--radius-md);
+  padding:14px 18px;
+  margin-bottom:22px;
+  font-size:.94rem;
+  color:var(--text-soft);
+  border-left:3px solid var(--accent);
+}
+.kn-form-card form{
+  display:grid;
+  gap:14px;
+  margin:0;
+}
+.kn-form-card label.field-label{
+  display:block;
+  font-size:.85rem;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:5px;
+  letter-spacing:.005em;
+}
+.kn-form-card input[type=text],
+.kn-form-card input[type=email],
+.kn-form-card input[type=tel],
+.kn-form-card textarea,
+.kn-form-card select{
+  width:100%;
+  padding:12px 14px;
+  border-radius:var(--radius-md);
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  font:inherit;
+  font-size:.96rem;
+  outline:none;
+  transition:.15s;
+}
+.kn-form-card input:focus,
+.kn-form-card textarea:focus,
+.kn-form-card select:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(176,74,47,.12);
+}
+.kn-form-card textarea{
+  min-height:96px;
+  resize:vertical;
+}
+.kn-form-card .checkbox-row{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  background:var(--surface-soft);
+  padding:14px 16px;
+  border-radius:var(--radius-md);
+  font-size:.92rem;
+  color:var(--text-soft);
+  line-height:1.5;
+}
+.kn-form-card .checkbox-row input{
+  margin-top:3px;
+  accent-color:var(--accent);
+}
+.kn-form-card button{
+  background:var(--accent);
+  color:#fff;
+  padding:13px 26px;
+  border-radius:999px;
+  font-weight:600;
+  border:0;
+  cursor:pointer;
+  font-size:.96rem;
+  width:max-content;
+  margin-top:6px;
+  transition:.18s;
+}
+.kn-form-card button:hover{
+  background:var(--accent-deep);
+}
+.kn-form-card .status{
+  font-size:.92rem;
+  color:var(--muted);
+  margin-top:6px;
+}
+.kn-form-card .privacy-note{
+  font-size:.85rem;
+  color:var(--muted);
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid var(--border-soft);
+}
+
+/* SUCCESS DETAIL (post-submission expanded message) */
+.kn-success-detail{
+  background:var(--surface-soft);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius-md);
+  padding:16px 20px;
+  margin-top:14px;
+  font-size:.94rem;
+  color:var(--text-soft);
+  line-height:1.65;
+}
+.kn-success-detail p{
+  margin:0;
+}
+.kn-success-detail p + p{
+  margin-top:10px;
+}
+
+/* EXPANDABLE (inline collapse) */
+.kn-expandable{
+  margin-top:36px;
+}
+.kn-expandable h3{
+  margin:0 0 4px;
+}
+.kn-expandable-toggle{
+  background:none;
+  border:0;
+  padding:6px 0;
+  margin:0;
+  font-family:inherit;
+  font-size:.93rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  letter-spacing:.005em;
+}
+.kn-expandable-toggle:hover{
+  color:var(--accent);
+}
+.kn-expandable-toggle .arrow{
+  display:inline-block;
+  transition:transform .25s ease;
+  font-size:.85rem;
+}
+.kn-expandable.is-open .kn-expandable-toggle .arrow{
+  transform:rotate(180deg);
+}
+.kn-expandable-content{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .35s ease, opacity .25s ease, margin-top .25s ease;
+  margin-top:0;
+}
+.kn-expandable.is-open .kn-expandable-content{
+  max-height:1400px;
+  opacity:1;
+  margin-top:14px;
+}
+
+/* FAQ */
+.kn-faq details{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:0;
+  margin-bottom:10px;
+  overflow:hidden;
+}
+.kn-faq summary{
+  list-style:none;
+  cursor:pointer;
+  padding:18px 22px;
+  font-weight:600;
+  color:var(--text);
+  font-size:.98rem;
+  position:relative;
+  padding-right:50px;
+}
+.kn-faq summary::-webkit-details-marker{ display:none; }
+.kn-faq summary::after{
+  content:"+";
+  position:absolute;
+  right:22px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--accent);
+  font-size:1.4rem;
+  font-weight:300;
+  line-height:1;
+  transition:.2s;
+}
+.kn-faq details[open] summary::after{
+  content:"–";
+}
+.kn-faq details[open] summary{
+  border-bottom:1px solid var(--border-soft);
+}
+.kn-faq .answer{
+  padding:18px 22px 22px;
+  color:var(--text-soft);
+  font-size:.96rem;
+  line-height:1.65;
+}
+.kn-faq .answer p{
+  margin:0 0 10px;
+}
+.kn-faq .answer p:last-child{
+  margin:0;
+}
+
+/* FOOTER */
+.kn-footer{
+  background:var(--surface-warm);
+  border-top:1px solid var(--border);
+  padding:48px 28px;
+  margin-top:60px;
+  font-size:.92rem;
+  color:var(--text-soft);
+}
+.kn-footer-inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:30px;
+}
+.kn-footer-inner strong{
+  font-family:"Fraunces", Georgia, serif;
+  color:var(--text);
+  font-size:1rem;
+  letter-spacing:.04em;
+}
+.kn-footer-inner .dot{ color:var(--accent); }
+.kn-footer p{
+  margin:8px 0 0;
+}
+.kn-footer .right{
+  text-align:right;
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+/* MOBILE */
+@media (max-width: 760px){
+  .kn-nav-inner{ padding:16px 20px; }
+  .kn-nav-links{ gap:14px; font-size:.88rem; }
+  .kn-nav-links a:not(.kn-cta){ display:none; }
+  .kn-main{ padding:0 20px; }
+  .kn-hero{ padding:64px 0 48px; }
+  .kn-section{ padding:54px 0; }
+  .kn-work-grid,
+  .kn-split,
+  .kn-partner-grid,
+  .kn-sequence,
+  .kn-pay-grid,
+  .kn-hero-inner,
+  .kn-founder{ grid-template-columns:1fr; }
+  .kn-hero-inner{ gap:36px; }
+  .kn-founder{ gap:30px; }
+  .kn-founder-photo{ max-width:280px; }
+  .kn-rate-table th,
+  .kn-rate-table td{ padding:14px 14px; font-size:.92rem; }
+  .kn-rate-table .extras{ display:none; }
+  .kn-form-card{ padding:24px; }
+  .kn-footer-inner{ grid-template-columns:1fr; }
+  .kn-footer .right{ text-align:left; }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="kn-nav">
+  <div class="kn-nav-inner">
+    <a href="#top" class="kn-brand" aria-label="KIMANZI">
+      <img src="logo.png" alt="KIMANZI" />
+    </a>
+    <div class="kn-nav-links">
+      <a href="#work">The work</a>
+      <a href="#fees">Fees</a>
+      <a href="#sequence">How it works</a>
+      <a href="#partners">Partners</a>
+      <a href="#founder">About</a>
+      <a href="#apply" class="kn-cta">Submit interest</a>
+    </div>
+  </div>
+</nav>
+
+<main class="kn-main" id="top">
+
+  <!-- HERO -->
+  <section class="kn-hero">
+    <div class="kn-hero-inner">
+      <div class="kn-hero-text">
+        <span class="kn-eyebrow">Nairobi · Coordination layer for UrbanChill</span>
+        <h1>Independent hosts and selected partners. <em>One assignment at a time.</em></h1>
+
+        <p class="kn-hero-lead"><strong>KIMANZI is for the people on the ground.</strong> We coordinate UrbanChill assignments in Nairobi — airport pickups, first-week orientation, and ongoing local support for professionals relocating to the city.</p>
+        <p class="kn-hero-lead"><strong>For hosts in Nairobi</strong>, this is meant as an additional channel — clear scope, fixed fee, paid quickly. No employment, no exclusivity, no minimum availability.</p>
+        <p class="kn-hero-lead"><strong>For partners</strong> — operators in Kenya or organisations sending people from the Netherlands — we coordinate UrbanChill assignments end-to-end with a single contact and an in-person selection process.</p>
+
+        <div class="kn-hero-actions">
+          <a href="#apply" class="kn-btn-primary">Submit professional interest</a>
+          <a href="#work" class="kn-btn-ghost">See what the work is</a>
+        </div>
+
+        <p class="kn-hero-redirect">
+          This page is for hosts and partners. If you're a guest looking to book services, visit <a href="https://urbanchill.nl">urbanchill.nl</a>.
+        </p>
+      </div>
+
+      <div class="kn-hero-image">
+        <img src="onboarding.jpg" alt="Illustration of a KIMANZI host welcoming a guest at Nairobi arrivals: handing over water at the airport, transferring keys at the car, walking to the apartment with luggage, and settling in at home." />
+      </div>
+    </div>
+  </section>
+
+  <!-- THE WORK -->
+  <section class="kn-section" id="work">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">What KIMANZI coordinates</span>
+      <h2>Practical, time-boxed, in-person work</h2>
+      <p class="lead">Most KIMANZI assignments are a single day, or a week of light coordination. The work is concrete: meet someone at JKIA, hand them their keys, take them to the supermarket, walk them through Westlands, drive them to KRA. No mystery, no atmosphere talk.</p>
+    </div>
+
+    <div class="kn-work-grid">
+      <div class="kn-work-card">
+        <h3>Arrival days <span class="tag">most common</span></h3>
+        <p>Pickup at the airport, transfer to the apartment or hotel, SIM card, first cash run, supermarket and a calm orientation walk through the neighborhood. Six to ten hours of focused presence on the day.</p>
+      </div>
+      <div class="kn-work-card">
+        <h3>Extra days</h3>
+        <p>Booked alongside an Arrival when the guest needs more practical time on the ground: housing visits, paperwork at KRA or immigration, a school visit, a bank appointment. The host sets the order and pace.</p>
+      </div>
+      <div class="kn-work-card">
+        <h3>Concierge follow-up</h3>
+        <p>For guests on a monthly retainer after their first week. Mostly remote — WhatsApp questions, vendor recommendations, occasional small tasks. Response within a working day, not on-call.</p>
+      </div>
+      <div class="kn-work-card">
+        <h3>Special requests</h3>
+        <p>Occasionally a guest asks for something custom — a multi-day trip out of Nairobi, an introduction to a specific community, deeper logistical support. We scope these per request and discuss with the host before confirming.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO YOU'RE MEETING -->
+  <section class="kn-section" id="guests">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">Who you're meeting</span>
+      <h2>What our guests are dealing with</h2>
+    </div>
+
+    <p>The guests UrbanChill sends have flown a long way and usually land tired. Some arrive in the morning, exhausted before the day starts. Many arrive late at night — and in most major cities, including Nairobi, walking out alone after dark is not something a newcomer wants to figure out on their first evening.</p>
+
+    <p>They're not on holiday. Nairobi is a working base for them — one hour offset from Western European business hours, no jet-lag week to lose, real meetings starting soon. Whether you're meeting them at the airport, hosting them in your apartment, or feeding them on their second night, the same context applies: their first days here are not a vacation. They land already needing things to work.</p>
+  </section>
+
+  <!-- FEES -->
+  <section class="kn-section" id="fees">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">Compensation</span>
+      <h2>Clear, fixed, and paid within two days</h2>
+      <p class="lead">Compensation details are shared personally during your introduction with Stephen — and available in full via your host portal after onboarding.</p>
+    </div>
+  </section>
+
+  <section class="kn-section" id="sequence">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">How it actually unfolds</span>
+      <h2>Two short sequences, both clear</h2>
+      <p class="lead">No surprises in either direction. Joining KIMANZI as a host is its own short path; what happens when an assignment comes in is a separate one. Here is each, step by step.</p>
+    </div>
+
+    <div class="kn-sequence">
+
+      <div class="kn-sequence-card">
+        <span class="flag">Joining KIMANZI</span>
+        <h3>From submitted interest to first assignment</h3>
+        <ol class="kn-sequence-list">
+          <li>
+            <strong>Submit interest</strong>
+            Use the form on this page. We respond within one working day.
+          </li>
+          <li>
+            <strong>First conversation</strong>
+            If your profile fits, we set up a private call. We talk through how you work, what you're looking for, and what we'd realistically send your way.
+          </li>
+          <li>
+            <strong>Independent status confirmed</strong>
+            If you're still formalising your KRA registration, we wait until that's clear before assignments start. We can advise on the process if helpful.
+          </li>
+          <li>
+            <strong>Optional shadow day</strong>
+            If you'd like to see a real assignment before going solo, we arrange a paid shadow day with an experienced host. Only when both sides agree it makes sense.
+          </li>
+          <li>
+            <strong>Added to the rotation</strong>
+            Your name and area enter our coordination system. From here, we contact you when there is a matching assignment — never before, never on a schedule.
+          </li>
+        </ol>
+      </div>
+
+      <div class="kn-sequence-card">
+        <span class="flag">When an assignment comes in</span>
+        <h3>From booking to invoice paid</h3>
+        <ol class="kn-sequence-list">
+          <li>
+            <strong>We message you with the scope</strong>
+            Guest profile, dates, flight info, accommodation address, anything specific to the arrival. Usually a few days ahead, sometimes longer.
+          </li>
+          <li>
+            <strong>You accept or decline</strong>
+            No explanation needed. Declining one assignment has no effect on whether we offer the next.
+          </li>
+          <li>
+            <strong>Briefing arrives</strong>
+            Full details: my direct phone number, the guest's WhatsApp, vendor contacts you may need, and any practical notes.
+          </li>
+          <li>
+            <strong>You do the work</strong>
+            Your route, your timing, your judgement. KIMANZI is reachable for the questions only we can answer.
+          </li>
+          <li>
+            <strong>You invoice us</strong>
+            Right after completion: a photo of each receipt and your invoice, emailed to <a href="mailto:host@kimanzi.nl">host@kimanzi.nl</a>. No special form needed.
+          </li>
+          <li>
+            <strong>Paid within 2 days</strong>
+            Your fee was already on our account before you started — we only put assignments in the pipeline after the guest has paid us. Once admin clears, payout runs via tech-banking: minutes, not days. M-Pesa standard; another method on request. Concierge commissions run monthly for as long as the guest stays subscribed.
+          </li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section class="kn-section" id="who">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">Hosts we'd like to hear from</span>
+      <h2>Judgment, calm, reliability</h2>
+      <p class="lead">Most of our hosts come from hospitality, transport, expat support or NGO logistics backgrounds. Years of experience matter less than how you handle a guest who's tired, jet-lagged and a bit lost.</p>
+    </div>
+
+    <p>If any of the following describes you, the application form below is the right place to start:</p>
+    <ul>
+      <li>You live in or know Nairobi well — its neighborhoods, its traffic, its paperwork rhythm.</li>
+      <li>You already operate as an independent in Kenya, or you're in the process of formalising (KRA PIN, registration in progress).</li>
+      <li>You handle calmly: a guest's first morning is your steadiest hour, not your most rushed.</li>
+      <li>You can be reached on WhatsApp during accepted assignments and respond within reasonable time.</li>
+      <li>You understand that we send work occasionally, not constantly, and that's the model.</li>
+    </ul>
+
+    <div class="kn-expandable">
+      <h3>If you're new to this kind of work</h3>
+      <button type="button" class="kn-expandable-toggle">Read more <span class="arrow">↓</span></button>
+      <div class="kn-expandable-content">
+        <p>You can request to shadow an experienced host on your first one or two assignments before going solo. The shadow day is paid. We arrange this only when both sides agree it makes sense — it's not a training program, it's a practical handover.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="kn-section" id="partners">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">Partners</span>
+      <h2>Two kinds of partnership, one inbox</h2>
+      <p class="lead">KIMANZI works with selected partners on both ends of the route — operators in Nairobi who help us deliver consistent quality, and organisations in the Netherlands whose people land here. Different conversations, same standards.</p>
+    </div>
+
+    <div class="kn-partner-grid">
+
+      <div class="kn-partner-card">
+        <span class="flag">Kenya · operators in Nairobi</span>
+        <h3>Service partners on the ground</h3>
+        <p>Hotels, serviced apartments, transport companies, document agents, language tutors, gyms, coworking spaces, household services. We're interested in operators who pick up the phone, deliver what they promise, and treat our guests fairly.</p>
+        <ul>
+          <li>Reliable communication and fair pricing</li>
+          <li>Strong local awareness — safety, timing, accessibility</li>
+          <li>Comfortable working with international clients</li>
+          <li>Clear about what you do and what you don't</li>
+        </ul>
+        <p style="margin-top:14px;">Partner selection happens in person — we visit, we have a conversation, we see how the operation runs.</p>
+      </div>
+
+      <div class="kn-partner-card">
+        <span class="flag">Netherlands · organisations sending people</span>
+        <h3>HR, relocation, NGO and academic partners</h3>
+        <p>Companies, NGOs, research institutes and relocation specialists in the Netherlands whose staff land in Nairobi for assignments — short or long. KIMANZI is the operational layer behind UrbanChill: a single Dutch contact, fixed prices, an invoice in EUR, and reliable people on the ground.</p>
+        <ul>
+          <li>One contract, recurring use across multiple staff members</li>
+          <li>Predictable scope and pricing — KIMANZI handles the on-the-ground coordination so your staff can focus on why they're here</li>
+          <li>Discreet handling of arrivals, family logistics, briefings</li>
+          <li>Volume-based arrangements for organisations with regular Nairobi rotation</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p style="margin-top:24px;">Both kinds of partnership go through the same contact form. Mention which side you're on in the topic field and we route it.</p>
+  </section>
+
+  <!-- SKYLINE DIVIDER -->
+  <div class="kn-skyline" aria-hidden="false">
+    <img src="skyline.jpg" alt="Nairobi skyline with high-rise towers above the green tree canopy and red rooftops of the residential city below." />
+  </div>
+
+  <!-- FOUNDER -->
+  <section class="kn-section" id="founder">
+    <div class="kn-founder">
+      <div class="kn-founder-photo">
+        <img src="founder.jpg" alt="Founder of KIMANZI and UrbanChill" />
+      </div>
+      <div class="kn-founder-text">
+        <span class="kn-section-eyebrow">Behind KIMANZI</span>
+        <h2>Why I started this</h2>
+
+        <p>Travelling showed me that the first hours in a new place can feel heavy: confusion, hunger, noise, fatigue. Too much at once.</p>
+
+        <p>You walk into your apartment after a long flight. There's coffee, there's water — but no bread, no yoghurt, nothing for a simple breakfast. So instead of resting, you go out again. Past unfamiliar streets, into a supermarket where the brands are different and the queue takes longer than expected.</p>
+
+        <p>Or you've arrived at eleven at night. The last thing you want to think about is whether anything is still open, where a safe route runs at this hour, or what tomorrow morning will need from you before it has even started.</p>
+
+        <p>You wanted to land. You're still landing.</p>
+
+        <p>These are small things. Not catastrophes. But it's the small things that decide whether someone starts their first week feeling competent, or starts it tired and behind.</p>
+
+        <p>UrbanChill exists to take those small things off your plate. KIMANZI exists to do that with the right people on the ground — independent professionals in Nairobi who know which shops open early, which neighbourhood grocery stocks the brand you'd want, and how to make the first morning feel like part of arriving rather than another errand to run.</p>
+
+        <p>I'm building this slowly because the people I work with are the operation. I'd rather decline a partnership than dilute the standard. And I'd rather have one careful conversation than a rushed signup — so if you're considering applying as a host, partnering with us in Kenya, or setting up an arrangement from the Netherlands, send a message and we'll talk.</p>
+
+        <p class="signature">— Stephen L.<span>Founder, UrbanChill &amp; KIMANZI</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section class="kn-section" id="apply">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">Submit interest</span>
+      <h2>For independent hosts in Nairobi</h2>
+      <p class="lead">Selection is based on fit with current scope and existing host coverage. If your profile aligns, we contact you privately to talk further. We respond within one working day.</p>
+    </div>
+
+    <div class="kn-form-card">
+      <div class="preface">
+        <strong>This is not an employment application.</strong> KIMANZI collaborates with hosts on a per-assignment basis. Each assignment is optional and accepted individually. No exclusivity, no minimum availability.
+      </div>
+
+      <form id="applyForm">
+        <div>
+          <label class="field-label" for="a_name">Full name *</label>
+          <input type="text" id="a_name" required>
+        </div>
+        <div>
+          <label class="field-label" for="a_email">Email *</label>
+          <input type="email" id="a_email" required>
+        </div>
+        <div>
+          <label class="field-label" for="a_phone">Phone (WhatsApp preferred) *</label>
+          <input type="tel" id="a_phone" required>
+        </div>
+        <div>
+          <label class="field-label" for="a_area">Area in Nairobi where you're based *</label>
+          <input type="text" id="a_area" placeholder="e.g. Westlands, Kilimani, Karen, Lavington" required>
+        </div>
+        <div>
+          <label class="field-label" for="a_independent_status">Independent professional status *</label>
+          <select id="a_independent_status" required>
+            <option value="">Select…</option>
+            <option>Registered as independent in Kenya (KRA PIN, filing returns)</option>
+            <option>In the process of formalising</option>
+            <option>Not yet — I'd want to discuss this with you</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label" for="a_languages">Languages you work in</label>
+          <input type="text" id="a_languages" placeholder="e.g. English, Swahili, French">
+        </div>
+        <div>
+          <label class="field-label" for="a_experience">Brief background — what you currently do and why KIMANZI assignments fit</label>
+          <textarea id="a_experience" placeholder="A few lines about your work, your strengths, anything we should know."></textarea>
+        </div>
+        <div>
+          <label class="field-label" for="a_availability">Typical week pattern</label>
+          <select id="a_availability">
+            <option value="">Select…</option>
+            <option>Mostly weekdays</option>
+            <option>Mostly weekends</option>
+            <option>Varies — I'd let you know per assignment</option>
+            <option>Occasional only — just one or two assignments per quarter</option>
+          </select>
+          <span class="status">So we know roughly when not to call. Not a schedule commitment.</span>
+        </div>
+        <div>
+          <label class="field-label" for="a_mentorship">If you're new to this kind of work</label>
+          <select id="a_mentorship">
+            <option value="">Select…</option>
+            <option>I'd like to shadow an experienced host first</option>
+            <option>I'm comfortable starting directly</option>
+            <option>Not applicable — I have relevant experience</option>
+          </select>
+        </div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="a_independent_confirm" required>
+          <label for="a_independent_confirm">
+            I confirm that I operate (or am formalising) as an independent professional in Kenya, that I accept assignments individually, and that I understand there is no exclusivity, minimum availability or employment relationship with KIMANZI.
+          </label>
+        </div>
+
+        <button type="submit">Submit professional interest</button>
+        <span class="status" id="applyStatus" aria-live="polite"></span>
+
+        <div class="kn-success-detail" id="applySuccessDetail" hidden>
+          <p>Thanks — we've got it. Stephen reads every host application personally, usually the same working day. If your profile fits what we're looking for right now, you'll hear back with a few questions and a proposal for a short call. If we don't have a fit at this moment, you'll still hear back — we don't leave applications hanging.</p>
+        </div>
+
+        <p class="privacy-note">We store the information you submit here only to assess fit and contact you. No third-party sharing, no marketing list, no cookies on this site.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="kn-section" id="contact">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">Contact</span>
+      <h2>Partners and general enquiries</h2>
+      <p class="lead">For partners (Kenya or Netherlands), venues, logistics providers, and anything that isn't a host application. We confirm receipt and respond within one working day.</p>
+    </div>
+
+    <div class="kn-form-card">
+      <form id="contactForm">
+        <div>
+          <label class="field-label" for="c_name">Full name *</label>
+          <input type="text" id="c_name" required>
+        </div>
+        <div>
+          <label class="field-label" for="c_email">Email *</label>
+          <input type="email" id="c_email" required>
+        </div>
+        <div>
+          <label class="field-label" for="c_phone">Phone (optional)</label>
+          <input type="tel" id="c_phone">
+        </div>
+        <div>
+          <label class="field-label" for="c_topic">Topic</label>
+          <select id="c_topic">
+            <option value="">Select…</option>
+            <option>Partner — Kenya (venue, transport, service)</option>
+            <option>Partner — Netherlands (HR, relocation, NGO, academic)</option>
+            <option>Referral</option>
+            <option>Press or general</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label" for="c_message">Your message *</label>
+          <textarea id="c_message" required></textarea>
+        </div>
+
+        <button type="submit">Send message</button>
+        <span class="status" id="contactStatus" aria-live="polite"></span>
+
+        <div class="kn-success-detail" id="contactSuccessDetail" hidden>
+          <p>Thanks — message received. Stephen reads partner enquiries personally and replies the same working day, usually with a few questions back. For Kenya-based partners, the conversation often moves to a visit on location. For Netherlands-side enquiries, we set up a call.</p>
+          <p>Either way, we don't run on automated workflows — every reply will be a real one.</p>
+        </div>
+
+        <p class="privacy-note">Your message reaches KIMANZI directly. No third-party sharing, no marketing list.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="kn-section" id="faq">
+    <div class="kn-section-head">
+      <span class="kn-section-eyebrow">FAQ</span>
+      <h2>Frequent questions from hosts and partners</h2>
+    </div>
+
+    <h3 style="margin-top:6px;">For hosts</h3>
+    <div class="kn-faq">
+
+      <details>
+        <summary>Is this employment?</summary>
+        <div class="answer">
+          <p>No. You operate as an independent professional. You invoice KIMANZI per assignment and you decide what other work you take on. There is no exclusivity, no minimum availability and no schedule commitment.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How is payment handled?</summary>
+        <div class="answer">
+          <p>Right after each completed assignment, send your invoice and a photo of each receipt to <a href="mailto:host@kimanzi.nl">host@kimanzi.nl</a>. No special form, no template — just photo and email. Once everything arrives and we confirm completion, payout goes out within 2 working days.</p>
+          <p>The fast turnaround is structural, not a service promise: assignments only enter the pipeline after the guest has paid KIMANZI in full, so your fee is already on our account before your day begins. There is no platform float and no waiting for the guest to pay through. Once admin clears, payout runs via tech-banking — minutes to your account, not legacy banking queues.</p>
+          <p>M-Pesa is the standard channel. If you'd rather be paid by SEPA, bank transfer, or another method, just say so on the invoice — we accommodate.</p>
+          <p>For Concierge, the €23 commission is paid monthly for as long as the guest's subscription stays active.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do I need to front any costs?</summary>
+        <div class="answer">
+          <p>No. Airport transfer is arranged and prepaid by KIMANZI. Fuel and lunch you advance on the day and declare on your invoice — reimbursed in full.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can I decline an assignment?</summary>
+        <div class="answer">
+          <p>Yes, every time, without explanation. Declining one assignment has no effect on whether we offer you the next.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do I have to be available on a schedule?</summary>
+        <div class="answer">
+          <p>No. The "typical week pattern" question on the form helps us know roughly when not to call. You're free to be unavailable for weeks at a time, or to take a long break and pick up later.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What if a guest behaves out of scope during an assignment?</summary>
+        <div class="answer">
+          <p>You stop, you call me — my number is in your assignment briefing — you go home. You are paid in full for the time you committed. KIMANZI handles the conversation with the guest from there. This isn't a guideline — it's the rule.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do I need a social media presence?</summary>
+        <div class="answer">
+          <p>No. We don't require it and we don't promote individual hosts publicly. The guest gets your name and a short professional background in their prep email — that's where it stays.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What does "independent in Kenya" mean for the form?</summary>
+        <div class="answer">
+          <p>You're registered with KRA, file your own returns, and invoice clients directly. If you're formalising (PIN obtained, registration in progress), that's fine — mark "in process". We can talk through what's needed if you select the third option.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I reach KIMANZI during an assignment?</summary>
+        <div class="answer">
+          <p>Your assignment briefing includes a direct phone number for me — day or evening, weekday or weekend, for anything urgent on the day. Call, don't wait. The number isn't published on this site to keep the line clear for hosts who are actually working on an assignment.</p>
+          <p>For applications and general questions outside an accepted assignment, the contact form on this page reaches me faster.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How often will I get assignments?</summary>
+        <div class="answer">
+          <p>Honest answer: we don't promise a volume. Some months are quiet, some are busy. KIMANZI is meant to be an additional channel, not a primary income source. Hosts who like the model treat it as one of several streams.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <h3 style="margin-top:36px;">For partners</h3>
+    <div class="kn-faq">
+
+      <details>
+        <summary>What kind of Kenya-side partners do you work with?</summary>
+        <div class="answer">
+          <p>Operators in Nairobi whose work intersects with first-week settling: accommodation, transport, paperwork support, language tutoring, lifestyle services. We're not building an open marketplace — partners are added slowly and only when there's mutual fit.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What kind of Netherlands-side partners do you work with?</summary>
+        <div class="answer">
+          <p>Companies, NGOs, research institutes and relocation specialists in the Netherlands whose staff land in Nairobi. Typical setups range from one-off booking arrangements to volume-based contracts for organisations with regular Nairobi rotation.</p>
+          <p>We can invoice in EUR, work with NL contracting standards, and act as your single Dutch contact for the operational side in Nairobi.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How does referral work?</summary>
+        <div class="answer">
+          <p>Either side can refer. If KIMANZI refers a guest to a partner service and the partner has a referral structure, that's arranged bilaterally. We don't add markup on partner services to the guest.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do you cover cities outside Nairobi?</summary>
+        <div class="answer">
+          <p>No. KIMANZI operates within Nairobi only. We can advise on logistics in other Kenyan cities through our partner network, but assignments and host coordination stay city-bounded.</p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="kn-footer">
+  <div class="kn-footer-inner">
+    <div>
+      <img src="logo.png" alt="KIMANZI" style="height:48px;width:auto;display:block;margin-bottom:14px;" />
+      <p>Coordination layer for UrbanChill in Nairobi.</p>
+      <p>Looking to book services as a guest? Visit <a href="https://urbanchill.nl">urbanchill.nl</a>.</p>
+    </div>
+    <div class="right">
+      Privacy first. No cookies. No tracking.<br>
+      Nairobi · Amsterdam
+    </div>
+  </div>
+</footer>
+
+<script>
+// EXPANDABLE TOGGLES
+(function(){
+  document.querySelectorAll(".kn-expandable-toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var wrapper = btn.closest(".kn-expandable");
+      if(!wrapper) return;
+      var isOpen = wrapper.classList.toggle("is-open");
+      btn.innerHTML = isOpen
+        ? 'Show less <span class="arrow">↓</span>'
+        : 'Read more <span class="arrow">↓</span>';
+    });
+  });
+})();
+
+const API_BASE = "https://cockpit.urbanchill.org";
+
+async function postJson(url, payload){
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  const text = await res.text();
+  let data = null;
+  try {
+    data = text ? JSON.parse(text) : null;
+  } catch {}
+
+  return { ok: res.ok, status: res.status, text, data };
+}
+
+function setStatus(el, ok, msg){
+  if(!el) return;
+  el.textContent = msg || "";
+  el.style.color = ok ? "var(--accent-deep)" : "var(--muted)";
+}
+
+// CONTACT
+(function(){
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("contactStatus");
+  if(!form) return;
+
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    const payload = {
+      name: document.getElementById("c_name").value.trim(),
+      email: document.getElementById("c_email").value.trim(),
+      phone: document.getElementById("c_phone").value.trim(),
+      topic: document.getElementById("c_topic").value.trim(),
+      message: document.getElementById("c_message").value.trim(),
+      source: "kimanzi-site-contact"
+    };
+
+    if(!payload.name || !payload.email || !payload.message){
+      setStatus(statusEl, false, "Please complete the required fields.");
+      return;
+    }
+
+    setStatus(statusEl, true, "Sending…");
+
+    try {
+      const r = await postJson(API_BASE + "/api/contact/create", {
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        topic: payload.topic || "website",
+        notes: payload.message,
+        intake_id: null
+      });
+
+      if(r.ok){
+        setStatus(statusEl, true, "Message received. Stephen reads partner enquiries personally — full reply soon.");
+        const detail = document.getElementById("contactSuccessDetail");
+        if(detail) detail.hidden = false;
+        form.reset();
+      } else {
+        setStatus(statusEl, false, "The submission was not completed. Please try again shortly.");
+      }
+    } catch(err){
+      console.error("Contact submit failed:", err);
+      setStatus(statusEl, false, "Network error. Please try again shortly.");
+    }
+  });
+})();
+
+// APPLY (host application)
+// Posts to /api/host-applications/create which writes to the host_applications table.
+// Schema columns: name, email, phone, area, experience, environment, availability,
+// mentorship, source, notes, status. Fields not in the schema (independent_status,
+// languages) are folded into the notes field so they survive on the cockpit side.
+(function(){
+  const form = document.getElementById("applyForm");
+  const statusEl = document.getElementById("applyStatus");
+  if(!form) return;
+
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    const payload = {
+      name: document.getElementById("a_name").value.trim(),
+      phone: document.getElementById("a_phone").value.trim(),
+      email: document.getElementById("a_email").value.trim(),
+      area: document.getElementById("a_area").value.trim(),
+      independent_status: document.getElementById("a_independent_status").value,
+      languages: document.getElementById("a_languages").value.trim(),
+      experience: document.getElementById("a_experience").value.trim(),
+      availability: document.getElementById("a_availability").value,
+      mentorship: document.getElementById("a_mentorship").value,
+      independent_confirm: document.getElementById("a_independent_confirm").checked
+    };
+
+    if(!payload.name || !payload.phone || !payload.email || !payload.area || !payload.independent_status || !payload.independent_confirm){
+      setStatus(statusEl, false, "Please complete the required fields.");
+      return;
+    }
+
+    // Compose readable notes that preserve fields not in the schema.
+    const notesLines = [];
+    if(payload.independent_status) notesLines.push("Independent status: " + payload.independent_status);
+    if(payload.languages) notesLines.push("Languages: " + payload.languages);
+    if(payload.experience) notesLines.push("Background: " + payload.experience);
+    notesLines.push("Independent confirmation accepted: yes");
+    const composedNotes = notesLines.join("\n");
+
+    setStatus(statusEl, true, "Submitting…");
+
+    try {
+      const r = await postJson(API_BASE + "/api/host-applications/create", {
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        area: payload.area,
+        experience: payload.experience,
+        availability: payload.availability,
+        mentorship: payload.mentorship,
+        environment: "",
+        source: "kimanzi-site-apply",
+        notes: composedNotes,
+        status: "new"
+      });
+
+      if(r.ok){
+        setStatus(statusEl, true, "Submission received. Stephen reads every application personally — full reply soon.");
+        const detail = document.getElementById("applySuccessDetail");
+        if(detail) detail.hidden = false;
+        form.reset();
+      } else {
+        setStatus(statusEl, false, "The submission was not completed. Please try again shortly.");
+      }
+    } catch(err){
+      console.error("Apply submit failed:", err);
+      setStatus(statusEl, false, "Network error. Please try again shortly.");
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
