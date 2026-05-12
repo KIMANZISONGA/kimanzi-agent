@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners — KIMANZI by UrbanChill</title>
+<link rel="stylesheet" href="kimanzi.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Partners page specific styles */
+  .kn-partner-hero {
+    padding: 120px 0 80px;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .kn-partner-hero .kn-section-eyebrow {
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+  .kn-partner-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.1;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .kn-partner-hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--kn-text-muted, #6b5a4a);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .kn-partner-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  .kn-partner-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 3rem 0;
+  }
+
+  .kn-partner-type {
+    background: #fff;
+    border: 1px solid #e8e0d0;
+    border-radius: 14px;
+    padding: 1.5rem;
+    border-top: 3px solid #b04a2f;
+  }
+  .kn-partner-type .icon {
+    font-size: 28px;
+    margin-bottom: .75rem;
+    display: block;
+  }
+  .kn-partner-type h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    color: #1a1207;
+  }
+  .kn-partner-type p {
+    font-size: 13px;
+    color: #6b5a4a;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .kn-partner-how {
+    background: #1a1207;
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 3rem 0;
+    color: #f5efe2;
+  }
+  .kn-partner-how h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #f5efe2;
+  }
+  .kn-how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .kn-how-item {
+    border-left: 2px solid #b04a2f;
+    padding-left: 1.25rem;
+  }
+  .kn-how-item strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #f5efe2;
+    margin-bottom: .35rem;
+  }
+  .kn-how-item span {
+    font-size: 13px;
+    color: rgba(245,239,226,.6);
+    line-height: 1.6;
+  }
+
+  .kn-partner-cta {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #faf8f3;
+    border-radius: 16px;
+    border: 1px solid #e8e0d0;
+    margin: 2rem 0;
+  }
+  .kn-partner-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: .75rem;
+    color: #1a1207;
+  }
+  .kn-partner-cta p {
+    font-size: 15px;
+    color: #6b5a4a;
+    margin-bottom: 1.75rem;
+    line-height: 1.65;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .kn-partner-cta a.email {
+    display: inline-block;
+    background: #1a1207;
+    color: #f5efe2;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: opacity .2s;
+  }
+  .kn-partner-cta a.email:hover { opacity: .85; }
+  .kn-partner-cta .note {
+    font-size: 12px;
+    color: #9a8a7a;
+    margin-top: 1rem;
+  }
+
+  .kn-divider {
+    border: none;
+    border-top: 1px solid #e8e0d0;
+    margin: 3rem 0;
+  }
+
+  @media (max-width: 600px) {
+    .kn-how-grid { grid-template-columns: 1fr; }
+    .kn-partner-how { padding: 1.75rem; }
+    .kn-partner-hero { padding: 80px 1.5rem 50px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="kn-nav">
+  <div class="kn-nav-inner">
+    <a href="index.html" class="kn-brand" aria-label="KIMANZI">
+      <img src="logo.png" alt="KIMANZI" />
+    </a>
+    <div class="kn-nav-links">
+      <a href="index.html#work">The work</a>
+      <a href="index.html#sequence">How it works</a>
+      <a href="partners.html" style="font-weight:600">Partners</a>
+      <a href="index.html#founder">About</a>
+      <a href="index.html#apply" class="kn-cta">Submit interest</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="padding: 0 2rem;">
+  <div class="kn-partner-hero">
+    <span class="kn-section-eyebrow">Partners in Nairobi</span>
+    <h1>We bring the right people to you.</h1>
+    <p>KIMANZI works with a small, trusted group of businesses in Nairobi. We introduce our clients — Dutch professionals relocating to Kenya — to partners we believe in. Not everyone. The right ones.</p>
+  </div>
+</div>
+
+<div class="kn-partner-section">
+
+  <!-- WHO WE WORK WITH -->
+  <div class="kn-partner-cards">
+    <div class="kn-partner-type">
+      <span class="icon">🏨</span>
+      <h3>Hotels & serviced apartments</h3>
+      <p>Professionals arriving for the first time need reliable, comfortable accommodation. We recommend partners we've vetted personally.</p>
+    </div>
+    <div class="kn-partner-type">
+      <span class="icon">🍽️</span>
+      <h3>Restaurants</h3>
+      <p>Our clients want to eat well without spending time researching. A trusted recommendation from KIMANZI carries weight.</p>
+    </div>
+    <div class="kn-partner-type">
+      <span class="icon">🏠</span>
+      <h3>Short-term accommodation hosts</h3>
+      <p>Furnished apartments and private stays for professionals who need a home, not a hotel room. Quality and reliability above all.</p>
+    </div>
+    <div class="kn-partner-type">
+      <span class="icon">🤝</span>
+      <h3>Other local services</h3>
+      <p>Transport, coworking, healthcare, household services. If you work with international guests and maintain a consistent standard — we'd like to know you.</p>
+    </div>
+  </div>
+
+  <hr class="kn-divider">
+
+  <!-- HOW IT WORKS -->
+  <div class="kn-partner-how">
+    <h2>How it works</h2>
+    <div class="kn-how-grid">
+      <div class="kn-how-item">
+        <strong>We introduce, you deliver</strong>
+        <span>When a client needs accommodation, a restaurant, or a local service — we recommend you. Our word is our reputation, so we only recommend partners we trust.</span>
+      </div>
+      <div class="kn-how-item">
+        <strong>Mutual benefit</strong>
+        <span>You get a reliable stream of quality clients. Our clients get a trusted introduction. The terms are agreed between us — nothing standard, nothing generic.</span>
+      </div>
+      <div class="kn-how-item">
+        <strong>Small and selective</strong>
+        <span>We don't work with everyone. We maintain a small network of partners we know personally. Quality over volume — on both sides.</span>
+      </div>
+      <div class="kn-how-item">
+        <strong>Personal conversation first</strong>
+        <span>No forms, no contracts upfront. We start with a conversation — Stephen will reach out to discuss whether there's a natural fit.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="kn-partner-cta">
+    <h2>Think we're a good fit?</h2>
+    <p>Send us a short introduction — who you are, what you do, and why you think there's a match. Stephen reads every message personally.</p>
+    <a href="mailto:partners@kimanzi.nl" class="email">partners@kimanzi.nl</a>
+    <p class="note">We respond within a few working days. No pitch decks needed — a short message is enough.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="kn-footer">
+  <div class="kn-footer-inner">
+    <span class="kn-footer-brand">KIMANZI by UrbanChill</span>
+    <span class="kn-footer-copy">Nairobi · Kenya &nbsp;·&nbsp; host@kimanzi.nl</span>
+  </div>
+</footer>
+
+</body>
+</html>
