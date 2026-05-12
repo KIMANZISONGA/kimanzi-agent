@@ -395,7 +395,7 @@
     <div class="section-label">Your access</div>
 
     <!-- HANDBOOK -->
-    <div class="card" onclick="showHandbook()">
+    <div class="card" onclick="openHandbook()">
       <div class="card-inner">
         <div class="card-icon orange">📖</div>
         <div class="card-text">
@@ -505,6 +505,7 @@
 <script>
   // ── Demo hosts (later vervangen door Worker API) ──
   const HOSTS = {
+    "host@kimanzi.nl": { password: "kimanzi2026", name: "TestHost UrbanChill" },
     "lynn@kimanzi.nl":  { password: "nairobi2026", name: "Lynn" },
     "petra@kimanzi.nl": { password: "kimanzi2026", name: "Petra" },
   };
@@ -516,6 +517,11 @@
   if (saved) {
     currentHost = JSON.parse(saved);
     showPortal();
+  }
+
+  function openHandbook() {
+    sessionStorage.setItem("kimanzi_handbook_access", "1");
+    window.location.href = "handbook.html";
   }
 
   function doLogin() {
