@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KIMANZI">
+<meta name="theme-color" content="#1A2C1E">
+<title>KIMANZI Host Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:  #1A2C1E;
+    --green2: #2A4A32;
+    --orange: #C87A2E;
+    --cream:  #F5EFE2;
+    --cream2: #EDE5D4;
+    --text:   #2A2418;
+    --muted:  #6B5A4A;
+    --surface: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* ============ LOGIN SCREEN ============ */
+  #loginScreen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+  }
+
+  .k-mark {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(200,122,46,.12);
+    border: 1.5px solid rgba(200,122,46,.35);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.75rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; color: var(--orange); font-weight: 700;
+  }
+
+  .login-label {
+    font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--orange); font-weight: 600; margin-bottom: .5rem;
+  }
+
+  .login-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; color: var(--cream);
+    font-weight: 600; margin-bottom: .35rem;
+  }
+
+  .login-sub {
+    font-size: 13px; color: rgba(245,239,226,.45);
+    margin-bottom: 2.25rem; line-height: 1.5;
+  }
+
+  .input-group { margin-bottom: .75rem; text-align: left; }
+
+  .input-group label {
+    display: block; font-size: 11px; font-weight: 600;
+    color: rgba(245,239,226,.5); letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: .4rem;
+  }
+
+  .input-group input {
+    width: 100%;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: var(--cream);
+    font-size: 16px; /* 16px voorkomt zoom op iOS */
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border .2s;
+    -webkit-appearance: none;
+  }
+
+  .input-group input::placeholder { color: rgba(245,239,226,.25); }
+  .input-group input:focus { border-color: rgba(200,122,46,.5); }
+
+  .login-btn {
+    width: 100%;
+    background: var(--orange);
+    border: none; border-radius: 10px;
+    padding: 15px;
+    color: var(--green);
+    font-size: 15px; font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    margin-top: .5rem;
+    transition: opacity .2s, transform .1s;
+    -webkit-appearance: none;
+  }
+  .login-btn:active { opacity: .85; transform: scale(.98); }
+
+  .login-error {
+    color: #f87171; font-size: 13px;
+    min-height: 20px; margin: .65rem 0 .25rem;
+    text-align: center;
+  }
+
+  .login-note {
+    font-size: 11px; color: rgba(245,239,226,.2);
+    margin-top: 2rem; line-height: 1.6;
+  }
+
+  /* ============ PORTAL ============ */
+  #portalScreen { display: none; min-height: 100vh; min-height: 100dvh; }
+
+  /* TOP NAV */
+  .portal-nav {
+    background: var(--green);
+    padding: env(safe-area-inset-top, 0) 0 0;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .portal-nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .9rem 1.25rem;
+  }
+  .portal-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; color: var(--cream); font-weight: 700;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .portal-logo-dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: var(--green);
+  }
+  .portal-user {
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .portal-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(200,122,46,.2);
+    border: 1.5px solid rgba(200,122,46,.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: var(--orange);
+  }
+
+  /* WELCOME BANNER */
+  .welcome-banner {
+    background: var(--green2);
+    padding: 1.5rem 1.25rem 1.75rem;
+  }
+  .welcome-time {
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(245,239,226,.4); margin-bottom: .35rem;
+  }
+  .welcome-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; color: var(--cream); margin-bottom: .2rem;
+  }
+  .welcome-sub { font-size: 13px; color: rgba(245,239,226,.5); }
+
+  /* CONTENT */
+  .portal-content { padding: 1.25rem; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; margin-bottom: .75rem;
+  }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border: 1px solid var(--cream2);
+    border-radius: 14px;
+    margin-bottom: .85rem;
+    overflow: hidden;
+    transition: transform .15s, box-shadow .15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .card:active { transform: scale(.98); }
+
+  .card-inner {
+    display: flex; align-items: center;
+    padding: 1.1rem 1.25rem;
+    gap: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .card-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: rgba(26,44,30,.06);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .card-icon.orange { background: rgba(200,122,46,.1); }
+
+  .card-text { flex: 1; }
+  .card-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: .2rem; }
+  .card-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  .card-arrow {
+    font-size: 18px; color: var(--cream2); flex-shrink: 0;
+  }
+
+  .card-pill {
+    font-size: 10px; font-weight: 600; letter-spacing: .05em;
+    padding: .2rem .6rem; border-radius: 999px;
+    background: rgba(26,44,30,.08); color: var(--green2);
+    flex-shrink: 0;
+  }
+  .card-pill.orange { background: rgba(200,122,46,.12); color: var(--orange); }
+
+  /* LOCKED CARD */
+  .card.locked { opacity: .45; }
+  .card.locked .card-inner { cursor: default; }
+  .locked-badge {
+    font-size: 10px; color: var(--muted);
+    padding: .5rem 1.25rem;
+    border-top: 1px solid var(--cream2);
+    background: rgba(0,0,0,.02);
+  }
+
+  /* QUICK INFO */
+  .quick-info {
+    background: var(--green);
+    border-radius: 14px;
+    padding: 1.25rem;
+    margin-bottom: .85rem;
+    color: var(--cream);
+  }
+  .quick-info-title {
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--orange); font-weight: 600; margin-bottom: .75rem;
+  }
+  .quick-row {
+    display: flex; justify-content: space-between;
+    padding: .5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    font-size: 13px;
+  }
+  .quick-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .quick-key { color: rgba(245,239,226,.5); }
+  .quick-val { color: var(--cream); font-weight: 500; }
+  .quick-val.orange { color: var(--orange); }
+
+  /* LOGOUT */
+  .logout-btn {
+    width: 100%; background: none;
+    border: 1px solid rgba(26,44,30,.15);
+    border-radius: 10px; padding: .85rem;
+    color: var(--muted); font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer; margin-top: .5rem;
+    transition: all .2s;
+  }
+  .logout-btn:active { background: rgba(26,44,30,.05); }
+
+  /* HANDBOOK SCREEN */
+  #handbookScreen {
+    display: none; min-height: 100vh; background: var(--cream);
+  }
+  .back-bar {
+    background: var(--green);
+    padding: env(safe-area-inset-top, 0) 0 0;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .back-bar-inner {
+    display: flex; align-items: center; gap: .75rem;
+    padding: .9rem 1.25rem;
+  }
+  .back-btn {
+    background: none; border: none;
+    color: var(--orange); font-size: 22px;
+    cursor: pointer; padding: 0;
+    display: flex; align-items: center;
+  }
+  .back-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; color: var(--cream);
+  }
+
+  .handbook-content {
+    padding: 1.5rem 1.25rem;
+    max-width: 680px; margin: 0 auto;
+  }
+  .handbook-cover {
+    background: var(--green);
+    border-radius: 16px; padding: 2rem;
+    margin-bottom: 1.5rem; text-align: center;
+  }
+  .handbook-cover h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream); font-size: 24px; margin-bottom: .25rem;
+  }
+  .handbook-cover p { font-size: 13px; color: rgba(245,239,226,.5); }
+
+  .handbook-toc {
+    background: white; border-radius: 14px;
+    border: 1px solid var(--cream2);
+    overflow: hidden; margin-bottom: 1rem;
+  }
+  .toc-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .9rem 1.25rem;
+    border-bottom: 1px solid var(--cream2);
+    font-size: 14px; color: var(--text);
+    cursor: pointer;
+  }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { color: var(--orange); font-weight: 600; margin-right: .75rem; font-size: 13px; }
+
+  .conf-note {
+    background: rgba(26,44,30,.06);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 8px 8px 0;
+    padding: .85rem 1rem;
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* SAFE AREA */
+  .safe-bottom { padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0)); }
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN SCREEN ============ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="k-mark">K</div>
+    <p class="login-label">KIMANZI by UrbanChill</p>
+    <h1 class="login-title">Host Portal</h1>
+    <p class="login-sub">Sign in to access your assignments and handbook.</p>
+
+    <div class="input-group">
+      <label>Email address</label>
+      <input id="emailInput" type="email" inputmode="email" autocomplete="email"
+        placeholder="your@email.com" autocapitalize="none" autocorrect="off">
+    </div>
+    <div class="input-group">
+      <label>Password</label>
+      <input id="passwordInput" type="password" autocomplete="current-password"
+        placeholder="••••••••"
+        onkeydown="if(event.key==='Enter') doLogin()">
+    </div>
+
+    <div class="login-error" id="loginError"></div>
+    <button class="login-btn" onclick="doLogin()">Sign in →</button>
+    <p class="login-note">Your login credentials were shared by Stephen via Signal.<br>Questions? host@kimanzi.nl</p>
+  </div>
+</div>
+
+<!-- ============ PORTAL SCREEN ============ -->
+<div id="portalScreen">
+  <div class="portal-nav">
+    <div class="portal-nav-inner">
+      <div class="portal-logo">
+        <div class="portal-logo-dot">K</div>
+        KIMANZI
+      </div>
+      <div class="portal-user">
+        <div class="portal-avatar" id="userAvatar">L</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="welcome-banner">
+    <div class="welcome-time" id="welcomeTime">Good morning</div>
+    <div class="welcome-name" id="welcomeName">Welcome back</div>
+    <div class="welcome-sub">KIMANZI Host Portal</div>
+  </div>
+
+  <div class="portal-content safe-bottom">
+
+    <div class="section-label">Your access</div>
+
+    <!-- HANDBOOK -->
+    <div class="card" onclick="showHandbook()">
+      <div class="card-inner">
+        <div class="card-icon orange">📖</div>
+        <div class="card-text">
+          <div class="card-title">Host Handbook</div>
+          <div class="card-desc">Everything you need to know about working with KIMANZI.</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </div>
+
+    <!-- ASSIGNMENTS (locked fase 2) -->
+    <div class="card locked">
+      <div class="card-inner">
+        <div class="card-icon">📋</div>
+        <div class="card-text">
+          <div class="card-title">My assignments</div>
+          <div class="card-desc">Upcoming briefings and assignments.</div>
+        </div>
+        <div class="card-pill orange">Coming soon</div>
+      </div>
+      <div class="locked-badge">Available in Phase 2 — briefings and client details will appear here</div>
+    </div>
+
+    <!-- RECEIPTS (locked fase 2) -->
+    <div class="card locked">
+      <div class="card-inner">
+        <div class="card-icon">🧾</div>
+        <div class="card-text">
+          <div class="card-title">Submit receipts</div>
+          <div class="card-desc">Upload photos of fuel and lunch receipts.</div>
+        </div>
+        <div class="card-pill orange">Coming soon</div>
+      </div>
+      <div class="locked-badge">Available in Phase 2 — replace Signal photo submissions</div>
+    </div>
+
+    <div class="section-label" style="margin-top:1.5rem">Contact</div>
+
+    <!-- QUICK INFO -->
+    <div class="quick-info">
+      <div class="quick-info-title">KIMANZI Contact</div>
+      <div class="quick-row">
+        <span class="quick-key">Email</span>
+        <span class="quick-val">host@kimanzi.nl</span>
+      </div>
+      <div class="quick-row">
+        <span class="quick-key">Stephen (Signal)</span>
+        <span class="quick-val orange">+31 641 378 625</span>
+      </div>
+      <div class="quick-row">
+        <span class="quick-key">During assignment</span>
+        <span class="quick-val">Call Stephen directly</span>
+      </div>
+      <div class="quick-row">
+        <span class="quick-key">Receipts &amp; invoices</span>
+        <span class="quick-val">host@kimanzi.nl</span>
+      </div>
+    </div>
+
+    <button class="logout-btn" onclick="doLogout()">Sign out</button>
+
+  </div>
+</div>
+
+<!-- ============ HANDBOOK SCREEN ============ -->
+<div id="handbookScreen">
+  <div class="back-bar">
+    <div class="back-bar-inner">
+      <button class="back-btn" onclick="showPortal()">‹</button>
+      <span class="back-title">Host Handbook</span>
+    </div>
+  </div>
+
+  <div class="handbook-content safe-bottom">
+
+    <div class="handbook-cover">
+      <h2>Host Handbook</h2>
+      <p>Version 2.0 · KIMANZI by UrbanChill<br>Coordination layer for UrbanChill in Nairobi</p>
+    </div>
+
+    <div class="conf-note">
+      🔒 <strong>Confidential.</strong> This document is intended solely for you as a KIMANZI host. Please do not share its contents with third parties.
+    </div>
+
+    <div class="handbook-toc">
+      <div class="toc-item"><span><span class="toc-num">→</span>Welcome</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">1</span>What KIMANZI is</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">2</span>Your position</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">3</span>The work in practice</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">4</span>Fees &amp; payment</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">5</span>Safety &amp; boundaries</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">6</span>Communication</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">7</span>Taxes &amp; admin</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">8</span>When something goes wrong</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">9</span>Growing with KIMANZI</span><span style="color:var(--cream2)">›</span></div>
+      <div class="toc-item"><span><span class="toc-num">10</span>Final word</span><span style="color:var(--cream2)">›</span></div>
+    </div>
+
+    <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:1rem">
+      Full handbook content loads here.<br>
+      <span style="color:var(--orange)">kimanzi.nl/handbook</span>
+    </p>
+
+  </div>
+</div>
+
+<script>
+  // ── Demo hosts (later vervangen door Worker API) ──
+  const HOSTS = {
+    "lynn@kimanzi.nl":  { password: "nairobi2026", name: "Lynn" },
+    "petra@kimanzi.nl": { password: "kimanzi2026", name: "Petra" },
+  };
+
+  let currentHost = null;
+
+  // ── Sessie herstellen ──
+  const saved = sessionStorage.getItem("kimanzi_host");
+  if (saved) {
+    currentHost = JSON.parse(saved);
+    showPortal();
+  }
+
+  function doLogin() {
+    const email    = document.getElementById("emailInput").value.trim().toLowerCase();
+    const password = document.getElementById("passwordInput").value;
+    const errEl    = document.getElementById("loginError");
+
+    if (!email || !password) {
+      errEl.textContent = "Please enter your email and password.";
+      return;
+    }
+
+    const host = HOSTS[email];
+    if (!host || host.password !== password) {
+      errEl.textContent = "Incorrect email or password. Try again.";
+      document.getElementById("passwordInput").value = "";
+      return;
+    }
+
+    currentHost = { email, name: host.name };
+    sessionStorage.setItem("kimanzi_host", JSON.stringify(currentHost));
+    errEl.textContent = "";
+    showPortal();
+  }
+
+  function showPortal() {
+    document.getElementById("loginScreen").style.display   = "none";
+    document.getElementById("handbookScreen").style.display = "none";
+    document.getElementById("portalScreen").style.display  = "block";
+
+    if (currentHost) {
+      const first = currentHost.name.charAt(0).toUpperCase();
+      document.getElementById("userAvatar").textContent  = first;
+      document.getElementById("welcomeName").textContent = "Good " + timeOfDay() + ", " + currentHost.name + ".";
+      document.getElementById("welcomeTime").textContent = new Date().toLocaleDateString("en-GB", { weekday:"long", day:"numeric", month:"long" });
+    }
+    window.scrollTo(0, 0);
+  }
+
+  function showHandbook() {
+    document.getElementById("portalScreen").style.display   = "none";
+    document.getElementById("handbookScreen").style.display = "block";
+    window.scrollTo(0, 0);
+  }
+
+  function doLogout() {
+    sessionStorage.removeItem("kimanzi_host");
+    currentHost = null;
+    document.getElementById("portalScreen").style.display  = "none";
+    document.getElementById("loginScreen").style.display   = "flex";
+    document.getElementById("emailInput").value    = "";
+    document.getElementById("passwordInput").value = "";
+  }
+
+  function timeOfDay() {
+    const h = new Date().getHours();
+    if (h < 12) return "morning";
+    if (h < 17) return "afternoon";
+    return "evening";
+  }
+</script>
+
+</body>
+</html>
