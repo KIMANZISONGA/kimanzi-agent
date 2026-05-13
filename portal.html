@@ -915,11 +915,14 @@
     count.textContent = selectedPhotos.length > 0 ? selectedPhotos.length + " photo" + (selectedPhotos.length > 1 ? "s" : "") + " selected" : "";
   }
 
-  function submitScout() {
+  const KIMANZI_API = "https://cockpit.urbanchill.org/api";
+
+  async function submitScout() {
     const name  = document.getElementById("scoutName").value.trim();
     const wijk  = document.getElementById("scoutWijk").value;
     const type  = document.getElementById("scoutType").value;
     const err   = document.getElementById("scoutError");
+    const btn   = document.querySelector("#scoutScreen button[onclick=\'submitScout()\']");
 
     if (!name)  { err.textContent = "Please enter a location name."; return; }
     if (!wijk)  { err.textContent = "Please select a wijk."; return; }
@@ -927,20 +930,67 @@
     if (selectedPhotos.length < 3) { err.textContent = "Please add at least 3 photos."; return; }
 
     err.textContent = "";
-    document.querySelector("#scoutScreen .handbook-content > div:nth-child(3)").style.display = "none";
-    document.querySelector("#scoutScreen [onclick=\"document.getElementById(\'photoInput\').click()\"]")?.closest("div[style*=\"margin-bottom:1.25rem\"]");
+    if (btn) { btn.textContent = "Uploading..."; btn.disabled = true; }
 
-    // Hide form, show success
-    document.getElementById("scoutSuccess").style.display = "block";
-    document.getElementById("scoutSuccess").scrollIntoView({behavior:"smooth"});
-    // Reset
-    document.getElementById("scoutName").value  = "";
-    document.getElementById("scoutWijk").value  = "";
-    document.getElementById("scoutType").value  = "";
-    document.getElementById("scoutPrice").value = "";
-    document.getElementById("scoutNotes").value = "";
-    selectedPhotos = [];
-    renderPhotoPreviews();
+    try {
+      // 1. Generate scout ID client-side
+      const scoutId = crypto.randomUUID();
+
+      // 2. Upload photos one by one
+      const photoUrls = [];
+      for (const file of selectedPhotos) {
+        const res = await fetch(`${KIMANZI_API}/scouts/photo`, {
+          method: "POST",
+          headers: {
+            "X-Scout-Id":  scoutId,
+            "X-File-Name": file.name || "photo.jpg",
+            "Content-Type": file.type || "image/jpeg"
+          },
+          body: file
+        });
+        if (!res.ok) throw new Error("Photo upload failed");
+        const data = await res.json();
+        photoUrls.push(data.url || data.key);
+      }
+
+      // 3. Create scout record
+      const payload = {
+        id:            scoutId,
+        host_email:    currentHost?.email || "",
+        host_name:     currentHost?.name  || "",
+        location_name: name,
+        wijk,
+        type,
+        price:  document.getElementById("scoutPrice").value.trim(),
+        notes:  document.getElementById("scoutNotes").value.trim(),
+        photo_urls: photoUrls
+      };
+
+      const res2 = await fetch(`${KIMANZI_API}/scouts/create`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (!res2.ok) throw new Error("Submit failed");
+
+      // 4. Show success
+      document.getElementById("scoutSuccess").style.display = "block";
+      document.getElementById("scoutSuccess").scrollIntoView({ behavior: "smooth" });
+
+      // 5. Reset form
+      document.getElementById("scoutName").value  = "";
+      document.getElementById("scoutWijk").value  = "";
+      document.getElementById("scoutType").value  = "";
+      document.getElementById("scoutPrice").value = "";
+      document.getElementById("scoutNotes").value = "";
+      selectedPhotos = [];
+      renderPhotoPreviews();
+
+    } catch (e) {
+      err.textContent = "Something went wrong. Please try again.";
+    } finally {
+      if (btn) { btn.textContent = "Submit location →"; btn.disabled = false; }
+    }
   }
 </script>
 
