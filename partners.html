@@ -28,7 +28,7 @@
   .kn-partner-hero p {
     font-size: 18px;
     line-height: 1.7;
-    color: var(--kn-text-muted, #6b5a4a);
+    color: var(--muted);
     max-width: 540px;
     margin: 0 auto;
   }
@@ -167,16 +167,15 @@
 <body>
 
 <!-- NAV -->
-<nav class="kn-nav">
-  <div class="kn-nav-inner">
-    <a href="index.html" class="kn-brand" aria-label="KIMANZI">
-      <img src="logo.png" alt="KIMANZI" />
+<nav>
+  <div class="navinner">
+    <a href="index.html" aria-label="KIMANZI" style="display:flex;align-items:center;">
+      <img src="logo.png" alt="KIMANZI" style="height:44px;width:auto;display:block;" />
     </a>
-    <div class="kn-nav-links">
+    <div class="navlinks">
       <a href="index.html#work">The work</a>
       <a href="index.html#sequence">How it works</a>
-      <a href="partners.html" style="font-weight:600">Partners</a>
-      <a href="index.html#apply" class="kn-cta">Submit interest</a>
+      <a href="partners.html" style="color:#f0c982;">Partners</a>
     </div>
   </div>
 </nav>
@@ -184,7 +183,7 @@
 <!-- HERO -->
 <div style="padding: 0 2rem;">
   <div class="kn-partner-hero">
-    <span class="kn-section-eyebrow">Partners in Nairobi</span>
+    <span style="display:block;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:1.25rem;">Partners in Nairobi</span>
     <h1>We bring the right people to you.</h1>
     <p>We work with a small, trusted group of businesses in Nairobi. We introduce our clients — Dutch professionals relocating to Kenya — to partners we believe in. Not everyone. The right ones.</p>
   </div>
@@ -252,11 +251,9 @@
 </div>
 
 <!-- FOOTER -->
-<footer class="kn-footer">
-  <div class="kn-footer-inner">
-    <span class="kn-footer-brand">KIMANZI</span>
-    <span class="kn-footer-copy">Nairobi · Kenya</span>
-  </div>
+<footer>
+  <p style="font-weight:700;color:var(--gold-soft);letter-spacing:.12em;font-size:.85rem;margin-bottom:.5rem;">KIMANZI</p>
+  <p>Nairobi · Kenya</p>
 </footer>
 
 </body>
