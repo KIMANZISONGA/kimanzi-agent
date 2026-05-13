@@ -348,7 +348,7 @@
 <div id="loginScreen">
   <div class="login-card">
     <div class="k-mark">K</div>
-    <p class="login-label">KIMANZI by UrbanChill</p>
+    <p class="login-label">KIMANZI</p>
     <h1 class="login-title">Host Portal</h1>
     <p class="login-sub">Sign in to access your assignments and handbook.</p>
 
@@ -366,7 +366,7 @@
 
     <div class="login-error" id="loginError"></div>
     <button class="login-btn" onclick="doLogin()">Sign in →</button>
-    <p class="login-note">Your login credentials were shared by Stephen via Signal.<br>Questions? host@kimanzi.nl</p>
+    <p class="login-note">Your login credentials were shared via Signal.<br>Questions? host@kimanzi.nl</p>
   </div>
 </div>
 
@@ -444,6 +444,18 @@
       <div class="locked-badge">Available in Phase 2 — replace Signal photo submissions</div>
     </div>
 
+    <!-- SCOUT -->
+    <div class="card" onclick="showScout()">
+      <div class="card-inner">
+        <div class="card-icon" style="background:rgba(200,122,46,.1);">🗺️</div>
+        <div class="card-text">
+          <div class="card-title">Scout Nairobi</div>
+          <div class="card-desc">Spotted a good location? Submit it with photos and earn a bonus.</div>
+        </div>
+        <div class="card-pill orange">€15 bonus</div>
+      </div>
+    </div>
+
     <div class="section-label" style="margin-top:1.5rem">Contact</div>
 
     <!-- QUICK INFO -->
@@ -454,12 +466,12 @@
         <span class="quick-val">host@kimanzi.nl</span>
       </div>
       <div class="quick-row">
-        <span class="quick-key">Stephen (Signal)</span>
+        <span class="quick-key">Coordinator (Signal)</span>
         <span class="quick-val orange">Available after onboarding</span>
       </div>
       <div class="quick-row">
         <span class="quick-key">During assignment</span>
-        <span class="quick-val">Call Stephen directly</span>
+        <span class="quick-val">Call coordinator directly</span>
       </div>
       <div class="quick-row">
         <span class="quick-key">Receipts &amp; invoices</span>
@@ -485,7 +497,7 @@
 
     <div class="handbook-cover">
       <h2>Your compensation</h2>
-      <p>Clear, fixed, and paid within two days.<br>KIMANZI by UrbanChill</p>
+      <p>Clear, fixed, and paid within two days.<br>KIMANZI</p>
     </div>
 
     <!-- FEE TABLE -->
@@ -584,7 +596,7 @@
       <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:.5rem;">Questions?</div>
       <div style="font-size:13px;color:rgba(245,239,226,.7);line-height:1.65;">
         For any payment or invoice questions: <strong style="color:var(--cream);">host@kimanzi.nl</strong><br>
-        During an active assignment: call Stephen directly (number in your briefing).
+        During an active assignment: call the coordinator directly (number in your briefing).
       </div>
     </div>
 
@@ -604,7 +616,7 @@
 
     <div class="handbook-cover">
       <h2>Host Handbook</h2>
-      <p>Version 2.0 · KIMANZI by UrbanChill<br>Coordination layer for UrbanChill in Nairobi</p>
+      <p>Version 2.0 · KIMANZI<br>Coordination layer for host operations in Nairobi</p>
     </div>
 
     <div class="conf-note">
@@ -629,6 +641,152 @@
       Full handbook content loads here.<br>
       <span style="color:var(--orange)">kimanzi.nl/handbook</span>
     </p>
+
+  </div>
+</div>
+
+
+<!-- ============ SCOUT SCREEN ============ -->
+<div id="scoutScreen" style="display:none; min-height:100vh; background:var(--cream);">
+  <div class="back-bar">
+    <div class="back-bar-inner">
+      <button class="back-btn" onclick="showPortal()">‹</button>
+      <span class="back-title">Scout Nairobi</span>
+    </div>
+  </div>
+
+  <div class="handbook-content safe-bottom">
+
+    <div class="handbook-cover">
+      <h2>Scout a location</h2>
+      <p>Spotted something good in Nairobi?<br>Submit it with photos and earn €15 on your next payout.</p>
+    </div>
+
+    <div class="conf-note">
+      📸 <strong>Photos are required.</strong> A submission without at least 3 photos will not qualify for the bonus. No edits needed — just sharp and clear.
+    </div>
+
+    <!-- WHAT COUNTS -->
+    <div style="background:white;border-radius:14px;border:1px solid var(--cream2);overflow:hidden;margin-bottom:1rem;">
+      <div style="padding:.85rem 1.25rem;border-bottom:1px solid var(--cream2);background:var(--green);">
+        <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);font-weight:600;">What qualifies</div>
+      </div>
+      <div style="padding:.85rem 1.25rem;border-bottom:1px solid var(--cream2);display:flex;gap:.75rem;align-items:flex-start;">
+        <div style="font-size:18px;">🏠</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.15rem;">Apartments</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">2-bedroom with balkon and gym. Note the monthly rent and wijk.</div>
+        </div>
+      </div>
+      <div style="padding:.85rem 1.25rem;border-bottom:1px solid var(--cream2);display:flex;gap:.75rem;align-items:flex-start;">
+        <div style="font-size:18px;">💻</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.15rem;">Coworking spaces</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">Day pass and monthly price. Test the internet and note the speed.</div>
+        </div>
+      </div>
+      <div style="padding:.85rem 1.25rem;border-bottom:1px solid var(--cream2);display:flex;gap:.75rem;align-items:flex-start;">
+        <div style="font-size:18px;">🍽️</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.15rem;">Restaurants & cafés</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">Good enough to recommend to a Dutch professional. Photo of the food and the bill.</div>
+        </div>
+      </div>
+      <div style="padding:.85rem 1.25rem;display:flex;gap:.75rem;align-items:flex-start;">
+        <div style="font-size:18px;">🏪</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.15rem;">Supermarkets & markets</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">Walking distance from key wijken. Note what's available and the price level.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:.25rem 0 .75rem;">Submit a location</div>
+
+    <div style="background:white;border-radius:14px;border:1px solid var(--cream2);padding:1.25rem;margin-bottom:.85rem;">
+
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem;">Location name *</label>
+        <input id="scoutName" type="text" placeholder="e.g. Naivas Westlands, Zuri Apartment 4B"
+          style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--cream2);background:var(--cream);color:var(--text);font-size:16px;font-family:Inter,sans-serif;outline:none;">
+      </div>
+
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem;">Wijk *</label>
+        <select id="scoutWijk"
+          style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--cream2);background:var(--cream);color:var(--text);font-size:16px;font-family:Inter,sans-serif;outline:none;-webkit-appearance:none;">
+          <option value="">Select wijk</option>
+          <option>Westlands</option>
+          <option>Kilimani</option>
+          <option>Upper Hill</option>
+          <option>Ngara</option>
+          <option>Outside centre</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem;">Type *</label>
+        <select id="scoutType"
+          style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--cream2);background:var(--cream);color:var(--text);font-size:16px;font-family:Inter,sans-serif;outline:none;-webkit-appearance:none;">
+          <option value="">Select type</option>
+          <option>Apartment</option>
+          <option>Coworking space</option>
+          <option>Restaurant / café</option>
+          <option>Supermarket / market</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem;">Price (optional)</label>
+        <input id="scoutPrice" type="text" placeholder="e.g. KES 80,000/mo or €600/mo"
+          style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--cream2);background:var(--cream);color:var(--text);font-size:16px;font-family:Inter,sans-serif;outline:none;">
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem;">Notes</label>
+        <textarea id="scoutNotes" placeholder="What makes it worth recommending? Internet speed, security, vibe, walking distance to..."
+          style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--cream2);background:var(--cream);color:var(--text);font-size:16px;font-family:Inter,sans-serif;outline:none;min-height:90px;resize:vertical;"></textarea>
+      </div>
+
+      <!-- PHOTO UPLOAD -->
+      <div style="margin-bottom:1.25rem;">
+        <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem;">Photos * (min. 3)</label>
+        <div id="photoDropzone" onclick="document.getElementById('photoInput').click()"
+          style="border:2px dashed var(--cream2);border-radius:10px;padding:1.5rem;text-align:center;cursor:pointer;transition:border .2s;background:var(--cream);">
+          <div style="font-size:28px;margin-bottom:.4rem;">📷</div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.2rem;">Tap to add photos</div>
+          <div style="font-size:12px;color:var(--muted);">Sharp and clear. No editing needed.</div>
+        </div>
+        <input id="photoInput" type="file" accept="image/*" multiple style="display:none;" onchange="handlePhotos(this)">
+        <div id="photoPreview" style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;"></div>
+        <div id="photoCount" style="font-size:12px;color:var(--muted);margin-top:.4rem;"></div>
+      </div>
+
+      <div id="scoutError" style="font-size:13px;color:#e53e3e;min-height:18px;margin-bottom:.75rem;"></div>
+
+      <button onclick="submitScout()"
+        style="width:100%;background:var(--orange);border:none;border-radius:10px;padding:15px;color:var(--green);font-size:15px;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;">
+        Submit location →
+      </button>
+    </div>
+
+    <!-- BONUS NOTE -->
+    <div style="background:var(--green);border-radius:14px;padding:1.25rem;color:var(--cream);margin-bottom:1rem;">
+      <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:.5rem;">About the bonus</div>
+      <div style="font-size:13px;color:rgba(245,239,226,.75);line-height:1.65;">
+        Every approved submission adds <strong style="color:var(--cream);">€15</strong> to your next payout. We review within a few days. Approval requires at least 3 clear photos and a filled location name, wijk, and type.
+      </div>
+    </div>
+
+    <!-- SUCCESS MESSAGE (hidden) -->
+    <div id="scoutSuccess" style="display:none;background:#d1fae5;border:1px solid #6ee7b7;border-radius:14px;padding:1.25rem;text-align:center;margin-bottom:1rem;">
+      <div style="font-size:28px;margin-bottom:.5rem;">✅</div>
+      <div style="font-size:15px;font-weight:600;color:#065f46;margin-bottom:.25rem;">Submitted. Thank you.</div>
+      <div style="font-size:13px;color:#047857;line-height:1.5;">We'll review your submission within a few days. If approved, €15 will be added to your next payout.</div>
+    </div>
 
   </div>
 </div>
@@ -719,6 +877,70 @@
     if (h < 12) return "morning";
     if (h < 17) return "afternoon";
     return "evening";
+  }
+
+  function showScout() {
+    document.getElementById("portalScreen").style.display  = "none";
+    document.getElementById("scoutScreen").style.display   = "block";
+    window.scrollTo(0, 0);
+  }
+
+  let selectedPhotos = [];
+
+  function handlePhotos(input) {
+    const files = Array.from(input.files);
+    selectedPhotos = selectedPhotos.concat(files);
+    renderPhotoPreviews();
+  }
+
+  function renderPhotoPreviews() {
+    const preview = document.getElementById("photoPreview");
+    const count   = document.getElementById("photoCount");
+    preview.innerHTML = "";
+    selectedPhotos.forEach((file, i) => {
+      const url = URL.createObjectURL(file);
+      const wrap = document.createElement("div");
+      wrap.style.cssText = "position:relative;width:80px;height:80px;border-radius:8px;overflow:hidden;";
+      const img = document.createElement("img");
+      img.src = url;
+      img.style.cssText = "width:100%;height:100%;object-fit:cover;";
+      const del = document.createElement("div");
+      del.textContent = "×";
+      del.style.cssText = "position:absolute;top:2px;right:4px;background:rgba(0,0,0,.55);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;line-height:1;";
+      del.onclick = (e) => { e.stopPropagation(); selectedPhotos.splice(i, 1); renderPhotoPreviews(); };
+      wrap.appendChild(img);
+      wrap.appendChild(del);
+      preview.appendChild(wrap);
+    });
+    count.textContent = selectedPhotos.length > 0 ? selectedPhotos.length + " photo" + (selectedPhotos.length > 1 ? "s" : "") + " selected" : "";
+  }
+
+  function submitScout() {
+    const name  = document.getElementById("scoutName").value.trim();
+    const wijk  = document.getElementById("scoutWijk").value;
+    const type  = document.getElementById("scoutType").value;
+    const err   = document.getElementById("scoutError");
+
+    if (!name)  { err.textContent = "Please enter a location name."; return; }
+    if (!wijk)  { err.textContent = "Please select a wijk."; return; }
+    if (!type)  { err.textContent = "Please select a type."; return; }
+    if (selectedPhotos.length < 3) { err.textContent = "Please add at least 3 photos."; return; }
+
+    err.textContent = "";
+    document.querySelector("#scoutScreen .handbook-content > div:nth-child(3)").style.display = "none";
+    document.querySelector("#scoutScreen [onclick=\"document.getElementById(\'photoInput\').click()\"]")?.closest("div[style*=\"margin-bottom:1.25rem\"]");
+
+    // Hide form, show success
+    document.getElementById("scoutSuccess").style.display = "block";
+    document.getElementById("scoutSuccess").scrollIntoView({behavior:"smooth"});
+    // Reset
+    document.getElementById("scoutName").value  = "";
+    document.getElementById("scoutWijk").value  = "";
+    document.getElementById("scoutType").value  = "";
+    document.getElementById("scoutPrice").value = "";
+    document.getElementById("scoutNotes").value = "";
+    selectedPhotos = [];
+    renderPhotoPreviews();
   }
 </script>
 
