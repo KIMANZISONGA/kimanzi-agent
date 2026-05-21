@@ -388,6 +388,7 @@
     <div class="welcome-time" id="welcomeTime">Good morning</div>
     <div class="welcome-name" id="welcomeName">Welcome back</div>
     <div class="welcome-sub">KIMANZI Host Portal</div>
+    <div id="portalWeatherWidget" style="margin-top:1rem"></div>
   </div>
 
   <div class="portal-content safe-bottom">
@@ -721,6 +722,7 @@
       document.getElementById("userAvatar").textContent  = first;
       document.getElementById("welcomeName").textContent = "Good " + timeOfDay() + ", " + currentHost.name + ".";
       document.getElementById("welcomeTime").textContent = new Date().toLocaleDateString("en-GB", { weekday:"long", day:"numeric", month:"long" });
+      loadPortalWeather();
     }
     window.scrollTo(0, 0);
   }
@@ -746,6 +748,84 @@
     if (h < 12) return "morning";
     if (h < 17) return "afternoon";
     return "evening";
+  }
+
+  /* ===== WEATHER + KOERS WIDGET ===== */
+  async function loadPortalWeather() {
+    const widget = document.getElementById("portalWeatherWidget");
+    if (!widget) return;
+
+    const [nairobi, rijswijk, eurKes] = await Promise.all([
+      fetchWeather(-1.2921, 36.8219, "Africa/Nairobi"),
+      fetchWeather(52.0400, 4.3583, "Europe/Amsterdam"),
+      fetchEurKes()
+    ]);
+
+    widget.innerHTML = `
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <div style="flex:1;min-width:120px;background:rgba(255,255,255,.08);border-radius:10px;padding:.7rem .9rem">
+          <div style="font-size:10px;color:rgba(245,239,226,.45);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem">🌍 Nairobi</div>
+          ${nairobi
+            ? `<div style="display:flex;align-items:center;gap:.4rem">
+                <span style="font-size:22px">${nairobi.icon}</span>
+                <div>
+                  <div style="font-size:18px;font-weight:700;color:#F5EFE2;line-height:1">${nairobi.temp}°C</div>
+                  <div style="font-size:10px;color:rgba(245,239,226,.5)">${nairobi.desc}</div>
+                </div>
+               </div>`
+            : `<div style="font-size:11px;color:rgba(245,239,226,.3)">—</div>`}
+        </div>
+
+        <div style="flex:1;min-width:120px;background:rgba(255,255,255,.08);border-radius:10px;padding:.7rem .9rem">
+          <div style="font-size:10px;color:rgba(245,239,226,.45);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem">🇳🇱 Rijswijk</div>
+          ${rijswijk
+            ? `<div style="display:flex;align-items:center;gap:.4rem">
+                <span style="font-size:22px">${rijswijk.icon}</span>
+                <div>
+                  <div style="font-size:18px;font-weight:700;color:#F5EFE2;line-height:1">${rijswijk.temp}°C</div>
+                  <div style="font-size:10px;color:rgba(245,239,226,.5)">${rijswijk.desc}</div>
+                </div>
+               </div>`
+            : `<div style="font-size:11px;color:rgba(245,239,226,.3)">—</div>`}
+        </div>
+
+        <div style="flex:1;min-width:120px;background:rgba(200,122,46,.25);border-radius:10px;padding:.7rem .9rem">
+          <div style="font-size:10px;color:rgba(245,239,226,.45);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem">💶 Koers</div>
+          ${eurKes
+            ? `<div style="font-size:18px;font-weight:700;color:#F5EFE2;line-height:1">KSh ${eurKes}</div>
+               <div style="font-size:10px;color:rgba(245,239,226,.5)">per €1</div>`
+            : `<div style="font-size:11px;color:rgba(245,239,226,.3)">—</div>`}
+        </div>
+      </div>
+    `;
+  }
+
+  async function fetchWeather(lat, lon, timezone) {
+    try {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode&timezone=${encodeURIComponent(timezone)}`;
+      const res = await fetch(url);
+      if (!res.ok) return null;
+      const d = await res.json();
+      const code = d.current?.weathercode || 0;
+      const map = [
+        [0,"☀️","Clear"],[1,"🌤️","Mostly clear"],[2,"⛅","Partly cloudy"],
+        [3,"☁️","Overcast"],[45,"🌫️","Foggy"],[51,"🌦️","Drizzle"],
+        [61,"🌧️","Rain"],[65,"🌧️","Heavy rain"],[80,"🌦️","Showers"],
+        [95,"⛈️","Thunderstorm"]
+      ];
+      const match = map.slice().reverse().find(([wc]) => code >= wc) || [0,"🌡️","Unknown"];
+      return { temp: Math.round(d.current.temperature_2m), icon: match[1], desc: match[2] };
+    } catch(e) { return null; }
+  }
+
+  async function fetchEurKes() {
+    try {
+      const res = await fetch("https://api.frankfurter.app/latest?from=EUR&to=KES");
+      if (!res.ok) return null;
+      const d = await res.json();
+      const rate = d?.rates?.KES;
+      return rate ? Math.round(rate * 100) / 100 : null;
+    } catch(e) { return null; }
   }
 </script>
 
