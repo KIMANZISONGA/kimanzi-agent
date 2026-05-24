@@ -37,7 +37,7 @@
     min-height: 100vh;
     min-height: 100dvh;
     background: var(--green);
-    background-image: url('https://raw.githubusercontent.com/KIMANZISONGA/URBANCOCKPIT.html/main/urbanchill-background-v10-6-6.webp');
+    background-image: url('./urbanchill-background-v10-6-6.webp');
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -816,12 +816,20 @@
 
   async function fetchEurKes() {
     try {
-      const res = await fetch("https://api.frankfurter.app/latest?from=EUR&to=KES");
-      if (!res.ok) return null;
+      const res = await fetch("https://open.er-api.com/v6/latest/EUR");
+      if (!res.ok) throw new Error();
       const d = await res.json();
       const rate = d?.rates?.KES;
       return rate ? Math.round(rate * 100) / 100 : null;
-    } catch(e) { return null; }
+    } catch(e) {
+      try {
+        const res2 = await fetch("https://api.frankfurter.app/latest?from=EUR&to=KES");
+        if (!res2.ok) return null;
+        const d2 = await res2.json();
+        const rate2 = d2?.rates?.KES;
+        return rate2 ? Math.round(rate2 * 100) / 100 : null;
+      } catch(e2) { return null; }
+    }
   }
 </script>
 
