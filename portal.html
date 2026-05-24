@@ -186,7 +186,24 @@
   /* WELCOME BANNER */
   .welcome-banner {
     background: var(--green2);
+    background-image: url('./urbanchill-background-v10-6-6.webp');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     padding: 1.5rem 1.25rem 1.75rem;
+    position: relative;
+  }
+  .welcome-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(26,44,30,.82);
+    filter: grayscale(100%);
+    z-index: 0;
+  }
+  .welcome-banner > * {
+    position: relative;
+    z-index: 1;
   }
   .welcome-time {
     font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
