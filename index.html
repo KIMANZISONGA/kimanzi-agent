@@ -197,7 +197,7 @@ nav.kn-nav{
   font-weight:500;
 }
 .kn-hero-lead{
-  max-width:720px;
+  max-width:900px;
   font-size:1.12rem;
   color:var(--text-soft);
   margin:0 0 14px;
@@ -253,7 +253,7 @@ nav.kn-nav{
   color:var(--muted);
   padding-top:22px;
   border-top:1px solid var(--border-soft);
-  max-width:720px;
+  max-width:900px;
 }
 .kn-hero-redirect a{
   color:var(--accent-deep);
@@ -292,7 +292,7 @@ nav.kn-nav{
 .kn-section .lead{
   font-size:1.05rem;
   color:var(--text-soft);
-  max-width:700px;
+  max-width:880px;
 }
 .kn-section h3{
   font-family:"Inter", sans-serif;
@@ -305,12 +305,12 @@ nav.kn-nav{
 .kn-section p{
   color:var(--text-soft);
   margin:0 0 14px;
-  max-width:720px;
+  max-width:900px;
 }
 .kn-section ul{
   color:var(--text-soft);
   padding-left:20px;
-  max-width:720px;
+  max-width:900px;
 }
 .kn-section li{
   margin-bottom:6px;
@@ -319,7 +319,7 @@ nav.kn-nav{
 /* THE WORK GRID */
 .kn-work-grid{
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
+  grid-template-columns:repeat(3, 1fr);
   gap:18px;
   margin-top:8px;
 }
@@ -408,16 +408,16 @@ nav.kn-nav{
   font-size:.92rem;
   color:var(--muted);
   margin-top:18px;
-  max-width:720px;
+  max-width:900px;
 }
 
 /* PAYMENT BLOCK */
 .kn-pay-grid{
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
+  grid-template-columns:repeat(3, 1fr);
   gap:14px;
   margin-top:14px;
-  max-width:780px;
+  max-width:920px;
 }
 .kn-pay-item{
   background:var(--surface-soft);
@@ -642,7 +642,7 @@ nav.kn-nav{
 /* PARTNERS */
 .kn-partner-grid{
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
+  grid-template-columns:repeat(3, 1fr);
   gap:18px;
   margin-top:8px;
 }
@@ -686,7 +686,7 @@ nav.kn-nav{
   border-radius:var(--radius-lg);
   padding:34px;
   margin-top:14px;
-  max-width:720px;
+  max-width:900px;
 }
 .kn-form-card .preface{
   background:var(--surface-soft);
@@ -925,6 +925,13 @@ nav.kn-nav{
   text-align:right;
   color:var(--muted);
   font-size:.85rem;
+}
+
+/* TABLET */
+@media (max-width: 1000px) and (min-width: 761px){
+  .kn-work-grid,
+  .kn-partner-grid,
+  .kn-pay-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* MOBILE */
