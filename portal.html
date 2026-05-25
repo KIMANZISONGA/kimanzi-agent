@@ -423,12 +423,11 @@
     <div class="input-group">
       <label>Password</label>
       <input id="passwordInput" type="password" autocomplete="current-password"
-        placeholder="••••••••"
-        onkeydown="if(event.key==='Enter') doLogin()">
+        placeholder="••••••••">
     </div>
 
     <div class="login-error" id="loginError"></div>
-    <button class="login-btn" onclick="doLogin()">Sign in →</button>
+    <button class="login-btn" id="loginBtn">Sign in →</button>
     <p class="login-note">Your login credentials were shared by Stephen via Signal.<br>Questions? host@kimanzi.nl</p>
   </div>
 </div>
@@ -459,7 +458,7 @@
     <div class="section-label">Your access</div>
 
     <!-- HANDBOOK -->
-    <div class="card" onclick="openHandbook()">
+    <div class="card" id="handbookCard">
       <div class="card-inner">
         <div class="card-icon orange">📖</div>
         <div class="card-text">
@@ -471,7 +470,7 @@
     </div>
 
     <!-- FEES -->
-    <div class="card" onclick="showFees()">
+    <div class="card" id="feesCard">
       <div class="card-inner">
         <div class="card-icon orange">💰</div>
         <div class="card-text">
@@ -525,7 +524,7 @@
       </div>
     </div>
 
-    <button class="logout-btn" onclick="doLogout()">Sign out</button>
+    <button class="logout-btn" id="logoutBtn">Sign out</button>
 
   </div>
 </div>
@@ -534,7 +533,7 @@
 <div id="feesScreen" style="display:none; min-height:100vh; background:var(--cream);">
   <div class="back-bar">
     <div class="back-bar-inner">
-      <button class="back-btn" onclick="showPortal()">‹</button>
+      <button class="back-btn" id="backToPortal">‹</button>
       <span class="back-title">Fees & Compensation</span>
     </div>
   </div>
@@ -653,7 +652,7 @@
 <div id="handbookScreen">
   <div class="back-bar">
     <div class="back-bar-inner">
-      <button class="back-btn" onclick="showPortal()">‹</button>
+      <button class="back-btn" id="backToPortal">‹</button>
       <span class="back-title">Host Handbook</span>
     </div>
   </div>
@@ -972,6 +971,31 @@
       } catch(e2) { return null; }
     }
   }
+  // ── Event listeners (CSP-compliant, geen inline handlers) ──
+  document.addEventListener("DOMContentLoaded", function() {
+    // Login
+    const loginBtn = document.getElementById("loginBtn");
+    const pwInput  = document.getElementById("passwordInput");
+    if (loginBtn) loginBtn.addEventListener("click", doLogin);
+    if (pwInput)  pwInput.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") doLogin();
+    });
+
+    // Kaarten op dashboard
+    const handbookCard = document.getElementById("handbookCard");
+    const feesCard     = document.getElementById("feesCard");
+    if (handbookCard) handbookCard.addEventListener("click", openHandbook);
+    if (feesCard)     feesCard.addEventListener("click", showFees);
+
+    // Logout
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) logoutBtn.addEventListener("click", doLogout);
+
+    // Terug knoppen
+    document.querySelectorAll("[id='backToPortal']").forEach(function(btn) {
+      btn.addEventListener("click", showPortal);
+    });
+  });
 </script>
 
 </body>
