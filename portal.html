@@ -807,11 +807,13 @@
           : "—";
         const tijd   = o.arrival_time || null;
         const vlucht = o.flight_number || null;
+        const fee    = o.payout_cents ? `€${(o.payout_cents / 100).toFixed(2)}` : null;
 
         const dieet  = tryParseArr(o.dietary_preferences);
         const allerg = tryParseArr(o.allergies);
         const activ  = tryParseArr(o.activities);
         const extra  = o.special_requests || "";
+        const adres  = o.stay_place_name || o.stay_address_text || null;
 
         return `
         <div class="assignment-card">
@@ -820,6 +822,7 @@
             <div class="assignment-date">${escHtml(datum)}</div>
           </div>
           <div class="assignment-grid">
+
             <div class="assignment-row">
               <span class="assignment-key">Client name</span>
               <span class="assignment-val">${escHtml(o.client_name || "—")}</span>
@@ -832,6 +835,7 @@
                   : "—"}
               </span>
             </div>
+
             ${tijd ? `
             <div class="assignment-row">
               <span class="assignment-key">Arrival time</span>
@@ -842,31 +846,43 @@
               <span class="assignment-key">Flight</span>
               <span class="assignment-val">✈️ ${escHtml(vlucht)}</span>
             </div>` : ""}
+
+            ${fee ? `
+            <div class="assignment-row">
+              <span class="assignment-key">Your fee</span>
+              <span class="assignment-val" style="color:#1A422E;font-weight:700">${escHtml(fee)}</span>
+            </div>` : ""}
+
+            ${adres ? `
+            <div class="assignment-row assignment-full">
+              <span class="assignment-key">📍 Location in Nairobi</span>
+              <span class="assignment-val">${escHtml(adres)}</span>
+            </div>` : ""}
+
+            ${allerg.length ? `
+            <div class="assignment-row assignment-full">
+              <span class="assignment-key">⚠️ Allergies</span>
+              <span class="assignment-val" style="color:#c0392b;font-weight:600">${allerg.map(escHtml).join(", ")}</span>
+            </div>` : ""}
+
             ${dieet.length ? `
             <div class="assignment-row assignment-full">
               <span class="assignment-key">Dietary preferences</span>
               <span class="assignment-val">${dieet.map(escHtml).join(", ")}</span>
             </div>` : ""}
-            ${allerg.length ? `
-            <div class="assignment-row assignment-full">
-              <span class="assignment-key">Allergies</span>
-              <span class="assignment-val" style="color:#c0392b">${allerg.map(escHtml).join(", ")}</span>
-            </div>` : ""}
+
             ${activ.length ? `
             <div class="assignment-row assignment-full">
               <span class="assignment-key">Activities</span>
               <span class="assignment-val">${activ.map(escHtml).join(", ")}</span>
             </div>` : ""}
+
             ${extra ? `
             <div class="assignment-row assignment-full">
               <span class="assignment-key">Special requests</span>
               <span class="assignment-val">${escHtml(extra)}</span>
             </div>` : ""}
-            ${o.stay_address_text || o.stay_place_name ? `
-            <div class="assignment-row assignment-full">
-              <span class="assignment-key">Location</span>
-              <span class="assignment-val">${escHtml(o.stay_place_name || o.stay_address_text)}</span>
-            </div>` : ""}
+
           </div>
           ${o.maps_link ? `<a href="${escHtml(o.maps_link)}" target="_blank" class="assignment-map">📍 Open in Maps →</a>` : ""}
         </div>`;
