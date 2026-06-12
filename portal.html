@@ -471,6 +471,18 @@
       </div>
     </div>
 
+    <!-- CONTRACT -->
+    <div class="card" id="contractCard">
+      <div class="card-inner">
+        <div class="card-icon orange">📄</div>
+        <div class="card-text">
+          <div class="card-title">Contractor Agreement</div>
+          <div class="card-desc">Your independent contractor agreement with KIMANZI.</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </div>
+
     <!-- FEES -->
     <div class="card" id="feesCard">
       <div class="card-inner">
@@ -721,6 +733,10 @@
   function openHandbook() {
     sessionStorage.setItem("kimanzi_handbook_access", "1");
     window.location.href = "handbook.html";
+  }
+
+  function openContract() {
+    window.location.href = "contract.html";
   }
 
   function showFees() {
@@ -1003,6 +1019,8 @@
     const handbookCard = document.getElementById("handbookCard");
     const feesCard     = document.getElementById("feesCard");
     if (handbookCard) handbookCard.addEventListener("click", openHandbook);
+    const contractCard = document.getElementById("contractCard");
+    if (contractCard) contractCard.addEventListener("click", openContract);
     if (feesCard)     feesCard.addEventListener("click", showFees);
 
     // Logout
