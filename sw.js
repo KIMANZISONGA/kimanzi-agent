@@ -1,4 +1,4 @@
-const CACHE = 'kimanzi-v1';
+const CACHE = 'kimanzi-v2';
 const PRECACHE = [
   '/portal.html',
   '/kimanzi.css',
