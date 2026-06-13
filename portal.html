@@ -405,6 +405,19 @@
 
   /* SAFE AREA */
   .safe-bottom { padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0)); }
+  .host-note-wrap { margin-top: .75rem; position: relative; }
+  .host-note-input {
+    width: 100%; min-height: 64px; padding: .6rem .75rem;
+    border: 1.5px solid var(--cream2); border-radius: 8px;
+    background: var(--cream); color: var(--text);
+    font-family: inherit; font-size: 13px; line-height: 1.5;
+    resize: vertical; outline: none;
+  }
+  .host-note-input:focus { border-color: var(--orange); }
+  .host-note-saved {
+    font-size: 12px; color: #2A6B2A; font-weight: 600;
+    margin-top: .3rem; opacity: 0; transition: opacity .4s;
+  }
 </style>
 </head>
 <body>
@@ -441,6 +454,7 @@
       <div class="portal-logo">
         <div class="portal-logo-dot">K</div>
         KIMANZI
+        <span id="assignmentBadge" style="display:none;background:#C87A2E;color:#fff;border-radius:999px;font-size:11px;font-weight:700;width:18px;height:18px;align-items:center;justify-content:center;margin-left:6px">0</span>
       </div>
       <div class="portal-user">
         <div class="portal-avatar" id="userAvatar">L</div>
