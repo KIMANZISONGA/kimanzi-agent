@@ -32,6 +32,10 @@ const API = "https://cockpit.urbanchill.org";
     window.location.href = "contract.html";
   }
 
+  function openTraining() {
+    window.location.href = "training.html";
+  }
+
   function showFees() {
     document.getElementById("portalScreen").style.display = "none";
     document.getElementById("feesScreen").style.display = "block";
@@ -314,6 +318,8 @@ const API = "https://cockpit.urbanchill.org";
     if (handbookCard) handbookCard.addEventListener("click", openHandbook);
     const contractCard = document.getElementById("contractCard");
     if (contractCard) contractCard.addEventListener("click", openContract);
+    const trainingCard = document.getElementById("trainingCard");
+    if (trainingCard) trainingCard.addEventListener("click", openTraining);
     if (feesCard)     feesCard.addEventListener("click", showFees);
 
     // Logout
