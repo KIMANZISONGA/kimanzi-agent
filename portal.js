@@ -110,6 +110,17 @@ const API = "https://cockpit.urbanchill.org";
       const data = await res.json().catch(() => ({}));
       const opdrachten = data.opdrachten || [];
 
+      // Badge updaten
+      const badge = document.getElementById("assignmentBadge");
+      if (badge) {
+        if (opdrachten.length > 0) {
+          badge.textContent = opdrachten.length;
+          badge.style.display = "flex";
+        } else {
+          badge.style.display = "none";
+        }
+      }
+
       if (opdrachten.length === 0) {
         section.innerHTML = `<div class="no-assignments">No upcoming assignments. You'll be notified when a new briefing is ready.</div>`;
         return;
@@ -200,12 +211,37 @@ const API = "https://cockpit.urbanchill.org";
 
           </div>
           ${o.maps_link ? `<a href="${escHtml(o.maps_link)}" target="_blank" class="assignment-map">📍 Open in Maps →</a>` : ""}
+          <div class="host-note-wrap">
+            <textarea
+              class="host-note-input"
+              placeholder="Add a personal note for this assignment..."
+              onchange="saveNote('${escHtml(o.id)}', this.value)"
+            >${escHtml(loadNote(o.id))}</textarea>
+            <div class="host-note-saved" id="note-saved-${escHtml(o.id)}">✓ Saved</div>
+          </div>
         </div>`;
       }).join("");
 
     } catch(e) {
       section.innerHTML = `<div class="no-assignments">Could not load assignments. Please refresh.</div>`;
     }
+  }
+
+  function saveNote(id, val) {
+    try {
+      const notes = JSON.parse(localStorage.getItem("kimanzi_notes") || "{}");
+      notes[id] = val;
+      localStorage.setItem("kimanzi_notes", JSON.stringify(notes));
+      const el = document.getElementById("note-saved-" + id);
+      if (el) { el.style.opacity = "1"; setTimeout(() => el.style.opacity = "0", 2000); }
+    } catch(e) {}
+  }
+
+  function loadNote(id) {
+    try {
+      const notes = JSON.parse(localStorage.getItem("kimanzi_notes") || "{}");
+      return notes[id] || "";
+    } catch(e) { return ""; }
   }
 
   function tryParseArr(v) {
