@@ -211,37 +211,70 @@ const API = "https://cockpit.urbanchill.org";
 
           </div>
           ${o.maps_link ? `<a href="${escHtml(o.maps_link)}" target="_blank" class="assignment-map">📍 Open in Maps →</a>` : ""}
-          <div class="host-note-wrap">
-            <textarea
-              class="host-note-input"
-              placeholder="Add a personal note for this assignment..."
-              onchange="saveNote('${escHtml(o.id)}', this.value)"
-            >${escHtml(loadNote(o.id))}</textarea>
-            <div class="host-note-saved" id="note-saved-${escHtml(o.id)}">✓ Saved</div>
+          <div class="chat-wrap" id="chat-wrap-${escHtml(o.id)}">
+            <div class="chat-header">💬 Messages</div>
+            <div class="chat-thread" id="chat-thread-${escHtml(o.id)}">
+              <div class="chat-loading">Loading...</div>
+            </div>
+            <div class="chat-input-wrap">
+              <textarea class="chat-input" id="chat-input-${escHtml(o.id)}" placeholder="Write a message to KIMANZI..." rows="2"></textarea>
+              <button class="chat-send-btn" onclick="sendMessage('${escHtml(o.id)}')">Send</button>
+            </div>
           </div>
         </div>`;
       }).join("");
+
+      // Laad chat threads voor elke opdracht
+      opdrachten.forEach(o => loadThread(o.id));
 
     } catch(e) {
       section.innerHTML = `<div class="no-assignments">Could not load assignments. Please refresh.</div>`;
     }
   }
 
-  function saveNote(id, val) {
+  async function loadThread(caseId) {
+    const token = sessionStorage.getItem("kimanzi_token");
+    if (!token) return;
     try {
-      const notes = JSON.parse(localStorage.getItem("kimanzi_notes") || "{}");
-      notes[id] = val;
-      localStorage.setItem("kimanzi_notes", JSON.stringify(notes));
-      const el = document.getElementById("note-saved-" + id);
-      if (el) { el.style.opacity = "1"; setTimeout(() => el.style.opacity = "0", 2000); }
+      const res = await fetch(API + "/api/host/messages?token=" + encodeURIComponent(token) + "&case_id=" + encodeURIComponent(caseId));
+      const data = await res.json().catch(() => ({}));
+      const msgs = data.messages || [];
+      const thread = document.getElementById("chat-thread-" + caseId);
+      if (!thread) return;
+      if (msgs.length === 0) {
+        thread.innerHTML = '<div class="chat-empty">No messages yet. Send the first one.</div>';
+        return;
+      }
+      thread.innerHTML = msgs.map(m => {
+        const isHost = m.sender === "host";
+        const time = new Date(m.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", day: "numeric", month: "short" });
+        return '<div class="chat-msg ' + (isHost ? "chat-msg-host" : "chat-msg-stephen") + '">'
+          + '<div class="chat-bubble">' + escHtml(m.message) + '</div>'
+          + '<div class="chat-time">' + (isHost ? "You" : "KIMANZI") + ' · ' + time + '</div>'
+          + '</div>';
+      }).join("");
+      thread.scrollTop = thread.scrollHeight;
     } catch(e) {}
   }
 
-  function loadNote(id) {
+  async function sendMessage(caseId) {
+    const token = sessionStorage.getItem("kimanzi_token");
+    const input = document.getElementById("chat-input-" + caseId);
+    if (!token || !input) return;
+    const message = input.value.trim();
+    if (!message) return;
+    input.value = "";
+    input.disabled = true;
     try {
-      const notes = JSON.parse(localStorage.getItem("kimanzi_notes") || "{}");
-      return notes[id] || "";
-    } catch(e) { return ""; }
+      await fetch(API + "/api/host/messages/send?token=" + encodeURIComponent(token), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ case_id: caseId, message })
+      });
+      await loadThread(caseId);
+    } catch(e) {}
+    input.disabled = false;
+    input.focus();
   }
 
   function tryParseArr(v) {
