@@ -405,19 +405,22 @@
 
   /* SAFE AREA */
   .safe-bottom { padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0)); }
-  .host-note-wrap { margin-top: .75rem; position: relative; }
-  .host-note-input {
-    width: 100%; min-height: 64px; padding: .6rem .75rem;
-    border: 1.5px solid var(--cream2); border-radius: 8px;
-    background: var(--cream); color: var(--text);
-    font-family: inherit; font-size: 13px; line-height: 1.5;
-    resize: vertical; outline: none;
-  }
-  .host-note-input:focus { border-color: var(--orange); }
-  .host-note-saved {
-    font-size: 12px; color: #2A6B2A; font-weight: 600;
-    margin-top: .3rem; opacity: 0; transition: opacity .4s;
-  }
+  .chat-wrap { margin-top: 1rem; border-top: 1px solid var(--cream2); padding-top: .75rem; }
+  .chat-header { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: .6rem; }
+  .chat-thread { min-height: 60px; max-height: 240px; overflow-y: auto; display: flex; flex-direction: column; gap: .5rem; margin-bottom: .75rem; }
+  .chat-loading, .chat-empty { font-size: 13px; color: var(--muted); text-align: center; padding: .75rem 0; }
+  .chat-msg { display: flex; flex-direction: column; max-width: 80%; }
+  .chat-msg-host { align-self: flex-end; align-items: flex-end; }
+  .chat-msg-stephen { align-self: flex-start; align-items: flex-start; }
+  .chat-bubble { padding: .5rem .75rem; border-radius: 12px; font-size: 14px; line-height: 1.5; }
+  .chat-msg-host .chat-bubble { background: var(--green); color: var(--cream); border-bottom-right-radius: 3px; }
+  .chat-msg-stephen .chat-bubble { background: var(--cream2); color: var(--text); border-bottom-left-radius: 3px; }
+  .chat-time { font-size: 11px; color: var(--muted); margin-top: .2rem; }
+  .chat-input-wrap { display: flex; gap: .5rem; align-items: flex-end; }
+  .chat-input { flex: 1; padding: .5rem .75rem; border: 1.5px solid var(--cream2); border-radius: 8px; background: #fff; color: var(--text); font-family: inherit; font-size: 13px; resize: none; outline: none; }
+  .chat-input:focus { border-color: var(--orange); }
+  .chat-send-btn { padding: .5rem 1rem; background: var(--green); color: var(--cream); border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .chat-send-btn:active { opacity: .8; }
 </style>
 </head>
 <body>
