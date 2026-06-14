@@ -127,10 +127,19 @@ const API = "https://cockpit.urbanchill.org";
       }
 
       section.innerHTML = opdrachten.map(o => {
-        const dienst = o.offer_service || o.service || "—";
+        const rawService = (o.offer_service || o.service || "").toLowerCase().trim();
+        const serviceLabels = {
+          "arrival": { label: "Arrival", desc: "Airport pickup, first-day orientation, and practical support on arrival day." },
+          "arrival duo": { label: "Arrival (duo)", desc: "Airport pickup and orientation for two people arriving together." },
+          "extra day": { label: "Extra Day", desc: "A full day of local orientation, errands, and support in Nairobi." },
+          "concierge": { label: "Concierge", desc: "Remote support via messaging — available during your stay for questions and local advice." },
+        };
+        const serviceInfo = serviceLabels[rawService] || { label: o.offer_service || o.service || "—", desc: "" };
+        const dienst = serviceInfo.label;
+        const dienstDesc = serviceInfo.desc;
         const datum  = o.arrival_date
           ? new Date(o.arrival_date).toLocaleDateString("en-GB", { weekday:"long", day:"numeric", month:"long", year:"numeric" })
-          : "—";
+          : null;
         const tijd   = o.arrival_time || null;
         const vlucht = o.flight_number || null;
         const fee    = o.payout_cents ? `€${(o.payout_cents / 100).toFixed(2)}` : null;
@@ -145,22 +154,20 @@ const API = "https://cockpit.urbanchill.org";
         <div class="assignment-card">
           <div class="assignment-header">
             <div class="assignment-title">📋 ${escHtml(dienst)}</div>
-            <div class="assignment-date">${escHtml(datum)}</div>
+            ${datum ? `<div class="assignment-date">${escHtml(datum)}</div>` : ""}
           </div>
+          ${dienstDesc ? `<div class="assignment-desc">${escHtml(dienstDesc)}</div>` : ""}
           <div class="assignment-grid">
 
             <div class="assignment-row">
               <span class="assignment-key">Client name</span>
               <span class="assignment-val">${escHtml(o.client_name || "—")}</span>
             </div>
+            ${o.client_phone ? `
             <div class="assignment-row">
-              <span class="assignment-key">Phone</span>
-              <span class="assignment-val">
-                ${o.client_phone
-                  ? `<a href="tel:${escHtml(o.client_phone)}" style="color:var(--orange)">${escHtml(o.client_phone)}</a>`
-                  : "—"}
-              </span>
-            </div>
+              <span class="assignment-key">📞 Phone</span>
+              <span class="assignment-val"><a href="tel:${escHtml(o.client_phone)}" class="assignment-phone">${escHtml(o.client_phone)}</a></span>
+            </div>` : ""}
 
             ${tijd ? `
             <div class="assignment-row">
