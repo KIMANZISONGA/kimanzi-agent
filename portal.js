@@ -95,6 +95,17 @@ const API = "https://cockpit.urbanchill.org";
       document.getElementById("welcomeTime").textContent = new Date().toLocaleDateString("en-GB", { weekday:"long", day:"numeric", month:"long" });
       loadPortalWeather();
       loadAssignments();
+      // Poll elke 60 sec voor nieuwe berichten
+      setInterval(async () => {
+        const token = sessionStorage.getItem("kimanzi_token");
+        if (!token) return;
+        const res = await fetch(API + "/api/host/messages?token=" + encodeURIComponent(token) + "&case_id=__check__").catch(() => null);
+        // Herlaad alle threads om badges bij te werken
+        document.querySelectorAll("[id^='chat-thread-']").forEach(el => {
+          const caseId = el.id.replace("chat-thread-", "");
+          loadThread(caseId);
+        });
+      }, 60000);
     }
     window.scrollTo(0, 0);
   }
@@ -281,7 +292,21 @@ const API = "https://cockpit.urbanchill.org";
           + '</div>';
       }).join("");
       thread.scrollTop = thread.scrollHeight;
+
+      // Badge bijwerken — tel ongelezen berichten van stephen
+      const unread = msgs.filter(m => m.sender === "stephen" && !m.read_at).length;
+      updateMsgBadge(unread > 0);
     } catch(e) {}
+  }
+
+  function updateMsgBadge(hasUnread) {
+    const badge = document.getElementById("assignmentBadge");
+    if (!badge) return;
+    if (hasUnread) {
+      badge.textContent = "!";
+      badge.style.display = "flex";
+      badge.style.background = "#c0392b";
+    }
   }
 
   async function sendMessage(caseId) {
