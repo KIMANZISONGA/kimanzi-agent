@@ -209,17 +209,6 @@ const API = "https://cockpit.urbanchill.org";
               <span class="assignment-val" style="color:#c0392b;font-weight:600">${allerg.map(escHtml).join(", ")}</span>
             </div>` : ""}
 
-            ${dieet.length ? `
-            <div class="assignment-row assignment-full">
-              <span class="assignment-key">Dietary preferences</span>
-              <span class="assignment-val">${dieet.map(escHtml).join(", ")}</span>
-            </div>` : ""}
-
-            ${activ.length ? `
-            <div class="assignment-row assignment-full">
-              <span class="assignment-key">Activities</span>
-              <span class="assignment-val">${activ.map(escHtml).join(", ")}</span>
-            </div>` : ""}
 
             ${extra ? `
             <div class="assignment-row assignment-full">
@@ -231,15 +220,21 @@ const API = "https://cockpit.urbanchill.org";
           ${o.maps_link ? `<a href="${escHtml(o.maps_link)}" target="_blank" class="assignment-map">📍 Open in Maps →</a>` : ""}
 
           ${(() => {
-            const acts = tryParseArr(o.activities);
-            const diet = tryParseArr(o.dietary_preferences);
+            const acts  = tryParseArr(o.activities);
+            const diet  = tryParseArr(o.dietary_preferences);
             const allerg = tryParseArr(o.allergies);
             const special = o.special_requests ? String(o.special_requests).trim() : "";
+            const pills = (arr, cls) => arr.map(x => `<span class="pref-pill ${cls}">${escHtml(x)}</span>`).join("");
             const rows = [];
-            if (acts.length) rows.push(`<div class="pref-row"><span class="pref-key">Activities</span><span class="pref-vals">${acts.map(a => `<span class="pref-pill">${escHtml(a)}</span>`).join("")}</span></div>`);
-            if (diet.length) rows.push(`<div class="pref-row"><span class="pref-key">Diet</span><span class="pref-vals">${diet.map(d => `<span class="pref-pill">${escHtml(d)}</span>`).join("")}</span></div>`);
-            if (allerg.length) rows.push(`<div class="pref-row"><span class="pref-key allerg-key">⚠ Allergies</span><span class="pref-vals">${allerg.map(a => `<span class="pref-pill allerg-pill">${escHtml(a)}</span>`).join("")}</span></div>`);
-            if (special) rows.push(`<div class="pref-row"><span class="pref-key">Notes</span><span class="pref-vals pref-note">${escHtml(special)}</span></div>`);
+            if (diet.length || acts.length)
+              rows.push(`<div class="pref-row">
+                <span class="pref-key">Diet</span><span class="pref-vals">${pills(diet,"")}</span>
+                ${acts.length ? `<span class="pref-key pref-key-second">Activities</span><span class="pref-vals">${pills(acts,"")}</span>` : ""}
+              </div>`);
+            if (allerg.length)
+              rows.push(`<div class="pref-row"><span class="pref-key allerg-key">⚠ Allergies</span><span class="pref-vals">${pills(allerg,"allerg-pill")}</span></div>`);
+            if (special)
+              rows.push(`<div class="pref-row"><span class="pref-key">Notes</span><span class="pref-vals pref-note">${escHtml(special)}</span></div>`);
             return rows.length ? `<div class="prefs-section">${rows.join("")}</div>` : "";
           })()}
 
