@@ -95,17 +95,18 @@ const API = "https://cockpit.urbanchill.org";
       document.getElementById("welcomeTime").textContent = new Date().toLocaleDateString("en-GB", { weekday:"long", day:"numeric", month:"long" });
       loadPortalWeather();
       loadAssignments();
-      // Poll elke 60 sec voor nieuwe berichten
-      setInterval(async () => {
+      // Poll elke 60 sec voor ongelezen berichten
+      async function checkUnread() {
         const token = sessionStorage.getItem("kimanzi_token");
         if (!token) return;
-        const res = await fetch(API + "/api/host/messages?token=" + encodeURIComponent(token) + "&case_id=__check__").catch(() => null);
-        // Herlaad alle threads om badges bij te werken
-        document.querySelectorAll("[id^='chat-thread-']").forEach(el => {
-          const caseId = el.id.replace("chat-thread-", "");
-          loadThread(caseId);
-        });
-      }, 60000);
+        try {
+          const res = await fetch(API + "/api/host/messages/unread?token=" + encodeURIComponent(token));
+          const data = await res.json().catch(() => ({}));
+          updateMsgBadge((data.unread || 0) > 0);
+        } catch(e) {}
+      }
+      checkUnread();
+      setInterval(checkUnread, 60000);
     }
     window.scrollTo(0, 0);
   }
