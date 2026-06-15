@@ -26,6 +26,7 @@ self.addEventListener('fetch', e => {
   // Alleen GET, geen API-calls cachen
   if (e.request.method !== 'GET') return;
   if (e.request.url.includes('urbanchill-api')) return;
+  if (e.request.url.includes('fonts.')) return;
   if (e.request.url.includes('open-meteo') || e.request.url.includes('open.er-api') || e.request.url.includes('frankfurter')) return;
 
   e.respondWith(
