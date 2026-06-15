@@ -160,10 +160,10 @@ const API = "https://cockpit.urbanchill.org";
           ${(() => {
             const fs = (o.finance_status || "not_ready").toLowerCase();
             const statusMap = {
-              "not_ready":        { icon: "⏳", label: "Assignment being prepared",  color: "#94a3b8" },
-              "ready_to_invoice": { icon: "📄", label: "Invoice being prepared",      color: "#C87A2E" },
-              "invoiced":         { icon: "📬", label: "Invoice sent — awaiting payment", color: "#C87A2E" },
-              "paid":             { icon: "✅", label: "Payment received — assignment confirmed", color: "#2A6B2A" },
+              "not_ready":        { icon: "⏳", label: "Assignment being prepared — awaiting client confirmation", color: "#94a3b8" },
+              "ready_to_invoice": { icon: "📄", label: "Invoice being prepared for client",                        color: "#C87A2E" },
+              "invoiced":         { icon: "📬", label: "Invoice sent — awaiting client payment",                   color: "#C87A2E" },
+              "paid":             { icon: "✅", label: "Client payment received — assignment confirmed",            color: "#2A6B2A" },
             };
             const s = statusMap[fs] || statusMap["not_ready"];
             return `<div class="assignment-finance-status" style="color:${s.color}">${s.icon} ${escHtml(s.label)}</div>`;
