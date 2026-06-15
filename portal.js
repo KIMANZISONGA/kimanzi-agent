@@ -229,6 +229,20 @@ const API = "https://cockpit.urbanchill.org";
 
           </div>
           ${o.maps_link ? `<a href="${escHtml(o.maps_link)}" target="_blank" class="assignment-map">📍 Open in Maps →</a>` : ""}
+
+          ${(() => {
+            const acts = tryParseArr(o.activities);
+            const diet = tryParseArr(o.dietary_preferences);
+            const allerg = tryParseArr(o.allergies);
+            const special = o.special_requests ? String(o.special_requests).trim() : "";
+            const rows = [];
+            if (acts.length) rows.push(`<div class="pref-row"><span class="pref-key">Activities</span><span class="pref-vals">${acts.map(a => `<span class="pref-pill">${escHtml(a)}</span>`).join("")}</span></div>`);
+            if (diet.length) rows.push(`<div class="pref-row"><span class="pref-key">Diet</span><span class="pref-vals">${diet.map(d => `<span class="pref-pill">${escHtml(d)}</span>`).join("")}</span></div>`);
+            if (allerg.length) rows.push(`<div class="pref-row"><span class="pref-key allerg-key">⚠ Allergies</span><span class="pref-vals">${allerg.map(a => `<span class="pref-pill allerg-pill">${escHtml(a)}</span>`).join("")}</span></div>`);
+            if (special) rows.push(`<div class="pref-row"><span class="pref-key">Notes</span><span class="pref-vals pref-note">${escHtml(special)}</span></div>`);
+            return rows.length ? `<div class="prefs-section">${rows.join("")}</div>` : "";
+          })()}
+
           <div class="chat-wrap" id="chat-wrap-${escHtml(o.id)}">
             <div class="chat-header">💬 Messages</div>
             <div class="chat-thread" id="chat-thread-${escHtml(o.id)}">
