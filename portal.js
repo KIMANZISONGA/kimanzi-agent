@@ -222,11 +222,7 @@ const API = "https://cockpit.urbanchill.org";
             </div>` : ""}
 
 
-            ${extra ? `
-            <div class="assignment-row assignment-full">
-              <span class="assignment-key">Special requests</span>
-              <span class="assignment-val">${escHtml(extra)}</span>
-            </div>` : ""}
+
 
           </div>
           ${o.maps_link ? `<a href="${escHtml(o.maps_link)}" target="_blank" class="assignment-map">📍 Open in Maps →</a>` : ""}
