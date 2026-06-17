@@ -539,7 +539,7 @@
 
     <!-- MY ASSIGNMENTS TEGEL -->
     <div class="section-label" style="margin-top:.5rem">My assignments</div>
-    <div class="card" id="assignmentsTegel" onclick="openAssignmentsScreen()">
+    <div class="card" id="assignmentsTegel">
       <div class="card-inner">
         <div class="card-icon orange">📋</div>
         <div class="card-text">
@@ -553,7 +553,7 @@
     <!-- ASSIGNMENTS SCREEN -->
     <div id="assignmentsScreen" style="display:none">
       <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;padding-top:.5rem">
-        <button onclick="closeAssignmentsScreen()" style="background:none;border:none;color:var(--orange);font-size:15px;cursor:pointer;padding:0">← Back</button>
+        <button id="backFromAssignments" style="background:none;border:none;color:var(--orange);font-size:15px;cursor:pointer;padding:0">← Back</button>
         <div class="section-label" style="margin:0">My Assignments</div>
       </div>
       <div id="assignmentsSection">
