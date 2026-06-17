@@ -282,6 +282,8 @@ const API = "https://cockpit.urbanchill.org";
 
   function openAssignmentsScreen() {
     document.getElementById("portalScreen").style.display = "none";
+    const bottom = document.getElementById("portalScreenBottom");
+    if (bottom) bottom.style.display = "none";
     document.getElementById("assignmentsScreen").style.display = "block";
     window.scrollTo(0, 0);
   }
@@ -289,6 +291,8 @@ const API = "https://cockpit.urbanchill.org";
   function closeAssignmentsScreen() {
     document.getElementById("assignmentsScreen").style.display = "none";
     document.getElementById("portalScreen").style.display = "block";
+    const bottom = document.getElementById("portalScreenBottom");
+    if (bottom) bottom.style.display = "block";
     window.scrollTo(0, 0);
   }
 
