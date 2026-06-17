@@ -133,26 +133,6 @@ const API = "https://cockpit.urbanchill.org";
         }
       }
 
-      // Tegel beschrijving updaten
-      const tegelDesc = document.getElementById("assignmentsTegelDesc");
-      if (tegelDesc) {
-        if (opdrachten.length === 0) {
-          tegelDesc.textContent = "No upcoming assignments.";
-        } else {
-          const names = opdrachten.map(o => o.client_name || "—").join(", ");
-          tegelDesc.textContent = opdrachten.length === 1
-            ? "1 active assignment — " + names
-            : opdrachten.length + " active assignments — " + names;
-        }
-      }
-
-      const _tegelDesc = document.getElementById("assignmentsTegelDesc");
-      if (_tegelDesc) {
-        _tegelDesc.textContent = opdrachten.length === 0
-          ? "No upcoming assignments."
-          : opdrachten.length + " active — " + opdrachten.map(o => o.client_name || "—").join(", ");
-      }
-
       if (opdrachten.length === 0) {
         section.innerHTML = `<div class="no-assignments">No upcoming assignments. You'll be notified when a new briefing is ready.</div>`;
         return;
@@ -287,34 +267,6 @@ const API = "https://cockpit.urbanchill.org";
     }
   }
 
-  function openAssignmentsScreen() {
-    document.getElementById("portalScreen").style.display = "none";
-    const bottom = document.getElementById("portalScreenBottom");
-    if (bottom) bottom.style.display = "none";
-    document.getElementById("assignmentsScreen").style.display = "block";
-    window.scrollTo(0, 0);
-  }
-
-  function closeAssignmentsScreen() {
-    document.getElementById("assignmentsScreen").style.display = "none";
-    document.getElementById("portalScreen").style.display = "block";
-    const bottom = document.getElementById("portalScreenBottom");
-    if (bottom) bottom.style.display = "block";
-    window.scrollTo(0, 0);
-  }
-
-  function openAssignmentsScreen() {
-    document.getElementById("assignmentsTegel").style.display = "none";
-    document.getElementById("assignmentsExpanded").style.display = "block";
-    window.scrollTo(0, 0);
-  }
-
-  function closeAssignmentsScreen() {
-    document.getElementById("assignmentsExpanded").style.display = "none";
-    document.getElementById("assignmentsTegel").style.display = "block";
-    window.scrollTo(0, 0);
-  }
-
   async function loadThread(caseId) {
     const token = sessionStorage.getItem("kimanzi_token");
     if (!token) return;
@@ -346,13 +298,11 @@ const API = "https://cockpit.urbanchill.org";
 
   function updateMsgBadge(hasUnread) {
     const badge = document.getElementById("assignmentBadge");
-    if (badge && hasUnread) {
+    if (!badge) return;
+    if (hasUnread) {
+      badge.textContent = "!";
       badge.style.display = "flex";
       badge.style.background = "#c0392b";
-    }
-    const tegelBadge = document.getElementById("assignmentsBadge");
-    if (tegelBadge) {
-      tegelBadge.style.display = hasUnread ? "inline" : "none";
     }
   }
 
@@ -484,14 +434,6 @@ const API = "https://cockpit.urbanchill.org";
     const handbookCard = document.getElementById("handbookCard");
     const feesCard     = document.getElementById("feesCard");
     if (handbookCard) handbookCard.addEventListener("click", openHandbook);
-    const assignmentsTegel = document.getElementById("assignmentsTegel");
-    if (assignmentsTegel) assignmentsTegel.addEventListener("click", openAssignmentsScreen);
-    const backBtn = document.getElementById("backFromAssignments");
-    if (backBtn) backBtn.addEventListener("click", closeAssignmentsScreen);
-    const assignmentsTegel = document.getElementById("assignmentsTegel");
-    if (assignmentsTegel) assignmentsTegel.addEventListener("click", openAssignmentsScreen);
-    const backBtn = document.getElementById("backFromAssignments");
-    if (backBtn) backBtn.addEventListener("click", closeAssignmentsScreen);
     const contractCard = document.getElementById("contractCard");
     if (contractCard) contractCard.addEventListener("click", openContract);
     const trainingCard = document.getElementById("trainingCard");
