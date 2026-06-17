@@ -132,6 +132,13 @@ const API = "https://cockpit.urbanchill.org";
           badge.style.display = "none";
         }
       }
+      // Tegel beschrijving
+      const tegelDescEl = document.getElementById("assignmentsTegelDesc");
+      if (tegelDescEl) {
+        tegelDescEl.textContent = opdrachten.length === 0
+          ? "No upcoming assignments."
+          : opdrachten.length + " active — " + opdrachten.map(function(o){ return o.client_name || "—"; }).join(", ");
+      }
 
       if (opdrachten.length === 0) {
         section.innerHTML = `<div class="no-assignments">No upcoming assignments. You'll be notified when a new briefing is ready.</div>`;
@@ -267,6 +274,18 @@ const API = "https://cockpit.urbanchill.org";
     }
   }
 
+  function openAssignmentsScreen() {
+    document.getElementById("assignmentsTegel").style.display = "none";
+    document.getElementById("assignmentsExpanded").style.display = "block";
+    window.scrollTo(0, 0);
+  }
+
+  function closeAssignmentsScreen() {
+    document.getElementById("assignmentsExpanded").style.display = "none";
+    document.getElementById("assignmentsTegel").style.display = "block";
+    window.scrollTo(0, 0);
+  }
+
   async function loadThread(caseId) {
     const token = sessionStorage.getItem("kimanzi_token");
     if (!token) return;
@@ -297,13 +316,13 @@ const API = "https://cockpit.urbanchill.org";
   }
 
   function updateMsgBadge(hasUnread) {
-    const badge = document.getElementById("assignmentBadge");
-    if (!badge) return;
-    if (hasUnread) {
-      badge.textContent = "!";
-      badge.style.display = "flex";
-      badge.style.background = "#c0392b";
+    const navBadge = document.getElementById("assignmentBadge");
+    if (navBadge && hasUnread) {
+      navBadge.style.display = "flex";
+      navBadge.style.background = "#c0392b";
     }
+    const tegelBadge = document.getElementById("assignmentsBadge");
+    if (tegelBadge) tegelBadge.style.display = hasUnread ? "inline" : "none";
   }
 
   async function sendMessage(caseId) {
@@ -434,6 +453,10 @@ const API = "https://cockpit.urbanchill.org";
     const handbookCard = document.getElementById("handbookCard");
     const feesCard     = document.getElementById("feesCard");
     if (handbookCard) handbookCard.addEventListener("click", openHandbook);
+    const assignmentsTegel = document.getElementById("assignmentsTegel");
+    if (assignmentsTegel) assignmentsTegel.addEventListener("click", openAssignmentsScreen);
+    const backBtn = document.getElementById("backFromAssignments");
+    if (backBtn) backBtn.addEventListener("click", closeAssignmentsScreen);
     const contractCard = document.getElementById("contractCard");
     if (contractCard) contractCard.addEventListener("click", openContract);
     const trainingCard = document.getElementById("trainingCard");
