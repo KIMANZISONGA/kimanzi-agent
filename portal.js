@@ -146,6 +146,13 @@ const API = "https://cockpit.urbanchill.org";
         }
       }
 
+      const tegelDesc = document.getElementById("assignmentsTegelDesc");
+      if (tegelDesc) {
+        tegelDesc.textContent = opdrachten.length === 0
+          ? "No upcoming assignments."
+          : opdrachten.length + " active — " + opdrachten.map(o => o.client_name || "—").join(", ");
+      }
+
       if (opdrachten.length === 0) {
         section.innerHTML = `<div class="no-assignments">No upcoming assignments. You'll be notified when a new briefing is ready.</div>`;
         return;
@@ -293,6 +300,18 @@ const API = "https://cockpit.urbanchill.org";
     document.getElementById("portalScreen").style.display = "block";
     const bottom = document.getElementById("portalScreenBottom");
     if (bottom) bottom.style.display = "block";
+    window.scrollTo(0, 0);
+  }
+
+  function openAssignmentsScreen() {
+    document.getElementById("assignmentsTegel").style.display = "none";
+    document.getElementById("assignmentsExpanded").style.display = "block";
+    window.scrollTo(0, 0);
+  }
+
+  function closeAssignmentsScreen() {
+    document.getElementById("assignmentsExpanded").style.display = "none";
+    document.getElementById("assignmentsTegel").style.display = "block";
     window.scrollTo(0, 0);
   }
 
@@ -465,6 +484,10 @@ const API = "https://cockpit.urbanchill.org";
     const handbookCard = document.getElementById("handbookCard");
     const feesCard     = document.getElementById("feesCard");
     if (handbookCard) handbookCard.addEventListener("click", openHandbook);
+    const assignmentsTegel = document.getElementById("assignmentsTegel");
+    if (assignmentsTegel) assignmentsTegel.addEventListener("click", openAssignmentsScreen);
+    const backBtn = document.getElementById("backFromAssignments");
+    if (backBtn) backBtn.addEventListener("click", closeAssignmentsScreen);
     const assignmentsTegel = document.getElementById("assignmentsTegel");
     if (assignmentsTegel) assignmentsTegel.addEventListener("click", openAssignmentsScreen);
     const backBtn = document.getElementById("backFromAssignments");
