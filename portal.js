@@ -467,6 +467,10 @@ const API = "https://cockpit.urbanchill.org";
     if (contractCard) contractCard.addEventListener("click", openContract);
     const trainingCard = document.getElementById("trainingCard");
     if (trainingCard) trainingCard.addEventListener("click", openTraining);
+    const assignmentsTegel = document.getElementById("assignmentsTegel");
+    if (assignmentsTegel) assignmentsTegel.addEventListener("click", openAssignmentsScreen);
+    const backBtn = document.getElementById("backFromAssignments");
+    if (backBtn) backBtn.addEventListener("click", closeAssignmentsScreen);
     if (feesCard)     feesCard.addEventListener("click", showFees);
 
     // Logout
