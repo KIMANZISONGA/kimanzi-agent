@@ -146,9 +146,9 @@ const API = "https://cockpit.urbanchill.org";
         }
       }
 
-      const tegelDesc = document.getElementById("assignmentsTegelDesc");
-      if (tegelDesc) {
-        tegelDesc.textContent = opdrachten.length === 0
+      const _tegelDesc = document.getElementById("assignmentsTegelDesc");
+      if (_tegelDesc) {
+        _tegelDesc.textContent = opdrachten.length === 0
           ? "No upcoming assignments."
           : opdrachten.length + " active — " + opdrachten.map(o => o.client_name || "—").join(", ");
       }
