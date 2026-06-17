@@ -122,7 +122,7 @@ const API = "https://cockpit.urbanchill.org";
       const data = await res.json().catch(() => ({}));
       const opdrachten = data.opdrachten || [];
 
-      // Badge updaten in nav
+      // Badge updaten
       const badge = document.getElementById("assignmentBadge");
       if (badge) {
         if (opdrachten.length > 0) {
@@ -130,19 +130,6 @@ const API = "https://cockpit.urbanchill.org";
           badge.style.display = "flex";
         } else {
           badge.style.display = "none";
-        }
-      }
-
-      // Tegel beschrijving updaten
-      const tegelDesc = document.getElementById("assignmentsTegelDesc");
-      if (tegelDesc) {
-        if (opdrachten.length === 0) {
-          tegelDesc.textContent = "No upcoming assignments.";
-        } else {
-          const names = opdrachten.map(o => o.client_name || "—").join(", ");
-          tegelDesc.textContent = opdrachten.length === 1
-            ? "1 active assignment — " + names
-            : opdrachten.length + " active assignments — " + names;
         }
       }
 
@@ -280,18 +267,6 @@ const API = "https://cockpit.urbanchill.org";
     }
   }
 
-  function openAssignmentsScreen() {
-    document.getElementById("portalScreen").style.display = "none";
-    document.getElementById("assignmentsScreen").style.display = "block";
-    window.scrollTo(0, 0);
-  }
-
-  function closeAssignmentsScreen() {
-    document.getElementById("assignmentsScreen").style.display = "none";
-    document.getElementById("portalScreen").style.display = "block";
-    window.scrollTo(0, 0);
-  }
-
   async function loadThread(caseId) {
     const token = sessionStorage.getItem("kimanzi_token");
     if (!token) return;
@@ -322,16 +297,12 @@ const API = "https://cockpit.urbanchill.org";
   }
 
   function updateMsgBadge(hasUnread) {
-    // Badge op nav
     const badge = document.getElementById("assignmentBadge");
-    if (badge && hasUnread) {
+    if (!badge) return;
+    if (hasUnread) {
+      badge.textContent = "!";
       badge.style.display = "flex";
       badge.style.background = "#c0392b";
-    }
-    // Badge op tegel
-    const tegelBadge = document.getElementById("assignmentsBadge");
-    if (tegelBadge) {
-      tegelBadge.style.display = hasUnread ? "inline" : "none";
     }
   }
 
@@ -467,10 +438,6 @@ const API = "https://cockpit.urbanchill.org";
     if (contractCard) contractCard.addEventListener("click", openContract);
     const trainingCard = document.getElementById("trainingCard");
     if (trainingCard) trainingCard.addEventListener("click", openTraining);
-    const assignmentsTegel = document.getElementById("assignmentsTegel");
-    if (assignmentsTegel) assignmentsTegel.addEventListener("click", openAssignmentsScreen);
-    const backBtn = document.getElementById("backFromAssignments");
-    if (backBtn) backBtn.addEventListener("click", closeAssignmentsScreen);
     if (feesCard)     feesCard.addEventListener("click", showFees);
 
     // Logout
