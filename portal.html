@@ -537,11 +537,30 @@
       </div>
     </div>
 
-    <!-- ASSIGNMENTS (locked fase 2) -->
     <!-- MY ASSIGNMENTS -->
     <div class="section-label" style="margin-top:.5rem">My assignments</div>
-    <div id="assignmentsSection">
-      <div style="color:var(--muted);font-size:13px;padding:.5rem 0">Loading...</div>
+
+    <!-- Tegel (collapsed) -->
+    <div id="assignmentsTegel" class="card" style="cursor:pointer">
+      <div class="card-inner">
+        <div class="card-icon orange">📋</div>
+        <div class="card-text">
+          <div class="card-title">My Assignments <span id="assignmentsBadge" style="display:none;background:#c0392b;color:#fff;border-radius:999px;font-size:11px;font-weight:700;padding:2px 7px;margin-left:4px">!</span></div>
+          <div class="card-desc" id="assignmentsTegelDesc">Loading...</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </div>
+
+    <!-- Expanded view (hidden by default) -->
+    <div id="assignmentsExpanded" style="display:none">
+      <div style="display:flex;align-items:center;gap:.75rem;margin:.75rem 0">
+        <button id="backFromAssignments" style="background:none;border:none;color:var(--orange);font-size:15px;cursor:pointer;padding:0;font-family:inherit">&#8592; Back</button>
+        <div class="section-label" style="margin:0">My Assignments</div>
+      </div>
+      <div id="assignmentsSection">
+        <div style="color:var(--muted);font-size:13px;padding:.5rem 0">Loading...</div>
+      </div>
     </div>
 
     <!-- RECEIPTS (locked fase 2) -->
