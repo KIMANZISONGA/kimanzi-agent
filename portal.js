@@ -88,6 +88,12 @@ const API = "https://cockpit.urbanchill.org";
     document.getElementById("feesScreen").style.display    = "none";
     document.getElementById("portalScreen").style.display  = "block";
 
+    // Koppel assignments tegel listeners na login (DOM is nu zichtbaar)
+    const _tegel = document.getElementById("assignmentsTegel");
+    if (_tegel) _tegel.addEventListener("click", openAssignmentsScreen);
+    const _back = document.getElementById("backFromAssignments");
+    if (_back) _back.addEventListener("click", closeAssignmentsScreen);
+
     if (currentHost) {
       const first = currentHost.name.charAt(0).toUpperCase();
       document.getElementById("userAvatar").textContent  = first;
