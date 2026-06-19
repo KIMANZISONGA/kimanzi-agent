@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nairobi Practical Guide — KIMANZI</title>
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=playfair-display:400,600,700|inter:300,400,500,600" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1A2C1E;
+      --orange: #C87A2E;
+      --cream: #F5EFE2;
+      --cream2: #EDE4D4;
+      --text: #2B1D12;
+      --muted: #7a6a56;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      padding-bottom: 4rem;
+    }
+    header {
+      background: var(--green);
+      color: var(--cream);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+    header .logo { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; opacity: .6; margin-bottom: .5rem; }
+    header h1 { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 600; }
+    header p { opacity: .75; font-size: 13px; margin-top: .4rem; }
+    .container { max-width: 680px; margin: 0 auto; padding: 0 1.25rem; }
+    .section { margin-top: 2.5rem; }
+    .section-title {
+      font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--orange); font-weight: 700; margin-bottom: 1rem;
+      border-bottom: 1px solid var(--cream2); padding-bottom: .4rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      margin-bottom: .75rem;
+      border: 1px solid var(--cream2);
+    }
+    .card-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+    .card-icon { font-size: 1.3rem; }
+    .card-title { font-weight: 600; font-size: 15px; }
+    .card-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .card-body strong { color: var(--text); }
+    .tag {
+      display: inline-block; background: var(--cream2);
+      border-radius: 999px; padding: .15rem .7rem;
+      font-size: 11px; font-weight: 600; margin: .15rem .1rem;
+      color: var(--text);
+    }
+    .tag.red { background: #fdecea; color: #c0392b; }
+    .tag.green { background: #e8f0e9; color: #1A422E; }
+    .emergency { background: #fdecea; border: 1px solid #f5c6c6; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: .75rem; }
+    .emergency .num { font-size: 1.3rem; font-weight: 700; color: #c0392b; }
+    .emergency .label { font-size: 12px; color: #7a6a56; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    @media (max-width: 500px) { .grid2 { grid-template-columns: 1fr; } }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      color: var(--orange); font-size: 13px; font-weight: 600;
+      text-decoration: none; margin: 1.25rem 0 0 1.25rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">KIMANZI · Host Guide</div>
+  <h1>Nairobi Practical Guide</h1>
+  <p>Everything you need to navigate Nairobi confidently.</p>
+</header>
+
+<a href="/portal.html" class="back-btn">← Back to portal</a>
+
+<div class="container">
+
+  <!-- EMERGENCY -->
+  <div class="section">
+    <div class="section-title">🚨 Emergency numbers</div>
+    <div class="grid2">
+      <div class="emergency">
+        <div class="num">999</div>
+        <div class="label">Police</div>
+      </div>
+      <div class="emergency">
+        <div class="num">0800 720 715</div>
+        <div class="label">Ambulance (free)</div>
+      </div>
+      <div class="emergency">
+        <div class="num">0722 314 239</div>
+        <div class="label">AAR Healthcare</div>
+      </div>
+      <div class="emergency">
+        <div class="num">0711 082 000</div>
+        <div class="label">Nairobi Hospital</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSPORT -->
+  <div class="section">
+    <div class="section-title">🚗 Getting around</div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">🚗</span><span class="card-title">Uber & Bolt</span></div>
+      <div class="card-body">Always use Uber or Bolt — safer and price-fixed. <strong>Never take unmarked taxis.</strong> Share your ride status with the client if travelling at night.</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">🏍️</span><span class="card-title">Boda Boda (motorcycle taxi)</span></div>
+      <div class="card-body"><span class="tag red">Avoid with clients</span> Bodas are fast but risky. Only use for quick personal errands, not client transport.</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">🗺️</span><span class="card-title">Navigation</span></div>
+      <div class="card-body">Use <strong>Google Maps</strong> for routes. Traffic in Nairobi is heavy 7–9am and 5–8pm — plan ahead. Westlands, Karen and Kilimani are the main client areas.</div>
+    </div>
+  </div>
+
+  <!-- MONEY -->
+  <div class="section">
+    <div class="section-title">💰 Money & payments</div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">📱</span><span class="card-title">M-PESA</span></div>
+      <div class="card-body">M-PESA is king. Most shops, restaurants and services accept it. Always send your M-PESA confirmation to KIMANZI for reimbursement.</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">🏧</span><span class="card-title">ATMs & cash</span></div>
+      <div class="card-body">Use ATMs inside malls (Westgate, Village Market, The Hub Karen) — safer than street ATMs. <strong>Equity Bank</strong> and <strong>KCB</strong> have reliable machines.</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">💱</span><span class="card-title">Exchange rate</span></div>
+      <div class="card-body">EUR 1 ≈ KES 145–155 (check live rate in your portal). Forex bureaus give better rates than banks — try <strong>JM Forex</strong> in Westlands.</div>
+    </div>
+  </div>
+
+  <!-- SIM -->
+  <div class="section">
+    <div class="section-title">📶 SIM & data</div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">📱</span><span class="card-title">Getting a SIM</span></div>
+      <div class="card-body">
+        Best operators: <span class="tag green">Safaricom</span> <span class="tag">Airtel</span><br><br>
+        Safaricom has the best coverage. Clients need their passport for registration. SIM costs ~KES 50, buy at any Safaricom shop or kiosk.<br><br>
+        <strong>Airport:</strong> Safaricom desk is in the arrivals hall — get it on day 1.
+      </div>
+    </div>
+  </div>
+
+  <!-- SAFETY -->
+  <div class="section">
+    <div class="section-title">🔒 Safety</div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">✅</span><span class="card-title">Safe areas</span></div>
+      <div class="card-body">
+        <span class="tag green">Westlands</span>
+        <span class="tag green">Kilimani</span>
+        <span class="tag green">Karen</span>
+        <span class="tag green">Lavington</span>
+        <span class="tag green">Runda</span>
+        <br><br>These are the main expat areas — well-lit, good security, close to restaurants and shops.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">⚠️</span><span class="card-title">General rules</span></div>
+      <div class="card-body">
+        • Don't walk with expensive items visible (phone, camera, laptop bag)<br>
+        • Avoid walking alone after dark — use Uber<br>
+        • Lock car doors immediately when entering<br>
+        • Don't resist if robbed — safety first<br>
+        • Share your location with someone when meeting clients for the first time
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOD -->
+  <div class="section">
+    <div class="section-title">🍽️ Food & dining</div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">🥗</span><span class="card-title">Recommended spots</span></div>
+      <div class="card-body">
+        <strong>Casual:</strong> Artcaffe, Java House, Kaldis Coffee<br>
+        <strong>Local food:</strong> Mama Oliech, Kikopey Nyama Choma<br>
+        <strong>Supermarkets:</strong> Carrefour, Naivas, QuickMart<br><br>
+        <span class="tag green">Vegan/vegetarian</span> Choices Restaurant (Westlands), Harvest (Karen)
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-icon">💧</span><span class="card-title">Water</span></div>
+      <div class="card-body"><strong>Always drink bottled water.</strong> Tap water is not safe for newcomers. Buy 5L bottles at any supermarket — much cheaper than small bottles.</div>
+    </div>
+  </div>
+
+  <!-- USEFUL APPS -->
+  <div class="section">
+    <div class="section-title">📲 Useful apps</div>
+    <div class="card">
+      <div class="card-body">
+        <strong>Uber / Bolt</strong> — transport<br>
+        <strong>M-PESA app</strong> — payments<br>
+        <strong>Glovo</strong> — food delivery<br>
+        <strong>Jumia Food</strong> — food delivery<br>
+        <strong>Google Maps</strong> — navigation (works offline too)<br>
+        <strong>WhatsApp</strong> — main communication in Kenya
+      </div>
+    </div>
+  </div>
+
+  <!-- DUTCH PHRASES -->
+  <div class="section">
+    <div class="section-title">🇰🇪 Swahili basics</div>
+    <div class="card">
+      <div class="card-body">
+        <strong>Jambo</strong> — Hello<br>
+        <strong>Asante</strong> — Thank you<br>
+        <strong>Karibu</strong> — Welcome / You're welcome<br>
+        <strong>Sawa</strong> — OK / Fine<br>
+        <strong>Pole pole</strong> — Slowly / Take it easy<br>
+        <strong>Mzuri</strong> — Good<br>
+        <strong>Ngapi?</strong> — How much?<br>
+        <strong>Hakuna matata</strong> — No problem
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
