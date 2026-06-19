@@ -219,7 +219,12 @@ const API = "https://cockpit.urbanchill.org";
             ${fee ? `
             <div class="assignment-row">
               <span class="assignment-key">Your fee</span>
-              <span class="assignment-val" style="color:#1A422E;font-weight:700">${escHtml(fee)}</span>
+              <span class="assignment-val">
+                <span style="color:#1A422E;font-weight:700">${escHtml(fee)}</span>
+                ${o.payout_status === 'paid'
+                  ? '<span style="color:#2A6B2A;font-size:12px;margin-left:.4rem">✅ Paid</span>'
+                  : '<span style="color:#94a3b8;font-size:11px;display:block;margin-top:2px">Paid out after assignment is completed</span>'}
+              </span>
             </div>` : ""}
 
             ${adres ? `
