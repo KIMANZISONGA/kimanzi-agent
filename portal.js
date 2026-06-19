@@ -256,6 +256,14 @@ const API = "https://cockpit.urbanchill.org";
               rows.push(`<div class="pref-row"><span class="pref-key allerg-key">⚠ Allergies</span><span class="pref-vals">${pills(allerg,"allerg-pill")}</span></div>`);
             if (special)
               rows.push(`<div class="pref-row"><span class="pref-key">Notes</span><span class="pref-vals pref-note">${escHtml(special)}</span></div>`);
+            // Risk flags
+            const risks = tryParseArr(o.risk_flags);
+            if (risks.length)
+              rows.push(`<div class="pref-row"><span class="pref-key allerg-key">⚠ Risk</span><span class="pref-vals">${pills(risks, "allerg-pill")}</span></div>`);
+            // Accommodation
+            const accom = tryParseArr(o.accommodation_pref);
+            if (accom.length)
+              rows.push(`<div class="pref-row"><span class="pref-key">Accommodation</span><span class="pref-vals">${pills(accom, "")}</span></div>`);
             return rows.length ? `<div class="prefs-section">${rows.join("")}</div>` : "";
           })()}
 
