@@ -167,7 +167,7 @@ const API = "https://cockpit.urbanchill.org";
           : null;
         const tijd   = o.arrival_time || null;
         const vlucht = o.flight_number || null;
-        const fee    = o.payout_cents ? `€${(o.payout_cents / 100).toFixed(2)}` : null;
+        const fee    = o.payout_status === 'paid' ? `€${((o.base_fee_cents || o.payout_cents || 0) / 100).toFixed(2)} ✅` : null;
 
         const dieet  = tryParseArr(o.dietary_preferences);
         const allerg = tryParseArr(o.allergies);
