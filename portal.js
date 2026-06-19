@@ -272,6 +272,27 @@ const API = "https://cockpit.urbanchill.org";
             return rows.length ? `<div class="prefs-section">${rows.join("")}</div>` : "";
           })()}
 
+          <div class="receipt-wrap" id="receipt-wrap-${escHtml(o.id)}">
+            <div class="chat-header">🧾 Receipts</div>
+            <div id="receipt-list-${escHtml(o.id)}" class="receipt-list">
+              <div class="receipt-empty">Loading...</div>
+            </div>
+            <div class="receipt-form">
+              <select id="receipt-cat-${escHtml(o.id)}" class="receipt-select">
+                <option value="uber">🚗 Uber</option>
+                <option value="meals">🍽️ Meals</option>
+                <option value="other">📄 Other</option>
+              </select>
+              <input type="number" id="receipt-amount-${escHtml(o.id)}" class="receipt-input" placeholder="Amount (KES)" min="0" step="1">
+              <label class="receipt-file-label">
+                📷 Photo
+                <input type="file" id="receipt-file-${escHtml(o.id)}" accept="image/*" capture="environment" style="display:none">
+              </label>
+              <button class="chat-send-btn" onclick="submitReceipt('${escHtml(o.id)}')">Submit</button>
+            </div>
+            <div id="receipt-status-${escHtml(o.id)}" style="font-size:12px;margin-top:.3rem;min-height:1rem"></div>
+          </div>
+
           <div class="chat-wrap" id="chat-wrap-${escHtml(o.id)}">
             <div class="chat-header">💬 Messages</div>
             <div class="chat-thread" id="chat-thread-${escHtml(o.id)}">
@@ -286,10 +307,88 @@ const API = "https://cockpit.urbanchill.org";
       }).join("");
 
       // Laad chat threads voor elke opdracht
-      opdrachten.forEach(o => loadThread(o.id));
+      opdrachten.forEach(o => {
+        loadThread(o.id);
+        loadReceipts(o.id);
+      });
 
     } catch(e) {
       section.innerHTML = `<div class="no-assignments">Could not load assignments. Please refresh.</div>`;
+    }
+  }
+
+  // ── BONNEN UPLOAD ──
+  async function loadReceipts(caseId) {
+    const token = sessionStorage.getItem("kimanzi_token");
+    if (!token) return;
+    try {
+      const res = await fetch(API + "/api/host/receipts?token=" + encodeURIComponent(token) + "&case_id=" + encodeURIComponent(caseId));
+      const data = await res.json().catch(() => ({}));
+      const list = document.getElementById("receipt-list-" + caseId);
+      if (!list) return;
+      const items = data.receipts || [];
+      if (items.length === 0) {
+        list.innerHTML = '<div class="receipt-empty">No receipts submitted yet.</div>';
+        return;
+      }
+      list.innerHTML = items.map(r => {
+        const amt = r.amount_cents ? "KES " + (r.amount_cents / 100).toFixed(0) : "—";
+        const cat = r.category || "other";
+        const catLabel = { uber: "🚗 Uber", meals: "🍽️ Meals", other: "📄 Other" }[cat] || cat;
+        const date = new Date(r.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+        return '<div class="receipt-item">'
+          + '<span class="receipt-cat">' + catLabel + '</span>'
+          + '<span class="receipt-desc">' + escHtml(r.description || cat) + '</span>'
+          + '<span class="receipt-amt">' + amt + '</span>'
+          + '<span class="receipt-date">' + date + '</span>'
+          + '</div>';
+      }).join("");
+    } catch(e) {}
+  }
+
+  async function submitReceipt(caseId) {
+    const token = sessionStorage.getItem("kimanzi_token");
+    if (!token) return;
+
+    const fileInput = document.getElementById("receipt-file-" + caseId);
+    const amountInput = document.getElementById("receipt-amount-" + caseId);
+    const catSelect = document.getElementById("receipt-cat-" + caseId);
+    const statusEl = document.getElementById("receipt-status-" + caseId);
+
+    if (!fileInput?.files?.length) {
+      if (statusEl) { statusEl.textContent = "Please select a photo."; statusEl.style.color = "#c0392b"; }
+      return;
+    }
+
+    const file = fileInput.files[0];
+    const amount = Math.round(parseFloat(amountInput?.value || "0") * 100);
+    const category = catSelect?.value || "other";
+
+    if (statusEl) { statusEl.textContent = "Uploading..."; statusEl.style.color = "#94a3b8"; }
+
+    try {
+      const params = new URLSearchParams({
+        token, case_id: caseId, category,
+        amount_cents: amount,
+        description: category
+      });
+      const res = await fetch(API + "/api/host/receipt/upload?" + params.toString(), {
+        method: "POST",
+        headers: { "Content-Type": file.type || "image/jpeg" },
+        body: file
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        fileInput.value = "";
+        amountInput.value = "";
+        if (statusEl) { statusEl.textContent = "✓ Receipt submitted!"; statusEl.style.color = "#2A6B2A"; }
+        await loadReceipts(caseId);
+        setTimeout(() => { if (statusEl) statusEl.textContent = ""; }, 3000);
+      } else {
+        if (statusEl) { statusEl.textContent = "Upload failed: " + (data.error || "unknown"); statusEl.style.color = "#c0392b"; }
+      }
+    } catch(e) {
+      if (statusEl) { statusEl.textContent = "Error: " + e.message; statusEl.style.color = "#c0392b"; }
     }
   }
 
