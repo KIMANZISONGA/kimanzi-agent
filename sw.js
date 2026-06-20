@@ -1,4 +1,4 @@
-const CACHE = 'kimanzi-v12';
+const CACHE = 'kimanzi-v13';
 const PRECACHE = [
   '/portal.html',
   '/kimanzi.css',
@@ -29,6 +29,25 @@ self.addEventListener('fetch', e => {
   if (e.request.url.includes('fonts.')) return;
   if (e.request.url.includes('open-meteo') || e.request.url.includes('open.er-api') || e.request.url.includes('frankfurter')) return;
 
+  const isHTML = e.request.mode === 'navigate' ||
+                 e.request.destination === 'document' ||
+                 e.request.url.endsWith('.html');
+
+  if (isHTML) {
+    // Network-first: altijd de nieuwste pagina-content; cache is alleen offline-fallback
+    e.respondWith(
+      fetch(e.request).then(res => {
+        if (res && res.status === 200) {
+          const clone = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+        }
+        return res;
+      }).catch(() => caches.match(e.request))
+    );
+    return;
+  }
+
+  // Cache-first voor statische assets: CSS, afbeeldingen, iconen, manifest
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
