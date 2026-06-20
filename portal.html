@@ -646,7 +646,11 @@
     <!-- FEE TABLE -->
     <div style="background:white;border-radius:14px;border:1px solid var(--cream2);overflow:hidden;margin-bottom:1rem;">
       <div style="padding:.85rem 1.25rem;border-bottom:1px solid var(--cream2);background:var(--green);">
-        <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);font-weight:600;">Fee overview</div>
+        <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);font-weight:600;">Fee overview — 2026 rates</div>
+      </div>
+
+      <div style="padding:.75rem 1.25rem;border-bottom:1px solid var(--cream2);background:rgba(26,44,30,.03);">
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">All amounts in Kenyan Shilling (KSh), paid via M-Pesa within 2 working days of invoice + receipts. EUR shown is indicative (June 2026 rate, €1 ≈ KSh 150) and fixed for all of 2026 — no indexing until 1 January 2027.</div>
       </div>
 
       <div style="padding:1rem 1.25rem;border-bottom:1px solid var(--cream2);">
@@ -654,9 +658,12 @@
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:.2rem;">Arrival</div>
             <div style="font-size:12px;color:var(--muted);line-height:1.5;">Pickup JKIA, transfer, SIM, first errands. 6–10 hours.</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:.3rem;">+ Fuel, lunch</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:.3rem;">+ Fuel, lunch (reimbursed on receipt)</div>
           </div>
-          <div style="font-size:18px;font-weight:700;color:var(--orange);flex-shrink:0;">€60</div>
+          <div style="flex-shrink:0;text-align:right;">
+            <div style="font-size:18px;font-weight:700;color:var(--orange);">KSh 9,000</div>
+            <div style="font-size:11px;color:var(--muted);">± €60</div>
+          </div>
         </div>
       </div>
 
@@ -665,9 +672,12 @@
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:.2rem;">Arrival duo</div>
             <div style="font-size:12px;color:var(--muted);line-height:1.5;">Same as Arrival for two guests. Heavier coordination, longer day.</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:.3rem;">+ Fuel, lunch</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:.3rem;">+ Fuel, lunch (reimbursed on receipt)</div>
           </div>
-          <div style="font-size:18px;font-weight:700;color:var(--orange);flex-shrink:0;">€90</div>
+          <div style="flex-shrink:0;text-align:right;">
+            <div style="font-size:18px;font-weight:700;color:var(--orange);">KSh 13,500</div>
+            <div style="font-size:11px;color:var(--muted);">± €90</div>
+          </div>
         </div>
       </div>
 
@@ -675,10 +685,13 @@
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;">
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:.2rem;">Extra Day</div>
-            <div style="font-size:12px;color:var(--muted);line-height:1.5;">Full day: housing, banking, paperwork, orientation. Stackable.</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:.3rem;">+ Fuel, lunch</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5;">Half day, weekday. Content and timing arranged with the guest. Stackable.</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:.3rem;">+ Fuel, lunch (reimbursed on receipt)</div>
           </div>
-          <div style="font-size:18px;font-weight:700;color:var(--orange);flex-shrink:0;">€60/day</div>
+          <div style="flex-shrink:0;text-align:right;">
+            <div style="font-size:18px;font-weight:700;color:var(--orange);">KSh 9,000/day</div>
+            <div style="font-size:11px;color:var(--muted);">± €60</div>
+          </div>
         </div>
       </div>
 
@@ -686,10 +699,13 @@
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;">
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:.2rem;">Concierge</div>
-            <div style="font-size:12px;color:var(--muted);line-height:1.5;">Monthly remote support (~15% of guest retainer). Runs while guest stays subscribed.</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5;">Monthly remote support. Includes 1 in-person visit per month. Runs while guest stays subscribed.</div>
             <div style="font-size:11px;color:var(--muted);margin-top:.3rem;">— No extras</div>
           </div>
-          <div style="font-size:18px;font-weight:700;color:var(--orange);flex-shrink:0;">€23/mo</div>
+          <div style="flex-shrink:0;text-align:right;">
+            <div style="font-size:18px;font-weight:700;color:var(--orange);">KSh 9,000/mo</div>
+            <div style="font-size:11px;color:var(--muted);">± €60</div>
+          </div>
         </div>
       </div>
 
@@ -698,6 +714,14 @@
           <strong style="color:var(--text);">Combination & Advice</strong> assignments are scoped per request. Fee agreed in writing before you accept.
         </div>
       </div>
+    </div>
+
+    <!-- CONCIERGE NORM -->
+    <div style="background:white;border-radius:14px;border:1px solid var(--cream2);padding:1.1rem 1.25rem;margin-bottom:1rem;">
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:.4rem;">Concierge — workload guideline</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:.6rem;">The guideline is 6 active hours per guest, per month. Most of it is remote — messages, reservations, referrals. One in-person visit per month is included and reimbursable.</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:.6rem;">If a guest consistently runs over 6 hours, suggest an Extra Day instead. Concierge isn't unlimited consulting.</div>
+      <div style="font-size:12px;color:var(--text);line-height:1.6;background:rgba(26,44,30,.04);border-radius:8px;padding:.6rem .75rem;">No hourly billing. The 6 hours is a workload guideline, not an invoicing basis — you invoice KSh 9,000 per active month regardless of whether the guest asks for more or less.</div>
     </div>
 
     <!-- HOW PAYMENT WORKS -->
@@ -732,6 +756,17 @@
       <div>
         <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:.25rem;">Expenses reimbursed</div>
         <div style="font-size:13px;color:var(--muted);line-height:1.55;">Fuel and lunch you advance on the day are reimbursed in full on the same invoice. No pre-approval needed.</div>
+      </div>
+    </div>
+
+    <!-- ANNUAL INDEXING -->
+    <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:1.1rem 0 .75rem;">Annual indexing</div>
+
+    <div style="background:white;border-radius:14px;border:1px solid var(--cream2);padding:1.1rem 1.25rem;margin-bottom:.75rem;display:flex;gap:1rem;align-items:flex-start;">
+      <div style="font-size:22px;flex-shrink:0;">📈</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:.25rem;">Reviewed every January, starting 2027</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.55;">2026 rates are starting rates — no indexing this year. From 1 January 2027, fees adjust annually based on the average of Dutch and Kenyan inflation (CBS + KNBS) over the prior year, rounded to the nearest KSh 500. You'll hear about any change before 15 December, ahead of it taking effect.</div>
       </div>
     </div>
 
