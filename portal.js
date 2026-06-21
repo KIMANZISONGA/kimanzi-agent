@@ -1,4 +1,4 @@
-const API = "https://cockpit.urbanchill.org";
+const API = "https://api.urbanchill.org";
   let currentHost = null;
 
   // ── Sessie herstellen via token verificatie ──
