@@ -126,179 +126,45 @@
   </div>
 </div>
 
-<div class="wrap">
+<!-- ACCESS CHECK -->
+<script>
+  (function(){
+    const token = sessionStorage.getItem("kimanzi_token");
+    const host  = sessionStorage.getItem("kimanzi_host");
+    if(!token || !host){
+      window.location.href = "portal.html";
+    }
+  })();
+</script>
 
-  <div class="concept-notice" style="margin-top:2.5rem">
-    <strong>⚠ Concept document</strong>
-    <p>This agreement is not yet in force. It is shared for review purposes only. A personalised, signed copy will be provided to you upon onboarding. This document has no legal effect until signed by both parties.</p>
-  </div>
-
-  <div class="warn-box">
-    <strong>IMPORTANT — No employment relationship</strong>
-    <p>This agreement is expressly not a contract of service. The Contractor is an independent contractor and has no entitlement to salary, holiday pay, sick pay, severance pay or any other employment rights under the Kenyan Employment Act (Cap. 226) or any other applicable law.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 1</span>
-    <div class="art-title">Parties</div>
-    <p><span class="label">Client:</span> KIMANZI, operating from Rijswijk, the Netherlands, registered with the Dutch Chamber of Commerce (KvK) under number [KvK number]. KIMANZI is the operational coordination label for UrbanChill, a Dutch consumer-facing brand for professionals relocating to Nairobi. In this agreement, KIMANZI acts as the contracting party.</p>
-    <p><span class="label">Contractor:</span> [Full legal name], residing in Nairobi, Kenya. Identity document / passport number: [number].</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 2</span>
-    <div class="art-title">Nature of the Agreement</div>
-    <p>The parties expressly enter into an independent contractor agreement — not an employment agreement. The Contractor operates as a self-employed professional. There is no relationship of authority, no obligation of personal service, and no ongoing or permanent engagement.</p>
-    <p>The Contractor is free to perform work for other clients simultaneously, provided this does not conflict with the confidentiality obligations under Article 8. The Contractor is not obliged to accept any assignment offered. The Client is not obliged to offer any minimum number of assignments. Each assignment is agreed and confirmed separately in writing.</p>
-    <p>KIMANZI is the operational entity. UrbanChill is the consumer-facing brand under which services are delivered to end clients. The Contractor operates on behalf of KIMANZI only and shall not represent themselves as acting on behalf of UrbanChill directly.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 3</span>
-    <div class="art-title">Scope of Services</div>
-    <p>The Contractor provides freelance hospitality host services for KIMANZI clients in Nairobi, as specified per separately confirmed assignment. Services may include:</p>
-    <ul>
-      <li>Airport pickup and transfer to accommodation</li>
-      <li>First-day orientation — neighbourhoods, safety, transport, local rhythm</li>
-      <li>Practical support: SIM card, currency exchange, grocery run, first errands</li>
-      <li>Local orientation during Extra Day assignments</li>
-      <li>Acting as primary point of contact for the client during the assignment</li>
-      <li>Advising on co-working spaces, restaurants, and local services</li>
-      <li>Remote support for Concierge clients (messaging-based, per agreed schedule)</li>
-    </ul>
-    <p>The Contractor determines independently how, when and where services are performed within the scope of the confirmed assignment. KIMANZI does not issue instructions regarding working methods or hours — only the assignment scope, timing, and relevant client details.</p>
-    <p>Any activities outside the confirmed scope require prior written approval from KIMANZI.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 4</span>
-    <div class="art-title">Duration and Assignment Basis</div>
-    <p>This framework agreement enters into force on the date of the last signature below and applies for an indefinite period. It does not, in itself, create any obligation to provide or accept assignments.</p>
-    <p>Each individual assignment is confirmed in writing — by email or approved messaging channel — specifying the date, nature, location, and agreed fee. An assignment ends upon completion of the confirmed scope.</p>
-    <div class="warn-box">
-      <strong>Kenyan law compliance — Section 37, Employment Act (Cap. 226)</strong>
-      <p>To prevent this agreement from being classified as an employment relationship under Section 37 of the Kenyan Employment Act, services per assignment must not exceed three consecutive weeks in duration. Where a longer engagement is required, a minimum break of two weeks must be observed before commencement of a new assignment. KIMANZI reserves the right to restructure assignment scheduling accordingly.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 5</span>
-    <div class="art-title">Fees and Invoicing</div>
-    <p>The Contractor receives a fee agreed per assignment, payable in KES or EUR as confirmed in writing per assignment. The standard fee structure at time of signing is as follows:</p>
-    <ul>
-      <li>Arrival (solo): €60 + reimbursable transport and lunch costs</li>
-      <li>Arrival (duo): €90 + reimbursable transport and lunch costs</li>
-      <li>Extra Day: €60 per day + reimbursable transport and lunch costs</li>
-      <li>Concierge (monthly, remote): approximately 15% of the guest retainer fee</li>
-    </ul>
-    <p>Reimbursable expenses require prior approval and must be supported by receipts. Payment will be made within 2 working days of receipt of a correct invoice, via M-PESA or an alternative method agreed in writing.</p>
-    <p>The Contractor is solely responsible for registration with the Kenya Revenue Authority (KRA) and for all applicable Kenyan tax obligations arising from fees received. No holiday pay, sick pay, pension contributions, or other employment-related supplements apply under this agreement.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 6</span>
-    <div class="art-title">Force Majeure</div>
-    <p>Neither party shall be liable for failure or delay in performing obligations under this agreement where such failure or delay results from circumstances beyond that party's reasonable control — including but not limited to illness, civil unrest, natural disaster, government restrictions, or significant transport disruption.</p>
-    <p>The affected party shall notify the other as soon as reasonably practicable. If a force majeure event continues for more than 7 days, either party may cancel the affected assignment in writing without liability.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 7</span>
-    <div class="art-title">Liability and Insurance</div>
-    <p>The Contractor is solely responsible for any third-party liability arising in the performance of assignments. KIMANZI accepts no liability for damage, loss, or injury caused by the Contractor during or in connection with the execution of an assignment.</p>
-    <p>The Contractor is strongly advised to maintain adequate professional liability insurance. This is not a contractual requirement, but the absence of coverage is at the Contractor's own risk. KIMANZI will arrange its own liability insurance covering the client-facing relationship on KIMANZI's side.</p>
-    <p>KIMANZI's aggregate liability to the Contractor under this agreement shall not exceed the total fees paid in the three months preceding the event giving rise to the claim.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 8</span>
-    <div class="art-title">Confidentiality</div>
-    <p>The Contractor shall treat all information relating to KIMANZI clients — including but not limited to name, accommodation details, flight information, employer, and personal circumstances — as strictly confidential. Such information shall not be disclosed to third parties, shared on social media, or used for any purpose other than the performance of the relevant assignment.</p>
-    <p>This confidentiality obligation applies to information about KIMANZI's operations, pricing, and business relationships. It applies during the term of this agreement and survives termination indefinitely.</p>
-    <p>Breach of this article entitles KIMANZI to terminate this agreement with immediate effect and to seek damages without prejudice to other legal remedies.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 9</span>
-    <div class="art-title">Data Protection</div>
-    <p>The Contractor processes personal data of KIMANZI clients solely in the capacity of data processor, acting on documented instructions from KIMANZI as data controller. The Kenyan Data Protection Act (2019) applies. The Contractor commits to:</p>
-    <ul>
-      <li>Processing personal data only to the extent strictly necessary for the performance of the confirmed assignment</li>
-      <li>Not disclosing, sharing, or transferring personal data to any third party without prior written consent from KIMANZI</li>
-      <li>Implementing appropriate technical and organisational measures to protect personal data against unauthorised access, loss, or disclosure</li>
-      <li>Notifying KIMANZI of any actual or suspected personal data breach within 24 hours of becoming aware of it</li>
-      <li>Deleting or returning all client personal data to KIMANZI upon completion of the assignment, unless retention is required by law</li>
-    </ul>
-    <p>Breach of this article entitles KIMANZI to terminate this agreement immediately, without prejudice to claims for damages or regulatory consequences.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 10</span>
-    <div class="art-title">Termination</div>
-    <p>Either party may terminate this framework agreement by written notice with 14 days' notice, without stating reasons. Assignments already confirmed and in progress shall be completed unless both parties agree otherwise in writing.</p>
-    <p>KIMANZI may terminate this agreement with immediate effect — without notice and without compensation — in the event of a material breach of Articles 8 or 9, or in the event of conduct that, in KIMANZI's reasonable judgement, damages or risks damaging the reputation of KIMANZI or its clients.</p>
-    <p>No severance payment, notice pay, or other compensation is due upon termination under any circumstances.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 11</span>
-    <div class="art-title">Governing Law and Disputes</div>
-    <p>This agreement is governed exclusively by the laws of Kenya. The parties expressly confirm that this is not a contract of employment within the meaning of the Kenyan Employment Act (Cap. 226) or any other applicable statute.</p>
-    <p>In the event of a dispute, the parties shall first attempt to resolve the matter through good-faith consultation within 14 days of written notice of the dispute. If unresolved, the dispute shall be submitted to the exclusive jurisdiction of the competent courts in Nairobi, Kenya.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Article 12</span>
-    <div class="art-title">General Provisions</div>
-    <p>This agreement, together with any written assignment confirmations issued under it, constitutes the entire agreement between the parties and supersedes all prior discussions, representations, or understandings.</p>
-    <p>Amendments to this agreement are only valid if agreed in writing and signed by both parties. Each assignment confirmation issued under this agreement shall reference this agreement by its date of signing.</p>
-    <p>If any provision of this agreement is held void, invalid, or unenforceable, the remaining provisions shall remain in full force and effect. The invalid provision shall be replaced by a valid provision that most closely reflects the original intent.</p>
-  </div>
-
-  <div class="section">
-    <span class="art-num">Signatures</span>
-    <div class="art-title">Agreed and Signed</div>
-    <p class="muted">Signed in duplicate. This agreement takes effect on the date of the last signature below.</p>
-    <div class="sig-grid">
-      <div class="sig-col">
-        <div class="sig-header">CLIENT — KIMANZI</div>
-        <div class="sig-body">
-          <div class="sig-line"></div>
-          <div class="sig-line">Name: Stephen Lemmert</div>
-          <div class="sig-line">Title: Founder, KIMANZI</div>
-          <div class="sig-line">Date: _____________________</div>
-          <div class="sig-line">Place: Rijswijk, Netherlands</div>
-        </div>
-      </div>
-      <div class="sig-col">
-        <div class="sig-header">CONTRACTOR</div>
-        <div class="sig-body">
-          <div class="sig-line"></div>
-          <div class="sig-line">Name: _____________________</div>
-          <div class="sig-line">ID / Passport: _____________</div>
-          <div class="sig-line">Date: _____________________</div>
-          <div class="sig-line">Place: Nairobi, Kenya</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<!-- CONTENT IS LOADED VIA AUTHENTICATED API CALL — never present in static page source -->
+<div id="docLoading" style="text-align:center;padding:4rem 1.5rem;color:#7a6a56;font-size:14px;">
+  Loading…
 </div>
 
-<div class="footer-conf">
-  <div class="inner">
-    <div>
-      <span class="conf-title">🔒 Confidentiality Notice</span>
-      <p>This document is confidential and intended solely for the named contractor. Do not share or distribute without prior written consent from KIMANZI.</p>
-    </div>
-    <div>
-      <span class="conf-title">Document info</span>
-      <p>Independent Contractor Agreement — Version 1.0 (CONCEPT)</p>
-      <p>KIMANZI · host@kimanzi.nl</p>
-      <p>Nairobi, Kenya · Rijswijk, Netherlands</p>
-    </div>
-  </div>
-</div>
+<div id="docContent" style="display:none;"></div>
+
+<script>
+  (async function(){
+    const API = "https://cockpit.urbanchill.org";
+    const token = sessionStorage.getItem("kimanzi_token");
+    if (!token) { window.location.href = "portal.html"; return; }
+
+    try {
+      const res = await fetch(API + "/api/host/contract?token=" + encodeURIComponent(token));
+      const data = await res.json();
+      if (data.success && data.html) {
+        document.getElementById("docContent").innerHTML = data.html;
+        document.getElementById("docContent").style.display = "block";
+        document.getElementById("docLoading").style.display = "none";
+      } else {
+        window.location.href = "portal.html";
+      }
+    } catch(e) {
+      document.getElementById("docLoading").textContent = "Connection error. Please refresh, or go back to the portal.";
+    }
+  })();
+</script>
 
 </body>
 </html>
