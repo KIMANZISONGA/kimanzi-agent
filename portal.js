@@ -167,7 +167,10 @@ const API = "https://api.urbanchill.org";
           : null;
         const tijd   = o.arrival_time || null;
         const vlucht = o.flight_number || null;
-        const fee    = o.base_fee_cents || o.payout_cents ? `€${((o.base_fee_cents || o.payout_cents || 0) / 100).toFixed(2)}` : null;
+        const feeCents    = Number(o.base_fee_cents || 0);
+        const bonnenCents = Number(o.reimbursable_cents || 0);
+        const totalCents  = Number(o.payout_cents || (feeCents + bonnenCents));
+        const hasFee = feeCents > 0 || bonnenCents > 0 || totalCents > 0;
 
         const dieet  = tryParseArr(o.dietary_preferences);
         const allerg = tryParseArr(o.allergies);
@@ -216,14 +219,18 @@ const API = "https://api.urbanchill.org";
               <span class="assignment-val">✈️ ${escHtml(vlucht)}</span>
             </div>` : ""}
 
-            ${fee ? `
+            ${hasFee ? `
             <div class="assignment-row">
-              <span class="assignment-key">Your fee</span>
+              <span class="assignment-key">Your payout</span>
               <span class="assignment-val">
-                <span style="color:#1A422E;font-weight:700">${escHtml(fee)}</span>
+                <span style="color:#1A422E;font-weight:700">€${(totalCents / 100).toFixed(2)}</span>
                 ${o.payout_status === 'paid'
                   ? '<span style="color:#2A6B2A;font-size:12px;margin-left:.4rem">✅ Paid</span>'
                   : '<span style="color:#94a3b8;font-size:11px;display:block;margin-top:2px">Paid out after assignment is completed</span>'}
+                ${bonnenCents > 0 ? `
+                <span style="font-size:11px;color:#94a3b8;display:block;margin-top:3px">
+                  Fee €${(feeCents/100).toFixed(2)} + receipts €${(bonnenCents/100).toFixed(2)}
+                </span>` : ``}
               </span>
             </div>` : ""}
 
