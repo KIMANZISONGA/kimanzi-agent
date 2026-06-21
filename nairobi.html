@@ -81,162 +81,45 @@
 
 <a href="/portal.html" class="back-btn">← Back to portal</a>
 
-<div class="container">
+<!-- ACCESS CHECK -->
+<script>
+  (function(){
+    const token = sessionStorage.getItem("kimanzi_token");
+    const host  = sessionStorage.getItem("kimanzi_host");
+    if(!token || !host){
+      window.location.href = "portal.html";
+    }
+  })();
+</script>
 
-  <!-- EMERGENCY -->
-  <div class="section">
-    <div class="section-title">🚨 Emergency numbers</div>
-    <div class="grid2">
-      <div class="emergency">
-        <div class="num">999</div>
-        <div class="label">Police</div>
-      </div>
-      <div class="emergency">
-        <div class="num">0800 720 715</div>
-        <div class="label">Ambulance (free)</div>
-      </div>
-      <div class="emergency">
-        <div class="num">0722 314 239</div>
-        <div class="label">AAR Healthcare</div>
-      </div>
-      <div class="emergency">
-        <div class="num">0711 082 000</div>
-        <div class="label">Nairobi Hospital</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TRANSPORT -->
-  <div class="section">
-    <div class="section-title">🚗 Getting around</div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">🚗</span><span class="card-title">Uber & Bolt</span></div>
-      <div class="card-body">Always use Uber or Bolt — safer and price-fixed. <strong>Never take unmarked taxis.</strong> Share your ride status with the client if travelling at night.</div>
-    </div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">🏍️</span><span class="card-title">Boda Boda (motorcycle taxi)</span></div>
-      <div class="card-body"><span class="tag red">Avoid with clients</span> Bodas are fast but risky. Only use for quick personal errands, not client transport.</div>
-    </div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">🗺️</span><span class="card-title">Navigation</span></div>
-      <div class="card-body">Use <strong>Google Maps</strong> for routes. Traffic in Nairobi is heavy 7–9am and 5–8pm — plan ahead. Westlands, Karen and Kilimani are the main client areas.</div>
-    </div>
-  </div>
-
-  <!-- MONEY -->
-  <div class="section">
-    <div class="section-title">💰 Money & payments</div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">📱</span><span class="card-title">M-PESA</span></div>
-      <div class="card-body">M-PESA is king. Most shops, restaurants and services accept it. Always send your M-PESA confirmation to KIMANZI for reimbursement.</div>
-    </div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">🏧</span><span class="card-title">ATMs & cash</span></div>
-      <div class="card-body">Use ATMs inside malls (Westgate, Village Market, The Hub Karen) — safer than street ATMs. <strong>Equity Bank</strong> and <strong>KCB</strong> have reliable machines.</div>
-    </div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">💱</span><span class="card-title">Exchange rate</span></div>
-      <div class="card-body">EUR 1 ≈ KES 145–155 (check live rate in your portal). Forex bureaus give better rates than banks — try <strong>JM Forex</strong> in Westlands.</div>
-    </div>
-  </div>
-
-  <!-- SIM -->
-  <div class="section">
-    <div class="section-title">📶 SIM & data</div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">📱</span><span class="card-title">Getting a SIM</span></div>
-      <div class="card-body">
-        Best operators: <span class="tag green">Safaricom</span> <span class="tag">Airtel</span><br><br>
-        Safaricom has the best coverage. <strong>The client must be present with their passport</strong> — SIM registration requires it in person.<br><br>
-        <span class="tag red">⚠ Not every M-PESA agent can register a new SIM</span><br>
-        Only official Safaricom shops and selected dealers can do this. <strong>Call ahead before bringing the client.</strong><br><br>
-        <strong>Safaricom shops:</strong> Westlands, Sarit Centre, The Junction, Village Market, JKIA arrivals hall.<br>
-        SIM costs ~KES 50. Top up with airtime or data bundles at any kiosk.
-      </div>
-    </div>
-  </div>
-
-  <!-- SAFETY -->
-  <div class="section">
-    <div class="section-title">🔒 Safety</div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">✅</span><span class="card-title">Safe areas</span></div>
-      <div class="card-body">
-        <span class="tag green">Westlands</span>
-        <span class="tag green">Kilimani</span>
-        <span class="tag green">Karen</span>
-        <span class="tag green">Lavington</span>
-        <span class="tag green">Runda</span>
-        <br><br>These are the main expat areas — well-lit, good security, close to restaurants and shops.
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">⚠️</span><span class="card-title">General rules</span></div>
-      <div class="card-body">
-        • Don't walk with expensive items visible (phone, camera, laptop bag)<br>
-        • Avoid walking alone after dark — use Uber<br>
-        • Lock car doors immediately when entering<br>
-        • Don't resist if robbed — safety first<br>
-        • Share your location with someone when meeting clients for the first time
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOD -->
-  <div class="section">
-    <div class="section-title">🍽️ Food & dining</div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">🥗</span><span class="card-title">Recommended spots</span></div>
-      <div class="card-body">
-        <strong>Casual:</strong> Artcaffe, Java House, Kaldis Coffee<br>
-        <strong>Local food:</strong> Mama Oliech, Kikopey Nyama Choma<br>
-        <strong>Supermarkets:</strong> Carrefour, Naivas, QuickMart<br><br>
-        <span class="tag green">Vegan/vegetarian</span> Choices Restaurant (Westlands), Harvest (Karen)<br><br>
-        <strong>🛒 Online grocery delivery:</strong><br>
-        <strong>QuickMart</strong> and <strong>Naivas</strong> both offer online ordering with home delivery — fast and reliable. 
-        Great for stocking up the client's place before arrival or during their stay. 
-        Order via their websites or WhatsApp. Delivery usually within a few hours.<br><br>
-        <span class="tag red">⚠ Payment is usually M-PESA only</span> — make sure you or the client has M-PESA set up before ordering. Card payment is not always accepted online.
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header"><span class="card-icon">💧</span><span class="card-title">Water</span></div>
-      <div class="card-body"><strong>Always drink bottled water.</strong> Tap water is not safe for newcomers. Buy 5L bottles at any supermarket — much cheaper than small bottles.</div>
-    </div>
-  </div>
-
-  <!-- USEFUL APPS -->
-  <div class="section">
-    <div class="section-title">📲 Useful apps</div>
-    <div class="card">
-      <div class="card-body">
-        <strong>Uber / Bolt</strong> — transport<br>
-        <strong>M-PESA app</strong> — payments<br>
-        <strong>Glovo</strong> — food delivery<br>
-        <strong>Jumia Food</strong> — food delivery<br>
-        <strong>Google Maps</strong> — navigation (works offline too)<br>
-        <strong>WhatsApp</strong> — main communication in Kenya
-      </div>
-    </div>
-  </div>
-
-  <!-- DUTCH PHRASES -->
-  <div class="section">
-    <div class="section-title">🇰🇪 Swahili basics</div>
-    <div class="card">
-      <div class="card-body">
-        <strong>Jambo</strong> — Hello<br>
-        <strong>Asante</strong> — Thank you<br>
-        <strong>Karibu</strong> — Welcome / You're welcome<br>
-        <strong>Sawa</strong> — OK / Fine<br>
-        <strong>Pole pole</strong> — Slowly / Take it easy<br>
-        <strong>Mzuri</strong> — Good<br>
-        <strong>Ngapi?</strong> — How much?<br>
-        <strong>Hakuna matata</strong> — No problem
-      </div>
-    </div>
-  </div>
-
+<!-- CONTENT IS LOADED VIA AUTHENTICATED API CALL — never present in static page source -->
+<div id="docLoading" style="text-align:center;padding:4rem 1.5rem;color:#7a6a56;font-size:14px;">
+  Loading…
 </div>
+
+<div id="docContent" style="display:none;"></div>
+
+<script>
+  (async function(){
+    const API = "https://cockpit.urbanchill.org";
+    const token = sessionStorage.getItem("kimanzi_token");
+    if (!token) { window.location.href = "portal.html"; return; }
+
+    try {
+      const res = await fetch(API + "/api/host/nairobi?token=" + encodeURIComponent(token));
+      const data = await res.json();
+      if (data.success && data.html) {
+        document.getElementById("docContent").innerHTML = data.html;
+        document.getElementById("docContent").style.display = "block";
+        document.getElementById("docLoading").style.display = "none";
+      } else {
+        window.location.href = "portal.html";
+      }
+    } catch(e) {
+      document.getElementById("docLoading").textContent = "Connection error. Please refresh, or go back to the portal.";
+    }
+  })();
+</script>
+
 </body>
 </html>
