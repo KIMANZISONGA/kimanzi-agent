@@ -1006,6 +1006,15 @@ nav.kn-nav{
     </div>
   </section>
 
+  <!-- LIVE: weer + koers -->
+  <section style="padding:8px 0 0;">
+    <div style="max-width:1100px;margin:0 auto;padding:0 20px;">
+      <div id="liveWidget" style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:140px;background:#1f2c3d;border:1px solid rgba(255,255,255,.13);border-radius:8px;padding:14px 16px;color:#c4ccd6;font-size:13px;">Live gegevens laden…</div>
+      </div>
+    </div>
+  </section>
+
   <!-- THE WORK -->
   <section class="kn-section" id="work">
     <div class="kn-section-head">
@@ -1469,6 +1478,70 @@ nav.kn-nav{
 })();
 
 const API_BASE = "https://cockpit.urbanchill.org";
+
+// LIVE WIDGET: weer + koers
+(function(){
+  async function fetchWeather(lat, lon, timezone) {
+    try {
+      const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode&timezone=${encodeURIComponent(timezone)}`);
+      if (!res.ok) return null;
+      const d = await res.json();
+      const code = d.current?.weathercode || 0;
+      const map = [[0,"☀️","Clear"],[1,"🌤️","Mostly clear"],[2,"⛅","Partly cloudy"],[3,"☁️","Overcast"],[45,"🌫️","Foggy"],[51,"🌦️","Drizzle"],[61,"🌧️","Rain"],[65,"🌧️","Heavy rain"],[80,"🌦️","Showers"],[95,"⛈️","Thunderstorm"]];
+      const match = map.slice().reverse().find(([wc]) => code >= wc) || [0,"🌡️","Unknown"];
+      return { temp: Math.round(d.current.temperature_2m), icon: match[1], desc: match[2] };
+    } catch(e) { return null; }
+  }
+
+  async function fetchEurKes() {
+    try {
+      const res = await fetch("https://open.er-api.com/v6/latest/EUR");
+      if (!res.ok) throw new Error();
+      const d = await res.json();
+      const rate = d?.rates?.KES;
+      return rate ? Math.round(rate * 100) / 100 : null;
+    } catch(e) {
+      try {
+        const res2 = await fetch("https://api.frankfurter.app/latest?from=EUR&to=KES");
+        if (!res2.ok) return null;
+        const d2 = await res2.json();
+        const rate2 = d2?.rates?.KES;
+        return rate2 ? Math.round(rate2 * 100) / 100 : null;
+      } catch(e2) { return null; }
+    }
+  }
+
+  async function loadLiveWidget() {
+    const widget = document.getElementById("liveWidget");
+    if (!widget) return;
+    const [nairobi, rijswijk, eurKes] = await Promise.all([
+      fetchWeather(-1.2921, 36.8219, "Africa/Nairobi"),
+      fetchWeather(52.0400, 4.3583, "Europe/Amsterdam"),
+      fetchEurKes()
+    ]);
+    widget.innerHTML = `
+      <div style="flex:1;min-width:140px;background:#1f2c3d;border:1px solid rgba(255,255,255,.13);border-radius:8px;padding:14px 16px;">
+        <div style="font-size:10px;color:#c4ccd6;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">🌍 Nairobi</div>
+        ${nairobi
+          ? `<div style="display:flex;align-items:center;gap:8px"><span style="font-size:24px">${nairobi.icon}</span><div><div style="font-size:19px;font-weight:700;color:#fbf7ef;line-height:1">${nairobi.temp}°C</div><div style="font-size:11px;color:#c4ccd6">${nairobi.desc}</div></div></div>`
+          : `<div style="font-size:12px;color:#c4ccd6">—</div>`}
+      </div>
+      <div style="flex:1;min-width:140px;background:#1f2c3d;border:1px solid rgba(255,255,255,.13);border-radius:8px;padding:14px 16px;">
+        <div style="font-size:10px;color:#c4ccd6;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">🇳🇱 Rijswijk</div>
+        ${rijswijk
+          ? `<div style="display:flex;align-items:center;gap:8px"><span style="font-size:24px">${rijswijk.icon}</span><div><div style="font-size:19px;font-weight:700;color:#fbf7ef;line-height:1">${rijswijk.temp}°C</div><div style="font-size:11px;color:#c4ccd6">${rijswijk.desc}</div></div></div>`
+          : `<div style="font-size:12px;color:#c4ccd6">—</div>`}
+      </div>
+      <div style="flex:1;min-width:140px;background:#d8aa63;border:1px solid #f0c982;border-radius:8px;padding:14px 16px;">
+        <div style="font-size:10px;color:rgba(16,23,32,.65);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">💶 Koers</div>
+        ${eurKes
+          ? `<div style="font-size:19px;font-weight:700;color:#101720;line-height:1">KSh ${eurKes}</div><div style="font-size:11px;color:rgba(16,23,32,.7)">per €1</div>`
+          : `<div style="font-size:12px;color:rgba(16,23,32,.7)">—</div>`}
+      </div>`;
+  }
+
+  document.addEventListener("DOMContentLoaded", loadLiveWidget);
+})();
 
 async function postJson(url, payload){
   const res = await fetch(url, {
