@@ -313,15 +313,13 @@
 <!-- ACCESS CHECK -->
 <script>
   (function(){
-    const access = sessionStorage.getItem("kimanzi_handbook_access");
-    const host   = sessionStorage.getItem("kimanzi_host");
-    if(!access || !host){
+    const token = sessionStorage.getItem("kimanzi_token");
+    const host  = sessionStorage.getItem("kimanzi_host");
+    if(!token || !host){
       window.location.href = "portal.html";
     }
   })();
 </script>
-
-
 
 <!-- CONFIDENTIAL TOP BANNER -->
 <div class="confidential-banner">
@@ -335,326 +333,34 @@
   </a>
 </div>
 
-<!-- COVER -->
-<div class="cover">
-  <p class="cover-label">KIMANZI by UrbanChill</p>
-  <h1>Host Handbook</h1>
-  <h2>Coordination layer for UrbanChill in Nairobi</h2>
-  <div class="cover-meta">
-    <span><strong>Version</strong>2.0</span>
-    <span><strong>Audience</strong>Independent hosts collaborating with KIMANZI</span>
-    <span><strong>Contact</strong>host@kimanzi.nl</span>
-    <span><strong>Founder</strong>Stephen Lemmert</span>
-  </div>
+<!-- CONTENT IS LOADED VIA AUTHENTICATED API CALL — never present in static page source -->
+<div id="handbookLoading" style="text-align:center;padding:4rem 1.5rem;color:var(--muted);font-size:14px;">
+  Loading handbook…
 </div>
 
-<div class="page-wrap">
+<div id="handbookContent" style="display:none;"></div>
 
-  <!-- TOC -->
-  <div class="toc">
-    <h3>Contents</h3>
-    <ol>
-      <li><a href="#welcome">Welcome</a></li>
-      <li><a href="#s1">What KIMANZI is</a></li>
-      <li><a href="#s2">Your position</a></li>
-      <li><a href="#s3">The work in practice</a></li>
-      <li><a href="#s4">Fees &amp; payment</a></li>
-      <li><a href="#s5">Safety &amp; boundaries</a></li>
-      <li><a href="#s6">Communication</a></li>
-      <li><a href="#s7">Taxes &amp; admin</a></li>
-      <li><a href="#s8">When something goes wrong</a></li>
-      <li><a href="#s9">Growing with KIMANZI</a></li>
-      <li><a href="#s10">Final word</a></li>
-    </ol>
-  </div>
+<script>
+  (async function(){
+    const API = "https://cockpit.urbanchill.org";
+    const token = sessionStorage.getItem("kimanzi_token");
+    if (!token) { window.location.href = "portal.html"; return; }
 
-  <!-- WELCOME -->
-  <div class="section" id="welcome">
-    <span class="section-num">Welcome</span>
-    <h1 class="section-title">Welcome to KIMANZI</h1>
-    <p>Thanks for joining KIMANZI on a per-assignment basis. For most of our hosts, this is an additional channel alongside what they already do — a hotel manager, a driver with their own car, an NGO fixer, a freelance guide. We deliberately look for people who already have their own practice, not people who'd see KIMANZI as their primary work. That keeps the relationship healthy on both sides.</p>
-    <p>This handbook tells you how we work, so you know what to expect from us and what we ask of you. A lot of this is also on kimanzi.nl, but this document goes deeper into the operational details that don't belong on a public site.</p>
-    <p>Read it at your own pace. Questions? Email Stephen at <strong>host@kimanzi.nl</strong>, or call him directly if you're in an active assignment — his number is in your briefing.</p>
-  </div>
-
-  <!-- 1 -->
-  <div class="section" id="s1">
-    <span class="section-num">Section 1</span>
-    <h1 class="section-title">What KIMANZI is</h1>
-    <p>KIMANZI is the coordination layer for UrbanChill in Nairobi. UrbanChill is a Dutch service for professionals relocating to Nairobi for work: airport pickup, first-week orientation, and ongoing local support.</p>
-    <div class="callout">
-      <strong>The structure in one sentence:</strong> UrbanChill sells; KIMANZI coordinates; you do the work. The guest pays UrbanChill, KIMANZI pays you.
-    </div>
-    <h3 class="sub-sub">What KIMANZI does</h3>
-    <ul>
-      <li>Intake guests and scope their needs before assignments enter the pipeline</li>
-      <li>Match hosts to specific assignments</li>
-      <li>Provide briefings before each assignment</li>
-      <li>Handle payment — pre-funded from the guest, paid out via tech-banking</li>
-      <li>Mediate questions, scope discussions, and escalations</li>
-    </ul>
-    <h3 class="sub-sub">What KIMANZI does not do</h3>
-    <ul>
-      <li>Manage you or tell you how to do your work</li>
-      <li>Require you to be available or hold a schedule</li>
-      <li>Charge you anything — no platform fees, no subscriptions</li>
-      <li>Get between you and your other clients — you work for whoever you choose</li>
-    </ul>
-  </div>
-
-  <!-- 2 -->
-  <div class="section" id="s2">
-    <span class="section-num">Section 2</span>
-    <h1 class="section-title">Your position</h1>
-    <p>You operate as an independent professional in Kenya. No employment, no exclusivity, no fixed hours. For each assignment, we ask if you'll take it; you decide.</p>
-    <h3 class="sub-sub">What you decide</h3>
-    <ul>
-      <li>Whether to accept an assignment — no explanation needed for a 'no'</li>
-      <li>How you organise the work within the agreed scope: route, timing, sequence</li>
-      <li>Which other clients you take on alongside UrbanChill — no exclusivity clause</li>
-      <li>When to end an assignment if something feels unsafe or out of scope — and you're paid in full for the time you committed</li>
-    </ul>
-    <h3 class="sub-sub">What we ask of you</h3>
-    <ul>
-      <li>Punctuality and clear communication during an accepted assignment</li>
-      <li>That you're registered (or formalising) as an independent professional in Kenya, with a KRA PIN</li>
-      <li>That you respect guest privacy</li>
-      <li>That you let us know early if scope shifts or something feels off</li>
-    </ul>
-    <p>That's the whole framework. Everything else is per-assignment detail.</p>
-  </div>
-
-  <!-- 3 -->
-  <div class="section" id="s3">
-    <span class="section-num">Section 3</span>
-    <h1 class="section-title">The work in practice</h1>
-    <p>KIMANZI coordinates four guest-facing services from UrbanChill. Three require a host on the ground; one is largely remote; two are bespoke.</p>
-
-    <div class="service-grid">
-      <div class="service-card">
-        <h4>Arrival</h4>
-        <p class="price">Your fee, plus fuel &amp; lunch. Current rates in your portal.</p>
-        <p>Standard first-day assignment. Pickup at JKIA, transport to accommodation, practical orientation, SIM card, first grocery run.</p>
-      </div>
-      <div class="service-card">
-        <h4>Arrival duo</h4>
-        <p class="price">Your fee, plus fuel &amp; lunch — higher than solo Arrival. Current rates in your portal.</p>
-        <p>Same as Arrival, but for two guests. Heavier coordination, more luggage, longer day. Your fee reflects that.</p>
-      </div>
-      <div class="service-card">
-        <h4>Extra Day</h4>
-        <p class="price">Your fee per day, plus fuel &amp; lunch. Current rates in your portal.</p>
-        <p>Booked alongside an Arrival. House viewings, KRA PIN, bank appointments, school visits, additional orientation. Stackable.</p>
-      </div>
-      <div class="service-card">
-        <h4>Concierge</h4>
-        <p class="price">Your monthly commission. Current rates in your portal.</p>
-        <p>Ongoing, mostly remote support. You're the dedicated host — questions via WhatsApp, vendor recommendations, occasional small tasks. Not on-call; respond within a working day.</p>
-      </div>
-    </div>
-
-    <h2 class="sub-title">Combination &amp; Advice</h2>
-    <p>Non-standard assignments scoped per case — multi-day trips, extended relocation packages, one-off advisory. You get a written proposal with scope, time indication, and fee before it goes ahead. Only starts once you agree.</p>
-
-    <h2 class="sub-title">3.1 Arrival — in detail</h2>
-    <ul>
-      <li>Pickup at JKIA at the exact time given in your briefing</li>
-      <li>Transport to the accommodation (Airbnb, hotel, serviced apartment)</li>
-      <li>Hand-over and walk-through on-site — how the lock works, where the water is, etc.</li>
-      <li>Get a SIM card sorted (Safaricom or Airtel — depending on what the guest wants)</li>
-      <li>First grocery run or cash withdrawal</li>
-      <li>A calm walk around the neighbourhood: supermarket, nearest pharmacy, a good restaurant</li>
-      <li>Available for questions for the rest of the day</li>
-    </ul>
-    <p><em>Time indication: 6 to 10 hours on the day. No overnight stay, no evening work unless specifically agreed.</em></p>
-
-    <h2 class="sub-title">3.3 Extra Day — typical tasks</h2>
-    <ul>
-      <li>House viewings (often via an agent; you handle logistics and local context)</li>
-      <li>KRA visit for PIN registration</li>
-      <li>School or daycare visits for those bringing children</li>
-      <li>Bank appointments (Equity, KCB, NCBA)</li>
-      <li>Additional neighbourhood orientation</li>
-      <li>Sometimes simply: another day because the guest wants a calm transition</li>
-    </ul>
-  </div>
-
-  <!-- 4 -->
-  <div class="section" id="s4">
-    <span class="section-num">Section 4</span>
-    <h1 class="section-title">Fees &amp; payment</h1>
-
-    <div class="callout">
-      <strong>The pre-funded model:</strong> An assignment only goes to you after the guest has paid UrbanChill. Your fee is already on the KIMANZI account before you start your day. No cashflow risk on you.
-    </div>
-
-    <h2 class="sub-title">How to submit</h2>
-    <p>Right after the assignment, send a photo of each receipt plus your invoice to <strong>host@kimanzi.nl</strong>. No special form, no template. Photo plus invoice via email is enough. The faster receipts and invoice arrive, the faster payout starts.</p>
-
-    <h2 class="sub-title">What you invoice</h2>
-    <p>You don't need to clear fuel or lunch costs with us in advance. If it's reasonable for the assignment, we reimburse it. Just do what you'd normally do on a working day.</p>
-
-    <h2 class="sub-title">Payment method</h2>
-    <p>M-Pesa is the standard channel — payout takes seconds. Another method (SEPA, local bank transfer, etc.) on request — note it on your invoice.</p>
-
-    <h2 class="sub-title">What KIMANZI does not withhold</h2>
-    <p>No payroll tax, no social contributions, no pension contribution, no withholding of any kind. You're paid out in full. You are independent — you handle your own taxes and filing with KRA.</p>
-  </div>
-
-  <!-- 5 -->
-  <div class="section" id="s5">
-    <span class="section-num">Section 5</span>
-    <h1 class="section-title">Safety &amp; boundaries</h1>
-
-    <h2 class="sub-title">5.1 Unsafe locations</h2>
-    <p>You are the local expert. If you assess an area, neighbourhood, or activity as potentially dangerous — through crime patterns, poor lighting, isolated location, or any other reason — you propose an alternative directly and inform the guest.</p>
-    <div class="callout-warn">
-      <em>"This area has had several break-ins in recent weeks and the street lighting is poor. I suggest we go to X instead."</em><br><br>
-      Your judgment outweighs the guest's wish. KIMANZI stands behind that judgment.
-    </div>
-
-    <h2 class="sub-title">5.2 When an assignment ends immediately</h2>
-    <div class="rule">
-      Stop, call Stephen, go home. You are paid in full for the time you committed. This is not a guideline — it is the rule. Don't negotiate on the spot.
-    </div>
-    <p>An assignment ends immediately if:</p>
-    <ul>
-      <li>The safety of you or the guest is compromised</li>
-      <li>The guest behaves in a way that's outside scope: aggression, intimidation, drug use, or asking for services UrbanChill doesn't offer</li>
-      <li>The scope shifts substantially mid-assignment without you being informed and agreeing first</li>
-    </ul>
-
-    <h2 class="sub-title">5.3 Milder discomfort</h2>
-    <p>For things that aren't threatening but are uncomfortable — a guest asking too many personal questions, a vibe that doesn't quite feel right — report it to Stephen at the end of the day. KIMANZI adjusts the future relationship with that guest based on what you share.</p>
-
-    <h2 class="sub-title">5.4 Guest privacy</h2>
-    <div class="callout">
-      Guest details (name, accommodation address, flight info, personal circumstances) stay within the assignment. Don't share with third parties, don't post on social media, don't tell other guests. <strong>This is a cornerstone of what KIMANZI sells to guests.</strong>
-    </div>
-
-    <h2 class="sub-title">5.5 Insurance</h2>
-    <p>You are independent, so you handle your own insurance — professional liability, motor insurance for commercial use, personal health. KIMANZI will arrange its own liability insurance covering the guest relationship on our side; your own work insurance is separate.</p>
-  </div>
-
-  <!-- 6 -->
-  <div class="section" id="s6">
-    <span class="section-num">Section 6</span>
-    <h1 class="section-title">Communication</h1>
-
-    <h2 class="sub-title">Before and during an assignment</h2>
-    <ul>
-      <li><strong>Request</strong> — KIMANZI sends you a message (WhatsApp or Signal, your preference) with scope, date, guest info, and flight info. You accept or decline. No explanation needed for declining.</li>
-      <li><strong>Briefing</strong> — after acceptance, you get a full briefing by email. That includes Stephen's direct phone number for this assignment.</li>
-      <li><strong>During</strong> — call Stephen directly if there's anything only KIMANZI can resolve. For everything else, you decide.</li>
-      <li><strong>After completion</strong> — a short confirmation ("Guest checked in, all good"), followed by your invoice and receipts within a few hours.</li>
-    </ul>
-
-    <h2 class="sub-title">No daily reporting</h2>
-    <p>We don't ask for daily updates or time logs. Trust is the starting point. If something noteworthy happens — positive or negative — you'll want to tell us. But if the day goes normally, you don't need to report anything until completion.</p>
-
-    <h2 class="sub-title">Outside an assignment</h2>
-    <ul>
-      <li>General questions, planning, availability: <strong>host@kimanzi.nl</strong></li>
-      <li>Don't call without reason outside an active assignment — Stephen's direct line is for work-in-progress</li>
-      <li>For Concierge guests, you communicate directly via WhatsApp on the channel given in the briefing</li>
-    </ul>
-  </div>
-
-  <!-- 7 -->
-  <div class="section" id="s7">
-    <span class="section-num">Section 7</span>
-    <h1 class="section-title">Taxes &amp; admin</h1>
-
-    <h2 class="sub-title">KRA PIN</h2>
-    <p>As an independent in Kenya, you need a KRA PIN. If you're still in the process of formalising, KIMANZI doesn't start assignments with you until that's settled — but we can help guide you through the process.</p>
-
-    <h2 class="sub-title">Your own filing</h2>
-    <p>You are responsible for filing your own tax return with KRA and paying any tax due. KIMANZI can produce a yearly summary of all payments made to you; request it via host@kimanzi.nl, ideally in January following the calendar year.</p>
-
-    <h2 class="sub-title">Your own bookkeeping</h2>
-    <p>We recommend you keep your own record of cashflow — what you invoice KIMANZI per assignment, what you declare for fuel and lunch, when it's paid. A simple Excel or Google Sheet is enough. At KRA filing time, that's easier than reconstructing it after the fact.</p>
-  </div>
-
-  <!-- 8 -->
-  <div class="section" id="s8">
-    <span class="section-num">Section 8</span>
-    <h1 class="section-title">When something goes wrong</h1>
-
-    <h2 class="sub-title">8.1 You're sick or unavailable on the day</h2>
-    <ul>
-      <li>Call Stephen directly (phone is fastest)</li>
-      <li>Send a short WhatsApp or Signal message at the same time as backup</li>
-      <li>Give KIMANZI the details needed for replanning: guest's location, planned start, accommodation address</li>
-      <li>KIMANZI looks for replacement or informs the guest</li>
-      <li>Do not cancel directly with the guest without first checking with us</li>
-    </ul>
-    <p>If you drop out during an assignment: first make sure the guest is safe, call Stephen, wait for instruction.</p>
-
-    <h2 class="sub-title">8.2 The guest behaves uncomfortably</h2>
-    <p>See section 5.2 for when you end an assignment immediately. For milder situations, report it to Stephen at the end of the day.</p>
-
-    <h2 class="sub-title">8.3 KIMANZI is late paying</h2>
-    <p>If you've heard nothing 2 working days after submitting your invoice and receipts, send a reminder to host@kimanzi.nl. Beyond 5 working days, call Stephen directly.</p>
-
-    <h2 class="sub-title">8.4 Scope doesn't match the briefing</h2>
-    <p>If the scope changes mid-assignment or the guest has unexpected expectations — call Stephen before adjusting. We'd rather steer from KIMANZI than have you decide ad-hoc how far to go.</p>
-
-    <h2 class="sub-title">8.5 A guest asks for something outside scope</h2>
-    <p>Don't stop mid-assignment, but politely decline the request and call Stephen to check whether the scope can be expanded — sometimes it can, at additional fee, sometimes it can't.</p>
-  </div>
-
-  <!-- 9 -->
-  <div class="section" id="s9">
-    <span class="section-num">Section 9</span>
-    <h1 class="section-title">Growing with KIMANZI</h1>
-    <p>KIMANZI grows slowly. We add hosts when the workflow justifies it, not for the sake of scaling. That means your volume can vary — some months several assignments, some months none.</p>
-    <p>If you're interested in long-term standing relationships, expanding what you do for KIMANZI, or building your own network through UrbanChill guests — talk it through during your first review with Stephen, or let us know by email.</p>
-    <p>Hosts who consistently deliver good work over time get priority on new assignments — not as a formal rule, simply because we'd rather call back people we trust.</p>
-  </div>
-
-  <!-- 10 -->
-  <div class="section" id="s10">
-    <span class="section-num">Section 10</span>
-    <h1 class="section-title">Final word</h1>
-    <p>KIMANZI is small on purpose. We want the relationship between us and our hosts to be personal and lasting, not gig-platform-style transactional. That means you talk to Stephen when something comes up, and we're honest in turn when we do something different from what you expected.</p>
-    <p>If anything in this document is unclear, outdated, or doesn't match what you experience in practice: let us know. It's a living document, not a contract.</p>
-    <p><strong>Welcome to KIMANZI.</strong></p>
-    <p>— Stephen<br><em>Founder, KIMANZI &amp; UrbanChill</em></p>
-
-    <!-- CONTACT BLOCK -->
-    <div class="contact-block">
-      <div>
-        <h4>Get in touch</h4>
-        <p>For all host-related questions</p>
-      </div>
-      <div>
-        <p>📧 <a href="mailto:host@kimanzi.nl">host@kimanzi.nl</a></p>
-      </div>
-      <div>
-        <p>🌐 <a href="https://kimanzi.nl" target="_blank">kimanzi.nl</a></p>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /page-wrap -->
-
-<!-- CONFIDENTIAL FOOTER -->
-<div class="footer-confidential">
-  <div class="footer-inner">
-    <div>
-      <span class="conf-title">🔒 Confidentiality Notice</span>
-      <p>This document contains confidential and proprietary information belonging to KIMANZI by UrbanChill. It is intended solely for the named recipient and for use in connection with KIMANZI host activities.</p>
-      <p>The information in this handbook and all communications from KIMANZI are strictly confidential. Please do not share, copy, or distribute this document or its contents to any third party without prior written consent from KIMANZI.</p>
-    </div>
-    <div>
-      <span class="conf-title">Document info</span>
-      <p>KIMANZI Host Handbook — Version 2.0</p>
-      <p>Coordination layer for UrbanChill in Nairobi</p>
-      <p>© KIMANZI by UrbanChill · host@kimanzi.nl</p>
-      <p style="margin-top:.75rem; color:rgba(245,239,226,.35); font-size:11px;">This is a living document. Last reviewed by Stephen Lemmert, Founder.</p>
-    </div>
-  </div>
-</div>
+    try {
+      const res = await fetch(API + "/api/host/handbook?token=" + encodeURIComponent(token));
+      const data = await res.json();
+      if (data.success && data.html) {
+        document.getElementById("handbookContent").innerHTML = data.html;
+        document.getElementById("handbookContent").style.display = "block";
+        document.getElementById("handbookLoading").style.display = "none";
+      } else {
+        window.location.href = "portal.html";
+      }
+    } catch(e) {
+      document.getElementById("handbookLoading").textContent = "Connection error. Please refresh, or go back to the portal.";
+    }
+  })();
+</script>
 
 </body>
 </html>
