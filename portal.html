@@ -599,6 +599,22 @@
       </div>
     </div>
 
+    <div class="section-label" style="margin-top:1.5rem">Message KIMANZI</div>
+
+    <!-- ALGEMENE BERICHTENBOX -->
+    <div style="background:#fff;border:1px solid var(--cream2);border-radius:12px;overflow:hidden;margin-bottom:1rem">
+      <div id="generalMsgThread" style="max-height:260px;overflow-y:auto;padding:1rem 1rem .5rem;display:flex;flex-direction:column;gap:.5rem">
+        <div style="text-align:center;font-size:12px;color:var(--muted);padding:.5rem 0">Loading…</div>
+      </div>
+      <div style="border-top:1px solid var(--cream2);padding:.75rem 1rem;display:flex;gap:.5rem;align-items:flex-end">
+        <textarea id="generalMsgInput" placeholder="Write a message to KIMANZI…"
+          style="flex:1;resize:none;height:60px;border:1px solid var(--cream2);border-radius:8px;padding:.5rem .75rem;font-size:13px;font-family:inherit;background:#fff"
+          oninput="this.style.height='60px';this.style.height=Math.min(this.scrollHeight,120)+'px'"></textarea>
+        <button onclick="sendGeneralMessage()"
+          style="background:var(--green);color:var(--cream);border:none;border-radius:8px;padding:.6rem 1rem;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">Send</button>
+      </div>
+    </div>
+
     <div class="section-label" style="margin-top:1.5rem">Contact</div>
 
     <!-- QUICK INFO -->
@@ -617,8 +633,8 @@
         <span class="quick-val">Call Stephen directly</span>
       </div>
       <div class="quick-row">
-        <span class="quick-key">Receipts &amp; invoices</span>
-        <span class="quick-val">host@kimanzi.nl</span>
+        <span class="quick-key">Receipts</span>
+        <span class="quick-val">Via your portal — My Assignments</span>
       </div>
     </div>
 
