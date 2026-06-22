@@ -113,6 +113,7 @@ const API = "https://api.urbanchill.org";
       }
       checkUnread();
       setInterval(checkUnread, 60000);
+      loadGeneralMessages();
     }
     window.scrollTo(0, 0);
   }
@@ -469,6 +470,51 @@ const API = "https://api.urbanchill.org";
     input.disabled = false;
     input.focus();
   }
+
+  async function loadGeneralMessages() {
+    const token = sessionStorage.getItem("kimanzi_token");
+    const thread = document.getElementById("generalMsgThread");
+    if (!token || !thread) return;
+    try {
+      const res = await fetch(API + "/api/host/messages?token=" + encodeURIComponent(token));
+      const data = await res.json().catch(() => ({}));
+      const msgs = data.messages || [];
+      if (msgs.length === 0) {
+        thread.innerHTML = '<div style="text-align:center;font-size:12px;color:var(--muted);padding:.5rem 0">No messages yet — send the first one.</div>';
+        return;
+      }
+      thread.innerHTML = msgs.map(m => {
+        const isHost = m.sender === "host";
+        const time = new Date(m.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", day: "numeric", month: "short" });
+        return '<div class="chat-msg ' + (isHost ? "chat-msg-host" : "chat-msg-stephen") + '">'
+          + '<div class="chat-bubble">' + escHtml(m.message) + '</div>'
+          + '<div class="chat-time">' + (isHost ? "You" : "KIMANZI") + ' · ' + time + '</div>'
+          + '</div>';
+      }).join("");
+      thread.scrollTop = thread.scrollHeight;
+    } catch(e) {}
+  }
+
+  window.sendGeneralMessage = async function() {
+    const token = sessionStorage.getItem("kimanzi_token");
+    const input = document.getElementById("generalMsgInput");
+    if (!token || !input) return;
+    const message = input.value.trim();
+    if (!message) return;
+    input.value = "";
+    input.style.height = "60px";
+    input.disabled = true;
+    try {
+      await fetch(API + "/api/host/messages/send?token=" + encodeURIComponent(token), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+      await loadGeneralMessages();
+    } catch(e) {}
+    input.disabled = false;
+    input.focus();
+  };
 
   function tryParseArr(v) {
     if (!v) return [];
