@@ -635,9 +635,18 @@ const API = "https://api.urbanchill.org";
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) logoutBtn.addEventListener("click", doLogout);
 
-    // Terug knoppen
-    document.querySelectorAll("[id='backToPortal']").forEach(function(btn) {
-      btn.addEventListener("click", showPortal);
+    // Terug knoppen (elk met eigen ID na fix duplicate backToPortal)
+    const backToFees = document.getElementById("backToFees");
+    const backToHandbook = document.getElementById("backToHandbook");
+    if (backToFees) backToFees.addEventListener("click", showPortal);
+    if (backToHandbook) backToHandbook.addEventListener("click", showPortal);
+
+    // Nairobi Guide — via beveiligd Worker-endpoint
+    const nairobiCard = document.getElementById("nairobiCard");
+    if (nairobiCard) nairobiCard.addEventListener("click", function() {
+      const token = sessionStorage.getItem("kimanzi_token");
+      if (!token) { showPortal(); return; }
+      window.open("/nairobi.html?token=" + encodeURIComponent(token), "_blank");
     });
   });
 
