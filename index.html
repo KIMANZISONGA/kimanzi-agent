@@ -6,33 +6,40 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#faf8f3">
 
-<title>KIMANZI — Independent hosts in Nairobi</title>
-<meta name="description" content="KIMANZI is the coordination layer for UrbanChill in Nairobi. We work with independent hosts to handle airport pickups, first-week orientation and ongoing support for professionals relocating to Nairobi. Per-assignment collaboration. No employment, no exclusivity.">
+<title>Become a Host with KIMANZI | UrbanChill Nairobi Coordination</title>
+<meta name="description" content="KIMANZI connects Nairobi locals with UrbanChill professionals. Clear assignments, fixed fees, paid within two days. Guide newcomers through their first days in Nairobi — practical, calm and professional.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://kimanzi.nl/">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://kimanzi.nl">
 
+<!-- OpenGraph / Social -->
+<meta property="og:title" content="Become a Host with KIMANZI">
+<meta property="og:description" content="Guide UrbanChill newcomers through their first days in Nairobi. Clear assignments, fixed fees, fast payout.">
+<meta property="og:url" content="https://kimanzi.nl">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://kimanzi.nl/onboarding.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Geo -->
 <meta name="geo.region" content="KE-30">
 <meta name="geo.placename" content="Nairobi">
 <meta name="geo.position" content="-1.286389;36.817223">
 <meta name="ICBM" content="-1.286389, 36.817223">
 
+<!-- Structured data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "KIMANZI",
   "url": "https://kimanzi.nl",
-  "areaServed": { "@type": "City", "name": "Nairobi" },
+  "description": "Coordination layer for UrbanChill in Nairobi. KIMANZI connects Nairobi locals with professionals arriving through UrbanChill.",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Nairobi",
-    "addressCountry": "KE"
+    "addressLocality": "Rijswijk",
+    "addressCountry": "NL"
   },
-  "description": "KIMANZI is the coordination layer for UrbanChill in Nairobi. Independent hosts handle assignments on a per-assignment basis. And the Netherlands collaborate within defined scope."
+  "areaServed": { "@type": "City", "name": "Nairobi" }
 }
 </script>
 
@@ -970,8 +977,8 @@ nav.kn-nav{
       <img src="logo.png" alt="KIMANZI" />
     </a>
     <div class="kn-nav-links">
-      <a href="#work">The work</a>
-      <a href="#sequence">How it works</a>
+      <a href="#work">Het werk</a>
+      <a href="#sequence">Hoe het werkt</a>
       <a href="partners.html">Partners</a>
       <a href="#founder">About</a>
       <a href="portal.html" class="kn-cta kn-host-login">Host Login</a>
@@ -986,9 +993,11 @@ nav.kn-nav{
     <div class="kn-hero-inner">
       <div class="kn-hero-text">
         <span class="kn-eyebrow">Nairobi · Coordination layer for UrbanChill</span>
-        <h1>Independent hosts. <em>One assignment at a time.</em></h1>
+        <h1>Become a Host with KIMANZI. <em>One assignment at a time.</em></h1>
 
-        <p class="kn-hero-lead"><strong>KIMANZI is for independent professionals in Nairobi who want occasional, well-paid work — without the overhead of finding clients.</strong> We coordinate UrbanChill assignments in Nairobi. Airport pickups, first-week orientation, and ongoing local support for professionals relocating to the city.</p> <p class="kn-hero-lead"><strong>For hosts in Nairobi</strong>, this is meant as an additional channel. Clear scope, fixed fee, paid quickly. No employment, no exclusivity, no minimum availability.</p> <p class="kn-hero-lead"><strong></p>
+        <p class="kn-hero-lead"><strong>KIMANZI connects Nairobi locals with professionals arriving through UrbanChill.</strong> As a host, you guide newcomers through their first days in the city — practical, personal and professional. You know Nairobi. They need someone who helps them land quickly and independently.</p>
+
+        <p class="kn-hero-lead"><strong>For independent professionals in Nairobi</strong>, this is an additional income channel. Clear assignments, fixed fee, paid quickly. No employment, no exclusivity, no minimum availability.</p>
 
         <div class="kn-hero-actions">
           <a href="#apply" class="kn-btn-primary">Submit interest</a>
@@ -1020,7 +1029,7 @@ nav.kn-nav{
     <div class="kn-section-head">
       <span class="kn-section-eyebrow">What KIMANZI coordinates</span>
       <h2>Practical, time-boxed, in-person work</h2>
-      <p class="lead">KIMANZI assignments are time-boxed and concrete. A half-day, two half-days across an Arrival, or a month of light remote support. The work is practical: meet someone at JKIA, hand them their keys, take them to the supermarket, walk them through Westlands, drive them to KRA. No mystery, no atmosphere talk.</p>
+      <p class="lead">KIMANZI assignments are time-boxed and concrete. A half-day, two half-days across an Arrival, or a month of light remote support. The work is practical: meet someone at JKIA, hand them their keys, take them to the supermarket, walk them through Westlands, drive them to KRA. No mystery, no atmosphere talk. KIMANZI assignments support newcomers during their Nairobi onboarding — practical relocation help that makes their first days smooth and safe.</p>
     </div>
 
     <div class="kn-work-grid">
@@ -1680,7 +1689,7 @@ function setStatus(el, ok, msg){
         setStatus(statusEl, false, "The submission was not completed. Please try again shortly.");
       }
     } catch(err){
-      console.error("Apply submit failed:", err);
+      console.error("Aanmelden submit failed:", err);
       setStatus(statusEl, false, "Network error. Please try again shortly.");
     }
   });
