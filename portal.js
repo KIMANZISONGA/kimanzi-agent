@@ -1,3 +1,108 @@
+var avYear  = new Date().getFullYear();
+var avMonth = new Date().getMonth();
+var avData  = {};
+
+window.loadAvailability = async function() {
+  const token = sessionStorage.getItem("kimanzi_token");
+  if (!token) return;
+  try {
+    const from = new Date(avYear, avMonth, 1).toISOString().slice(0, 10);
+    const to   = new Date(avYear, avMonth + 3, 0).toISOString().slice(0, 10);
+    const res  = await fetch(API + "/api/host/availability?token=" + encodeURIComponent(token) + "&from=" + from + "&to=" + to);
+    const data = await res.json();
+    if (data.ok) {
+      avData = {};
+      (data.availability || []).forEach(function(r) { avData[r.date] = r.status; });
+    }
+  } catch(e) {}
+  renderAvCalendar();
+}
+
+window.renderAvCalendar = function() {
+  const el = document.getElementById("avCalendar");
+  const label = document.getElementById("avMonthLabel");
+  if (!el || !label) return;
+
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  label.textContent = monthNames[avMonth] + " " + avYear;
+
+  const firstDay = new Date(avYear, avMonth, 1).getDay(); // 0=Sun
+  const daysInMonth = new Date(avYear, avMonth + 1, 0).getDate();
+  const today = new Date().toISOString().slice(0, 10);
+  const startOffset = (firstDay + 6) % 7; // Mon=0
+
+  let html = '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center">';
+  ["Mo","Tu","We","Th","Fr","Sa","Su"].forEach(function(d) {
+    html += '<div style="font-size:10px;font-weight:700;color:var(--muted);padding:.2rem 0">' + d + '</div>';
+  });
+
+  for (let i = 0; i < startOffset; i++) {
+    html += '<div></div>';
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = avYear + "-" + String(avMonth + 1).padStart(2,"0") + "-" + String(d).padStart(2,"0");
+    const status  = avData[dateStr];
+    const isToday = dateStr === today;
+    const isPast  = dateStr < today;
+
+    let bg    = "#f0ebe2";
+    let color = "#333";
+    let border = "1px solid #e0d8cc";
+    if (status === "available")   { bg = "#1A422E"; color = "#fff"; border = "1px solid #1A422E"; }
+    if (status === "unavailable") { bg = "#c0392b"; color = "#fff"; border = "1px solid #c0392b"; }
+    if (isToday) border = "2px solid #D07723";
+    if (isPast)  { color = isPast && !status ? "#bbb" : color; }
+
+    const opacity = isPast ? "0.45" : "1";
+    const cursor  = isPast ? "default" : "pointer";
+
+    html += '<div style="background:' + bg + ';color:' + color + ';border:' + border + ';border-radius:6px;padding:.35rem .1rem;font-size:12px;font-weight:600;cursor:' + cursor + ';opacity:' + opacity + ';user-select:none" '
+          + (isPast ? '' : 'onclick="avToggleDay(\'' + dateStr + '\')"')
+          + '>' + d + '</div>';
+  }
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+window.avToggleDay = async function(dateStr) {
+  const token = sessionStorage.getItem("kimanzi_token");
+  if (!token) return;
+
+  const current = avData[dateStr];
+  let next;
+  if (!current)               next = "available";
+  else if (current === "available")  next = "unavailable";
+  else                        next = null; // verwijderen
+
+  const statusEl = document.getElementById("avStatus");
+  if (statusEl) statusEl.textContent = "Saving…";
+
+  try {
+    if (next) {
+      await fetch(API + "/api/host/availability", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Host-Token": token },
+        body: JSON.stringify({ date: dateStr, status: next })
+      });
+      avData[dateStr] = next;
+    } else {
+      await fetch(API + "/api/host/availability/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Host-Token": token },
+        body: JSON.stringify({ date: dateStr })
+      });
+      delete avData[dateStr];
+    }
+    if (statusEl) { statusEl.textContent = "Saved"; setTimeout(function(){ statusEl.textContent = ""; }, 1500); }
+  } catch(e) {
+    if (statusEl) statusEl.textContent = "Error — try again";
+  }
+  renderAvCalendar();
+};
+
+
 const API = "https://api.urbanchill.org";
   let currentHost = null;
 
@@ -93,6 +198,26 @@ const API = "https://api.urbanchill.org";
     if (_tegel) _tegel.addEventListener("click", openAssignmentsScreen);
     const _back = document.getElementById("backFromAssignments");
     if (_back) _back.addEventListener("click", closeAssignmentsScreen);
+
+    // Availability listeners — hier koppelen zodat loadAvailability zeker beschikbaar is
+    const _avTegel    = document.getElementById("availabilityTegel");
+    const _avExpanded = document.getElementById("availabilityExpanded");
+    const _avBack     = document.getElementById("backFromAvailability");
+    if (_avTegel && !_avTegel.dataset.bound) {
+      _avTegel.dataset.bound = "1";
+      _avTegel.addEventListener("click", function() {
+        _avTegel.style.display = "none";
+        _avExpanded.style.display = "";
+        loadAvailability();
+      });
+    }
+    if (_avBack && !_avBack.dataset.bound) {
+      _avBack.dataset.bound = "1";
+      _avBack.addEventListener("click", function() {
+        _avExpanded.style.display = "none";
+        _avTegel.style.display = "";
+      });
+    }
 
     if (currentHost) {
       const first = currentHost.name.charAt(0).toUpperCase();
@@ -428,8 +553,9 @@ const API = "https://api.urbanchill.org";
       thread.innerHTML = msgs.map(m => {
         const isHost = m.sender === "host";
         const time = new Date(m.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", day: "numeric", month: "short" });
+        const delBtn = isHost ? '<button onclick="deleteHostMessage(' + m.id + ',\'' + escHtml(caseId) + '\')" style="background:none;border:none;color:rgba(255,255,255,.4);font-size:10px;cursor:pointer;padding:0 0 0 6px" title="Verwijderen">✕</button>' : '';
         return '<div class="chat-msg ' + (isHost ? "chat-msg-host" : "chat-msg-stephen") + '">'
-          + '<div class="chat-bubble">' + escHtml(m.message) + '</div>'
+          + '<div class="chat-bubble">' + escHtml(m.message) + delBtn + '</div>'
           + '<div class="chat-time">' + (isHost ? "You" : "KIMANZI") + ' · ' + time + '</div>'
           + '</div>';
       }).join("");
@@ -486,14 +612,41 @@ const API = "https://api.urbanchill.org";
       thread.innerHTML = msgs.map(m => {
         const isHost = m.sender === "host";
         const time = new Date(m.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", day: "numeric", month: "short" });
+        const delBtn = isHost ? '<button onclick="deleteGeneralHostMessage(' + m.id + ')" style="background:none;border:none;color:rgba(255,255,255,.4);font-size:10px;cursor:pointer;padding:0 0 0 6px" title="Verwijderen">✕</button>' : '';
         return '<div class="chat-msg ' + (isHost ? "chat-msg-host" : "chat-msg-stephen") + '">'
-          + '<div class="chat-bubble">' + escHtml(m.message) + '</div>'
+          + '<div class="chat-bubble">' + escHtml(m.message) + delBtn + '</div>'
           + '<div class="chat-time">' + (isHost ? "You" : "KIMANZI") + ' · ' + time + '</div>'
           + '</div>';
       }).join("");
       thread.scrollTop = thread.scrollHeight;
     } catch(e) {}
   }
+
+  window.deleteHostMessage = async function(msgId, caseId) {
+    const token = sessionStorage.getItem("kimanzi_token");
+    if (!token || !confirm("Bericht verwijderen?")) return;
+    try {
+      await fetch(API + "/api/host/messages/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Host-Token": token },
+        body: JSON.stringify({ message_id: msgId })
+      });
+      await loadThread(caseId);
+    } catch(e) {}
+  };
+
+  window.deleteGeneralHostMessage = async function(msgId) {
+    const token = sessionStorage.getItem("kimanzi_token");
+    if (!token || !confirm("Bericht verwijderen?")) return;
+    try {
+      await fetch(API + "/api/host/messages/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Host-Token": token },
+        body: JSON.stringify({ message_id: msgId })
+      });
+      await loadGeneralMessages();
+    } catch(e) {}
+  };
 
   window.sendGeneralMessage = async function() {
     const token = sessionStorage.getItem("kimanzi_token");
@@ -641,6 +794,17 @@ const API = "https://api.urbanchill.org";
     if (backToFees) backToFees.addEventListener("click", showPortal);
     if (backToHandbook) backToHandbook.addEventListener("click", showPortal);
 
+    // avYear/avMonth/avData zijn globaal gedeclareerd bovenaan
+    // loadAvailability/renderAvCalendar/avToggleDay zijn globale functies
+
+    document.getElementById("avPrevMonth").addEventListener("click", function() {
+      avMonth--; if (avMonth < 0) { avMonth = 11; avYear--; }
+      loadAvailability();
+    });
+    document.getElementById("avNextMonth").addEventListener("click", function() {
+      avMonth++; if (avMonth > 11) { avMonth = 0; avYear++; }
+      loadAvailability();
+    });
     // Nairobi Guide — via beveiligd Worker-endpoint
     const nairobiCard = document.getElementById("nairobiCard");
     if (nairobiCard) nairobiCard.addEventListener("click", function() {
