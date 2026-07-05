@@ -812,6 +812,14 @@ const API = "https://api.urbanchill.org";
       if (!token) { showPortal(); return; }
       window.open("/nairobi.html?token=" + encodeURIComponent(token), "_blank");
     });
+
+    // Market Scan & Risk Audit — via beveiligd Worker-endpoint
+    const marketScanCard = document.getElementById("marketScanCard");
+    if (marketScanCard) marketScanCard.addEventListener("click", function() {
+      const token = sessionStorage.getItem("kimanzi_token");
+      if (!token) { showPortal(); return; }
+      window.open("/market-scan.html?token=" + encodeURIComponent(token), "_blank");
+    });
   });
 
 // Service Worker registratie
