@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Market Scan &amp; Risk Audit — KIMANZI</title>
+  <style>
+    body { margin: 0; background: #F6F4EF; }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: 'IBM Plex Mono', 'Courier New', monospace;
+      font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+      color: #2F5D50; font-weight: 600;
+      text-decoration: none; margin: 1.25rem 0 0 1.5rem;
+    }
+    #docLoading {
+      text-align: center; padding: 4rem 1.5rem; color: #52584F;
+      font-family: 'IBM Plex Mono', 'Courier New', monospace; font-size: 13px;
+    }
+    #myScans {
+      max-width: 880px; margin: 1rem auto 0; padding: 0 32px;
+      font-family: 'IBM Plex Mono', 'Courier New', monospace; font-size: 12px;
+      color: #52584F; display: none;
+    }
+    #myScans .scan-row {
+      display: flex; justify-content: space-between; gap: .75rem;
+      padding: 7px 10px; border: 1px solid #C9C4B6; border-radius: 4px;
+      background: #fff; margin-top: 6px; flex-wrap: wrap;
+    }
+    .st-new { color: #A6721E; font-weight: 600; }
+    .st-approved { color: #3D7A56; font-weight: 600; }
+    .st-rejected { color: #A3392E; font-weight: 600; }
+    @media (max-width: 640px) { #myScans { padding: 0 14px; } }
+    @media print { .back-btn, #myScans { display: none !important; } }
+  </style>
+</head>
+<body>
+
+<a class="back-btn" href="/portal.html">&larr; Back to portal</a>
+
+<!-- ACCESS CHECK -->
+<script>
+  (function(){
+    const token = sessionStorage.getItem("kimanzi_token");
+    const host  = sessionStorage.getItem("kimanzi_host");
+    if(!token || !host){
+      window.location.href = "portal.html";
+    }
+  })();
+</script>
+
+<div id="myScans"></div>
+
+<!-- CONTENT IS LOADED VIA AUTHENTICATED API CALL — never present in static page source -->
+<div id="docLoading">Loading&hellip;</div>
+
+<div id="docContent" style="display:none;"></div>
+
+<script>
+  const API = "https://cockpit.urbanchill.org";
+
+  (async function(){
+    const token = sessionStorage.getItem("kimanzi_token");
+    if (!token) { window.location.href = "portal.html"; return; }
+
+    try {
+      const res = await fetch(API + "/api/host/market-scan?token=" + encodeURIComponent(token));
+      const data = await res.json();
+      if (data.success && data.html) {
+        document.getElementById("docContent").innerHTML = data.html;
+        document.getElementById("docContent").style.display = "block";
+        document.getElementById("docLoading").style.display = "none";
+        initScan();
+        loadMyScans();
+      } else {
+        window.location.href = "portal.html";
+      }
+    } catch(e) {
+      document.getElementById("docLoading").textContent = "Connection error. Please refresh, or go back to the portal.";
+    }
+  })();
+
+  // Eerdere inzendingen + beoordelingsstatus tonen
+  async function loadMyScans(){
+    const token = sessionStorage.getItem("kimanzi_token");
+    try {
+      const res = await fetch(API + "/api/host/market-scans?token=" + encodeURIComponent(token));
+      const scans = await res.json();
+      if (!Array.isArray(scans) || !scans.length) return;
+      const box = document.getElementById("myScans");
+      const stLabel = { "new": ["In review", "st-new"], "approved": ["Approved", "st-approved"], "rejected": ["Not accepted", "st-rejected"] };
+      box.innerHTML = "<div style='letter-spacing:.08em;text-transform:uppercase;font-size:10.5px;'>Your submitted scans</div>" +
+        scans.map(function(s){
+          const st = stLabel[String(s.status)] || stLabel["new"];
+          let extra = "";
+          if (s.status === "approved" && Number(s.payout_cents) > 0) {
+            const eur = (Number(s.payout_cents) / 100).toFixed(2);
+            extra = s.payout_status === "paid" ? " &middot; &euro;" + eur + " paid" : " &middot; &euro;" + eur + " (payment on its way)";
+          }
+          if (s.status === "rejected" && s.review_note) extra = " &middot; " + escText(s.review_note);
+          return "<div class='scan-row'><span>" + escText(s.complex_name || "(no name)") + " &middot; " + escText(s.wijk || "") + "</span>" +
+                 "<span class='" + st[1] + "'>" + st[0] + extra + "</span></div>";
+        }).join("");
+      box.style.display = "block";
+    } catch(e) {}
+  }
+
+  function escText(v){
+    return String(v == null ? "" : v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  // Formulierlogica — draait pas nadat de content via het beveiligde endpoint is geladen
+  function initScan(){
+    const docId = document.getElementById('doc-id');
+    if (docId) docId.textContent = 'SCAN-' + Date.now().toString().slice(-6);
+
+    const resetBtn = document.getElementById('reset-btn');
+    if (resetBtn) resetBtn.addEventListener('click', function() {
+      if (confirm('Are you sure you want to clear all fields?')) {
+        document.querySelectorAll('#docContent input[type=text], #docContent input[type=number], #docContent input[type=date], #docContent textarea').forEach(el => el.value = '');
+        document.querySelectorAll('#docContent input[type=checkbox], #docContent input[type=radio]').forEach(el => el.checked = false);
+        const ps = document.getElementById('prijs-score');
+        const vs = document.getElementById('veiligheid-score');
+        if (ps) { ps.value = 5; document.getElementById('prijs-score-out').textContent = 5; }
+        if (vs) { vs.value = 5; document.getElementById('veiligheid-score-out').textContent = 5; }
+      }
+    });
+
+    const submitBtn = document.getElementById('submit-btn');
+    if (submitBtn) submitBtn.addEventListener('click', submitScan);
+  }
+
+  function fieldVal(id){
+    const el = document.getElementById(id);
+    return el ? String(el.value || '').trim() : '';
+  }
+
+  function checkedLabel(name){
+    const el = document.querySelector('#docContent input[name="' + name + '"]:checked');
+    if (!el) return '';
+    const wrap = el.closest('label');
+    return wrap ? wrap.textContent.trim().replace(/\s+/g, ' ') : '';
+  }
+
+  function labelFor(el){
+    const f = el.closest('.field') || el.closest('.meta-field');
+    if (!f) return el.id || 'field';
+    const lab = f.querySelector('label');
+    return lab ? lab.textContent.trim().replace(/\s+/g, ' ') : (el.id || 'field');
+  }
+
+  function collectFields(){
+    const fields = [];
+    document.querySelectorAll('#docContent .masthead, #docContent .section').forEach(function(sec){
+      const tEl = sec.querySelector('.section-title');
+      const secTitle = tEl ? tEl.textContent.trim() : 'General';
+
+      sec.querySelectorAll('input[type=text], input[type=number], input[type=date], textarea').forEach(function(el){
+        const val = String(el.value || '').trim();
+        if (val) fields.push({ section: secTitle, label: labelFor(el), value: val });
+      });
+
+      sec.querySelectorAll('input[type=range]').forEach(function(el){
+        fields.push({ section: secTitle, label: labelFor(el), value: String(el.value) + ' / 10' });
+      });
+
+      sec.querySelectorAll('input[type=radio]:checked, input[type=checkbox]:checked').forEach(function(el){
+        const wrap = el.closest('label');
+        const group = el.closest('.field') || el.closest('.meta-field');
+        let glabel = 'Checklist';
+        if (group) {
+          const gl = group.querySelector('label');
+          if (gl && !gl.contains(el)) glabel = gl.textContent.trim().replace(/\s+/g, ' ');
+        }
+        const val = wrap ? wrap.textContent.trim().replace(/\s+/g, ' ') : 'checked';
+        fields.push({ section: secTitle, label: glabel, value: val });
+      });
+    });
+    return fields;
+  }
+
+  async function submitScan(){
+    const btn = document.getElementById('submit-btn');
+
+    // Labels worden runtime uit de geladen (beveiligde) content gehaald —
+    // de statische bron bevat alleen technische veldnamen.
+    const reqText = ['host-naam', 'audit-datum', 'wijk', 'complex-naam', 'totaal-maandelijks', 'hoofdrisico'];
+    const reqRadio = ['balkon', 'ingesloten', 'veiligheid-risico', 'service-risico', 'locatie-match', 'aanbeveling'];
+
+    const missing = [];
+    reqText.forEach(function(id){
+      if (!fieldVal(id)) {
+        const el = document.getElementById(id);
+        missing.push(el ? labelFor(el) : id);
+      }
+    });
+    reqRadio.forEach(function(name){
+      if (!checkedLabel(name)) {
+        const el = document.querySelector('#docContent input[name="' + name + '"]');
+        missing.push(el ? labelFor(el) : name);
+      }
+    });
+
+    if (missing.length) {
+      alert('Please complete these required fields before submitting:\n\n\u2022 ' + missing.join('\n\u2022 '));
+      return;
+    }
+
+    if (!confirm('Submit this scan to KIMANZI? You cannot edit it afterwards.')) return;
+
+    const payload = {
+      complex_name: fieldVal('complex-naam'),
+      wijk: fieldVal('wijk'),
+      aanbeveling: checkedLabel('aanbeveling'),
+      hoofdrisico: fieldVal('hoofdrisico'),
+      fields: collectFields()
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Submitting\u2026';
+    const token = sessionStorage.getItem("kimanzi_token");
+
+    try {
+      const res = await fetch(API + "/api/host/market-scan/submit?token=" + encodeURIComponent(token), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const out = await res.json();
+      if (out.success) {
+        document.querySelectorAll('#docContent input, #docContent textarea').forEach(el => el.disabled = true);
+        const actions = document.querySelector('#docContent .actions');
+        if (actions) actions.innerHTML =
+          '<span class="save-status" style="font-size:13px;color:#3D7A56;font-weight:600">' +
+          '\u2713 Scan submitted \u2014 KIMANZI will review it. If a fee was agreed for this scan, payment follows after approval.' +
+          '</span>';
+        loadMyScans();
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      } else {
+        alert('Could not submit: ' + (out.message || out.error || 'unknown error'));
+        btn.disabled = false;
+        btn.textContent = 'Submit scan';
+      }
+    } catch(e) {
+      alert('Connection error \u2014 your answers are still on this page. Please try again.');
+      btn.disabled = false;
+      btn.textContent = 'Submit scan';
+    }
+  }
+</script>
+
+</body>
+</html>
