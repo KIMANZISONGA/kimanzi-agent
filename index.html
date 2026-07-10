@@ -173,13 +173,13 @@ nav.kn-nav{
 .kn-hero-image{ animation:knFadeUp 0.8s ease both; animation-delay:0.3s; }
 /* Klik-getriggerde replay-fade op ankersecties */
 .kn-section.kn-flash > *{
-  animation:knFadeUp 0.7s cubic-bezier(.16,.84,.44,1) both;
+  animation:knFadeUp 0.65s cubic-bezier(.16,.84,.44,1) both;
 }
-.kn-section.kn-flash > *:nth-child(1){ animation-delay:.18s; }
-.kn-section.kn-flash > *:nth-child(2){ animation-delay:.30s; }
-.kn-section.kn-flash > *:nth-child(3){ animation-delay:.42s; }
-.kn-section.kn-flash > *:nth-child(4){ animation-delay:.54s; }
-.kn-section.kn-flash > *:nth-child(5){ animation-delay:.66s; }
+.kn-section.kn-flash > *:nth-child(1){ animation-delay:0s; }
+.kn-section.kn-flash > *:nth-child(2){ animation-delay:.12s; }
+.kn-section.kn-flash > *:nth-child(3){ animation-delay:.24s; }
+.kn-section.kn-flash > *:nth-child(4){ animation-delay:.36s; }
+.kn-section.kn-flash > *:nth-child(5){ animation-delay:.48s; }
 @media (prefers-reduced-motion: reduce){
   .kn-hero-text > *, .kn-hero-image, .kn-section.kn-flash > *{ animation:none; }
 }
@@ -1722,14 +1722,41 @@ function setStatus(el, ok, msg){
 
 <script>
 (function(){
+  var navH = 72; /* hoogte sticky nav, marge boven sectie */
+
+  function flash(target){
+    target.classList.remove('kn-flash');
+    void target.offsetWidth; /* forceer reflow zodat animatie herstart */
+    target.classList.add('kn-flash');
+  }
+
   document.querySelectorAll('.kn-nav-links a[href^="#"]').forEach(function(link){
-    link.addEventListener('click', function(){
+    link.addEventListener('click', function(e){
       var id = link.getAttribute('href').slice(1);
       var target = document.getElementById(id);
       if (!target || !target.classList.contains('kn-section')) return;
-      target.classList.remove('kn-flash');
-      void target.offsetWidth; /* forceer reflow zodat de animatie herstart */
-      target.classList.add('kn-flash');
+      e.preventDefault();
+
+      var top = target.getBoundingClientRect().top + window.pageYOffset - navH;
+      var alreadyThere = Math.abs(window.pageYOffset - top) < 4;
+
+      if (alreadyThere){
+        flash(target);
+        return;
+      }
+
+      var fired = false;
+      function done(){
+        if (fired) return;
+        fired = true;
+        window.removeEventListener('scrollend', done);
+        flash(target);
+      }
+
+      /* scrollend werkt in moderne browsers; timer als vangnet */
+      window.addEventListener('scrollend', done, { once:true });
+      window.scrollTo({ top: top, behavior:'smooth' });
+      setTimeout(done, 700);
     });
   });
 })();
