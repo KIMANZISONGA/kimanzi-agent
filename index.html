@@ -1738,25 +1738,14 @@ function setStatus(el, ok, msg){
       e.preventDefault();
 
       var top = target.getBoundingClientRect().top + window.pageYOffset - navH;
-      var alreadyThere = Math.abs(window.pageYOffset - top) < 4;
 
-      if (alreadyThere){
-        flash(target);
+      if (Math.abs(window.pageYOffset - top) < 4){
+        flash(target); /* al op de sectie: meteen faden */
         return;
       }
 
-      var fired = false;
-      function done(){
-        if (fired) return;
-        fired = true;
-        window.removeEventListener('scrollend', done);
-        flash(target);
-      }
-
-      /* scrollend werkt in moderne browsers; timer als vangnet */
-      window.addEventListener('scrollend', done, { once:true });
       window.scrollTo({ top: top, behavior:'smooth' });
-      setTimeout(done, 700);
+      setTimeout(function(){ flash(target); }, 500);
     });
   });
 })();
