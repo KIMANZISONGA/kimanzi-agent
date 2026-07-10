@@ -171,16 +171,8 @@ nav.kn-nav{
 .kn-hero-text > *:nth-child(5){ animation-delay:0.5s; }
 .kn-hero-text > *:nth-child(6){ animation-delay:0.6s; }
 .kn-hero-image{ animation:knFadeUp 0.8s ease both; animation-delay:0.3s; }
-/* Scroll-reveal voor sectiekoppen */
-.kn-reveal > *{ opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
-.kn-reveal.kn-visible > *{ opacity:1; transform:translateY(0); }
-.kn-reveal.kn-visible > *:nth-child(1){ transition-delay:.05s; }
-.kn-reveal.kn-visible > *:nth-child(2){ transition-delay:.15s; }
-.kn-reveal.kn-visible > *:nth-child(3){ transition-delay:.25s; }
-.kn-reveal.kn-visible > *:nth-child(4){ transition-delay:.35s; }
 @media (prefers-reduced-motion: reduce){
   .kn-hero-text > *, .kn-hero-image{ animation:none; }
-  .kn-reveal > *{ opacity:1; transform:none; transition:none; }
 }
 .kn-hero{
   padding:88px 0 64px;
@@ -1719,21 +1711,5 @@ function setStatus(el, ok, msg){
 })();
 </script>
 
-<script>
-(function(){
-  var heads = document.querySelectorAll('.kn-section-head');
-  heads.forEach(function(h){ h.classList.add('kn-reveal'); });
-  if (!('IntersectionObserver' in window)) {
-    heads.forEach(function(h){ h.classList.add('kn-visible'); });
-    return;
-  }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting) { e.target.classList.add('kn-visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.2 });
-  heads.forEach(function(h){ io.observe(h); });
-})();
-</script>
 </body>
 </html>
