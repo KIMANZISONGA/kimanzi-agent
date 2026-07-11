@@ -553,10 +553,10 @@ const API = "https://api.urbanchill.org";
       thread.innerHTML = msgs.map(m => {
         const isHost = m.sender === "host";
         const time = new Date(m.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", day: "numeric", month: "short" });
-        const delBtn = isHost ? '<button onclick="deleteHostMessage(' + m.id + ',\'' + escHtml(caseId) + '\')" style="background:none;border:none;color:rgba(255,255,255,.4);font-size:10px;cursor:pointer;padding:0 0 0 6px" title="Verwijderen">✕</button>' : '';
+        const delBtn = isHost ? ' · <button onclick="deleteHostMessage(' + m.id + ',\'' + escHtml(caseId) + '\')" title="Delete message" style="background:none;border:none;color:#c0392b;font-size:11px;cursor:pointer;padding:2px 5px;text-decoration:underline;font-weight:500">🗑 Delete</button>' : '';
         return '<div class="chat-msg ' + (isHost ? "chat-msg-host" : "chat-msg-stephen") + '">'
-          + '<div class="chat-bubble">' + escHtml(m.message) + delBtn + '</div>'
-          + '<div class="chat-time">' + (isHost ? "You" : "KIMANZI") + ' · ' + time + '</div>'
+          + '<div class="chat-bubble">' + escHtml(m.message) + '</div>'
+          + '<div class="chat-time">' + (isHost ? "You" : "KIMANZI") + ' · ' + time + delBtn + '</div>'
           + '</div>';
       }).join("");
       thread.scrollTop = thread.scrollHeight;
@@ -612,10 +612,10 @@ const API = "https://api.urbanchill.org";
       thread.innerHTML = msgs.map(m => {
         const isHost = m.sender === "host";
         const time = new Date(m.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", day: "numeric", month: "short" });
-        const delBtn = isHost ? '<button onclick="deleteGeneralHostMessage(' + m.id + ')" style="background:none;border:none;color:rgba(255,255,255,.4);font-size:10px;cursor:pointer;padding:0 0 0 6px" title="Verwijderen">✕</button>' : '';
+        const delBtn = isHost ? ' · <button onclick="deleteGeneralHostMessage(' + m.id + ')" title="Delete message" style="background:none;border:none;color:#c0392b;font-size:11px;cursor:pointer;padding:2px 5px;text-decoration:underline;font-weight:500">🗑 Delete</button>' : '';
         return '<div class="chat-msg ' + (isHost ? "chat-msg-host" : "chat-msg-stephen") + '">'
-          + '<div class="chat-bubble">' + escHtml(m.message) + delBtn + '</div>'
-          + '<div class="chat-time">' + (isHost ? "You" : "KIMANZI") + ' · ' + time + '</div>'
+          + '<div class="chat-bubble">' + escHtml(m.message) + '</div>'
+          + '<div class="chat-time">' + (isHost ? "You" : "KIMANZI") + ' · ' + time + delBtn + '</div>'
           + '</div>';
       }).join("");
       thread.scrollTop = thread.scrollHeight;
