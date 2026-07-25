@@ -446,6 +446,30 @@
   .receipt-select { padding: .4rem .5rem; border: 1.5px solid var(--cream2); border-radius: 8px; font-size: 13px; background: #fff; }
   .receipt-input { width: 120px; padding: .4rem .6rem; border: 1.5px solid var(--cream2); border-radius: 8px; font-size: 13px; }
   .receipt-file-label { padding: .4rem .75rem; background: var(--cream2); border-radius: 8px; font-size: 13px; cursor: pointer; font-weight: 600; }
+
+    /* Opdracht afwijzen — ingetogen, niet-alarmerend */
+    .assignment-reject-wrap { margin-top: 1rem; padding-top: .75rem; border-top: 1px solid var(--cream2, #ece5d8); }
+    .assignment-reject-btn {
+      background: transparent; color: #a24b3a; border: 1px solid #d9b3aa;
+      border-radius: 8px; padding: .5rem 1.1rem; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all .15s;
+    }
+    .assignment-reject-btn:hover { background: #fbf1ee; border-color: #a24b3a; }
+    .reject-confirm { margin-top: .75rem; padding: .85rem; background: #fbf6f4; border: 1px solid #e8d5cf; border-radius: 10px; }
+    .reject-reason { width: 100%; box-sizing: border-box; padding: .55rem .7rem; border: 1px solid #d9cfc2; border-radius: 8px; font-size: 13px; margin-bottom: .6rem; }
+    .reject-actions { display: flex; gap: .5rem; }
+    .reject-cancel { background: transparent; border: 1px solid #cfc6b8; color: #6b6456; border-radius: 8px; padding: .45rem .9rem; font-size: 13px; cursor: pointer; }
+    .reject-confirm-btn { background: #a24b3a; border: 1px solid #a24b3a; color: #fff; border-radius: 8px; padding: .45rem .9rem; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .reject-confirm-btn:hover { background: #8d3f30; }
+    .reject-status { font-size: 12px; margin-top: .5rem; min-height: 1rem; }
+    /* Afgewezen kaart — blijft staan, duidelijk gemarkeerd (2b) */
+    .assignment-card.assignment-rejected { opacity: .72; }
+    .assignment-reject-stamp {
+      display: inline-block; background: #f3e3df; color: #8d3f30; border: 1px solid #dcbcb3;
+      border-radius: 6px; padding: .3rem .7rem; font-size: 12px; font-weight: 700;
+      letter-spacing: .03em; margin-bottom: .75rem;
+    }
+    .assignment-reject-stamp .reject-date { font-weight: 400; opacity: .8; }
 </style>
 </head>
 <body>
