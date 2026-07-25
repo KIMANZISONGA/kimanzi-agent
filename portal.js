@@ -147,6 +147,53 @@ const API = "https://api.urbanchill.org";
     window.scrollTo(0, 0);
   }
 
+  function escHtml(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+
+  function renderCityEvents(events) {
+    const box = document.getElementById("cityEventsList");
+    if (!box) return;
+    if (!events || !events.length) {
+      box.innerHTML = '<p style="text-align:center;color:#8a8a7a;padding:2rem 0;">No events yet. Check back soon.</p>';
+      return;
+    }
+    box.innerHTML = events.map(function(ev) {
+      var cat = ev.category ? '<span style="display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);font-weight:600;">' + escHtml(ev.category) + '</span>' : '';
+      var date = ev.event_date ? '<span style="font-size:12px;color:#8a8a7a;margin-left:.6rem;">' + escHtml(ev.event_date) + '</span>' : '';
+      var wijk = ev.wijk ? '<div style="font-size:12px;color:#8a8a7a;margin-top:.2rem;">' + escHtml(ev.wijk) + '</div>' : '';
+      var link = ev.url ? '<a href="' + escHtml(ev.url) + '" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--orange);text-decoration:none;">view \u2197</a>' : '';
+      var src = ev.source_label ? '<span style="font-size:11px;color:#b0b0a0;margin-left:.6rem;">' + escHtml(ev.source_label) + '</span>' : '';
+      return '<div style="background:white;border-radius:12px;border:1px solid var(--cream2);padding:1rem 1.25rem;margin-bottom:.75rem;">' +
+        '<div style="margin-bottom:.35rem;">' + cat + date + '</div>' +
+        '<div style="font-weight:600;color:var(--green);line-height:1.35;margin-bottom:.4rem;">' + escHtml(ev.title) + '</div>' +
+        wijk +
+        '<div style="margin-top:.5rem;">' + link + src + '</div>' +
+        '</div>';
+    }).join("");
+  }
+
+  async function openCityEvents() {
+    document.getElementById("portalScreen").style.display = "none";
+    document.getElementById("cityEventsScreen").style.display = "block";
+    window.scrollTo(0, 0);
+    const box = document.getElementById("cityEventsList");
+    if (box) box.innerHTML = '<p style="text-align:center;color:#8a8a7a;padding:2rem 0;">Loading events\u2026</p>';
+    try {
+      const token = sessionStorage.getItem("kimanzi_token");
+      const res = await fetch(API + "/api/host/city-events", {
+        headers: { "Content-Type": "application/json", "X-Host-Token": token }
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || "failed");
+      renderCityEvents(data.events);
+    } catch (e) {
+      if (box) box.innerHTML = '<p style="text-align:center;color:#c0392b;padding:2rem 0;">Could not load events. Please try again later.</p>';
+    }
+  }
+
   async function doLogin() {
     const email    = document.getElementById("emailInput").value.trim().toLowerCase();
     const password = document.getElementById("passwordInput").value;
@@ -782,6 +829,8 @@ const API = "https://api.urbanchill.org";
     if (contractCard) contractCard.addEventListener("click", openContract);
     const trainingCard = document.getElementById("trainingCard");
     if (trainingCard) trainingCard.addEventListener("click", openTraining);
+    const cityEventsCard = document.getElementById("cityEventsCard");
+    if (cityEventsCard) cityEventsCard.addEventListener("click", openCityEvents);
     if (feesCard)     feesCard.addEventListener("click", showFees);
 
     // Logout
@@ -792,6 +841,8 @@ const API = "https://api.urbanchill.org";
     const backToFees = document.getElementById("backToFees");
     const backToHandbook = document.getElementById("backToHandbook");
     if (backToFees) backToFees.addEventListener("click", showPortal);
+    const backFromCityEvents = document.getElementById("backFromCityEvents");
+    if (backFromCityEvents) backFromCityEvents.addEventListener("click", showPortal);
     if (backToHandbook) backToHandbook.addEventListener("click", showPortal);
 
     // avYear/avMonth/avData zijn globaal gedeclareerd bovenaan
