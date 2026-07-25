@@ -537,6 +537,18 @@
       </div>
     </div>
 
+    <!-- STAD & LIFESTYLE -->
+    <div class="card" id="cityEventsCard">
+      <div class="card-inner">
+        <div class="card-icon orange">🎉</div>
+        <div class="card-text">
+          <div class="card-title">Stad &amp; Lifestyle</div>
+          <div class="card-desc">Events and activities happening in Nairobi.</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </div>
+
     <!-- FEES -->
     <div class="card" id="feesCard">
       <div class="card-inner">
@@ -944,6 +956,27 @@
 
 
 
+
+<!-- ============ STAD & LIFESTYLE SCREEN ============ -->
+<div id="cityEventsScreen" style="display:none; min-height:100vh; background:var(--cream);">
+  <div class="back-bar">
+    <div class="back-bar-inner">
+      <button class="back-btn" id="backFromCityEvents">‹</button>
+      <span class="back-title">Stad &amp; Lifestyle</span>
+    </div>
+  </div>
+
+  <div class="handbook-content safe-bottom">
+    <div class="handbook-cover">
+      <h2>Events in Nairobi</h2>
+      <p>Approved happenings around the city.<br>Handy to share with your guests.</p>
+    </div>
+
+    <div id="cityEventsList">
+      <p style="text-align:center;color:var(--muted,#8a8a7a);padding:2rem 0;">Loading events…</p>
+    </div>
+  </div>
+</div>
 
 <script src="/portal.js?v=5"></script>
 </body>
