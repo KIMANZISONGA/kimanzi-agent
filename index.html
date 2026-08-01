@@ -995,6 +995,14 @@ html{scroll-behavior:smooth;}
 .kn-jump a{font-size:.85rem;color:var(--accent);text-decoration:none;padding:6px 14px;border:1px solid var(--border);border-radius:999px;white-space:nowrap;transition:background .15s,color .15s,border-color .15s;}
 .kn-jump a:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
 @media (max-width:760px){.kn-jump{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:8px;padding:12px 20px 2px;scrollbar-width:none;}.kn-jump::-webkit-scrollbar{display:none;}.kn-jump-label{display:none;}}
+
+.kn-more{margin-top:6px;}
+.kn-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;color:var(--accent);font-weight:600;font-size:.95rem;padding:6px 0;user-select:none;}
+.kn-more>summary::-webkit-details-marker{display:none;}
+.kn-more>summary::after{content:"\25BE";font-size:.85em;transition:transform .2s;}
+.kn-more[open]>summary::after{transform:rotate(180deg);}
+.kn-more[open]>summary{margin-bottom:14px;}
+.kn-more>summary:hover{color:var(--accent-deep);}
 </style>
 </head>
 
@@ -1072,7 +1080,9 @@ html{scroll-behavior:smooth;}
       <p class="lead">KIMANZI assignments are time-boxed and concrete. A half-day, two half-days across an Arrival, or a month of light remote support. The work is practical: meet someone at JKIA, hand them their keys, take them to the supermarket, walk them through Westlands, drive them to KRA. No mystery, no atmosphere talk. KIMANZI assignments support newcomers during their Nairobi onboarding: practical relocation help that makes their first days smooth and safe.</p>
     </div>
 
-    <div class="kn-work-grid">
+        <details class="kn-more">
+      <summary>Read more</summary>
+      <div class="kn-work-grid">
       <div class="kn-work-card">
         <h3>Arrival days <span class="tag">most common</span></h3>
         <p>Arrival runs across two half-days. Evening or night: pickup at JKIA, transfer to accommodation, short briefing on essentials. Next morning: SIM card, M-Pesa setup, supermarket run, coworking tour, neighborhood orientation. The guest lands and rests first. The setup follows when they're ready.</p>
@@ -1090,6 +1100,7 @@ html{scroll-behavior:smooth;}
         <p>Occasionally a guest asks for something custom. A multi-day trip out of Nairobi, an introduction to a specific community, deeper logistical support. We scope these per request and discuss with the host before confirming.</p>
       </div>
     </div>
+    </details>
   </section>
 
   <!-- CONCIERGE GROWTH -->
