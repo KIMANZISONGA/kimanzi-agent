@@ -987,6 +987,14 @@ nav.kn-nav{
 }
 .kn-wm{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:600;letter-spacing:.02em;color:#faf8f3;line-height:1;}.kn-nav-links a:not(.kn-cta){color:rgba(250,248,243,.9);}.kn-nav-links a:not(.kn-cta):hover{color:#fff;}
 .kn-lion{height:74px;width:auto;display:block;margin-right:14px;}
+
+html{scroll-behavior:smooth;}
+.kn-section,.kn-hero{scroll-margin-top:104px;}
+.kn-jump{max-width:var(--maxw);margin:0 auto;padding:18px 20px 2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.kn-jump-label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+.kn-jump a{font-size:.85rem;color:var(--accent);text-decoration:none;padding:6px 14px;border:1px solid var(--border);border-radius:999px;white-space:nowrap;transition:background .15s,color .15s,border-color .15s;}
+.kn-jump a:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+@media (max-width:760px){.kn-jump{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:8px;padding:12px 20px 2px;scrollbar-width:none;}.kn-jump::-webkit-scrollbar{display:none;}.kn-jump-label{display:none;}}
 </style>
 </head>
 
@@ -1056,7 +1064,8 @@ nav.kn-nav{
   </section>
 
   <!-- THE WORK -->
-  <section class="kn-section" id="work">
+  <nav class="kn-jump" aria-label="On this page"><span class="kn-jump-label">On this page</span><a href="#work">The work</a><a href="#concierge">Concierge</a><a href="#sequence">How it works</a><a href="#fees">Fees &amp; pay</a><a href="#faq">FAQ</a><a href="#apply">Apply</a></nav>
+<section class="kn-section" id="work">
     <div class="kn-section-head">
       <span class="kn-section-eyebrow">What KIMANZI coordinates</span>
       <h2>Practical, time-boxed, in-person work</h2>
