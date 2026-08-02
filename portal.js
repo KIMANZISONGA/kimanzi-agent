@@ -394,6 +394,17 @@ const API = "https://api.urbanchill.org";
               <span class="assignment-val">✈️ ${escHtml(vlucht)}</span>
             </div>` : ""}
 
+            ${vlucht ? `
+            <div class="assignment-row">
+              <span class="assignment-key">Flight status</span>
+              <span class="assignment-val">${o.flight_status_label ? escHtml(o.flight_status_label) : `<span style="color:#94a3b8">Not available yet</span>`}</span>
+            </div>
+            ${o.flight_estimated_arrival ? `
+            <div class="assignment-row">
+              <span class="assignment-key">Estimated arrival</span>
+              <span class="assignment-val">\u23f1 ${escHtml(o.flight_estimated_arrival)}</span>
+            </div>` : ""}` : ""}
+
             ${hasFee ? `
             <div class="assignment-row">
               <span class="assignment-key">Your payout</span>
