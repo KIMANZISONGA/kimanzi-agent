@@ -314,9 +314,10 @@ const API = "https://api.urbanchill.org";
       // Tegel beschrijving
       const tegelDescEl = document.getElementById("assignmentsTegelDesc");
       if (tegelDescEl) {
-        tegelDescEl.textContent = opdrachten.length === 0
+        const activeOps = opdrachten.filter(function(o){ return (o.host_response || "") !== "rejected"; });
+        tegelDescEl.textContent = activeOps.length === 0
           ? "No upcoming assignments."
-          : opdrachten.length + " active — " + opdrachten.map(function(o){ return o.client_name || "—"; }).join(", ");
+          : activeOps.length + " active — " + activeOps.map(function(o){ return o.client_name || "—"; }).join(", ");
       }
 
       if (opdrachten.length === 0) {
