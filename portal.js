@@ -366,6 +366,8 @@ const API = "https://api.urbanchill.org";
               "not_ready":        { icon: "⏳", label: "Assignment being prepared — awaiting client confirmation", color: "#94a3b8" },
               "ready_to_invoice": { icon: "📄", label: "Invoice being prepared for client",                        color: "#C87A2E" },
               "invoiced":         { icon: "📬", label: "Invoice sent — awaiting client payment",                   color: "#C87A2E" },
+              "deposit_paid":     { icon: "💶", label: "Deposit received — awaiting balance",                color: "#C87A2E" },
+              "fully_paid":       { icon: "✅", label: "Client payment received — assignment confirmed",            color: "#2A6B2A" },
               "paid":             { icon: "✅", label: "Client payment received — assignment confirmed",            color: "#2A6B2A" },
             };
             const s = statusMap[fs] || statusMap["not_ready"];
