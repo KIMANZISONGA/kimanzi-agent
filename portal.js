@@ -354,7 +354,7 @@ const API = "https://api.urbanchill.org";
         const isRejected = (o.host_response || "") === "rejected";
         return `
         <div class="assignment-card${isRejected ? ' assignment-rejected' : ''}">
-          ${isRejected ? `<div class="assignment-reject-stamp">\u2715 Afgewezen${o.host_response_reason ? ` \u2014 ${escHtml(o.host_response_reason)}` : ''}${o.host_response_at ? `<span class="reject-date"> (${escHtml(String(o.host_response_at).slice(0,10))})</span>` : ''}</div>` : ''}
+          ${isRejected ? `<div class="assignment-reject-stamp">\u2715 Declined${o.host_response_reason ? ` \u2014 ${escHtml(o.host_response_reason)}` : ''}${o.host_response_at ? `<span class="reject-date"> (${escHtml(String(o.host_response_at).slice(0,10))})</span>` : ''}</div>` : ''}
           <div class="assignment-header">
             <div class="assignment-title">📋 ${escHtml(dienst)}</div>
             ${datum ? `<div class="assignment-date">${escHtml(datum)}</div>` : ""}
@@ -500,12 +500,12 @@ const API = "https://api.urbanchill.org";
           </div>
           ${!isRejected ? `
           <div class="assignment-reject-wrap">
-            <button class="assignment-reject-btn" onclick="startReject('${escHtml(o.id)}')">Afwijzen</button>
+            <button class="assignment-reject-btn" onclick="startReject('${escHtml(o.id)}')">Decline</button>
             <div class="reject-confirm" id="reject-confirm-${escHtml(o.id)}" style="display:none;">
-              <input type="text" class="reject-reason" id="reject-reason-${escHtml(o.id)}" placeholder="Reden (optioneel)" maxlength="200">
+              <input type="text" class="reject-reason" id="reject-reason-${escHtml(o.id)}" placeholder="Reason (optional)" maxlength="200">
               <div class="reject-actions">
-                <button class="reject-cancel" onclick="cancelReject('${escHtml(o.id)}')">Terug</button>
-                <button class="reject-confirm-btn" onclick="confirmReject('${escHtml(o.id)}')">Bevestig afwijzing</button>
+                <button class="reject-cancel" onclick="cancelReject('${escHtml(o.id)}')">Cancel</button>
+                <button class="reject-confirm-btn" onclick="confirmReject('${escHtml(o.id)}')">Confirm decline</button>
               </div>
               <div class="reject-status" id="reject-status-${escHtml(o.id)}"></div>
             </div>
@@ -548,7 +548,7 @@ const API = "https://api.urbanchill.org";
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || "failed");
-      if (st) { st.style.color = "#2A6B2A"; st.textContent = "Afgewezen."; }
+      if (st) { st.style.color = "#2A6B2A"; st.textContent = "Declined."; }
       if (typeof loadAssignments === "function") setTimeout(loadAssignments, 600);
     } catch (e) {
       if (st) { st.style.color = "#c0392b"; st.textContent = "Kon niet afwijzen. Probeer later opnieuw."; }
