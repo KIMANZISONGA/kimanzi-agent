@@ -477,6 +477,7 @@ const API = "https://api.urbanchill.org";
               <select id="receipt-cat-${escHtml(o.id)}" class="receipt-select">
                 <option value="uber">🚗 Uber</option>
                 <option value="meals">🍽️ Meals</option>
+                <option value="groceries">🛒 Groceries</option>
                 <option value="other">📄 Other</option>
               </select>
               <input type="number" id="receipt-amount-${escHtml(o.id)}" class="receipt-input" placeholder="Amount (KES)" min="0" step="1">
